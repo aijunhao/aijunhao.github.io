@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/15/Python学习笔记/">Python学习笔记</a>
+      <a class="article-title" href="/2018/07/15/Python学习笔记/">Python学习笔记——基础部分</a>
     </h1>
   
 
@@ -116,13 +116,27 @@
 <hr>
 <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>以’#’开头的语句是注释，注释是给人看的，可以是任意内容，解释器会忽略掉注释。</p>
 <ul>
-<li>单行注释：以#开头，其后内容为注释<br># 这里是单行注释</li>
-<li>多行注释：以’’’开头和结尾<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` 这是多行注释第一行</span><br><span class="line">              ……</span><br><span class="line">    这是多行注释最后一行</span><br></pre></td></tr></table></figure>
+<li><p>单行注释：以#开头，其后内容为注释</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 这里是单行注释</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多行注释：以’’’开头和结尾</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">''</span><span class="string">'这是多行注释第一行</span></span><br><span class="line"><span class="string">           ……</span></span><br><span class="line"><span class="string">    这是多行注释最后一行'</span><span class="string">''</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line">### 命名</span><br><span class="line">- 命名规则：大小写字母、数字、下划线和汉字等符号及组合</span><br><span class="line">- 注意事项：大小写敏感、首字符不能是数字、不与保留字相同</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 数据类型</span><br><span class="line">#### 整数</span><br><span class="line">Python可以处理任意大小的整数，整数运算永远精确。</span><br><span class="line"></span><br><span class="line">##### 整数除法精确性说明</span><br><span class="line">在Python中，有两种除法：</span><br><span class="line">- 一种除法是/：/除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</span><br><span class="line">  ```java</span><br><span class="line">  &gt;&gt;&gt; 10 / 3</span><br><span class="line">  3.3333333333333335</span><br><span class="line">  &gt;&gt;&gt; 9 / 3</span><br><span class="line">  3.0</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><ul>
+<li>命名规则：大小写字母、数字、下划线和汉字等符号及组合</li>
+<li>注意事项：大小写敏感、首字符不能是数字、不与保留字相同</li>
+</ul>
+<hr>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h4><p>Python可以处理任意大小的整数，整数运算永远精确。</p>
+<h5 id="整数除法精确性说明"><a href="#整数除法精确性说明" class="headerlink" title="整数除法精确性说明"></a>整数除法精确性说明</h5><p>在Python中，有两种除法：</p>
 <ul>
-<li>还有一种除法是//：称为地板除，两个整数的除法仍然是整数，只保留整数部分：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="number">10</span> <span class="comment">// 3</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<li><p>一种除法是/：/除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="number">10</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.3333333333333335</span></span><br><span class="line">&gt;&gt;&gt; <span class="number">9</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>还有一种除法是//：称为地板除，两个整数的除法仍然是整数，只保留整数部分：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="number">10</span> <span class="comment">// 3</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>因为//除法只取结果的整数部分，所以Python还提供一个余数运算，可以得到两个整数相除的余数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="number">10</span> % <span class="number">3</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></p>
@@ -500,7 +514,7 @@
       <ul>
         
           <li>
-            <a href="/2018/07/15/Python学习笔记/">Python学习笔记</a>
+            <a href="/2018/07/15/Python学习笔记/">Python学习笔记——基础部分</a>
           </li>
         
           <li>
