@@ -5,15 +5,25 @@
   
 
   
-  <title>Hello, I&#39;m Junhao Ai.</title>
+  <title>Python学习笔记——基础部分 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="推荐一个Python学习网站：https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000 2018年4月TIOBE排行榜前20中编程语言：  Python能干些什么用Python可以做什么？可以做日常任务，比如自动备份你的MP3；可以做网站，很多著名的网站包括YouTube就是Python写">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记——基础部分">
+<meta property="og:url" content="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="推荐一个Python学习网站：https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000 2018年4月TIOBE排行榜前20中编程语言：  Python能干些什么用Python可以做什么？可以做日常任务，比如自动备份你的MP3；可以做网站，很多著名的网站包括YouTube就是Python写">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/TIOBE.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/CalCircle.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/Gif.gif">
+<meta property="og:image" content="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/StarDraw.gif">
+<meta property="og:updated_time" content="2018-07-21T08:10:11.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello, I&#39;m Junhao Ai.">
+<meta name="twitter:title" content="Python学习笔记——基础部分">
+<meta name="twitter:description" content="推荐一个Python学习网站：https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000 2018年4月TIOBE排行榜前20中编程语言：  Python能干些什么用Python可以做什么？可以做日常任务，比如自动备份你的MP3；可以做网站，很多著名的网站包括YouTube就是Python写">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/TIOBE.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -60,63 +70,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Python学习笔记——高级特性" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/21/Python学习笔记——高级特性/" class="article-date">
-  <time datetime="2018-07-21T08:15:14.000Z" itemprop="datePublished">2018-07-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/21/Python学习笔记——高级特性/">Python学习笔记——高级特性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。代码越少，开发效率越高。</p>
-<hr>
-<h3 id="切片-Slice"><a href="#切片-Slice" class="headerlink" title="切片(Slice)"></a>切片(Slice)</h3><p>对于经常取指定索引范围的操作，用循环十分繁琐，因此，Python提供了切片（Slice）操作符，能大大简化这种操作。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L[索引开始:索引结束]      # 索引不写时表示头和尾</span><br><span class="line">&gt;&gt;&gt; L[:5]                   # 从0到5，不包括5</span><br><span class="line">&gt;&gt;&gt; L[5:]                   # 从5到末尾</span><br><span class="line">&gt;&gt;&gt; L[:]                    # 从头到尾</span><br></pre></td></tr></table></figure></p>
-<p>例如，一个list如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
-<p>取其前三个元素：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [L[0], L[1], L[2]]            # 笨方法，一个个取</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; r = []                        # 循环</span><br><span class="line">&gt;&gt;&gt; n = <span class="number">3</span></span><br><span class="line">&gt;&gt;&gt; <span class="function"><span class="keyword">for</span> i in <span class="title">range</span><span class="params">(n)</span>:</span></span><br><span class="line"><span class="function">     r.<span class="title">append</span><span class="params">(L[i])</span></span></span><br><span class="line"><span class="function">&gt;&gt;&gt; r</span></span><br><span class="line"><span class="function">[1, 2, 3]</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">&gt;&gt;&gt; L[0:3]                        # Slice, 索引从0开始到3，不包括3</span></span><br><span class="line"><span class="function">[1, 2, 3]</span></span><br></pre></td></tr></table></figure></p>
-<p>同样，tuple和字符串可以是使用切片操作，操作结果和原类型相同。</p>
-<h4 id="常见切片应用"><a href="#常见切片应用" class="headerlink" title="常见切片应用"></a>常见切片应用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L = list(range(20))       # L为0-20的整数</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; L[:10:2]                  # 前10个数，每2个取一个</span><br><span class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; L[::5]                    # 所有数，每5个取一个</span><br><span class="line">[<span class="number">0</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><p>给定一个list或tuple，我们通过for循环来遍历这个list或tuple，这种遍历我们称为迭代（Iteration）。</p>
-<p>在Python中，迭代是通过for … in来完成的，Python的for循环抽象程度高于C的for循环，可以作用于任何<strong>可迭代</strong>对象上。</p>
-<h4 id="list的迭代-tuple同理"><a href="#list的迭代-tuple同理" class="headerlink" title="list的迭代(tuple同理)"></a>list的迭代(tuple同理)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> num in [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]:</span><br><span class="line">	print(num)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-<h4 id="dict的迭代"><a href="#dict的迭代" class="headerlink" title="dict的迭代"></a>dict的迭代</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d = &#123;<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>, <span class="string">'c'</span>: <span class="number">3</span>&#125;</span><br><span class="line">&gt;&gt;&gt; for key in d:                 # 迭代key</span><br><span class="line">	print(key)</span><br><span class="line"></span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; for value in d.values():      # 迭代value</span><br><span class="line">	print(value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; for i, value in d.items():    # 迭代key和value</span><br><span class="line">	print(i, <span class="string">':'</span>, value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a : <span class="number">1</span></span><br><span class="line">b : <span class="number">2</span></span><br><span class="line">c : <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串的迭代"><a href="#字符串的迭代" class="headerlink" title="字符串的迭代"></a>字符串的迭代</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> <span class="keyword">char</span> in <span class="string">'ABC'</span>:</span><br><span class="line">	print(<span class="keyword">char</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">A</span><br><span class="line">B</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
-<h4 id="可迭代对象判断"><a href="#可迭代对象判断" class="headerlink" title="可迭代对象判断"></a>可迭代对象判断</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from collections import\_ Iterable        # 先导入collections模块的Iterable类型</span><br><span class="line">&gt;&gt;&gt; isinstance('abc', Iterable)             # str是否可迭代</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance([1,2,3], Iterable)           # list是否可迭代</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance(123, Iterable)               # 整数是否可迭代</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
-<h3 id="开发实例"><a href="#开发实例" class="headerlink" title="开发实例"></a>开发实例</h3><h4 id="实例1-使用迭代查找一个list中最小和最大值，并返回一个tuple"><a href="#实例1-使用迭代查找一个list中最小和最大值，并返回一个tuple" class="headerlink" title="实例1 使用迭代查找一个list中最小和最大值，并返回一个tuple"></a>实例1 使用迭代查找一个list中最小和最大值，并返回一个tuple</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">def <span class="title">findMaxAndMin</span><span class="params">(L)</span>:</span></span><br><span class="line"><span class="function">    max </span>= L[<span class="number">0</span>]</span><br><span class="line">    min = L[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i in L:</span><br><span class="line">        <span class="keyword">if</span> max &lt; i:</span><br><span class="line">            max = i</span><br><span class="line">        <span class="keyword">if</span> min &gt; i:</span><br><span class="line">            min = i</span><br><span class="line">    <span class="keyword">return</span> (min, max)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">L = input("请输入list：")   # 此时的L是str类型的list</span><br><span class="line">L = L.split(',')    # split切分</span><br><span class="line">L = [<span class="keyword">int</span>(L[i]) <span class="function"><span class="keyword">for</span> i in <span class="title">range</span><span class="params">(len(L)</span>)]      # <span class="keyword">for</span>循环，把每个字符转成<span class="keyword">int</span>值</span></span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(L)</span></span></span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(findMaxAndMin(L)</span>)</span></span><br></pre></td></tr></table></figure>
-<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><p>列表生成式即List Comprehensions，是Python内置的非常简单却强大的可以用来创建list的生成式。</p>
-<p>要生成[1x1, 2x2, 3x3, …, 10x10]怎么做？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 普通循环</span><br><span class="line">&gt;&gt;&gt; L = []</span><br><span class="line">&gt;&gt;&gt; <span class="function"><span class="keyword">for</span> x in <span class="title">range</span><span class="params">(<span class="number">1</span>, <span class="number">11</span>)</span>:</span></span><br><span class="line"><span class="function">...    L.<span class="title">append</span><span class="params">(x * x)</span></span></span><br><span class="line"><span class="function">...</span></span><br><span class="line"><span class="function">&gt;&gt;&gt; L</span></span><br><span class="line"><span class="function">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># 列表生成式则可以用一行语句代替</span></span><br><span class="line"><span class="function">&gt;&gt;&gt; [x * x <span class="keyword">for</span> x in <span class="title">range</span><span class="params">(<span class="number">1</span>, <span class="number">11</span>)</span>]</span></span><br><span class="line"><span class="function">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="列表生成式常见用法"><a href="#列表生成式常见用法" class="headerlink" title="列表生成式常见用法"></a>列表生成式常见用法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 使用两层循环，可以生成全排列：</span><br><span class="line">&gt;&gt;&gt; [m + n <span class="keyword">for</span> m in <span class="string">'ABC'</span> <span class="keyword">for</span> n in <span class="string">'XYZ'</span>]</span><br><span class="line">[<span class="string">'AX'</span>, <span class="string">'AY'</span>, <span class="string">'AZ'</span>, <span class="string">'BX'</span>, <span class="string">'BY'</span>, <span class="string">'BZ'</span>, <span class="string">'CX'</span>, <span class="string">'CY'</span>, <span class="string">'CZ'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 列出当前目录下的所有文件和目录名，可以通过一行代码实现：</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; import\_ os # 导入os模块</span><br><span class="line">&gt;&gt;&gt; [d for d in os.listdir('.')]    # os.listdir可以列出文件和目录</span><br><span class="line">[<span class="string">'.emacs.d'</span>, <span class="string">'.ssh'</span>, <span class="string">'.Trash'</span>, <span class="string">'Adlm'</span>, <span class="string">'Applications'</span>, <span class="string">'Desktop'</span>, <span class="string">'Documents'</span>, <span class="string">'Downloads'</span>, <span class="string">'Library'</span>, <span class="string">'Movies'</span>, <span class="string">'Music'</span>, <span class="string">'Pictures'</span>, <span class="string">'Public'</span>, <span class="string">'VirtualBox VMs'</span>, <span class="string">'Workspace'</span>, <span class="string">'XCode'</span>]</span><br><span class="line"></span><br><span class="line"># 生成list：</span><br><span class="line">&gt;&gt;&gt; d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125;</span><br><span class="line">&gt;&gt;&gt; [k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v in d.items()]</span><br><span class="line">[<span class="string">'y=B'</span>, <span class="string">'x=A'</span>, <span class="string">'z=C'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 把一个list中所有的字符串变成小写：</span><br><span class="line">&gt;&gt;&gt; L = [<span class="string">'Hello'</span>, <span class="string">'World'</span>, <span class="string">'IBM'</span>, <span class="string">'Apple'</span>]</span><br><span class="line">&gt;&gt;&gt; [s.lower() <span class="keyword">for</span> s in L]</span><br><span class="line">[<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'ibm'</span>, <span class="string">'apple'</span>]</span><br></pre></td></tr></table></figure>
-<h4 id="实例2：字符串大写变小写"><a href="#实例2：字符串大写变小写" class="headerlink" title="实例2：字符串大写变小写"></a>实例2：字符串大写变小写</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L = [<span class="string">'Hello'</span>, <span class="string">'World'</span>, <span class="number">18</span>, <span class="string">'Apple'</span>, None]</span><br><span class="line">&gt;&gt;&gt; [s.lower() for s in L if isinstance(s, str) == True]    # 使用内建的isinstance函数判断变量是不是字符串类型</span><br></pre></td></tr></table></figure>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cjk36c6vd0003rkutsupulxpr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Python学习笔记——基础部分" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Python学习笔记——基础部分" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/15/Python学习笔记——基础部分/" class="article-date">
   <time datetime="2018-07-15T09:40:26.000Z" itemprop="datePublished">2018-07-15</time>
@@ -129,8 +83,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/15/Python学习笔记——基础部分/">Python学习笔记——基础部分</a>
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记——基础部分
     </h1>
   
 
@@ -305,304 +259,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Python安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/14/Python安装/" class="article-date">
-  <time datetime="2018-07-14T11:05:41.000Z" itemprop="datePublished">2018-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/07/21/Python学习笔记——高级特性/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/Python安装/">Python——安装教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python-程序界神兽——蟒蛇"><a href="#Python-程序界神兽——蟒蛇" class="headerlink" title="Python 程序界神兽——蟒蛇"></a>Python 程序界神兽——蟒蛇</h2><p>Python是一种解释型、面向对象、动态数据类型的高级程序设计语言。</p>
-<p><img src="/2018/07/14/Python安装/python.jpg" alt=""></p>
-<hr>
-<h2 id="程序的基本编写方法：IPO模式"><a href="#程序的基本编写方法：IPO模式" class="headerlink" title="程序的基本编写方法：IPO模式"></a>程序的基本编写方法：IPO模式</h2><ul>
-<li>I：Input 输入，程序的输入</li>
-<li>P：Process 处理，程序的主要逻辑</li>
-<li>O： Output 输出，程序的输出</li>
-</ul>
-<ol>
-<li>输入：<ul>
-<li>程序的输入包括：问键输入、网络输入、用户手工输入、随机数据输入、程序内部参数输入等</li>
-<li>输入是一个程序的开始</li>
-</ul>
-</li>
-<li>处理：<ul>
-<li>程序对输入进行处理输出产生结果</li>
-<li>处理的方法也叫算法，是程序最重要的部分</li>
-</ul>
-</li>
-<li>输出：<ul>
-<li>程序的输出包括：屏幕显示输出、文件输出、网络输出、操作系统内部变量输出等</li>
-<li>输出是一个程序展示运算成果的方式</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="Python语言windows系统开发环境配置"><a href="#Python语言windows系统开发环境配置" class="headerlink" title="Python语言windows系统开发环境配置"></a>Python语言windows系统开发环境配置</h2><p>python官网：<a href="https://www.python.org" target="_blank" rel="noopener">https://www.python.org</a> 不建议使用最新版本，容易有bug。<br>官网上版本众多，区别如下：</p>
-<ol>
-<li>X86和X86-64的区别：系統是 32 bit 的版本还是 64 bit 的</li>
-<li>web-based, executable, embeddable zip file区别：<ul>
-<li>web-based: 透过网络安装，就是执行安装后才透过网络下载python</li>
-<li>executable: 可执行文件，既把要安装的python全部下载好在本机安装，自动配置好环境变量，推荐使用该类型安装。</li>
-<li>embeddable zip file: zip 压缩档，就是python打包成zip压缩包</li>
-</ul>
-</li>
-</ol>
-<p>以上三种仅是下载形式不同，软件内容是一样的。</p>
-<p><img src="/2018/07/14/Python安装/python版本.png" alt="python版本"></p>
-<p>运行安装界面如下，选择自定义安装(“Customize installation”)，同时勾选“Add Python 3.6 to PATH”，自动配置路径。<br><img src="/2018/07/14/Python安装/安装1.png" alt="python版本"></p>
-<p>搜索软件并运行或在cmd中输入“python”即可运行程序，输入print(“Hello World!”)，出现如下图所示即表示安装完成，否则需要配置环境变量。<br><img src="/2018/07/14/Python安装/python运行.png" alt="python运行"></p>
-<p>至此，python的交互式编译环境安装完成。Python交互模式主要是为了调试Python代码用的，也便于初学者学习，它不是正式运行Python代码的环境！</p>
-<hr>
-<p>以下介绍的是使用几种代码编辑器运行的文件式编译环境。</p>
-<h3 id="1、Sublime-Text或者Notepad-，不配置Python运行环境"><a href="#1、Sublime-Text或者Notepad-，不配置Python运行环境" class="headerlink" title="1、Sublime Text或者Notepad++，不配置Python运行环境"></a>1、Sublime Text或者Notepad++，不配置Python运行环境</h3><p>subline text 3官网下载：<a href="http://www.sublimetext.com/" target="_blank" rel="noopener">http://www.sublimetext.com/</a> 这里我使用默认的安装地址，自定义安装地址有时候会出错。</p>
-<p>编辑好程序后保存为.py文件，然后打开命令行，将当前目录切换到文件所在目录，就行运行程序了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\work&gt;python hello.py</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="2、Python自带的IDLE"><a href="#2、Python自带的IDLE" class="headerlink" title="2、Python自带的IDLE"></a>2、Python自带的IDLE</h3><p>默认安装，直接搜索软件即可</p>
-<hr>
-<h3 id="3、集成开发环境（IDE：Integrated-Development-Environment）-PyCharm"><a href="#3、集成开发环境（IDE：Integrated-Development-Environment）-PyCharm" class="headerlink" title="3、集成开发环境（IDE：Integrated Development Environment）: PyCharm"></a>3、集成开发环境（IDE：Integrated Development Environment）: PyCharm</h3><p>PyCharm专业版官网下载：<a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/</a></p>
-<h4 id="完美破解方式，永久激活"><a href="#完美破解方式，永久激活" class="headerlink" title="完美破解方式，永久激活"></a>完美破解方式，永久激活</h4><p>Intellij IDEA 注册码网址：<a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a></p>
-<p>下载如下文件，复制到安装路径的bin文件夹下。<br><img src="/2018/07/14/Python安装/注册码.jpg" alt=""></p>
-<p>用文本编辑器打开“pycharm.exe.vmoptions”和“pycharm64.exe.vmoptions”，在最后加上一行代码(注意修改文件路径):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-javaagent:D:\PyCharm 2018.1.4\bin\JetbrainsCrack-2.9-release-enc.jar</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/07/14/Python安装/文件.png" alt=""></p>
-<hr>
-<h3 id="4、使用Sublime-Text-3配置python环境"><a href="#4、使用Sublime-Text-3配置python环境" class="headerlink" title="4、使用Sublime Text 3配置python环境"></a>4、使用Sublime Text 3配置python环境</h3><h4 id="安装Package-Control"><a href="#安装Package-Control" class="headerlink" title="安装Package Control"></a>安装Package Control</h4><h5 id="简单的安装方法"><a href="#简单的安装方法" class="headerlink" title="简单的安装方法"></a>简单的安装方法</h5><p>使用Ctrl+`快捷键或者通过View-&gt;Show Console菜单打开命令行，粘贴如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), <span class="string">'wb'</span>).write(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())</span><br></pre></td></tr></table></figure>
-<p>如果顺利的话，此时就可以在Preferences菜单下看到Package Settings和Package Control两个菜单了。</p>
-<h5 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h5><p>可能由于各种原因，无法使用代码安装，那可以通过以下步骤手动安装Package Control：</p>
-<ol>
-<li>点击Preferences &gt; Browse Packages菜单</li>
-<li>进入打开的目录的上层目录，然后再进入Installed Packages/目录</li>
-<li>下载Package Control.sublime-package并复制到Installed Packages/目录</li>
-<li>重启Sublime Text。</li>
-</ol>
-<h4 id="配置包"><a href="#配置包" class="headerlink" title="配置包"></a>配置包</h4><p>点击刚刚生成的Package Control -&gt;输入install 或者Ctrl+shift+p 键入 install packages进入安装界面安装如下插件：</p>
-<ol>
-<li>SideBarEnhancements =&gt; 侧边栏管理</li>
-<li>Anaconda （Python IDE插件）</li>
-<li>SublimeREPL</li>
-<li>键位绑定：每次通过Tools-&gt;SublimeREPL-&gt;Python这样的方式比较繁琐，自定义绑定快捷键就会方便很多。<br>打开Preferences-&gt;Key Bindings-User，复制一下代码：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[&#123;<span class="string">"keys"</span>:[<span class="string">"f5"</span>],</span><br><span class="line"><span class="string">"caption"</span>: <span class="string">"SublimeREPL: Python - RUN current file"</span>,</span><br><span class="line"><span class="string">"command"</span>: <span class="string">"run_existing_window_command"</span>, <span class="string">"args"</span>:</span><br><span class="line">&#123;<span class="string">"id"</span>: <span class="string">"repl_python_run"</span>,<span class="string">"file"</span>: <span class="string">"config/Python/Main.sublime-menu"</span>&#125;</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Ctrl+s下就好了</p>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cjk36c6wk0008rkutogakxuy7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-《代码整洁之道》" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/13/《代码整洁之道》/" class="article-date">
-  <time datetime="2018-07-13T10:59:07.000Z" itemprop="datePublished">2018-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          Python学习笔记——高级特性
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/《代码整洁之道》/">《代码整洁之道》阅读摘记</a>
-    </h1>
   
+    <a href="/2018/07/14/Python安装/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python——安装教程</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="细节之中自有天地，整洁成就卓越代码。"><a href="#细节之中自有天地，整洁成就卓越代码。" class="headerlink" title="细节之中自有天地，整洁成就卓越代码。"></a>细节之中自有天地，整洁成就卓越代码。</h3><h2 id="第一章-整洁代码"><a href="#第一章-整洁代码" class="headerlink" title="第一章 整洁代码"></a>第一章 整洁代码</h2><h3 id="糟糕的代码"><a href="#糟糕的代码" class="headerlink" title="糟糕的代码"></a>糟糕的代码</h3><p>&emsp;&emsp;如果你是位有点儿经验的程序员，定然多次遇到过这类困境。我们有专用来形容这事的词：沼泽(wading)。我们趟过代码的水域。我们穿过灌木密布、瀑布暗藏的沼泽地。我们拼命想找到出路，期望有点什么线索能启发我们到底发生了什么事；但是目光所及，只是越来越多死气沉沉的代码。<br>&emsp;&emsp;糟糕的代码就如同沼泽一般，越积越大，最后导致全盘崩溃。<br>&emsp;&emsp;我们都曾经瞟一眼自己亲手造成的混乱，决定弃之而不顾，走向新一天。我们都曾经看到自己的烂程序居然能运行，然后断言运行的烂程序总比没有强。我们都曾经说过有朝一日再回头清理。当然，在那些日子里，我们都没听过勒布朗法则：稍后等于永不(Later equals never)。<br>&emsp;&emsp;<font color="red">混乱导致失败。</font></p>
-<h3 id="态度"><a href="#态度" class="headerlink" title="态度"></a>态度</h3><p>&emsp;&emsp;“不听经理的，我就会被炒鱿鱼？”多半不会。多数经理想要知道实情，即便他们看起来不喜欢实情。多当数经理想要好代码，即便他们总是痴迷于进度。他们会奋力卫护进度和需求；那是他们该干的。你则当以同等的热情卫护代码。<br>&emsp;&emsp;程序员遵从不了解混乱风险的经理的意愿，是不专业的做法。<br>&emsp;&emsp;程序员面临一种基础价值谜题。有那么几年经验的开发者都知道，之前的混乱拖了自己的后腿。但开发者们背负期限的压力，只好制造混乱。简言之，他们没花时间让自己做得更快！<br>&emsp;&emsp;制造混乱无助于赶上期限。混乱只会立刻拖慢你，叫你错过期限。赶上期限的唯一做法——做得快的唯一做法——就是始终尽可能保持代码整洁。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/《代码整洁之道》/" data-id="cjk36c6wm0009rkutsgtz0y2o" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/">book</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-Hello-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/13/Hello-Hexo/" class="article-date">
-  <time datetime="2018-07-13T09:18:35.000Z" itemprop="datePublished">2018-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/Hello-Hexo/">Hello, Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Hexo-使用介绍"><a href="#Hexo-使用介绍" class="headerlink" title="Hexo 使用介绍"></a>Hexo 使用介绍</h2><h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><p>在命令行中找到hexo安装路径，使用命令：hexo new post “博客名”，创建博客，博客路径为”安装路径/source/_posts/博客名.md”</p>
-<p><img src="/2018/07/13/Hello-Hexo/new.jpg" alt=""></p>
-<h3 id="页面编辑"><a href="#页面编辑" class="headerlink" title="页面编辑"></a>页面编辑</h3><h4 id="文字效果"><a href="#文字效果" class="headerlink" title="文字效果"></a>文字效果</h4><p><em>斜体</em>: *斜体* 或者 _斜体_<br><strong>粗体</strong>：**粗体**<br><strong><em>加粗斜体</em></strong>：***加粗斜体***<br><del>删除线</del>：~~删除线~~</p>
-<h4 id="分级效果"><a href="#分级效果" class="headerlink" title="分级效果"></a>分级效果</h4><p>一级标题: # 一级标题<br>二级标题: ## 二级标题<br>三级标题: ### 三级标题<br>四级标题: #### 四级标题<br>五级标题: ##### 五级标题<br>六级标题: ###### 六级标题</p>
-<h4 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h4><p>行内形式(<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">我的博客</a>): [我的博客](<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a>)<br>自动链接(<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a>): \<a href="https://aijunhao.github.io/\" target="_blank" rel="noopener">https://aijunhao.github.io/\</a></p>
-<h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p>使用“*、+、-”符号交替</p>
-<ul>
-<li>无序列表项1</li>
-</ul>
-<ul>
-<li>无序列表项2</li>
-</ul>
-<ul>
-<li>无序列表项3</li>
-</ul>
-<h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>使用数字或者字母等有序字符</p>
-<ol>
-<li>有序列表项1</li>
-<li>有序列表项2</li>
-<li>有序列表项3</li>
-</ol>
-<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>![](目录名/图片.jpg)</p>
-<p>markdown文章使用的图片路径和hexo博客发布时的图片路径不一致，会导致本地可以显示，github端无法显示的问题。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式:"></a>解决方式:</h4><p>使用<strong>CodeFalling/hexo-asset-image插件</strong></p>
-<h5 id="1-修改post-asset-folder"><a href="#1-修改post-asset-folder" class="headerlink" title="1. 修改post_asset_folder"></a>1. 修改post_asset_folder</h5><p>Hexo安装目录下_config.yml 中有 <strong>post_asset_folder:true</strong>。</p>
-<h5 id="2-安装hexo-asset-image"><a href="#2-安装hexo-asset-image" class="headerlink" title="2. 安装hexo-asset-image"></a>2. 安装hexo-asset-image</h5><p>在hexo目录下执行命令：npm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> –save  进行插件安装。<br>安装完之后，再新建博客时，会发现_post下同时新建了一个与博客同名的文件夹，用来存放图片。</p>
-<p>此时就能同步markdown和hexo图片了。</p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table>
-<thead>
-<tr>
-<th>表头1</th>
-<th style="text-align:left">表头2</th>
-<th style="text-align:center">表头3</th>
-<th style="text-align:right">表头4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-</tbody>
-</table>
-<h3 id="生成及部署博客"><a href="#生成及部署博客" class="headerlink" title="生成及部署博客"></a>生成及部署博客</h3><p>编辑好文章，使用命令：hexo d -g，即可生成及部署，此时可以访问个人网站进行访问了：<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="cjk36c6v20000rkut3m6vt35v" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/07/hello-world/" class="article-date">
-  <time datetime="2018-07-07T13:10:21.398Z" itemprop="datePublished">2018-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/hello-world/" data-id="cjk36c6vt0007rkutow6ge5va" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
