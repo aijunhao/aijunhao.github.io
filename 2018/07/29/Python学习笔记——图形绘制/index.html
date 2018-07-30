@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python学习笔记——图形绘制 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Python图形绘制——turtle库使用  要使用turtle库，需要导入先turtle库1import turtle  设置画布大小画布就是turtle为我们展开用于绘图区域，我们可以设置它的大小和初始位置。1234567891011121314语法1：turtle.screensize(canvwidth=None, canvheight=None, bg=None)参数:canvwidt">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记——图形绘制">
+<meta property="og:url" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="Python图形绘制——turtle库使用  要使用turtle库，需要导入先turtle库1import turtle  设置画布大小画布就是turtle为我们展开用于绘图区域，我们可以设置它的大小和初始位置。1234567891011121314语法1：turtle.screensize(canvwidth=None, canvheight=None, bg=None)参数:canvwidt">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/turtle.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/angle.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/pythonDraw.gif">
+<meta property="og:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/Gif.gif">
+<meta property="og:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/StarDraw.gif">
+<meta property="og:updated_time" content="2018-07-30T07:36:32.605Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记——图形绘制">
+<meta name="twitter:description" content="Python图形绘制——turtle库使用  要使用turtle库，需要导入先turtle库1import turtle  设置画布大小画布就是turtle为我们展开用于绘图区域，我们可以设置它的大小和初始位置。1234567891011121314语法1：turtle.screensize(canvwidth=None, canvheight=None, bg=None)参数:canvwidt">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/turtle.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python学习笔记——图形绘制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/29/Python学习笔记——图形绘制/" class="article-date">
+  <time datetime="2018-07-29T15:44:04.000Z" itemprop="datePublished">2018-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记——图形绘制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="Python图形绘制——turtle库使用"><a href="#Python图形绘制——turtle库使用" class="headerlink" title="Python图形绘制——turtle库使用"></a>Python图形绘制——turtle库使用</h2><p><img src="/2018/07/29/Python学习笔记——图形绘制/turtle.png" alt=""></p>
+<hr>
+<p>要使用turtle库，需要导入先turtle库<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="设置画布大小"><a href="#设置画布大小" class="headerlink" title="设置画布大小"></a>设置画布大小</h3><p>画布就是turtle为我们展开用于绘图区域，我们可以设置它的大小和初始位置。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">语法<span class="number">1</span>：</span><br><span class="line">turtle.screensize(canvwidth=<span class="keyword">None</span>, canvheight=<span class="keyword">None</span>, bg=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">参数:</span><br><span class="line">canvwidth：画布的宽(单位像素)，可为空，默认<span class="number">400</span>px</span><br><span class="line">canvheight：画布的高(单位像素)，可为空，默认<span class="number">300</span>px</span><br><span class="line">bg：背景颜色，可为空，默认白色</span><br><span class="line"></span><br><span class="line">语法<span class="number">2</span>：</span><br><span class="line">turtle.setup(width=<span class="number">0.5</span>, height=<span class="number">0.75</span>, startx=<span class="keyword">None</span>, starty=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">参数:</span><br><span class="line">width, height: 画布的宽和高，为整数时, 表示像素; 为小数时, 表示占据电脑屏幕的比例。不可为空。</span><br><span class="line">startx, starty: 画布距离左上角顶点的位置，如果为空，则窗口位于屏幕中心</span><br></pre></td></tr></table></figure></p>
+<p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">turtle.screensize(<span class="number">800</span>, <span class="number">600</span>, <span class="string">"green"</span>)      <span class="comment"># 自定义画布宽为800px，高为600px，背景被绿色</span></span><br><span class="line">turtle.screensize()         <span class="comment">#返回默认大小宽400px，高300px，背景白色</span></span><br><span class="line"></span><br><span class="line">turtle.setup(<span class="number">0.6</span>, <span class="number">0.6</span>)</span><br><span class="line">turtle.setup(<span class="number">800</span>, <span class="number">800</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="turtle空间坐标体系"><a href="#turtle空间坐标体系" class="headerlink" title="turtle空间坐标体系"></a>turtle空间坐标体系</h3><ol>
+<li><p>绝对坐标体系：画布中心是(0,0)就是我们初中就开始学的绝对坐标体系</p>
+</li>
+<li><p>相对坐标体系，turtle是海龟，头部朝向左侧为正，右侧朝向为负的一个体系</p>
+</li>
+</ol>
+<hr>
+<h3 id="turtle角度坐标体系"><a href="#turtle角度坐标体系" class="headerlink" title="turtle角度坐标体系"></a>turtle角度坐标体系</h3><p><img src="/2018/07/29/Python学习笔记——图形绘制/angle.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">turtle.seth(angle)      <span class="comment"># 将turtle当前的方向设置为绝对坐标下的angle角度</span></span><br><span class="line"></span><br><span class="line">turtle.left(angle)      <span class="comment"># 将turtle朝向设置为海龟当前朝向左侧的angle</span></span><br><span class="line"></span><br><span class="line">turtle.right(angle)     <span class="comment"># 将turtle朝向设置为海龟当前朝向右侧的angle</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="turtle的运动控制函数"><a href="#turtle的运动控制函数" class="headerlink" title="turtle的运动控制函数"></a>turtle的运动控制函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">turtle.fd(d)              <span class="comment"># 走直线，行进距离是d</span></span><br><span class="line">turtle.circle(r,angle)    <span class="comment"># 绘制一个弧形，r是半径，angle是弧形的角度，如果r是正数，则表示圆心在tutle的左侧，如果r是负数，则表示圆心在turtle的右侧</span></span><br><span class="line">turtle.speed(x)           <span class="comment"># x的取值从0到10，越大速度越快</span></span><br><span class="line">turtle.goto(x,y)          <span class="comment"># 可以把画笔直接移动到绝对坐标体系的某一个点</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="turtle颜色控制体系"><a href="#turtle颜色控制体系" class="headerlink" title="turtle颜色控制体系"></a>turtle颜色控制体系</h3><p>RGB色彩模式，RGB每色取值范围0-255整数或0-1小数。默认采用小数值，可切换为整数值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turtle.colormode(mode)      <span class="comment"># mode为1，表示用0-1小数表示；mode为255，表示用0-255整数表示</span></span><br></pre></td></tr></table></figure>
+<h4 id="常用RGB色彩"><a href="#常用RGB色彩" class="headerlink" title="常用RGB色彩"></a>常用RGB色彩</h4><table>
+<thead>
+<tr>
+<th>英文名称</th>
+<th style="text-align:left">RGB整数值</th>
+<th style="text-align:center">RGB小数值</th>
+<th style="text-align:right">中文名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>white</td>
+<td style="text-align:left">255,255,255</td>
+<td style="text-align:center">1,1,1</td>
+<td style="text-align:right">白色</td>
+</tr>
+<tr>
+<td>yellow</td>
+<td style="text-align:left">255,255,0</td>
+<td style="text-align:center">1,1,0</td>
+<td style="text-align:right">黄色</td>
+</tr>
+<tr>
+<td>magenta</td>
+<td style="text-align:left">255,0,255</td>
+<td style="text-align:center">1,0,1</td>
+<td style="text-align:right">洋红</td>
+</tr>
+<tr>
+<td>cyan</td>
+<td style="text-align:left">0,255,255</td>
+<td style="text-align:center">0,1,1</td>
+<td style="text-align:right">青色</td>
+</tr>
+<tr>
+<td>blue</td>
+<td style="text-align:left">0,0,255</td>
+<td style="text-align:center">0,0,1</td>
+<td style="text-align:right">蓝色</td>
+</tr>
+<tr>
+<td>black</td>
+<td style="text-align:left">0,0,0</td>
+<td style="text-align:center">0,0,0</td>
+<td style="text-align:right">黑色</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="turtle画笔控制"><a href="#turtle画笔控制" class="headerlink" title="turtle画笔控制"></a>turtle画笔控制</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># turtle画笔默认首先在中心的位置。并且画笔是放下状态</span></span><br><span class="line">turtle.penup()          <span class="comment"># 抬起画笔</span></span><br><span class="line">turtle.pendown()        <span class="comment"># 放下画笔</span></span><br><span class="line">turtle.pensize()        <span class="comment"># 设置画笔的粗细</span></span><br><span class="line">turtle.pencolor()       <span class="comment"># 设置画笔的颜色，str类型颜色字符串，RGB表示</span></span><br><span class="line">turtle.done()           <span class="comment"># 表示状态，使得运行完之后画布不会自动退出</span></span><br><span class="line">turtle.write(c,font=(“Arial”,<span class="number">18</span>,”normal”))      <span class="comment"># 来写文字c，包括汉字</span></span><br><span class="line">turtle.hideturtle()     <span class="comment"># 函数可以隐藏turtle的的画笔</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="实例1：python蟒蛇绘制"><a href="#实例1：python蟒蛇绘制" class="headerlink" title="实例1：python蟒蛇绘制"></a>实例1：python蟒蛇绘制</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.setup(<span class="number">650</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>)    <span class="comment"># 画布长650像素，宽350像素，距离左上角定点200像素，200像素</span></span><br><span class="line">turtle.penup()                      <span class="comment"># 提起笔</span></span><br><span class="line">turtle.fd(<span class="number">-250</span>)                     <span class="comment"># 向前移动-250像素</span></span><br><span class="line">turtle.pendown()                    <span class="comment"># 落笔</span></span><br><span class="line">turtle.pensize(<span class="number">25</span>)                  <span class="comment"># 设置笔宽度为25像素</span></span><br><span class="line">turtle.pencolor(<span class="string">"purple"</span>)           <span class="comment"># 设置笔颜色为紫色</span></span><br><span class="line">turtle.seth(<span class="number">-40</span>)                    <span class="comment"># 角度偏向-40度</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    turtle.circle(<span class="number">40</span>, <span class="number">80</span>)           <span class="comment"># 半径为40，角度为80度，逆时针画圆弧</span></span><br><span class="line">    turtle.circle(<span class="number">-40</span>, <span class="number">80</span>)</span><br><span class="line">turtle.circle(<span class="number">40</span>, <span class="number">40</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span>)                       <span class="comment"># 向前40像素</span></span><br><span class="line">turtle.circle(<span class="number">20</span>, <span class="number">180</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span> * <span class="number">2</span> / <span class="number">3</span>)</span><br><span class="line">turtle.done()                       <span class="comment"># 运行完之后画布不会自动退出</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/07/29/Python学习笔记——图形绘制/pythonDraw.gif" alt=""></p>
+<p>通过如上代码可以绘制简单的python蟒蛇，但是代码中出现了很多“turtle”，有些麻烦。使用form和import关键字可以解决这个问题。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line">setup(<span class="number">650</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>)        <span class="comment"># 画布长650像素，宽350像素，距离左上角定点200像素，200像素</span></span><br><span class="line">penup()                          <span class="comment"># 提起笔</span></span><br><span class="line">fd(<span class="number">-250</span>)                         <span class="comment"># 向前移动-250像素</span></span><br><span class="line">pendown()                        <span class="comment"># 落笔</span></span><br><span class="line">pensize(<span class="number">25</span>)                      <span class="comment"># 设置笔宽度为25像素</span></span><br><span class="line">pencolor(<span class="string">"purple"</span>)               <span class="comment"># 设置笔颜色为紫色</span></span><br><span class="line">seth(<span class="number">-40</span>)                        <span class="comment"># 角度偏向-40度</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    circle(<span class="number">40</span>, <span class="number">80</span>)               <span class="comment"># 半径为40，角度为80度，逆时针画圆弧</span></span><br><span class="line">    circle(<span class="number">-40</span>, <span class="number">80</span>)</span><br><span class="line">circle(<span class="number">40</span>, <span class="number">40</span>)</span><br><span class="line">fd(<span class="number">40</span>)                           <span class="comment"># 向前40像素</span></span><br><span class="line">circle(<span class="number">20</span>, <span class="number">180</span>)</span><br><span class="line">fd(<span class="number">40</span> * <span class="number">2</span> / <span class="number">3</span>)</span><br><span class="line">done()                           <span class="comment"># 运行完之后画布不会自动退出</span></span><br></pre></td></tr></table></figure>
+<p>以上两种方法互有优缺点。</p>
+<h4 id="实例2-绘制多个同切圆"><a href="#实例2-绘制多个同切圆" class="headerlink" title="实例2 绘制多个同切圆"></a>实例2 绘制多个同切圆</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.pensize(<span class="number">2</span>)   <span class="comment"># 设置画笔宽度</span></span><br><span class="line">turtle.circle(<span class="number">10</span>)   <span class="comment"># 画圆，半径为正(负)，表示圆心在画笔的左边(右边)画圆</span></span><br><span class="line">turtle.circle(<span class="number">40</span>)</span><br><span class="line">turtle.circle(<span class="number">80</span>)</span><br><span class="line">turtle.circle(<span class="number">160</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/07/29/Python学习笔记——图形绘制/Gif.gif" alt=""></p>
+<h4 id="实例3-绘制五角星"><a href="#实例3-绘制五角星" class="headerlink" title="实例3 绘制五角星"></a>实例3 绘制五角星</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line">color(<span class="string">'red'</span>, <span class="string">'red'</span>)     <span class="comment"># 第一个是线条颜色，第二个是填充颜色</span></span><br><span class="line">begin_fill()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    fd(<span class="number">200</span>)     <span class="comment"># 控制长度</span></span><br><span class="line">    rt(<span class="number">144</span>)     <span class="comment"># 角度</span></span><br><span class="line">end_fill()</span><br><span class="line">done()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/07/29/Python学习笔记——图形绘制/StarDraw.gif" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjk7ynbnh0003k4utmrq54pca" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/29/Python学习笔记——函数及用法积累/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python学习笔记——函数及用法积累</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及用法积累</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/28/Python学习笔记——面向对象编程/">Python学习笔记——面向对象编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/27/Python学习笔记——函数式编程/">Python学习笔记——函数式编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/21/Python学习笔记——高级特性/">Python学习笔记——高级特性</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

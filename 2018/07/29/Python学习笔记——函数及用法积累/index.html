@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python学习笔记——函数及用法积累 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="函数篇 eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行python语句&amp;gt;&amp;gt;&amp;gt; eval(&apos;print(&quot;Hello World!&quot;)&apos;)Hello World!# 例2：执行python表达式">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记——函数及用法积累">
+<meta property="og:url" content="http://yoursite.com/2018/07/29/Python学习笔记——函数及用法积累/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="函数篇 eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行python语句&amp;gt;&amp;gt;&amp;gt; eval(&apos;print(&quot;Hello World!&quot;)&apos;)Hello World!# 例2：执行python表达式">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-29T12:29:10.877Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记——函数及用法积累">
+<meta name="twitter:description" content="函数篇 eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行python语句&amp;gt;&amp;gt;&amp;gt; eval(&apos;print(&quot;Hello World!&quot;)&apos;)Hello World!# 例2：执行python表达式">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python学习笔记——函数及用法积累" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/29/Python学习笔记——函数及用法积累/" class="article-date">
+  <time datetime="2018-07-29T12:07:53.000Z" itemprop="datePublished">2018-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记——函数及用法积累
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="函数篇"><a href="#函数篇" class="headerlink" title="函数篇"></a>函数篇</h3><hr>
+<h3 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h3><p>eval() 函数用来执行一个字符串表达式，并返回表达式的值。</p>
+<p><em>去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例1：执行python语句</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'print("Hello World!")'</span>)</span><br><span class="line">Hello World!</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例2：执行python表达式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'1 + 2'</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例3：str类型转化为list、dict、tuple</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">"[[1,2], [3,4], [5,6], [7,8], [9,0]]"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = eval(a)           <span class="comment"># 调用eval函数执行a字符串，保存到b中</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(type(a))        <span class="comment"># 输出a的数据类型</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">str</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span><span class="params">(type<span class="params">(b)</span>)</span>        # 输出<span class="title">b</span>的数据类型</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">list</span>'&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"># 例4：数据类型转化</span></span><br><span class="line">&gt;&gt;&gt; c = eval("123")</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(type(c))</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">int</span>'&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——函数及用法积累/" data-id="cjk7ynbnk0004k4utlxggc65k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/29/Python学习笔记——图形绘制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python学习笔记——图形绘制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/28/Python学习笔记——面向对象编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python学习笔记——面向对象编程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及用法积累</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/28/Python学习笔记——面向对象编程/">Python学习笔记——面向对象编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/27/Python学习笔记——函数式编程/">Python学习笔记——函数式编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/21/Python学习笔记——高级特性/">Python学习笔记——高级特性</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
