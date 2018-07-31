@@ -5,19 +5,19 @@
   
 
   
-  <title>Python学习笔记——函数及用法积累 | Hello, I&#39;m Junhao Ai.</title>
+  <title>Python学习笔记——函数及库用法积累 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="函数篇 eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行python语句&amp;gt;&amp;gt;&amp;gt; eval(&apos;print(&quot;Hello World!&quot;)&apos;)Hello World!# 例2：执行python表达式">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python学习笔记——函数及用法积累">
+<meta property="og:title" content="Python学习笔记——函数及库用法积累">
 <meta property="og:url" content="http://yoursite.com/2018/07/29/Python学习笔记——函数及用法积累/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
 <meta property="og:description" content="函数篇 eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行python语句&amp;gt;&amp;gt;&amp;gt; eval(&apos;print(&quot;Hello World!&quot;)&apos;)Hello World!# 例2：执行python表达式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-29T12:29:10.877Z">
+<meta property="og:updated_time" content="2018-07-31T09:41:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python学习笔记——函数及用法积累">
+<meta name="twitter:title" content="Python学习笔记——函数及库用法积累">
 <meta name="twitter:description" content="函数篇 eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行python语句&amp;gt;&amp;gt;&amp;gt; eval(&apos;print(&quot;Hello World!&quot;)&apos;)Hello World!# 例2：执行python表达式">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Python学习笔记——函数及用法积累
+      Python学习笔记——函数及库用法积累
     </h1>
   
 
@@ -88,12 +88,55 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="函数篇"><a href="#函数篇" class="headerlink" title="函数篇"></a>函数篇</h3><hr>
+<h2 id="函数篇"><a href="#函数篇" class="headerlink" title="函数篇"></a>函数篇</h2><hr>
 <h3 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h3><p>eval() 函数用来执行一个字符串表达式，并返回表达式的值。</p>
 <p><em>去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例1：执行python语句</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'print("Hello World!")'</span>)</span><br><span class="line">Hello World!</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例2：执行python表达式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'1 + 2'</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例3：str类型转化为list、dict、tuple</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">"[[1,2], [3,4], [5,6], [7,8], [9,0]]"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = eval(a)           <span class="comment"># 调用eval函数执行a字符串，保存到b中</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(type(a))        <span class="comment"># 输出a的数据类型</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">str</span>'&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span><span class="params">(type<span class="params">(b)</span>)</span>        # 输出<span class="title">b</span>的数据类型</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">list</span>'&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"># 例4：数据类型转化</span></span><br><span class="line">&gt;&gt;&gt; c = eval("123")</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(type(c))</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">int</span>'&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
-
+<h2 id="库"><a href="#库" class="headerlink" title="库"></a>库</h2><h3 id="random库"><a href="#random库" class="headerlink" title="random库"></a>random库</h3><p>random库主要用于生成随机数，由梅森旋转算法生成的伪随机数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">seed(N)</td>
+<td style="text-align:left">初始化给定的随机数种子，默认为当前系统时间</td>
+</tr>
+<tr>
+<td style="text-align:left">random()</td>
+<td style="text-align:left">生成一个[0,1)之间的随机小数，与随机数种子有关</td>
+</tr>
+<tr>
+<td style="text-align:left">randint(a,b)</td>
+<td style="text-align:left">生成一个[a,b]之间的整数</td>
+</tr>
+<tr>
+<td style="text-align:left">randrange(m,n[,k])</td>
+<td style="text-align:left">生成一个[m,n)之间以k为步长的随机整数</td>
+</tr>
+<tr>
+<td style="text-align:left">getrandbits(k)</td>
+<td style="text-align:left">生成一个k比特长的随机整数</td>
+</tr>
+<tr>
+<td style="text-align:left">uniform(a,b)</td>
+<td style="text-align:left">生成一个[a,b]之间的随机小数</td>
+</tr>
+<tr>
+<td style="text-align:left">choice(list)</td>
+<td style="text-align:left">从序列中随机选择一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">shuffle(list)</td>
+<td style="text-align:left">将序列seq中元素随机排列,返回打乱后的序列</td>
+</tr>
+</tbody>
+</table>
+<h3 id="time库"><a href="#time库" class="headerlink" title="time库"></a>time库</h3>
       
     </div>
     <footer class="article-footer">
@@ -175,7 +218,7 @@
           </li>
         
           <li>
-            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及用法积累</a>
+            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及库用法积累</a>
           </li>
         
           <li>
