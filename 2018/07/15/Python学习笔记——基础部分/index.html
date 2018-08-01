@@ -17,7 +17,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/TIOBE.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/CalCircle.png">
-<meta property="og:updated_time" content="2018-07-31T09:36:08.856Z">
+<meta property="og:updated_time" content="2018-08-01T08:00:55.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——基础部分">
 <meta name="twitter:description" content="推荐一个Python学习网站：https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000 2018年4月TIOBE排行榜前20中编程语言：  Python能干些什么用Python可以做什么？可以做日常任务，比如自动备份你的MP3；可以做网站，很多著名的网站包括YouTube就是Python写">
@@ -257,6 +257,16 @@
 <p>此外，Python还提供了列表、字典等多种数据类型，还允许创建自定义数据类型。</p>
 <hr>
 <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>Python语言是<strong>弱语法语言</strong>或者说<strong>动态语言</strong>，定义变量时，不需要定义变量类型，赋值是也不需要类型匹配。</p>
+<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><p>局部变量是智能在函数内部使用的变量。</p>
+<h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>函数外部整个程序使用的变量是全局变量。</p>
+<p><strong>规则1 基本数据类型，无论是否重名，局部变量和全局变量是不同变量。</strong></p>
+<ol>
+<li>局部变量与全局变量可能重名但不同。</li>
+<li>函数运行结束后，局部变量被释放。</li>
+<li>可使用<strong>global</strong>保留字在函数内部使用全局变量<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>n, s = <span class="number">10</span>, <span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fact</span><span class="params">(n)</span>:</span></span><br><span class="line">	<span class="keyword">global</span> s       <span class="comment"># 函数中使用global保留字声明此处s是全局变量s</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">	   s *= i</span><br><span class="line">	<span class="keyword">return</span> s       <span class="comment"># 此处s指的是全局变量s</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(fact(n), s)     <span class="comment"># 此处全局变量s被函数修改</span></span><br><span class="line"><span class="number">362880000</span> <span class="number">362880000</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>规则2 局部变量为组合数据类型且未创建，等同于全局变量。</strong><br>此规则原理是通过指针实现的。如果在函数内部未真实创建类型，指针指向的是函数外的同名变量。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ls = [<span class="string">"F"</span>, <span class="string">"f"</span>]       <span class="comment"># 通过使用[]真是创建了一个全局变量列表ls</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a)</span>:</span></span><br><span class="line">	ls.append(a)     <span class="comment"># ls是列表类型，未真实创建，等同于全局变量</span></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func(<span class="string">"C"</span>)       <span class="comment"># 全局变量ls被修改</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(ls)</span><br><span class="line">[<span class="string">'F'</span>, <span class="string">'f'</span>, <span class="string">'C'</span>]</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>所谓常量就是不能变的变量，比如常用的数学常数π就是一个常量。在Python中，通常用全部大写的变量名表示常量。Python根本没有任何机制保证PI不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，强行改变常量，也是可以实现的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PI = <span class="number">3.14159265359</span></span><br></pre></td></tr></table></figure></p>
 <hr>
