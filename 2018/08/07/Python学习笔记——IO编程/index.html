@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python学习笔记——IO编程 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：| 文件对象方法| 执行操作|| :–:               | :–:                                                                                         ||">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记——IO编程">
+<meta property="og:url" content="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：| 文件对象方法| 执行操作|| :–:               | :–:                                                                                         ||">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-07T08:18:58.194Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记——IO编程">
+<meta name="twitter:description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：| 文件对象方法| 执行操作|| :–:               | :–:                                                                                         ||">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python学习笔记——IO编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/Python学习笔记——IO编程/" class="article-date">
+  <time datetime="2018-08-07T06:19:49.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记——IO编程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>IO在计算机中指Input/Output，也就是输入和输出。</p>
+<p>这里讲的是对文件的Strea流m处理。</p>
+<hr>
+<h3 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h3><p>文件对象方法：<br>| 文件对象方法| 执行操作|<br>| :–:               | :–:                                                                                         |<br>| f.close()           | 关闭文件                                                                                      |<br>| f.read(size = -1)   | 以文件读取size个字符，当为给定size值或给定负值的时候，读取剩余所有的字符，然后作为字符串返回  |<br>| f.readline()        | 以写入模式打开，如果文件存在，则在末尾追加写入                                                |<br>| f.write(str)        | 将字符串成str写入文件                                                                         |<br>| f.writelines(seq)   | 向文件吸入字符串序列seq，seq应该是一个返回字符串的可迭代对象                                  |<br>| f.seek(offset,from) | 当文件找那个移动文件指针，从from(0表示其实位置，1表示当前位置，2表示文件末尾)偏移offset个字节 |<br>| f.tell()            | 返回当前在文件中的为位置                                                                      |</p>
+<hr>
+<h3 id="读文件-调用open-方法"><a href="#读文件-调用open-方法" class="headerlink" title="读文件: 调用open()方法"></a>读文件: 调用open()方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(file, mode=<span class="string">'r'</span>, buffering=<span class="number">-1</span>, encoding=<span class="keyword">None</span>, errors=<span class="keyword">None</span>, newline=<span class="keyword">None</span>, closefd=<span class="keyword">True</span>, opener=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># file: 文件路径</span></span><br><span class="line"><span class="comment"># mode: 打开模式</span></span><br><span class="line"><span class="comment"># encoding: 读取指定编码的文件</span></span><br><span class="line"><span class="comment"># errors: 是否忽略错误提醒</span></span><br></pre></td></tr></table></figure>
+<p>mode参数如下：<br>| 打开模式| 执行操作|<br>| :–: | :–:                                       |<br>| ‘r’  | 以只读方式打开文件(默认)                   |<br>| ‘w’  | 以写入的方式打开文件，会覆盖已存在的文件   |<br>| ‘x’  | 创建一个新文件并打开它进行写入             |<br>| ‘a’  | 打开写入，如果文件存在，则追加到文件的末尾 |<br>| ‘b’  | 以二进制模式打开                           |<br>| ‘t’  | 以文本模式打开文件(默认)                   |<br>| ‘+’  | 打开磁盘文件进行更新（读写）               |<br>| ‘U’  | 通用换行模式                               |</p>
+<p>实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(<span class="string">r'D:\blog\source\_posts\Python学习笔记——IO编程\test.txt'</span>, <span class="string">'r'</span>)        <span class="comment"># 使用'r'模式打开文件</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.read()</span><br><span class="line"></span><br><span class="line"><span class="string">'#include &lt;iostream&gt;\nusing namespace std;\nint main()&#123;\n\tcout &lt;&lt; "Hello, world!" &lt;&lt; endl;\n&#125;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.read()     <span class="comment"># 此时文件指针处于文件末尾，再次读取将没有内容</span></span><br><span class="line"></span><br><span class="line"><span class="string">''</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.tell()     <span class="comment"># 当前文件指针的位置</span></span><br><span class="line"></span><br><span class="line"><span class="number">92</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.seek(<span class="number">0</span>,<span class="number">0</span>)    <span class="comment"># 设置文件指针为文件头</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(file)        <span class="comment"># 将文件内容转为列表类型</span></span><br><span class="line"></span><br><span class="line">[<span class="string">'#include &lt;iostream&gt;\n'</span>, <span class="string">'using namespace std;\n'</span>, <span class="string">'int main()&#123;\n'</span>, <span class="string">'\tcout &lt;&lt; "Hello, world!" &lt;&lt; endl;\n'</span>, <span class="string">'&#125;'</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.seek(<span class="number">0</span>,<span class="number">0</span>)      <span class="comment"># 每当遍历一次文件，文件指针就会改变</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> each_line <span class="keyword">in</span> file:      <span class="comment"># 官方高效率遍历文件的方法</span></span><br><span class="line">    print(each_line)</span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">"Hello, world!"</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.close()      <span class="comment"># 记得关闭文件</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="写文件-调用open-方法，设置打开模式为’w’，调用f-write-等方法写入内容"><a href="#写文件-调用open-方法，设置打开模式为’w’，调用f-write-等方法写入内容" class="headerlink" title="写文件: 调用open()方法，设置打开模式为’w’，调用f.write()等方法写入内容"></a>写文件: 调用open()方法，设置打开模式为’w’，调用f.write()等方法写入内容</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(file_name, <span class="string">'w'</span>)     <span class="comment"># 新建一个名为"file_name"的可读写文件，可以指定文件编码格式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list = [<span class="string">'123'</span>, <span class="string">'234'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str = <span class="string">'456'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.writelines(list)     <span class="comment"># 将list写入文件中</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.wirte(str)       <span class="comment"># 写入字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.close            <span class="comment"># 记得关闭文件，确保缓存中还未写入磁盘的数据全部写入吸盘。</span></span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjkjhzmkf0000tkuto2fnw4z3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/07/Python学习笔记——常用模块/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python学习笔记——常用模块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/05/Python学习笔记——打飞机小游戏/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python学习笔记——打飞机小游戏</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——IO编程/">Python学习笔记——IO编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/05/Python学习笔记——打飞机小游戏/">Python学习笔记——打飞机小游戏</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及模块用法积累</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

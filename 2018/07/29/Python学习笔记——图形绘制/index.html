@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/pythonDraw.gif">
 <meta property="og:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/Gif.gif">
 <meta property="og:image" content="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/StarDraw.gif">
-<meta property="og:updated_time" content="2018-07-30T07:50:10.154Z">
+<meta property="og:updated_time" content="2018-08-07T08:46:24.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——图形绘制">
 <meta name="twitter:description" content="Python图形绘制——turtle库使用  要使用turtle库，需要导入先turtle库1import turtle  设置画布大小画布就是turtle为我们展开用于绘图区域，我们可以设置它的大小和初始位置。1234567891011121314语法1：turtle.screensize(canvwidth=None, canvheight=None, bg=None)参数:canvwidt">
@@ -168,9 +168,6 @@
 <hr>
 <h4 id="实例1：python蟒蛇绘制"><a href="#实例1：python蟒蛇绘制" class="headerlink" title="实例1：python蟒蛇绘制"></a>实例1：python蟒蛇绘制</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.setup(<span class="number">650</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>)    <span class="comment"># 画布长650像素，宽350像素，距离左上角定点200像素，200像素</span></span><br><span class="line">turtle.penup()                      <span class="comment"># 提起笔</span></span><br><span class="line">turtle.fd(<span class="number">-250</span>)                     <span class="comment"># 向前移动-250像素</span></span><br><span class="line">turtle.pendown()                    <span class="comment"># 落笔</span></span><br><span class="line">turtle.pensize(<span class="number">25</span>)                  <span class="comment"># 设置笔宽度为25像素</span></span><br><span class="line">turtle.pencolor(<span class="string">"purple"</span>)           <span class="comment"># 设置笔颜色为紫色</span></span><br><span class="line">turtle.seth(<span class="number">-40</span>)                    <span class="comment"># 角度偏向-40度</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    turtle.circle(<span class="number">40</span>, <span class="number">80</span>)           <span class="comment"># 半径为40，角度为80度，逆时针画圆弧</span></span><br><span class="line">    turtle.circle(<span class="number">-40</span>, <span class="number">80</span>)</span><br><span class="line">turtle.circle(<span class="number">40</span>, <span class="number">40</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span>)                       <span class="comment"># 向前40像素</span></span><br><span class="line">turtle.circle(<span class="number">20</span>, <span class="number">180</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span> * <span class="number">2</span> / <span class="number">3</span>)</span><br><span class="line">turtle.done()                       <span class="comment"># 运行完之后画布不会自动退出</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2018/07/29/Python学习笔记——图形绘制/pythonDraw.gif" alt=""></p>
-<p>通过如上代码可以绘制简单的python蟒蛇，但是代码中出现了很多“turtle”，有些麻烦。使用form和import关键字可以解决这个问题。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line">setup(<span class="number">650</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>)        <span class="comment"># 画布长650像素，宽350像素，距离左上角定点200像素，200像素</span></span><br><span class="line">penup()                          <span class="comment"># 提起笔</span></span><br><span class="line">fd(<span class="number">-250</span>)                         <span class="comment"># 向前移动-250像素</span></span><br><span class="line">pendown()                        <span class="comment"># 落笔</span></span><br><span class="line">pensize(<span class="number">25</span>)                      <span class="comment"># 设置笔宽度为25像素</span></span><br><span class="line">pencolor(<span class="string">"purple"</span>)               <span class="comment"># 设置笔颜色为紫色</span></span><br><span class="line">seth(<span class="number">-40</span>)                        <span class="comment"># 角度偏向-40度</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    circle(<span class="number">40</span>, <span class="number">80</span>)               <span class="comment"># 半径为40，角度为80度，逆时针画圆弧</span></span><br><span class="line">    circle(<span class="number">-40</span>, <span class="number">80</span>)</span><br><span class="line">circle(<span class="number">40</span>, <span class="number">40</span>)</span><br><span class="line">fd(<span class="number">40</span>)                           <span class="comment"># 向前40像素</span></span><br><span class="line">circle(<span class="number">20</span>, <span class="number">180</span>)</span><br><span class="line">fd(<span class="number">40</span> * <span class="number">2</span> / <span class="number">3</span>)</span><br><span class="line">done()                           <span class="comment"># 运行完之后画布不会自动退出</span></span><br></pre></td></tr></table></figure>
-<p>以上两种方法互有优缺点。</p>
 <h4 id="实例2-绘制多个同切圆"><a href="#实例2-绘制多个同切圆" class="headerlink" title="实例2 绘制多个同切圆"></a>实例2 绘制多个同切圆</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.pensize(<span class="number">2</span>)   <span class="comment"># 设置画笔宽度</span></span><br><span class="line">turtle.circle(<span class="number">10</span>)   <span class="comment"># 画圆，半径为正(负)，表示圆心在画笔的左边(右边)画圆</span></span><br><span class="line">turtle.circle(<span class="number">40</span>)</span><br><span class="line">turtle.circle(<span class="number">80</span>)</span><br><span class="line">turtle.circle(<span class="number">160</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/07/29/Python学习笔记——图形绘制/Gif.gif" alt=""></p>
 <h4 id="实例3-绘制五角星"><a href="#实例3-绘制五角星" class="headerlink" title="实例3 绘制五角星"></a>实例3 绘制五角星</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line">color(<span class="string">'red'</span>, <span class="string">'red'</span>)     <span class="comment"># 第一个是线条颜色，第二个是填充颜色</span></span><br><span class="line">begin_fill()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    fd(<span class="number">200</span>)     <span class="comment"># 控制长度</span></span><br><span class="line">    rt(<span class="number">144</span>)     <span class="comment"># 角度</span></span><br><span class="line">end_fill()</span><br><span class="line">done()</span><br></pre></td></tr></table></figure>
@@ -179,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjk7z37iq000538utqx0xoge1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjkjhzmkw0004tkut26oyh666" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -190,10 +187,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2018/08/05/Python学习笔记——打飞机小游戏/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python学习笔记——打飞机小游戏
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/07/29/Python学习笔记——函数及用法积累/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Python学习笔记——函数及库用法积累</div>
+      <div class="article-nav-title">Python学习笔记——函数及模块用法积累</div>
     </a>
   
 </nav>
@@ -231,7 +237,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
     </div>
   </div>
 
@@ -244,23 +250,23 @@
       <ul>
         
           <li>
+            <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——IO编程/">Python学习笔记——IO编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/05/Python学习笔记——打飞机小游戏/">Python学习笔记——打飞机小游戏</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
           </li>
         
           <li>
-            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及库用法积累</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/28/Python学习笔记——面向对象编程/">Python学习笔记——面向对象编程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/27/Python学习笔记——函数式编程/">Python学习笔记——函数式编程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/21/Python学习笔记——高级特性/">Python学习笔记——高级特性</a>
+            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及模块用法积累</a>
           </li>
         
       </ul>

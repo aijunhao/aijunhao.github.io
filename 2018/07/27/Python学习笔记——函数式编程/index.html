@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
 <meta property="og:description" content="函数式编程的特点：  把计算视为函数而非指令 纯函数式编程：不需要变量，没有副作用，测试简单 支持高阶函数，代码简洁  Python支持的函数式编程：  不是纯函数式编程：允许有变量 支持高阶函数：函数也可以作为变量传入 支持闭包：有了闭包就能返回函数 有限度地支持匿名函数   高阶函数变量可以指向函数，函数的参数能接收变量，一个函数可以接收另一个函数作为参数，这种函数就称之为高阶函数。  变量">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-01T08:20:18.685Z">
+<meta property="og:updated_time" content="2018-08-06T09:57:38.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——函数式编程">
 <meta name="twitter:description" content="函数式编程的特点：  把计算视为函数而非指令 纯函数式编程：不需要变量，没有副作用，测试简单 支持高阶函数，代码简洁  Python支持的函数式编程：  不是纯函数式编程：允许有变量 支持高阶函数：函数也可以作为变量传入 支持闭包：有了闭包就能返回函数 有限度地支持匿名函数   高阶函数变量可以指向函数，函数的参数能接收变量，一个函数可以接收另一个函数作为参数，这种函数就称之为高阶函数。  变量">
@@ -120,8 +120,9 @@
 <li>外部函数必须返回内嵌函数——必须返回那个内部函数</li>
 </ol>
 <p>如返回函数中的例子就是闭包。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">Fun1</span><span class="params">()</span>:</span></span><br><span class="line">	x = <span class="number">5</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">Fun2</span><span class="params">()</span>:</span></span><br><span class="line">		<span class="keyword">nonlocal</span> x      <span class="comment"># nonlocal关键字</span></span><br><span class="line">		x *= x</span><br><span class="line">		<span class="keyword">return</span> x</span><br><span class="line">	<span class="keyword">return</span> Fun2()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Fun1()</span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><p>不显地定义函数，在以前博客中常使用。</p>
+<h3 id="匿名函数：lambda表达式"><a href="#匿名函数：lambda表达式" class="headerlink" title="匿名函数：lambda表达式"></a>匿名函数：lambda表达式</h3><p>不显地定义函数，在以前博客中常使用。</p>
 <p><strong>谨慎使用lambda函数</strong></p>
 <ol>
 <li>lambda函数主要用作一些特定函数或方法的参数</li>
@@ -144,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cjk7z37ii000338utayxrqro3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cjkjhzmkt0003tkut7rijxm3m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -205,7 +206,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
     </div>
   </div>
 
@@ -218,23 +219,23 @@
       <ul>
         
           <li>
+            <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——IO编程/">Python学习笔记——IO编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/05/Python学习笔记——打飞机小游戏/">Python学习笔记——打飞机小游戏</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
           </li>
         
           <li>
-            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及库用法积累</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/28/Python学习笔记——面向对象编程/">Python学习笔记——面向对象编程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/27/Python学习笔记——函数式编程/">Python学习笔记——函数式编程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/21/Python学习笔记——高级特性/">Python学习笔记——高级特性</a>
+            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及模块用法积累</a>
           </li>
         
       </ul>

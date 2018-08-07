@@ -5,19 +5,19 @@
   
 
   
-  <title>Python学习笔记——函数及库用法积累 | Hello, I&#39;m Junhao Ai.</title>
+  <title>Python学习笔记——函数及模块用法积累 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="函数篇更多函数可以查看如下网址：http://www.runoob.com/python3/python3-built-in-functions.html  eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行pyt">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python学习笔记——函数及库用法积累">
+<meta property="og:title" content="Python学习笔记——函数及模块用法积累">
 <meta property="og:url" content="http://yoursite.com/2018/07/29/Python学习笔记——函数及用法积累/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
 <meta property="og:description" content="函数篇更多函数可以查看如下网址：http://www.runoob.com/python3/python3-built-in-functions.html  eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行pyt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-03T08:46:46.507Z">
+<meta property="og:updated_time" content="2018-08-07T08:26:18.899Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python学习笔记——函数及库用法积累">
+<meta name="twitter:title" content="Python学习笔记——函数及模块用法积累">
 <meta name="twitter:description" content="函数篇更多函数可以查看如下网址：http://www.runoob.com/python3/python3-built-in-functions.html  eval()eval() 函数用来执行一个字符串表达式，并返回表达式的值。 去掉参数最外侧引号(单引号和双引号都行)并按python语法执行余下语句的函数。 1234567891011121314151617181920# 例1：执行pyt">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Python学习笔记——函数及库用法积累
+      Python学习笔记——函数及模块用法积累
     </h1>
   
 
@@ -110,55 +110,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted([<span class="number">36</span>, <span class="number">5</span>, <span class="number">-12</span>, <span class="number">9</span>, <span class="number">-21</span>])      <span class="comment"># 默认sort</span></span><br><span class="line">[<span class="number">-21</span>, <span class="number">-12</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">36</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># dict类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = &#123;<span class="number">1</span>: <span class="string">'D'</span>, <span class="number">2</span>: <span class="string">'B'</span>, <span class="number">3</span>: <span class="string">'B'</span>, <span class="number">4</span>: <span class="string">'E'</span>, <span class="number">5</span>: <span class="string">'A'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(L)       <span class="comment"># 对dict的key值排序</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(L.items(), key = <span class="keyword">lambda</span> x:x[<span class="number">0</span>])      <span class="comment"># 按dict的key值排序，x[0]</span></span><br><span class="line">[(<span class="number">1</span>, <span class="string">'D'</span>), (<span class="number">2</span>, <span class="string">'B'</span>), (<span class="number">3</span>, <span class="string">'B'</span>), (<span class="number">4</span>, <span class="string">'E'</span>), (<span class="number">5</span>, <span class="string">'A'</span>)]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(L.items(), key = <span class="keyword">lambda</span> x:x[<span class="number">1</span>])      <span class="comment"># 按dict的value值排序，x[1]</span></span><br><span class="line">[(<span class="number">5</span>, <span class="string">'A'</span>), (<span class="number">2</span>, <span class="string">'B'</span>), (<span class="number">3</span>, <span class="string">'B'</span>), (<span class="number">1</span>, <span class="string">'D'</span>), (<span class="number">4</span>, <span class="string">'E'</span>)]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> operator</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(L.items(), key = operator.itemgetter(<span class="number">1</span>), reverse = <span class="keyword">True</span>)       <span class="comment"># 按dict的value值排序，x[1]，使用降序排列</span></span><br><span class="line">[(<span class="number">4</span>, <span class="string">'E'</span>), (<span class="number">1</span>, <span class="string">'D'</span>), (<span class="number">2</span>, <span class="string">'B'</span>), (<span class="number">3</span>, <span class="string">'B'</span>), (<span class="number">5</span>, <span class="string">'A'</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 元组</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = [(<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Adam'</span>, <span class="number">92</span>), (<span class="string">'Bart'</span>, <span class="number">66</span>), (<span class="string">'Lisa'</span>, <span class="number">88</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(L, key = <span class="keyword">lambda</span> x : x[<span class="number">0</span>])        <span class="comment"># 元组排序</span></span><br><span class="line">[(<span class="string">'Adam'</span>, <span class="number">92</span>), (<span class="string">'Bart'</span>, <span class="number">66</span>), (<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Lisa'</span>, <span class="number">88</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted([<span class="string">'bob'</span>, <span class="string">'About'</span>, <span class="string">'Zoo'</span>, <span class="string">'Credit'</span>], key=str.lower)      <span class="comment"># 忽略字符串大小写排序</span></span><br><span class="line">[<span class="string">'About'</span>, <span class="string">'bob'</span>, <span class="string">'Credit'</span>, <span class="string">'Zoo'</span>]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sort()</span></span><br><span class="line">&gt;&gt;&gt;a=[<span class="number">5</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.sort()      <span class="comment"># 使用list.sort()方法会修改原始的list，返回值为None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="库篇"><a href="#库篇" class="headerlink" title="库篇"></a>库篇</h2><hr>
-<h3 id="random库"><a href="#random库" class="headerlink" title="random库"></a>random库</h3><p>random库主要用于生成随机数，由梅森旋转算法生成的伪随机数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">函数</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">seed(N)</td>
-<td style="text-align:left">初始化给定的随机数种子，默认为当前系统时间</td>
-</tr>
-<tr>
-<td style="text-align:left">random()</td>
-<td style="text-align:left">生成一个[0,1)之间的随机小数，与随机数种子有关</td>
-</tr>
-<tr>
-<td style="text-align:left">randint(a,b)</td>
-<td style="text-align:left">生成一个[a,b]之间的整数</td>
-</tr>
-<tr>
-<td style="text-align:left">randrange(m,n[,k])</td>
-<td style="text-align:left">生成一个[m,n)之间以k为步长的随机整数</td>
-</tr>
-<tr>
-<td style="text-align:left">getrandbits(k)</td>
-<td style="text-align:left">生成一个k比特长的随机整数</td>
-</tr>
-<tr>
-<td style="text-align:left">uniform(a,b)</td>
-<td style="text-align:left">生成一个[a,b]之间的随机小数</td>
-</tr>
-<tr>
-<td style="text-align:left">choice(list)</td>
-<td style="text-align:left">从序列中随机选择一个元素</td>
-</tr>
-<tr>
-<td style="text-align:left">shuffle(list)</td>
-<td style="text-align:left">将序列seq中元素随机排列,返回打乱后的序列</td>
-</tr>
-</tbody>
-</table>
-<h3 id="time库"><a href="#time库" class="headerlink" title="time库"></a>time库</h3><h3 id="jieba库"><a href="#jieba库" class="headerlink" title="jieba库"></a>jieba库</h3>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——函数及用法积累/" data-id="cjk7z37ic000138utaj0ots53" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——函数及用法积累/" data-id="cjkjhzmkn0001tkut2udr79z4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -219,7 +175,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
     </div>
   </div>
 
@@ -232,23 +188,23 @@
       <ul>
         
           <li>
+            <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——IO编程/">Python学习笔记——IO编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/05/Python学习笔记——打飞机小游戏/">Python学习笔记——打飞机小游戏</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
           </li>
         
           <li>
-            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及库用法积累</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/28/Python学习笔记——面向对象编程/">Python学习笔记——面向对象编程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/27/Python学习笔记——函数式编程/">Python学习笔记——函数式编程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/21/Python学习笔记——高级特性/">Python学习笔记——高级特性</a>
+            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及模块用法积累</a>
           </li>
         
       </ul>
