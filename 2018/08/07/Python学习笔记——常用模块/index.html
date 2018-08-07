@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
 <meta property="og:description" content="Python模块篇 模块导入import语句在文件顶部位置导入模块，然后使用。1234# 语法import module_name          # 导入一个模块，同一个模块只会被导入一次module_name.function()          # 调用模块中的指定方法 from … import * 语句不适用于大文件，容易重名冲突。123from module_name impor">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-07T09:23:00.004Z">
+<meta property="og:updated_time" content="2018-08-07T14:07:53.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——常用模块">
 <meta name="twitter:description" content="Python模块篇 模块导入import语句在文件顶部位置导入模块，然后使用。1234# 语法import module_name          # 导入一个模块，同一个模块只会被导入一次module_name.function()          # 调用模块中的指定方法 from … import * 语句不适用于大文件，容易重名冲突。123from module_name impor">
@@ -141,7 +141,7 @@
 <h3 id="time模块"><a href="#time模块" class="headerlink" title="time模块"></a>time模块</h3><hr>
 <h3 id="jieba模块"><a href="#jieba模块" class="headerlink" title="jieba模块"></a>jieba模块</h3><hr>
 <h3 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h3><p>os模块，系统操作模块。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -205,11 +205,16 @@
 </tbody>
 </table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&gt;&gt;&gt; os.getcwd()       <span class="comment"># 当前目录</span></span><br><span class="line"><span class="string">'D:\\Python'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.chdir(<span class="string">r'F:\python'</span>)    <span class="comment"># 修改当前目录</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.mkdir(<span class="string">'test'</span>)          <span class="comment"># 在当前目录下新建文件</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.makedirs(<span class="string">r'F:\python\test2\test2'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.rename(<span class="string">'test'</span>, <span class="string">'t'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.listdir()</span><br><span class="line">[<span class="string">'.idea'</span>, <span class="string">'t'</span>, <span class="string">'CalCircle.py'</span>, <span class="string">'curver.ico'</span>, <span class="string">'FindMaxAndMin.py'</span>, <span class="string">'helloName.py'</span>, <span class="string">'KochDrawV1.py'</span>, <span class="string">'PythonDraw.py'</span>, <span class="string">'Python打飞机小游戏'</span>, <span class="string">'StarDraw.py'</span>, <span class="string">'TangentCirclesDraw.py'</span>, <span class="string">'TempConvert.py'</span>, <span class="string">'test'</span>, <span class="string">'Test.py'</span>, <span class="string">'TestIDLE.py'</span>, <span class="string">'TextProBarV1.py'</span>, <span class="string">'TimeDraw.py'</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.system(<span class="string">'cmd'</span>)      <span class="comment"># 运行命令行</span></span><br><span class="line"></span><br><span class="line"><span class="number">-1073741510</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.system(<span class="string">'calc'</span>)     <span class="comment"># 打开计算器功能</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="pickle模块-泡菜"><a href="#pickle模块-泡菜" class="headerlink" title="pickle模块(泡菜)"></a>pickle模块(泡菜)</h3><p>Python数据永久储存，将对象以文件的形式存放在磁盘上。该文件只能在python中使用。</p>
+<p>pickle序列化后的数据，可读性差，人一般无法识别。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list = [<span class="number">123</span>, <span class="number">3.14</span>, <span class="string">'test'</span>, [<span class="string">'python'</span>, <span class="string">'list'</span>]]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle_file = open(<span class="string">'my_list.pkl'</span>, <span class="string">'wb'</span>)     <span class="comment"># 新建一个特殊文件，二进制可读写</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle.dump(my_list, pickle_file)     <span class="comment"># 将对象保存到文件pickle_file中</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle_file.close()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle_file = open(<span class="string">'my_list.pkl'</span>, <span class="string">'rb'</span>)       <span class="comment"># 用二进制只读方式打开</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list2 = pickle.load(pickle_file)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(my_list2)</span><br><span class="line"></span><br><span class="line">[<span class="number">123</span>, <span class="number">3.14</span>, <span class="string">'test'</span>, [<span class="string">'python'</span>, <span class="string">'list'</span>]]</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjkjhzml40008tkut616a9hiv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjkjsnuvy0008joute9rrkkmp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -219,6 +224,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/08/07/Python学习笔记——异常处理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python学习笔记——异常处理
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/07/Python学习笔记——IO编程/" id="article-nav-older" class="article-nav-link-wrap">
@@ -274,6 +288,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
           </li>
         
@@ -287,10 +305,6 @@
         
           <li>
             <a href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/29/Python学习笔记——函数及用法积累/">Python学习笔记——函数及模块用法积累</a>
           </li>
         
       </ul>
