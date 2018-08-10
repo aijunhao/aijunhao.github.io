@@ -7,15 +7,18 @@
   
   <title>Python学习笔记——异常处理 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Python">
+  <meta name="description" content="Python标准异常总结   异常 异常说明 出现程度     AssertionError 断言语句（assert）失败 常见   AttributeError 尝试访问未知的对象属性 常见   EOFError 用户输入文件末尾标志EOF（Ctrl+d）    FloatingPointError 浮点计算错误    GeneratorExit generator.close()方法被调用的时">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python学习笔记——异常处理">
 <meta property="og:url" content="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="Python标准异常总结   异常 异常说明 出现程度     AssertionError 断言语句（assert）失败 常见   AttributeError 尝试访问未知的对象属性 常见   EOFError 用户输入文件末尾标志EOF（Ctrl+d）    FloatingPointError 浮点计算错误    GeneratorExit generator.close()方法被调用的时">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-07T14:22:33.227Z">
+<meta property="og:updated_time" content="2018-08-08T11:29:49.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——异常处理">
+<meta name="twitter:description" content="Python标准异常总结   异常 异常说明 出现程度     AssertionError 断言语句（assert）失败 常见   AttributeError 尝试访问未知的对象属性 常见   EOFError 用户输入文件末尾标志EOF（Ctrl+d）    FloatingPointError 浮点计算错误    GeneratorExit generator.close()方法被调用的时">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -84,11 +87,182 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="Python标准异常总结"><a href="#Python标准异常总结" class="headerlink" title="Python标准异常总结"></a>Python标准异常总结</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">异常</th>
+<th style="text-align:left">异常说明</th>
+<th style="text-align:center">出现程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AssertionError</td>
+<td style="text-align:left">断言语句（assert）失败</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">AttributeError</td>
+<td style="text-align:left">尝试访问未知的对象属性</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">EOFError</td>
+<td style="text-align:left">用户输入文件末尾标志EOF（Ctrl+d）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">FloatingPointError</td>
+<td style="text-align:left">浮点计算错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">GeneratorExit</td>
+<td style="text-align:left">generator.close()方法被调用的时候</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ImportError</td>
+<td style="text-align:left">导入模块失败的时候</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">IndexError</td>
+<td style="text-align:left">索引超出序列的范围</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyError</td>
+<td style="text-align:left">字典中查找一个不存在的关键字</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyboardInterrupt</td>
+<td style="text-align:left">用户输入中断键（Ctrl+c）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">MemoryError</td>
+<td style="text-align:left">内存溢出（可通过删除对象释放内存）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">NameError</td>
+<td style="text-align:left">尝试访问一个不存在的变量</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">NotImplementedError</td>
+<td style="text-align:left">尚未实现的方法</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">OSError</td>
+<td style="text-align:left">操作系统产生的异常（例如打开一个不存在的文件）</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">OverflowError</td>
+<td style="text-align:left">数值运算超出最大限制</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ReferenceError</td>
+<td style="text-align:left">弱引用（weak reference）试图访问一个已经被垃圾回收机制回收了的对象</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">RuntimeError</td>
+<td style="text-align:left">一般的运行时错误</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">StopIteration</td>
+<td style="text-align:left">迭代器没有更多的值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SyntaxError</td>
+<td style="text-align:left">Python的语法错误</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">IndentationError</td>
+<td style="text-align:left">缩进错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">TabError</td>
+<td style="text-align:left">Tab和空格混合使用</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SystemError</td>
+<td style="text-align:left">Python编译器系统错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SystemExit</td>
+<td style="text-align:left">Python编译器进程被关闭</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">TypeError</td>
+<td style="text-align:left">不同类型间的无效操作</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">UnboundLocalError</td>
+<td style="text-align:left">访问一个未初始化的本地变量（NameError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeError</td>
+<td style="text-align:left">Unicode相关的错误（ValueError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeEncodeError</td>
+<td style="text-align:left">Unicode编码时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeDecodeError</td>
+<td style="text-align:left">Unicode解码时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeTranslateError</td>
+<td style="text-align:left">Unicode转换时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ValueError</td>
+<td style="text-align:left">传入无效的参数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ZeroDivisionError</td>
+<td style="text-align:left">除数为零</td>
+<td style="text-align:center">常见</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>捕捉异常可以使用try/except语句。</p>
+<p>try/except语句用来检测try语句块中的错误，从而让except语句捕获异常信息并处理。</p>
+<p>如果你不想在异常发生时结束你的程序，只需在try里捕获它。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  &lt;语句块&gt;       <span class="comment"># 运行代码</span></span><br><span class="line"><span class="keyword">except</span> &lt;异常名&gt; [<span class="keyword">as</span> reason]:</span><br><span class="line">  &lt;语句块&gt;       <span class="comment"># 出现错误时执行的语句</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  &lt;语句块&gt;        <span class="comment"># 无论都会被执行的代码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = open(<span class="string">"一个错误的文件.txt"</span>)</span><br><span class="line">    print(f.read())</span><br><span class="line">    f.close()</span><br><span class="line"><span class="keyword">except</span> OSError <span class="keyword">as</span> reason:</span><br><span class="line">    print(<span class="string">'文件出错！错误原因是：'</span> + str(reason))    <span class="comment"># 打印异常名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">文件出错！错误原因是：[Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">'一个错误的文件.txt'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="触发异常"><a href="#触发异常" class="headerlink" title="触发异常"></a>触发异常</h3><p>我们可以使用raise语句自己触发异常。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">raise</span> [Exception [, args [, traceback]]]</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="用户自定义异常类型"><a href="#用户自定义异常类型" class="headerlink" title="用户自定义异常类型"></a>用户自定义异常类型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义异常类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Networkerror</span><span class="params">(RuntimeError)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, arg)</span>:</span></span><br><span class="line">        self.args = arg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 触发该异常，如下所示：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> Networkerror(<span class="string">"Bad hostname"</span>)</span><br><span class="line"><span class="keyword">except</span> Networkerror,e:</span><br><span class="line">    <span class="keyword">print</span> e.args</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjkjsnuw4000cjoutl3clcnaf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjko4sb5t000g3kut2iau5flx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -98,6 +272,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/08/08/Python学习笔记——图形用户界面/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/07/Python学习笔记——常用模块/" id="article-nav-older" class="article-nav-link-wrap">
@@ -153,23 +336,23 @@
       <ul>
         
           <li>
+            <a href="/2018/08/09/Python学习笔记——网络爬虫/">Python学习笔记——网络爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/Python学习笔记——GUI编程/">Python学习笔记——GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/Python学习笔记——图形用户界面/">Python</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
           </li>
         
           <li>
             <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/07/Python学习笔记——IO编程/">Python学习笔记——IO编程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/05/Python学习笔记——打飞机小游戏/">Python学习笔记——打飞机小游戏</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
           </li>
         
       </ul>

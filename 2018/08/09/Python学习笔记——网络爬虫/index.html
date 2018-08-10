@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python学习笔记——网络爬虫 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="网络爬虫网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。网络爬虫就是根据网页的地址来寻找网页的，也就是URL。举一个简单的例子，我们在浏览器的地址栏中输入的字符串就是URL，例如：https://www.baidu.com/  URLURL的一般格式为(当方括号[]的为可选项)：protocol://">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记——网络爬虫">
+<meta property="og:url" content="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="网络爬虫网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。网络爬虫就是根据网页的地址来寻找网页的，也就是URL。举一个简单的例子，我们在浏览器的地址栏中输入的字符串就是URL，例如：https://www.baidu.com/  URLURL的一般格式为(当方括号[]的为可选项)：protocol://">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/myweb.png">
+<meta property="og:updated_time" content="2018-08-09T13:21:56.391Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记——网络爬虫">
+<meta name="twitter:description" content="网络爬虫网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。网络爬虫就是根据网页的地址来寻找网页的，也就是URL。举一个简单的例子，我们在浏览器的地址栏中输入的字符串就是URL，例如：https://www.baidu.com/  URLURL的一般格式为(当方括号[]的为可选项)：protocol://">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/myweb.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python学习笔记——网络爬虫" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/09/Python学习笔记——网络爬虫/" class="article-date">
+  <time datetime="2018-08-09T07:05:46.000Z" itemprop="datePublished">2018-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记——网络爬虫
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="网络爬虫"><a href="#网络爬虫" class="headerlink" title="网络爬虫"></a>网络爬虫</h3><p>网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。网络爬虫就是根据网页的地址来寻找网页的，也就是URL。举一个简单的例子，我们在浏览器的地址栏中输入的字符串就是URL，例如：<a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a></p>
+<hr>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>URL的一般格式为(当方括号[]的为可选项)：protocol://hostname[:port]/path/[;parameters][?query]#fragment</p>
+<ul>
+<li>“protocol://“ : 协议，如http, https, ftp, file(本地磁盘文件), ed2k …</li>
+<li>“hostname[:port]” : 存放资源的服务器的域名系统或IP地址(有时候包含端口号，各种传输协议都有默认的端口嗷，如http的80端口)</li>
+<li>“path/[;parameters][?query]#fragment” : 资源的具体地址，如目录或文件名等。</li>
+</ul>
+<hr>
+<h3 id="python访问URL测试"><a href="#python访问URL测试" class="headerlink" title="python访问URL测试"></a>python访问URL测试</h3><p>使用urllib.request实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> urllib.request       <span class="comment"># 导入urllib.request包</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>response = urllib.request.urlopen(<span class="string">"http://www.aijunhao.com.cn"</span>)     <span class="comment"># 获取我的个人网站首页</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>html = response.read().decode(<span class="string">"utf-8"</span>)      <span class="comment"># 读取我的个人网站首页，并用utf-8编码模式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(html)             <span class="comment"># 打印</span></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span>/&gt;</span><br><span class="line">        &lt;link rel=<span class="string">"shortcut icon"</span> href=<span class="string">"images/1.ico"</span>&gt;</span><br><span class="line">        &lt;link href=<span class="string">"css/menu.css"</span> rel=<span class="string">"stylesheet"</span>&gt;</span><br><span class="line">        &lt;title&gt;AI , Sparks of fire&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;!-- 背景画布开始 --&gt;</span><br><span class="line">        &lt;canvas id="canvas" &gt;&lt;/canvas&gt;</span><br><span class="line">        &lt;script src="js/background.js" type="text/javascript"&gt;&lt;/script&gt;</span><br><span class="line">        &lt;!-- 背景画布结束 --&gt;</span><br><span class="line">        &lt;!-- 使用外联播放器，并隐藏播放器 --&gt;</span><br><span class="line">        &lt;iframe frameborder="no" border="0" width=0 height=0  src="//music.163.com/outchain/player?type=2&amp;id=491757187&amp;auto=1&amp;height=66"&gt;&lt;/iframe&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div class="cs" &gt;</span><br><span class="line">            &lt;div class="introduction" align="center"&gt;</span><br><span class="line"></span><br><span class="line">                &lt;header style="color: white;font-size: 4rem;"&gt;Hello，&lt;/header&gt;</span><br><span class="line">                &lt;header style=<span class="string">"color: white;font-size: 2rem;"</span>&gt;I<span class="string">'m Junhao Ai.&lt;/header&gt;</span></span><br><span class="line"><span class="string">                &lt;p style="color: white;font-size: 1rem;"&gt;A student of the Zhijiang College of ZheJiang University of Technology.&lt;/p&gt;</span></span><br><span class="line"><span class="string">                &lt;br&gt; &lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;p&gt;Whatever is worth doing is worth doing well.&lt;/p&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;br&gt; &lt;br&gt; &lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;a href="http://user.qzone.qq.com/1172949809/infocenter" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;QQ Zone&lt;/span&gt; &lt;span class="title-hover"&gt;Visit me.&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="files/test.php" class="btn-slide2" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle2"&gt;&lt;i class="fa fa-download"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title2"&gt;About Me&lt;/span&gt; &lt;span class="title-hover2"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="https://aijunhao.github.io" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;My Blog&lt;/span&gt; &lt;span class="title-hover"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="files/test.php" class="btn-slide2" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle2"&gt;&lt;i class="fa fa-download"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title2"&gt;My Gains&lt;/span&gt; &lt;span class="title-hover2"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=1172949809&amp;website=www.oicqzone.com" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;Contact Me&lt;/span&gt; &lt;span class="title-hover"&gt;QQ Test&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/09/Python学习笔记——网络爬虫/myweb.png" alt=""></p>
+<hr>
+<h3 id="爬虫实战"><a href="#爬虫实战" class="headerlink" title="爬虫实战"></a>爬虫实战</h3><h4 id="实例1-抓取一张网络图片"><a href="#实例1-抓取一张网络图片" class="headerlink" title="实例1 抓取一张网络图片"></a>实例1 抓取一张网络图片</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">response = urllib.request.urlopen(<span class="string">"http://www.aijunhao.com.cn/images/building.png"</span>)</span><br><span class="line">img = response.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'webTest.jpg'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(img)</span><br></pre></td></tr></table></figure>
+<h4 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/" data-id="cjko4sb6g000v3kut4d6ejl6e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/08/Python学习笔记——GUI编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python学习笔记——GUI编程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/09/Python学习笔记——网络爬虫/">Python学习笔记——网络爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/Python学习笔记——GUI编程/">Python学习笔记——GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/Python学习笔记——图形用户界面/">Python</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python学习笔记——GUI编程 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GUI的终极选择：Tkinter  第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(file=&apos;bg.gif&apos;)      # 添加图片theLabel = tk.Label(root,">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记——GUI编程">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="GUI的终极选择：Tkinter  第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(file=&apos;bg.gif&apos;)      # 添加图片theLabel = tk.Label(root,">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/Button.PNG">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG">
+<meta property="og:updated_time" content="2018-08-10T15:12:33.885Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记——GUI编程">
+<meta name="twitter:description" content="GUI的终极选择：Tkinter  第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(file=&apos;bg.gif&apos;)      # 添加图片theLabel = tk.Label(root,">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python学习笔记——GUI编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/08/Python学习笔记——GUI编程/" class="article-date">
+  <time datetime="2018-08-08T11:48:50.000Z" itemprop="datePublished">2018-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记——GUI编程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>GUI的终极选择：Tkinter</p>
+<hr>
+<h3 id="第一个实例"><a href="#第一个实例" class="headerlink" title="第一个实例"></a>第一个实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk      <span class="comment"># 导入tkinter模块</span></span><br><span class="line"></span><br><span class="line">root = tk.Tk()        <span class="comment"># 生成窗口实例，即父容器</span></span><br><span class="line"></span><br><span class="line">photo = tk.PhotoImage(file=<span class="string">'bg.gif'</span>)      <span class="comment"># 添加图片</span></span><br><span class="line">theLabel = tk.Label(root,</span><br><span class="line">                  text=<span class="string">'我们一起学猫叫\n一起喵喵喵喵~'</span>,</span><br><span class="line">                  justify=tk.LEFT,</span><br><span class="line">                  image=photo,</span><br><span class="line">                  compound=tk.CENTER,</span><br><span class="line">                  font=(<span class="string">"华康少女文字W5"</span>, <span class="number">20</span>),</span><br><span class="line">                  fg=<span class="string">"white"</span>)</span><br><span class="line"></span><br><span class="line">theLabel.pack()</span><br><span class="line"></span><br><span class="line">tk.mainloop()   <span class="comment"># 进入消息循环</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG" alt=""></p>
+<hr>
+<h3 id="Button-按钮"><a href="#Button-按钮" class="headerlink" title="Button 按钮"></a>Button 按钮</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">button = tkinter.Button(master, option=value, ... )       <span class="comment"># master:按钮父容器,option:可选项</span></span><br><span class="line"></span><br><span class="line">button.pack()       <span class="comment"># 将小部件放置到窗口中</span></span><br></pre></td></tr></table></figure>
+<p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()</span><br><span class="line">button = tkinter.Button(root, text=<span class="string">"Button"</span>)</span><br><span class="line"></span><br><span class="line">button.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/Button.PNG" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>可选项(option)</th>
+<th>描述</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activebackground</td>
+<td>当鼠标点击时，按钮的背景色。</td>
+<td>activebackground=”#000000”</td>
+</tr>
+<tr>
+<td>activeforeground</td>
+<td>当鼠标点击时，按钮的文本颜色。</td>
+<td>activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td>anchor=”nw”</td>
+</tr>
+<tr>
+<td>bd</td>
+<td>按钮边框的大小，默认为 2 个像素。</td>
+<td>bd=5</td>
+</tr>
+<tr>
+<td>bg</td>
+<td>按钮的背景色。</td>
+<td>bg=”blue”</td>
+</tr>
+<tr>
+<td>command</td>
+<td>按钮关联的函数，当按钮被点击时，执行该函数。</td>
+<td>command=函数名</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>按钮文本的颜色。</td>
+<td>fg=”yellow”</td>
+</tr>
+<tr>
+<td>font</td>
+<td>文本字体。</td>
+<td>font=”楷体”</td>
+</tr>
+<tr>
+<td>height/weight</td>
+<td>按钮的高度/宽度。</td>
+<td>height=5,width=15</td>
+</tr>
+<tr>
+<td>image</td>
+<td>按钮图片。</td>
+<td>img_png = tkinter.PhotoImage(file = ‘18.gif’)  <br>  button = tkinter.Button(root,image=img_png)</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>显示多行文本的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td>justify=”center”</td>
+</tr>
+<tr>
+<td>padx/pady</td>
+<td>按钮在x/y轴防线上的内边距。</td>
+<td>padx=30, pady=30</td>
+</tr>
+<tr>
+<td>relief</td>
+<td>边框样式，设置控件3D效果，可选的有：flat(默认)、sunken、raised、groove、ridge。</td>
+<td>relief=”flat”</td>
+</tr>
+<tr>
+<td>state</td>
+<td>设置按钮组件状态,可选的有normal(默认)、active、 disabled。</td>
+<td>state=”disabled”</td>
+</tr>
+<tr>
+<td>underline</td>
+<td>下划线。</td>
+<td>有些小问题。underline=0</td>
+</tr>
+<tr>
+<td>text</td>
+<td>按钮的文本内容</td>
+<td>text=”…”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Checkbutton-复选框"><a href="#Checkbutton-复选框" class="headerlink" title="Checkbutton 复选框"></a>Checkbutton 复选框</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()         <span class="comment"># 生成窗口</span></span><br><span class="line"></span><br><span class="line">GIRLS = [<span class="string">'西施'</span>, <span class="string">'貂蝉'</span>, <span class="string">'王昭君'</span>, <span class="string">'杨玉环'</span>]</span><br><span class="line">v = []        <span class="comment"># 表示按钮是否被选中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> girl <span class="keyword">in</span> GIRLS:</span><br><span class="line">    v.append(tkinter.IntVar())</span><br><span class="line">    b = tkinter.Checkbutton(root, text=girl, variable=v[<span class="number">-1</span>])</span><br><span class="line">    b.pack(anchor=<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">tkinter.mainloop()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjko4sb4l00003kutgrikoof6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/09/Python学习笔记——网络爬虫/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python学习笔记——网络爬虫
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/08/Python学习笔记——图形用户界面/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/09/Python学习笔记——网络爬虫/">Python学习笔记——网络爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/Python学习笔记——GUI编程/">Python学习笔记——GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/Python学习笔记——图形用户界面/">Python</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
