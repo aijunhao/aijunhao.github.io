@@ -255,54 +255,6 @@
 
 
   
-    <article id="post-Python学习笔记——图形用户界面" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/08/Python学习笔记——图形用户界面/" class="article-date">
-  <time datetime="2018-08-08T11:48:50.000Z" itemprop="datePublished">2018-08-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/08/Python学习笔记——图形用户界面/">Python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="安装EasyGui"><a href="#安装EasyGui" class="headerlink" title="安装EasyGui"></a>安装EasyGui</h3><ol>
-<li>下载一个版本的easygui： <a href="https://sourceforge.net/projects/easygui/files/0.96" target="_blank" rel="noopener">https://sourceforge.net/projects/easygui/files/0.96</a></li>
-<li><p>命令行跳转到解压目录，使用python安装解压包中的setup.py</p>
- <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">Users</span>\<span class="title">AiJunhao</span>&gt;<span class="title">cd</span> <span class="title">Desktop</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">C</span>:\<span class="title">Users</span>\<span class="title">AiJunhao</span>\<span class="title">Desktop</span>&gt;<span class="title">python</span> <span class="title">setup.py</span> <span class="title">install</span></span></span><br><span class="line"><span class="function"><span class="title">running</span> <span class="title">install</span></span></span><br><span class="line"><span class="function"><span class="title">running</span> <span class="title">build</span></span></span><br><span class="line"><span class="function"><span class="title">running</span> <span class="title">build_py</span></span></span><br><span class="line"><span class="function"><span class="title">creating</span> <span class="title">build</span></span></span><br><span class="line"><span class="function"><span class="title">creating</span> <span class="title">build</span>\<span class="title">lib</span></span></span><br><span class="line"><span class="function"><span class="title">copying</span> <span class="title">easygui.py</span> -&gt; <span class="title">build</span>\<span class="title">lib</span></span></span><br><span class="line"><span class="function"><span class="title">running</span> <span class="title">install_lib</span></span></span><br><span class="line"><span class="function"><span class="title">copying</span> <span class="title">build</span>\<span class="title">lib</span>\<span class="title">easygui.py</span> -&gt; <span class="title">D</span>:\<span class="title">Python</span>\<span class="title">Lib</span>\<span class="title">site</span>-<span class="title">packages</span></span></span><br><span class="line"><span class="function"><span class="title">byte</span>-<span class="title">compiling</span> <span class="title">D</span>:\<span class="title">Python</span>\<span class="title">Lib</span>\<span class="title">site</span>-<span class="title">packages</span>\<span class="title">easygui.py</span> <span class="title">to</span> <span class="title">easygui.cpython</span>-36.<span class="title">pyc</span></span></span><br><span class="line"><span class="function"><span class="title">running</span> <span class="title">install_egg_info</span></span></span><br><span class="line"><span class="function"><span class="title">Writing</span> <span class="title">D</span>:\<span class="title">Python</span>\<span class="title">Lib</span>\<span class="title">site</span>-<span class="title">packages</span>\<span class="title">easygui</span>-0.96-<span class="title">py3</span>.6.<span class="title">egg</span>-<span class="title">info</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">C</span>:\<span class="title">Users</span>\<span class="title">AiJunhao</span>\<span class="title">Desktop</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开IDLE，引入easygui，并写入测试代码。</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> easygui <span class="keyword">as</span> gui</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>gui.msgbox(<span class="string">'hello, Ekko'</span>)             <span class="comment"># 按回车执行</span></span><br><span class="line"><span class="string">'OK'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/08/08/Python学习笔记——图形用户界面/easygui.png" alt=""></h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——图形用户界面/" data-id="cjko4sb5m000a3kutevyyvg77" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Python学习笔记——异常处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/07/Python学习笔记——异常处理/" class="article-date">
@@ -1024,6 +976,98 @@
 
 
   
+    <article id="post-Python学习笔记——函数式编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/27/Python学习笔记——函数式编程/" class="article-date">
+  <time datetime="2018-07-27T08:48:10.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/27/Python学习笔记——函数式编程/">Python学习笔记——函数式编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>函数式编程的特点：</p>
+<ol>
+<li>把计算视为函数而非指令</li>
+<li>纯函数式编程：不需要变量，没有副作用，测试简单</li>
+<li>支持高阶函数，代码简洁</li>
+</ol>
+<p>Python支持的函数式编程：</p>
+<ol>
+<li>不是纯函数式编程：允许有变量</li>
+<li>支持高阶函数：函数也可以作为变量传入</li>
+<li>支持闭包：有了闭包就能返回函数</li>
+<li>有限度地支持匿名函数</li>
+</ol>
+<hr>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p>变量可以指向函数，函数的参数能接收变量，一个函数可以接收另一个函数作为参数，这种函数就称之为<strong>高阶函数</strong>。</p>
+<hr>
+<h3 id="变量指向函数"><a href="#变量指向函数" class="headerlink" title="变量指向函数"></a>变量指向函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>abs(<span class="number">-10</span>)        <span class="comment"># 调用内置函数</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>abs             <span class="comment"># 函数本身</span></span><br><span class="line">&lt;built-<span class="keyword">in</span> function abs&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = abs(<span class="number">-10</span>)    <span class="comment"># 函数结果赋值给变量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line"><span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = abs         <span class="comment"># 函数本身赋值给变量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f</span><br><span class="line">&lt;built-<span class="keyword">in</span> function abs&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="number">-10</span>)          <span class="comment"># 此时调用f()与调用abs()完全相同</span></span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="函数名也是变量"><a href="#函数名也是变量" class="headerlink" title="函数名也是变量"></a>函数名也是变量</h3><p>函数名是什么呢？函数名其实就是指向函数的变量！对于abs()这个函数，完全可以把函数名abs看成变量，它指向一个可以计算绝对值的函数！</p>
+<hr>
+<h3 id="传入函数"><a href="#传入函数" class="headerlink" title="传入函数"></a>传入函数</h3><p>一个最简单的高阶函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y, abs)</span>:</span></span><br><span class="line">      <span class="keyword">return</span> abs(x) + abs(y)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(add(<span class="number">-5</span>, <span class="number">6</span>, abs))</span><br><span class="line"><span class="number">11</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h3><p>高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">lazy_sum</span><span class="params">(*args)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">()</span>:</span></span><br><span class="line">          ax = <span class="number">0</span></span><br><span class="line">          <span class="keyword">for</span> n <span class="keyword">in</span> args:</span><br><span class="line">              ax = ax + n</span><br><span class="line">          <span class="keyword">return</span> ax</span><br><span class="line">      <span class="keyword">return</span> sum      <span class="comment"># 不返回求和的结果，而是返回求和的函数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = lazy_sum(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">9</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f</span><br><span class="line">&lt;function lazy_sum.&lt;locals&gt;.sum at <span class="number">0x000001990DB55488</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f()       <span class="comment"># 调用函数，才计算真正的求和结果</span></span><br><span class="line"><span class="number">24</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 每次调用lazy_sum()都会返回一个新的函数，即使传入相同的参数</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包三要素：</p>
+<ol>
+<li>必须有一个内嵌函数(函数里定义的函数）——这对应函数之间的嵌套</li>
+<li>内嵌函数必须引用一个定义在闭合范围内(外部函数里)的变量——内部函数引用外部变量</li>
+<li>外部函数必须返回内嵌函数——必须返回那个内部函数</li>
+</ol>
+<p>如返回函数中的例子就是闭包。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">Fun1</span><span class="params">()</span>:</span></span><br><span class="line">	x = <span class="number">5</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">Fun2</span><span class="params">()</span>:</span></span><br><span class="line">		<span class="keyword">nonlocal</span> x      <span class="comment"># nonlocal关键字</span></span><br><span class="line">		x *= x</span><br><span class="line">		<span class="keyword">return</span> x</span><br><span class="line">	<span class="keyword">return</span> Fun2()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Fun1()</span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="匿名函数：lambda表达式"><a href="#匿名函数：lambda表达式" class="headerlink" title="匿名函数：lambda表达式"></a>匿名函数：lambda表达式</h3><p>不显地定义函数，在以前博客中常使用。</p>
+<p><strong>谨慎使用lambda函数</strong></p>
+<ol>
+<li>lambda函数主要用作一些特定函数或方法的参数</li>
+<li>lambda函数有一些固定使用方法</li>
+<li>一般情况下，建议使用def定义的普通函数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法：</span></span><br><span class="line">&lt;函数名&gt; = <span class="keyword">lambda</span> &lt;参数&gt; : &lt;表达式&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 等价于</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> &lt;函数名&gt;<span class="params">(&lt;参数&gt;)</span>:</span></span><br><span class="line">  &lt;函数体&gt;</span><br><span class="line">  <span class="keyword">return</span> &lt;返回值&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 匿名函数lambda x: x * x的显示函数表现形式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x * x</span><br></pre></td></tr></table></figure>
+<p>匿名函数有个限制，就是只能有一个表达式，不用写return，返回值就是该表达式的结果。</p>
+<p>用匿名函数有个好处，因为函数没有名字，不必担心函数名冲突。此外，匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = <span class="keyword">lambda</span> x: x * x</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f</span><br><span class="line">&lt;function &lt;<span class="keyword">lambda</span>&gt; at <span class="number">0x101c6ef28</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="number">5</span>)</span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure></p>
+<p>也可以把匿名函数作为返回值返回：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span>: x * x + y * y</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>假设我们要增强某个函数的功能，但又不希望修改now()函数的定义，这种在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）。</p>
+<p>装饰器其实就是一个闭包。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 函数对象有一个__name__属性，可以拿到函数的名字</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = abs</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>abs.__name__</span><br><span class="line"><span class="string">'abs'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.__name__</span><br><span class="line"><span class="string">'abs'</span></span><br></pre></td></tr></table></figure>
+<p>简单Decorator应用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">firstWord</span><span class="params">(sayMore)</span>:</span>     <span class="comment"># 定义修饰器，接受一个函数作为参数，并返回一个函数</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">myWord</span><span class="params">()</span>:</span></span><br><span class="line">		print(<span class="string">'Welcome to Python!'</span>)</span><br><span class="line">		<span class="keyword">return</span> sayMore()      <span class="comment"># 传入并传出一个函数</span></span><br><span class="line">	<span class="keyword">return</span> myWord</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@firstWord        <span class="comment"># 使用@语法，把decorator置于函数的定义处</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">()</span>:</span>        <span class="comment"># 然后定义函数</span></span><br><span class="line">    	print(<span class="string">'Hello World!'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>say()</span><br><span class="line">Welcome to Python!</span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h3><p>Python的functools模块提供了很多有用的功能，其中一个就是偏函数（Partial function）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int()函数可以把字符串转换为整数，当仅传入字符串时，int()函数默认按十进制转换，可以自定义设置进制base</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'12345'</span>)</span><br><span class="line"><span class="number">12345</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'12345'</span>, base = <span class="number">8</span>)</span><br><span class="line"><span class="number">5349</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'12345'</span>, base = <span class="number">16</span>)</span><br><span class="line"><span class="number">74565</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果需要大批量转化进制，每次都修改base值，会非常麻烦，因此可以使用自定义函数或者偏函数的方法创建新函数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> functools</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int2 = functools.partial(int, base = <span class="number">2</span>)       <span class="comment"># 设置函数默认值</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int2(<span class="string">'100000'</span>)</span><br><span class="line"><span class="number">32</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cjko4sb5p000c3kuts82sueyc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -1082,15 +1126,15 @@
           </li>
         
           <li>
-            <a href="/2018/08/08/Python学习笔记——图形用户界面/">Python</a>
-          </li>
-        
-          <li>
             <a href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
           </li>
         
           <li>
             <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——IO编程/">Python学习笔记——IO编程</a>
           </li>
         
       </ul>
