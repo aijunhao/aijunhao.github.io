@@ -7,21 +7,22 @@
   
   <title>Python学习笔记——GUI编程 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="GUI的终极选择：Tkinter  第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(file=&apos;bg.gif&apos;)      # 添加图片theLabel = tk.Label(root,">
+  <meta name="description" content="GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(f">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python学习笔记——GUI编程">
 <meta property="og:url" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="GUI的终极选择：Tkinter  第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(file=&apos;bg.gif&apos;)      # 添加图片theLabel = tk.Label(root,">
+<meta property="og:description" content="GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(f">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/Button.PNG">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/CheckButton1.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG">
-<meta property="og:updated_time" content="2018-08-10T15:12:33.885Z">
+<meta property="og:updated_time" content="2018-08-12T07:13:45.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——GUI编程">
-<meta name="twitter:description" content="GUI的终极选择：Tkinter  第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(file=&apos;bg.gif&apos;)      # 添加图片theLabel = tk.Label(root,">
+<meta name="twitter:description" content="GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(f">
 <meta name="twitter:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -93,11 +94,114 @@
       
         <hr>
 <p>GUI的终极选择：Tkinter</p>
+<h2 id="https-blog-csdn-net-u014380159-article-details-51941842"><a href="#https-blog-csdn-net-u014380159-article-details-51941842" class="headerlink" title="https://blog.csdn.net/u014380159/article/details/51941842"></a><a href="https://blog.csdn.net/u014380159/article/details/51941842" target="_blank" rel="noopener">https://blog.csdn.net/u014380159/article/details/51941842</a></h2><h3 id="第一个实例"><a href="#第一个实例" class="headerlink" title="第一个实例"></a>第一个实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk      <span class="comment"># 导入tkinter模块</span></span><br><span class="line"></span><br><span class="line">root = tk.Tk()        <span class="comment"># 生成窗口实例，即父容器</span></span><br><span class="line"></span><br><span class="line">photo = tk.PhotoImage(file=<span class="string">'bg.gif'</span>)      <span class="comment"># 添加图片</span></span><br><span class="line">theLabel = tk.Label(root,</span><br><span class="line">                  text=<span class="string">'我们一起学猫叫\n一起喵喵喵喵~'</span>,</span><br><span class="line">                  justify=tk.LEFT,</span><br><span class="line">                  image=photo,</span><br><span class="line">                  compound=tk.CENTER,</span><br><span class="line">                  font=(<span class="string">"华康少女文字W5"</span>, <span class="number">20</span>),</span><br><span class="line">                  fg=<span class="string">"white"</span>)</span><br><span class="line"></span><br><span class="line">theLabel.pack()</span><br><span class="line"></span><br><span class="line">tk.mainloop()   <span class="comment"># 进入消息循环</span></span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG" alt=""></h2><h3 id="tkinter-常用方法"><a href="#tkinter-常用方法" class="headerlink" title="tkinter 常用方法"></a>tkinter 常用方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法名</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Tk()</td>
+<td style="text-align:left">生成窗口实例</td>
+<td style="text-align:left">root = tkinter.Tk()</td>
+</tr>
+<tr>
+<td style="text-align:left">title()</td>
+<td style="text-align:left">设置窗口标题</td>
+<td style="text-align:left">root.title(‘title’)</td>
+</tr>
+<tr>
+<td style="text-align:left">geometry()</td>
+<td style="text-align:left">设置窗口大小</td>
+<td style="text-align:left">root.geometry(‘300x200’)</td>
+</tr>
+<tr>
+<td style="text-align:left">mainloop()</td>
+<td style="text-align:left">主事件循环</td>
+<td style="text-align:left">root.mainloop() 或 tkinter.mainloop()</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h3 id="第一个实例"><a href="#第一个实例" class="headerlink" title="第一个实例"></a>第一个实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk      <span class="comment"># 导入tkinter模块</span></span><br><span class="line"></span><br><span class="line">root = tk.Tk()        <span class="comment"># 生成窗口实例，即父容器</span></span><br><span class="line"></span><br><span class="line">photo = tk.PhotoImage(file=<span class="string">'bg.gif'</span>)      <span class="comment"># 添加图片</span></span><br><span class="line">theLabel = tk.Label(root,</span><br><span class="line">                  text=<span class="string">'我们一起学猫叫\n一起喵喵喵喵~'</span>,</span><br><span class="line">                  justify=tk.LEFT,</span><br><span class="line">                  image=photo,</span><br><span class="line">                  compound=tk.CENTER,</span><br><span class="line">                  font=(<span class="string">"华康少女文字W5"</span>, <span class="number">20</span>),</span><br><span class="line">                  fg=<span class="string">"white"</span>)</span><br><span class="line"></span><br><span class="line">theLabel.pack()</span><br><span class="line"></span><br><span class="line">tk.mainloop()   <span class="comment"># 进入消息循环</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG" alt=""></p>
+<h3 id="Label-文本"><a href="#Label-文本" class="headerlink" title="Label 文本"></a>Label 文本</h3><p>标签控件，可以显示文本和位图。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">label = tkinter.Label(master, option=value, ... )</span><br><span class="line"></span><br><span class="line">l.pack()</span><br></pre></td></tr></table></figure></p>
+<p>案例:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</span><br><span class="line"></span><br><span class="line">counter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">counter_label</span><span class="params">(label)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">global</span> counter</span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">        label.config(text=str(counter))</span><br><span class="line">        label.after(<span class="number">1000</span>, count)</span><br><span class="line"></span><br><span class="line">    count()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root = tk.Tk()</span><br><span class="line">root.title(<span class="string">"Counting Seconds"</span>)</span><br><span class="line">label = tk.Label(root, fg=<span class="string">"green"</span>)</span><br><span class="line">label.pack()</span><br><span class="line">counter_label(label)</span><br><span class="line">button = tk.Button(root, text=<span class="string">'Stop'</span>, width=<span class="number">25</span>, command=root.destroy)</span><br><span class="line">button.pack()</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>可选项(option)</th>
+<th>描述</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activebackground</td>
+<td>设置当Label处于活动状态(state选项设置状态)，选择框的背景色。</td>
+<td>activebackground=”#000000”</td>
+</tr>
+<tr>
+<td>activeforeground</td>
+<td>设置当Label处于活动状态(当鼠标点击时)，选择框的文本颜色。</td>
+<td>activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td>anchor=’w’</td>
+</tr>
+<tr>
+<td>bg/background</td>
+<td>标签的背景色。</td>
+<td>bg=”yellow”</td>
+</tr>
+<tr>
+<td>compound</td>
+<td>文本和图像的混合模式</td>
+<td>image=img, <br> compound=tkinter.LEFT</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>按钮文本的颜色。</td>
+<td>fg=”yellow”</td>
+</tr>
+<tr>
+<td>font</td>
+<td>文本字体。</td>
+<td>font=”楷体”</td>
+</tr>
+<tr>
+<td>height/width</td>
+<td>按钮的高度/宽度。</td>
+<td>height=5,width=15</td>
+</tr>
+<tr>
+<td>image</td>
+<td>按钮图片。</td>
+<td>img_png = tkinter.PhotoImage(file = ‘18.gif’)  <br>  button = tkinter.Label(root,image=img_png)</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>显示多行文本的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td>justify=”center” <br> 或 justify=tkinter.CENTER</td>
+</tr>
+<tr>
+<td>text</td>
+<td>按钮的文本内容</td>
+<td>text=”…”</td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h3 id="Button-按钮"><a href="#Button-按钮" class="headerlink" title="Button 按钮"></a>Button 按钮</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">button = tkinter.Button(master, option=value, ... )       <span class="comment"># master:按钮父容器,option:可选项</span></span><br><span class="line"></span><br><span class="line">button.pack()       <span class="comment"># 将小部件放置到窗口中</span></span><br></pre></td></tr></table></figure>
+<h3 id="Button-按钮"><a href="#Button-按钮" class="headerlink" title="Button 按钮"></a>Button 按钮</h3><p>按钮控件，在程序中显示按钮。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">button = tkinter.Button(master, option=value, ... )       <span class="comment"># master:按钮父容器,option:可选项</span></span><br><span class="line"></span><br><span class="line">button.pack()       <span class="comment"># 将小部件放置到窗口中</span></span><br></pre></td></tr></table></figure>
 <p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()</span><br><span class="line">button = tkinter.Button(root, text=<span class="string">"Button"</span>)</span><br><span class="line"></span><br><span class="line">button.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/08/08/Python学习笔记——GUI编程/Button.PNG" alt=""></p>
 <table>
@@ -122,7 +226,7 @@
 <tr>
 <td>anchor</td>
 <td>锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
-<td>anchor=”nw”</td>
+<td>anchor=’w’</td>
 </tr>
 <tr>
 <td>bd</td>
@@ -130,7 +234,7 @@
 <td>bd=5</td>
 </tr>
 <tr>
-<td>bg</td>
+<td>bg/background</td>
 <td>按钮的背景色。</td>
 <td>bg=”blue”</td>
 </tr>
@@ -150,7 +254,7 @@
 <td>font=”楷体”</td>
 </tr>
 <tr>
-<td>height/weight</td>
+<td>height/width</td>
 <td>按钮的高度/宽度。</td>
 <td>height=5,width=15</td>
 </tr>
@@ -162,7 +266,7 @@
 <tr>
 <td>justify</td>
 <td>显示多行文本的对齐方式，可选项包括left, right, cneter(默认)。</td>
-<td>justify=”center”</td>
+<td>justify=”center” <br> 或 justify=tkinter.CENTER</td>
 </tr>
 <tr>
 <td>padx/pady</td>
@@ -192,8 +296,132 @@
 </tbody>
 </table>
 <hr>
-<h3 id="Checkbutton-复选框"><a href="#Checkbutton-复选框" class="headerlink" title="Checkbutton 复选框"></a>Checkbutton 复选框</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()         <span class="comment"># 生成窗口</span></span><br><span class="line"></span><br><span class="line">GIRLS = [<span class="string">'西施'</span>, <span class="string">'貂蝉'</span>, <span class="string">'王昭君'</span>, <span class="string">'杨玉环'</span>]</span><br><span class="line">v = []        <span class="comment"># 表示按钮是否被选中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> girl <span class="keyword">in</span> GIRLS:</span><br><span class="line">    v.append(tkinter.IntVar())</span><br><span class="line">    b = tkinter.Checkbutton(root, text=girl, variable=v[<span class="number">-1</span>])</span><br><span class="line">    b.pack(anchor=<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">tkinter.mainloop()</span><br></pre></td></tr></table></figure>
+<h3 id="Checkbutton-复选框"><a href="#Checkbutton-复选框" class="headerlink" title="Checkbutton 复选框"></a>Checkbutton 复选框</h3><p>多选框控件，用于在程序中提供多项选择框。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">c = Checkbutton ( master, option=value, ... )</span><br><span class="line">c.pack()</span><br></pre></td></tr></table></figure>
+<p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()</span><br><span class="line"></span><br><span class="line">c = tkinter.Checkbutton(root, text=<span class="string">"选择框"</span>)</span><br><span class="line"></span><br><span class="line">c.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/CheckButton1.PNG" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">可选项(option)</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">activebackground</td>
+<td style="text-align:left">设置当Button处于活动状态(当鼠标点击时)，选择框的背景色。</td>
+<td style="text-align:left">activebackground=”#000000”</td>
+</tr>
+<tr>
+<td style="text-align:left">activeforeground</td>
+<td style="text-align:left">设置当Button处于活动状态(当鼠标点击时)，选择框的文本颜色。</td>
+<td style="text-align:left">activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td style="text-align:left">anchor</td>
+<td style="text-align:left">锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td style="text-align:left">anchor=’w’</td>
+</tr>
+<tr>
+<td style="text-align:left">bg/background</td>
+<td style="text-align:left">按钮的背景色。</td>
+<td style="text-align:left">bg=”blue”</td>
+</tr>
+<tr>
+<td style="text-align:left">bitmap</td>
+<td style="text-align:left">使用位图，可选项有error，gray75，gray50，gray25，gray12，<br>hourglass，info，questhead，question，warning</td>
+<td style="text-align:left">bitmap=”error”</td>
+</tr>
+<tr>
+<td style="text-align:left">bd</td>
+<td style="text-align:left">边框的大小，默认为 2 个像素</td>
+<td style="text-align:left">bd=10</td>
+</tr>
+<tr>
+<td style="text-align:left">command</td>
+<td style="text-align:left">按钮关联的函数，当按钮被点击时，执行该函数。</td>
+<td style="text-align:left">command=函数名</td>
+</tr>
+<tr>
+<td style="text-align:left">cursor</td>
+<td style="text-align:left">光标的形状设定，可选项有arrow(默认), circle, cross, plus</td>
+<td style="text-align:left">cursor=”circle”</td>
+</tr>
+<tr>
+<td style="text-align:left">disabledforeground</td>
+<td style="text-align:left">禁用选项的前景色</td>
+<td style="text-align:left">disabledforeground=”#123456”</td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">文本字体</td>
+<td style="text-align:left">font=”…”</td>
+</tr>
+<tr>
+<td style="text-align:left">fg</td>
+<td style="text-align:left">选项的前景色</td>
+<td style="text-align:left">fg=”red”</td>
+</tr>
+<tr>
+<td style="text-align:left">image</td>
+<td style="text-align:left">是否使用图标。</td>
+<td style="text-align:left">img = tkinter.PhotoImage(file=”bg.gif”) <br>c = tkinter.Checkbutton(root,image=img)</td>
+</tr>
+<tr>
+<td style="text-align:left">justify</td>
+<td style="text-align:left">多行文本设置不同行之间的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td style="text-align:left">justify=“center” <br> 或 justify=tkinter.CENTER</td>
+</tr>
+<tr>
+<td style="text-align:left">onvalue/offvalue</td>
+<td style="text-align:left">设置 Checkbutton 的状态值。</td>
+<td style="text-align:left">onvalue = 1, offvalue = 0</td>
+</tr>
+<tr>
+<td style="text-align:left">padx/pady</td>
+<td style="text-align:left">设置选择框在x轴/y轴方向上的内边距，默认为1像素</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">relief</td>
+<td style="text-align:left">边框样式，设置控件3D效果，可选的有：flat(默认)、sunken、raised、groove、ridge。</td>
+<td style="text-align:left">relief=”flat”</td>
+</tr>
+<tr>
+<td style="text-align:left">relief=”raised”</td>
+<td style="text-align:left">选中后的颜色。</td>
+<td style="text-align:left">selectcolor=”red”</td>
+</tr>
+<tr>
+<td style="text-align:left">state</td>
+<td style="text-align:left">设置选择框组件状态,可选的有normal(默认)、active、 disabled。</td>
+<td style="text-align:left">state=”disabled”</td>
+</tr>
+<tr>
+<td style="text-align:left">underline</td>
+<td style="text-align:left">下划线。</td>
+<td style="text-align:left">有些小问题。underline=0</td>
+</tr>
+<tr>
+<td style="text-align:left">text</td>
+<td style="text-align:left">选择框的文本内容</td>
+<td style="text-align:left">text=”…”</td>
+</tr>
+<tr>
+<td style="text-align:left">variable</td>
+<td style="text-align:left">变量，variable 的值为 1 或 0，代表着选中或不选中</td>
+<td style="text-align:left">v = tkinter.IntVar() <br> c = tkinter.Checkbutton(root, variable = v)</td>
+</tr>
+</tbody>
+</table>
+<p>常用方法<br>| 方法       | 描述                                                                       |<br>|:———- |:————————————————————————– |<br>| deselect() | 清除复选框选中选项。                                                       |<br>| flash()    | 在激活状态颜色和正常颜色之间闪烁几次单选按钮，但保持它开始时的状态。       |<br>| invoke()   | 可以调用此方法来获得与用户单击单选按钮以更改其状态时发生的操作相同的操作。 |<br>| select()   | 设置按钮为选中。                                                           |<br>| toggle()   | 选中与没有选中的选项互相切换。                                             |</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()         <span class="comment"># 生成窗口</span></span><br><span class="line"></span><br><span class="line">GIRLS = [<span class="string">'西施'</span>, <span class="string">'貂蝉'</span>, <span class="string">'王昭君'</span>, <span class="string">'杨玉环'</span>]</span><br><span class="line">v = []        <span class="comment"># 表示按钮是否被选中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> girl <span class="keyword">in</span> GIRLS:</span><br><span class="line">    v.append(tkinter.IntVar())</span><br><span class="line">    b = tkinter.Checkbutton(root, text=girl, variable=v[<span class="number">-1</span>])</span><br><span class="line">    b.pack(anchor=<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">tkinter.mainloop()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG" alt=""></p>
+<hr>
+<h3 id="Radiobutton"><a href="#Radiobutton" class="headerlink" title="Radiobutton"></a>Radiobutton</h3><p>单选按钮控件，显示一个单选的按钮状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
