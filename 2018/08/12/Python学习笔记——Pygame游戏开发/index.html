@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python学习笔记——Pygame游戏开发 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Pygame 内部是使用c语言实现的，所以Pygame游戏的效率还是比较高的。安装Pygame打开cmd命令行。输入”pip install pygame”，系统自行安装即可。 在IDLE中测试： 如此，安装完成。  Pygame 基本框架123456789101112131415161718192021222324252627import pygame, sys# 初始化Pygamepygam">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记——Pygame游戏开发">
+<meta property="og:url" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="Pygame 内部是使用c语言实现的，所以Pygame游戏的效率还是比较高的。安装Pygame打开cmd命令行。输入”pip install pygame”，系统自行安装即可。 在IDLE中测试： 如此，安装完成。  Pygame 基本框架123456789101112131415161718192021222324252627import pygame, sys# 初始化Pygamepygam">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/InstallPygame.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/PygameTest.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/PygameMain.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/PygameEventTxt.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/turtle.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/TurtleMoveEvent.gif">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/PygameFont.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/PygameFontTest.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/PygameFont2.png">
+<meta property="og:updated_time" content="2018-08-12T14:04:32.802Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记——Pygame游戏开发">
+<meta name="twitter:description" content="Pygame 内部是使用c语言实现的，所以Pygame游戏的效率还是比较高的。安装Pygame打开cmd命令行。输入”pip install pygame”，系统自行安装即可。 在IDLE中测试： 如此，安装完成。  Pygame 基本框架123456789101112131415161718192021222324252627import pygame, sys# 初始化Pygamepygam">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/InstallPygame.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python学习笔记——Pygame游戏开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/12/Python学习笔记——Pygame游戏开发/" class="article-date">
+  <time datetime="2018-08-12T07:18:59.000Z" itemprop="datePublished">2018-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记——Pygame游戏开发
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="Pygame-内部是使用c语言实现的，所以Pygame游戏的效率还是比较高的。"><a href="#Pygame-内部是使用c语言实现的，所以Pygame游戏的效率还是比较高的。" class="headerlink" title="Pygame 内部是使用c语言实现的，所以Pygame游戏的效率还是比较高的。"></a>Pygame 内部是使用c语言实现的，所以Pygame游戏的效率还是比较高的。</h2><h3 id="安装Pygame"><a href="#安装Pygame" class="headerlink" title="安装Pygame"></a>安装Pygame</h3><p>打开cmd命令行。输入”pip install pygame”，系统自行安装即可。<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/InstallPygame.png" alt=""></p>
+<p>在IDLE中测试：<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameTest.png" alt=""></p>
+<p>如此，安装完成。</p>
+<hr>
+<h3 id="Pygame-基本框架"><a href="#Pygame-基本框架" class="headerlink" title="Pygame 基本框架"></a>Pygame 基本框架</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化Pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画布大小，元组类型</span></span><br><span class="line">size = width, height = <span class="number">600</span>, <span class="number">400</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建指定大小的窗口，单位为像素，返回Surface对象，作为背景画布</span></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line"><span class="comment"># 设置窗口标题</span></span><br><span class="line">pygame.display.set_caption(<span class="string">"初次见面，大家多多关照!"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图片</span></span><br><span class="line"><span class="comment">#turtle = pygame.image.load("turtle.png")</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取事件</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            pygame.quit()</span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br></pre></td></tr></table></figure>
+<p>一个游戏循环（也可以称为主循环）就做下面这三件事：</p>
+<ul>
+<li>处理事件</li>
+<li>更新游戏状态</li>
+<li>绘制游戏状态到屏幕上</li>
+</ul>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameMain.png" alt=""></p>
+<hr>
+<h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><p>编写一个程序，将所有执行的事件写入到一个文件中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">size = width, height =  <span class="number">600</span>, <span class="number">400</span></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line">pygame.display.set_caption(<span class="string">"事件处理"</span>)</span><br><span class="line"></span><br><span class="line">f = open(<span class="string">"record.txt"</span>, <span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="comment"># 获取事件</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        f.write(str(event) + <span class="string">'\n'</span>)</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            f.close()</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            pygame.quit()</span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br></pre></td></tr></table></figure></p>
+<p>运行程序，随意移动鼠标、点击鼠标、按键盘等，然后关闭程序，在程序同目录下打开“record.txt”文件，可以看到如下：<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameEventTxt.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>产生途径</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QUIT</td>
+<td>用户按下关闭按钮</td>
+<td>none</td>
+</tr>
+<tr>
+<td>ACTIVEEVENT</td>
+<td>Pygame被激活或者隐藏</td>
+<td>gain, state</td>
+</tr>
+<tr>
+<td>KEYDOWN</td>
+<td>键盘被按下</td>
+<td>unicode, key, mod</td>
+</tr>
+<tr>
+<td>KEYUP</td>
+<td>键盘被放开</td>
+<td>key, mod</td>
+</tr>
+<tr>
+<td>MOUSEMOTION</td>
+<td>鼠标移动</td>
+<td>pos, rel, buttons</td>
+</tr>
+<tr>
+<td>MOUSEBUTTONDOWN</td>
+<td>鼠标按下</td>
+<td>pos, button</td>
+</tr>
+<tr>
+<td>MOUSEBUTTONUP</td>
+<td>鼠标放开</td>
+<td>pos, button</td>
+</tr>
+<tr>
+<td>JOYAXISMOTION</td>
+<td>游戏手柄的摇杆移动</td>
+<td>joy, axis, value</td>
+</tr>
+<tr>
+<td>JOYBALLMOTION</td>
+<td>游戏手柄上的轨迹球混动</td>
+<td>joy, axis, value</td>
+</tr>
+<tr>
+<td>JOYHATMOTION</td>
+<td>游戏手柄上的帽子开关移动</td>
+<td>joy， axis， value</td>
+</tr>
+<tr>
+<td>JOYBUTTONDOWN</td>
+<td>游戏手柄按钮被按下</td>
+<td>joy,button</td>
+</tr>
+<tr>
+<td>JOYBUTTONUP</td>
+<td>游戏手柄按钮被松开</td>
+<td>joy, button</td>
+</tr>
+<tr>
+<td>VIDEORESIZE</td>
+<td>Pygame窗口缩放</td>
+<td>size, w, h</td>
+</tr>
+<tr>
+<td>VIDEOEXPOSE</td>
+<td>部分窗口需要重新绘制</td>
+<td>none</td>
+</tr>
+<tr>
+<td>USEERVENT</td>
+<td>用户定义的事件</td>
+<td>code</td>
+</tr>
+</tbody>
+</table>
+<p>运动的小乌龟事件处理：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化Pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">size = width, height = <span class="number">600</span>, <span class="number">400</span></span><br><span class="line">speed = [<span class="number">-2</span>, <span class="number">1</span>]</span><br><span class="line">bg = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 帧率</span></span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建指定大小的窗口，单位为像素，返回Surface对象，作为背景画布</span></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line"><span class="comment"># 设置窗口标题</span></span><br><span class="line">pygame.display.set_caption(<span class="string">"初次见面，大家多多关照!"</span>)</span><br><span class="line"><span class="comment"># 加载图片</span></span><br><span class="line">turtle = pygame.image.load(<span class="string">"turtle.png"</span>)</span><br><span class="line"><span class="comment"># 获得图像的位置矩形</span></span><br><span class="line">position = turtle.get_rect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置左右键按下时的乌龟头朝向</span></span><br><span class="line">l_head = turtle</span><br><span class="line">r_head = pygame.transform.flip(turtle, <span class="keyword">True</span>, <span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环持续运行</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取事件，在此处退出</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            pygame.quit()</span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.KEYDOWN:</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                turtle = l_head</span><br><span class="line">                speed = [<span class="number">-1</span>, <span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                turtle = r_head</span><br><span class="line">                speed = [<span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_UP:</span><br><span class="line">                speed = [<span class="number">0</span>, <span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_DOWN:</span><br><span class="line">                speed = [<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 移动图像</span></span><br><span class="line">    position = position.move(speed)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> position.left &lt; <span class="number">0</span> <span class="keyword">or</span> position.right &gt; width:</span><br><span class="line">        <span class="comment"># 翻转图像</span></span><br><span class="line">        turtle = pygame.transform.flip(turtle, <span class="keyword">True</span>, <span class="keyword">False</span>)</span><br><span class="line">        <span class="comment"># 反方向移动</span></span><br><span class="line">        speed[<span class="number">0</span>] = -speed[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> position.top &lt; <span class="number">0</span> <span class="keyword">or</span> position.bottom &gt; height:</span><br><span class="line">        speed[<span class="number">1</span>] = -speed[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 填充背景</span></span><br><span class="line">    screen.fill(bg)</span><br><span class="line">    <span class="comment"># 更新图像</span></span><br><span class="line">    screen.blit(turtle, position)</span><br><span class="line">    <span class="comment"># 更新界面</span></span><br><span class="line">    pygame.display.flip()</span><br><span class="line">    <span class="comment"># 设置帧率</span></span><br><span class="line">    clock.tick(<span class="number">200</span>)</span><br></pre></td></tr></table></figure></p>
+<p>小乌龟素材：<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/turtle.png" alt=""></p>
+<p>效果如下：<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/TurtleMoveEvent.gif" alt=""></p>
+<hr>
+<h3 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h3><p>Pygame没有文本组件，大师可以通过另一种方式实现相同效果。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过字体文件获得字体对象; filename:系统文字名， size：字体大小</span></span><br><span class="line">fontObj = pygame.font.SysFont(filename, size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置要显示的文字；text：要显示的文字， antialias：是否抗锯齿(Ture/False), color：字体颜色，background：背景色</span></span><br><span class="line">textSurfaceObj = fontObj.render(text, antialias, color, background=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获得要显示的对象的rect</span></span><br><span class="line">textRectObj = textSurfaceObj.get_rect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置显示对象的坐标</span></span><br><span class="line">textRectObj.center = (<span class="number">250</span>, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制字体</span></span><br><span class="line">screen.blit(textSurfaceObj, textRectObj)</span><br></pre></td></tr></table></figure></p>
+<p>如果不知道系统中用什么字体，可以在IDLE环境中通过以下获取：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pygame</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(pygame.font.get_fonts())</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameFont.png" alt=""></p>
+<p>文字绘制案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入需要的模块</span></span><br><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义颜色</span></span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">GREEN = ( <span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">BLUE = ( <span class="number">0</span>, <span class="number">0</span>, <span class="number">128</span>)</span><br><span class="line">SIZE = (width, height) = (<span class="number">500</span>, <span class="number">400</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置窗口的大小，单位为像素</span></span><br><span class="line">screen = pygame.display.set_mode(SIZE)</span><br><span class="line"><span class="comment"># 设置背景</span></span><br><span class="line">screen.fill(WHITE)</span><br><span class="line"><span class="comment"># 设置窗口的标题</span></span><br><span class="line">pygame.display.set_caption(<span class="string">'Font'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过字体文件获得字体对象</span></span><br><span class="line">fontObj = pygame.font.SysFont(<span class="string">"华文彩云"</span>, <span class="number">50</span>)</span><br><span class="line"><span class="comment"># 配置要显示的文字</span></span><br><span class="line">textSurfaceObj = fontObj.render(<span class="string">'Pygame'</span>, <span class="keyword">True</span>, BLUE, GREEN)</span><br><span class="line"><span class="comment"># 获得要显示的对象的rect</span></span><br><span class="line">textRectObj = textSurfaceObj.get_rect()</span><br><span class="line"><span class="comment"># 设置显示对象的坐标</span></span><br><span class="line">textRectObj.center = (<span class="number">250</span>, <span class="number">200</span>)</span><br><span class="line"><span class="comment"># 绘制字体</span></span><br><span class="line">screen.blit(textSurfaceObj, textRectObj)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 获取事件</span></span><br><span class="line">  <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">    <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">    <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">      <span class="comment"># 退出pygame</span></span><br><span class="line">      pygame.quit()</span><br><span class="line">      <span class="comment"># 退出系统</span></span><br><span class="line">      sys.exit()</span><br><span class="line"></span><br><span class="line">  pygame.display.flip()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameFontTest.png" alt=""></p>
+<p>模拟文本，在页面上打印event事件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">SIZE = (width, height) = (<span class="number">600</span>, <span class="number">400</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">GREEN = (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">screen = pygame.display.set_mode(SIZE)</span><br><span class="line">pygame.display.set_caption(<span class="string">"Font"</span>)</span><br><span class="line"></span><br><span class="line">font = pygame.font.SysFont(<span class="keyword">None</span>, <span class="number">20</span>)</span><br><span class="line">line_height = font.get_linesize()</span><br><span class="line">postion = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">screen.fill(BLACK)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            pygame.quit()</span><br><span class="line">            sys.exit()</span><br><span class="line">        screen.blit(font.render(str(event), <span class="keyword">True</span>, GREEN), (<span class="number">0</span>, postion))</span><br><span class="line">        postion += line_height</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> postion &gt; height:</span><br><span class="line">            postion = <span class="number">0</span></span><br><span class="line">            screen.fill(BLACK)</span><br><span class="line"></span><br><span class="line">    pygame.display.flip()</span><br></pre></td></tr></table></figure></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameFont2.png" alt=""></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/" data-id="cjkqx87n60000l8utp8oendzv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/09/Python学习笔记——网络爬虫/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python学习笔记——网络爬虫</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/12/Python学习笔记——Pygame游戏开发/">Python学习笔记——Pygame游戏开发</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/09/Python学习笔记——网络爬虫/">Python学习笔记——网络爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/Python学习笔记——GUI编程/">Python学习笔记——GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
