@@ -105,7 +105,7 @@
 <p>depth一般不建议自动设置，系统会根据需要自己调整。</p>
 <p>案例：全屏设置(有bug)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">SIZE = (WITDH, HEIGHT) = (<span class="number">600</span>, <span class="number">400</span>)</span><br><span class="line">WIGHT = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全屏</span></span><br><span class="line">fullscreen = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">screen</span><br><span class="line">= pygame.display.set_mode(SIZE)</span><br><span class="line">pygame.display.set_caption(<span class="string">"全屏设置"</span>)</span><br><span class="line">screen.fill(WIGHT)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            pygame.quit()</span><br><span class="line">            sys.exit()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.KEYDOWN:</span><br><span class="line">            <span class="comment"># 设置F11为全屏键</span></span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_F11:</span><br><span class="line">                fullscreen = <span class="keyword">not</span> fullscreen</span><br><span class="line">                <span class="keyword">if</span> fullscreen:</span><br><span class="line">                    <span class="comment"># 获取系统支持的最高分辨率</span></span><br><span class="line">                    SIZE_Biggest = pygame.display.list_modes()[<span class="number">0</span>]</span><br><span class="line">                    screen = pygame.display.set_mode(SIZE_Biggest, pygame.FULLSCREEN | pygame.HWSURFACE)</span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    screen = pygame.display.set_mode(SIZE)</span><br><span class="line">    screen.fill(WIGHT)</span><br><span class="line">    <span class="comment"># 更新界面</span></span><br><span class="line">    pygame.display.flip()</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p>与图像有关的方法：<br>| 方法        | 作用               |<br>| ———– | —————— |<br>| flip        | 上下、左右转转图片 |<br>| scale       | 快速缩放图像       |<br>| rotate      | 旋转图像           |<br>| rotozoom    | 缩放并旋转图像     |<br>| scale2x     | 快速放大一倍图像   |<br>| smoothscale | 精准平滑缩放图像   |<br>| chop        | 裁剪图像           |</p>
+<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p>与图像有关的方法：<br>| 方法        | 作用               |<br>|:———– |:—————— |<br>| flip        | 上下、左右转转图片 |<br>| scale       | 快速缩放图像       |<br>| rotate      | 旋转图像           |<br>| rotozoom    | 缩放并旋转图像     |<br>| scale2x     | 快速放大一倍图像   |<br>| smoothscale | 精准平滑缩放图像   |<br>| chop        | 裁剪图像           |</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载png图片，使用convert_alpha加载透明alpha通道</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.png"</span>).convert_alpha()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载jpg图片</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.jpg"</span>).convert()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不支持gif</span></span><br></pre></td></tr></table></figure>
 <p>实例：沿框运动的小乌龟<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化Pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">size = (width, height) = (<span class="number">600</span>, <span class="number">400</span>)</span><br><span class="line">speed = [<span class="number">2</span>, <span class="number">0</span>]</span><br><span class="line">bg = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置帧率</span></span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line">pygame.display.set_caption(<span class="string">"沿框运动的小乌龟"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图片</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.png"</span>)</span><br><span class="line">turtle_right = pygame.transform.rotate(turtle_img, <span class="number">90</span>)</span><br><span class="line">turtle_top = pygame.transform.rotate(turtle_img, <span class="number">180</span>)</span><br><span class="line">turtle_left = pygame.transform.rotate(turtle_img, <span class="number">270</span>)</span><br><span class="line">turtle_bottom = turtle_img</span><br><span class="line">turtle = turtle_top</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获得图像的位置矩形</span></span><br><span class="line">position = turtle.get_rect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环持续运行</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取事件，在此处退出</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            <span class="comment"># pygame.quit()</span></span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br><span class="line">    <span class="comment"># 移动图像</span></span><br><span class="line">    position = position.move(speed)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> position.right &gt; width:</span><br><span class="line">        turtle = turtle_right</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.left = width - turtle_rect.width</span><br><span class="line">        speed = [<span class="number">0</span>, <span class="number">2</span>]</span><br><span class="line">    <span class="keyword">if</span> position.bottom &gt; height:</span><br><span class="line">        turtle = turtle_bottom</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.left = width - turtle_rect.width</span><br><span class="line">        position.top = height - turtle_rect.height</span><br><span class="line">        speed = [<span class="number">-2</span>, <span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> position.left &lt; <span class="number">0</span>:</span><br><span class="line">        turtle = turtle_left</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.top = height - turtle_rect.height</span><br><span class="line">        speed = [<span class="number">0</span>, <span class="number">-2</span>]</span><br><span class="line">    <span class="keyword">if</span> position.top &lt; <span class="number">0</span>:</span><br><span class="line">        turtle = turtle_top</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        speed = [<span class="number">2</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 填充背景</span></span><br><span class="line">    screen.fill(bg)</span><br><span class="line">    <span class="comment"># 更新图像</span></span><br><span class="line">    screen.blit(turtle, position)</span><br><span class="line">    <span class="comment"># 更新界面</span></span><br><span class="line">    pygame.display.flip()</span><br><span class="line">    <span class="comment"># 延迟10毫秒</span></span><br><span class="line">    <span class="comment"># pygame.time.delay(10)</span></span><br><span class="line">    clock.tick(<span class="number">200</span>)</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameRunAroundTurtle.gif" alt=""></p>
@@ -401,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/" data-id="cjkqx87n60000l8utp8oendzv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发/" data-id="cjkwb1mja00010wutpceuxw1l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -453,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/" data-id="cjkqx87oe000il8utbpxa9ff1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/" data-id="cjkwb1mjz00080wut48t9pz9e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -821,7 +821,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjkqx87nf0001l8utxwmp5rwk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjkwb1miv00000wutfjckd04m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1030,7 +1030,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjkqx87of000kl8utrvz25uuk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjkwb1mkg000l0wut3zyztz9w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1121,7 +1121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjkqx87oa000dl8ut71t2kyom" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjkwb1ml7000t0wutrba5pxyj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1246,7 +1246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjkqx87nm0003l8utw46nk9ds" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjkwb1mjl00040wuthwulhjj7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1287,7 +1287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/05/Python学习笔记——打飞机小游戏/" data-id="cjkqx87og000ml8utyr357lh5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/05/Python学习笔记——打飞机小游戏/" data-id="cjkwb1mjr00050wutw20e92qn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1404,7 +1404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjkqx87o5000al8utun2a7gu2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjkwb1mkc000h0wutge75mf78" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1465,7 +1465,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——函数及用法积累/" data-id="cjkqx87nr0004l8ut0p0ouumt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——函数及用法积累/" data-id="cjkwb1mk9000d0wutjvz2qaoy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1542,7 +1542,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cjkqx87ov000yl8uttouee3vz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cjkwb1mk2000a0wutlqh5bw40" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
