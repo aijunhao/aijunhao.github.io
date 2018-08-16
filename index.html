@@ -101,11 +101,86 @@
 <p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameMain.png" alt=""></p>
 <hr>
 <h3 id="颜控，set-mode"><a href="#颜控，set-mode" class="headerlink" title="颜控，set_mode()"></a>颜控，set_mode()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set_mode返回值为Surface对象</span></span><br><span class="line">screen = set_mode(resolution(<span class="number">0</span>, <span class="number">0</span>), flags=<span class="number">0</span>, depth=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p>flags拓展选项：<br>| 选项       | 含义                                   |<br>|:———- |:————————————– |<br>| FULLSCREEN | 全屏模式                               |<br>| DOUBLEBUF  | 双缓冲模式                             |<br>| HWSURFACE  | 硬件加速支持(只有在全屏模式下才能使用) |<br>| OPENGL     | 使用OpenGL渲染(3D游戏)                         |<br>| RESIZABLE  | 是的窗口可以调整大小                   |<br>| NOFRAME           | 使得窗口没有边框和控制按钮                                       |</p>
+<p>flags拓展选项：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">FULLSCREEN</td>
+<td style="text-align:left">全屏模式</td>
+</tr>
+<tr>
+<td style="text-align:left">DOUBLEBUF</td>
+<td style="text-align:left">双缓冲模式</td>
+</tr>
+<tr>
+<td style="text-align:left">HWSURFACE</td>
+<td style="text-align:left">硬件加速支持(只有在全屏模式下才能使用)</td>
+</tr>
+<tr>
+<td style="text-align:left">OPENGL</td>
+<td style="text-align:left">使用OpenGL渲染(3D游戏)</td>
+</tr>
+<tr>
+<td style="text-align:left">RESIZABLE</td>
+<td style="text-align:left">是的窗口可以调整大小</td>
+</tr>
+<tr>
+<td style="text-align:left">NOFRAME</td>
+<td style="text-align:left">使得窗口没有边框和控制按钮</td>
+</tr>
+</tbody>
+</table>
 <p>depth一般不建议自动设置，系统会根据需要自己调整。</p>
 <p>案例：全屏设置(有bug)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">SIZE = (WITDH, HEIGHT) = (<span class="number">600</span>, <span class="number">400</span>)</span><br><span class="line">WIGHT = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全屏</span></span><br><span class="line">fullscreen = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">screen</span><br><span class="line">= pygame.display.set_mode(SIZE)</span><br><span class="line">pygame.display.set_caption(<span class="string">"全屏设置"</span>)</span><br><span class="line">screen.fill(WIGHT)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            pygame.quit()</span><br><span class="line">            sys.exit()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.KEYDOWN:</span><br><span class="line">            <span class="comment"># 设置F11为全屏键</span></span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_F11:</span><br><span class="line">                fullscreen = <span class="keyword">not</span> fullscreen</span><br><span class="line">                <span class="keyword">if</span> fullscreen:</span><br><span class="line">                    <span class="comment"># 获取系统支持的最高分辨率</span></span><br><span class="line">                    SIZE_Biggest = pygame.display.list_modes()[<span class="number">0</span>]</span><br><span class="line">                    screen = pygame.display.set_mode(SIZE_Biggest, pygame.FULLSCREEN | pygame.HWSURFACE)</span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    screen = pygame.display.set_mode(SIZE)</span><br><span class="line">    screen.fill(WIGHT)</span><br><span class="line">    <span class="comment"># 更新界面</span></span><br><span class="line">    pygame.display.flip()</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p>与图像有关的方法：<br>| 方法        | 作用               |<br>|:———– |:—————— |<br>| flip        | 上下、左右转转图片 |<br>| scale       | 快速缩放图像       |<br>| rotate      | 旋转图像           |<br>| rotozoom    | 缩放并旋转图像     |<br>| scale2x     | 快速放大一倍图像   |<br>| smoothscale | 精准平滑缩放图像   |<br>| chop        | 裁剪图像           |</p>
+<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p>与图像有关的方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">flip</td>
+<td style="text-align:left">上下、左右转转图片</td>
+</tr>
+<tr>
+<td style="text-align:left">scale</td>
+<td style="text-align:left">快速缩放图像</td>
+</tr>
+<tr>
+<td style="text-align:left">rotate</td>
+<td style="text-align:left">旋转图像</td>
+</tr>
+<tr>
+<td style="text-align:left">rotozoom</td>
+<td style="text-align:left">缩放并旋转图像</td>
+</tr>
+<tr>
+<td style="text-align:left">scale2x</td>
+<td style="text-align:left">快速放大一倍图像</td>
+</tr>
+<tr>
+<td style="text-align:left">smoothscale</td>
+<td style="text-align:left">精准平滑缩放图像</td>
+</tr>
+<tr>
+<td style="text-align:left">chop</td>
+<td style="text-align:left">裁剪图像</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载png图片，使用convert_alpha加载透明alpha通道</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.png"</span>).convert_alpha()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载jpg图片</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.jpg"</span>).convert()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不支持gif</span></span><br></pre></td></tr></table></figure>
 <p>实例：沿框运动的小乌龟<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化Pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">size = (width, height) = (<span class="number">600</span>, <span class="number">400</span>)</span><br><span class="line">speed = [<span class="number">2</span>, <span class="number">0</span>]</span><br><span class="line">bg = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置帧率</span></span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line">pygame.display.set_caption(<span class="string">"沿框运动的小乌龟"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图片</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.png"</span>)</span><br><span class="line">turtle_right = pygame.transform.rotate(turtle_img, <span class="number">90</span>)</span><br><span class="line">turtle_top = pygame.transform.rotate(turtle_img, <span class="number">180</span>)</span><br><span class="line">turtle_left = pygame.transform.rotate(turtle_img, <span class="number">270</span>)</span><br><span class="line">turtle_bottom = turtle_img</span><br><span class="line">turtle = turtle_top</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获得图像的位置矩形</span></span><br><span class="line">position = turtle.get_rect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环持续运行</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取事件，在此处退出</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            <span class="comment"># pygame.quit()</span></span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br><span class="line">    <span class="comment"># 移动图像</span></span><br><span class="line">    position = position.move(speed)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> position.right &gt; width:</span><br><span class="line">        turtle = turtle_right</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.left = width - turtle_rect.width</span><br><span class="line">        speed = [<span class="number">0</span>, <span class="number">2</span>]</span><br><span class="line">    <span class="keyword">if</span> position.bottom &gt; height:</span><br><span class="line">        turtle = turtle_bottom</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.left = width - turtle_rect.width</span><br><span class="line">        position.top = height - turtle_rect.height</span><br><span class="line">        speed = [<span class="number">-2</span>, <span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> position.left &lt; <span class="number">0</span>:</span><br><span class="line">        turtle = turtle_left</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.top = height - turtle_rect.height</span><br><span class="line">        speed = [<span class="number">0</span>, <span class="number">-2</span>]</span><br><span class="line">    <span class="keyword">if</span> position.top &lt; <span class="number">0</span>:</span><br><span class="line">        turtle = turtle_top</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        speed = [<span class="number">2</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 填充背景</span></span><br><span class="line">    screen.fill(bg)</span><br><span class="line">    <span class="comment"># 更新图像</span></span><br><span class="line">    screen.blit(turtle, position)</span><br><span class="line">    <span class="comment"># 更新界面</span></span><br><span class="line">    pygame.display.flip()</span><br><span class="line">    <span class="comment"># 延迟10毫秒</span></span><br><span class="line">    <span class="comment"># pygame.time.delay(10)</span></span><br><span class="line">    clock.tick(<span class="number">200</span>)</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发/PygameRunAroundTurtle.gif" alt=""></p>
@@ -320,7 +395,49 @@
 <p>格式工厂官网链接：<a href="http://www.pcfreetime.com/" target="_blank" rel="noopener">http://www.pcfreetime.com/</a></p>
 <h4 id="音效"><a href="#音效" class="headerlink" title="音效"></a>音效</h4><p>播放音效使用mixer模块，先生成一个Sound对象，然后调用play()方法来播放。</p>
 <p>音效可以有多个。</p>
-<p>Sound支持的方法：<br>| 方法               | 描述                           |<br>| —————— | —————————— |<br>| play()             | 播放音效                       |<br>| stop()             | 停止播放                       |<br>| fadeout()          | 淡出                           |<br>| set_volume()       | 设置音量                       |<br>| get_volune()       | 获取音量                       |<br>| get_num_channels() | 计算该音效播放了多少次         |<br>| get_length()       | 获得该音效的长度，多少秒       |<br>| get_raw()          | 将音效以二进制格式的字符串返回 |</p>
+<p>Sound支持的方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>play()</td>
+<td>播放音效</td>
+</tr>
+<tr>
+<td>stop()</td>
+<td>停止播放</td>
+</tr>
+<tr>
+<td>fadeout()</td>
+<td>淡出</td>
+</tr>
+<tr>
+<td>set_volume()</td>
+<td>设置音量</td>
+</tr>
+<tr>
+<td>get_volune()</td>
+<td>获取音量</td>
+</tr>
+<tr>
+<td>get_num_channels()</td>
+<td>计算该音效播放了多少次</td>
+</tr>
+<tr>
+<td>get_length()</td>
+<td>获得该音效的长度，多少秒</td>
+</tr>
+<tr>
+<td>get_raw()</td>
+<td>将音效以二进制格式的字符串返回</td>
+</tr>
+</tbody>
+</table>
 <h4 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h4><p>音乐使用music模块。</p>
 <p>背景音乐只能有一个。</p>
 <table>
