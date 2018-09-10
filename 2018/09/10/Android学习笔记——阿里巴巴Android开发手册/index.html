@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Android学习笔记——阿里巴巴Android开发手册 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="版本说明    版本号 制定团队 更新日期 备注     1.0.0 淘宝技术团队等 2018.2.28 正式版，首次公开    本手册以开发者为中心视角分为Java 语言规范（遵循《阿里巴巴Java 开发手册》），Android 资源文件命名与使用，Android 基本组件，UI 与布局，进程、线程与消息通信， 文件与数据库，Bitmap、Drawable 与动画，安全，其他等九大部分，根据约">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android学习笔记——阿里巴巴Android开发手册">
+<meta property="og:url" content="http://yoursite.com/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="版本说明    版本号 制定团队 更新日期 备注     1.0.0 淘宝技术团队等 2018.2.28 正式版，首次公开    本手册以开发者为中心视角分为Java 语言规范（遵循《阿里巴巴Java 开发手册》），Android 资源文件命名与使用，Android 基本组件，UI 与布局，进程、线程与消息通信， 文件与数据库，Bitmap、Drawable 与动画，安全，其他等九大部分，根据约">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/阿里巴巴Android开发手册.PNG">
+<meta property="og:updated_time" content="2018-09-10T15:25:22.676Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android学习笔记——阿里巴巴Android开发手册">
+<meta name="twitter:description" content="版本说明    版本号 制定团队 更新日期 备注     1.0.0 淘宝技术团队等 2018.2.28 正式版，首次公开    本手册以开发者为中心视角分为Java 语言规范（遵循《阿里巴巴Java 开发手册》），Android 资源文件命名与使用，Android 基本组件，UI 与布局，进程、线程与消息通信， 文件与数据库，Bitmap、Drawable 与动画，安全，其他等九大部分，根据约">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/阿里巴巴Android开发手册.PNG">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android学习笔记——阿里巴巴Android开发手册" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/" class="article-date">
+  <time datetime="2018-09-10T15:10:56.000Z" itemprop="datePublished">2018-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android学习笔记——阿里巴巴Android开发手册
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/阿里巴巴Android开发手册.PNG" alt=""></p>
+<p>版本说明</p>
+<table>
+<thead>
+<tr>
+<th>版本号</th>
+<th>制定团队</th>
+<th>更新日期</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0.0</td>
+<td>淘宝技术团队等</td>
+<td>2018.2.28</td>
+<td>正式版，首次公开</td>
+</tr>
+</tbody>
+</table>
+<p>本手册以开发者为中心视角分为Java 语言规范（遵循《阿里巴巴Java 开发手册》），<br>Android 资源文件命名与使用，Android 基本组件，UI 与布局，进程、线程与消息通信， 文件与数据库，Bitmap、Drawable 与动画，安全，其他等九大部分，根据约束力强弱， 规约依次分为强制、推荐、参考三大类：</p>
+<ul>
+<li>【强制】必须遵守，违反本约定或将会引起严重的后果；</li>
+<li>【推荐】尽量遵守，长期遵守有助于系统稳定性和合作效率的提升；</li>
+<li>【参考】充分理解，技术意识的引导，是个人学习、团队沟通、项目合作的方向。</li>
+</ul>
+<p>对于规约条目的延伸信息中，“说明”对内容做了适当扩展和解释；“正例”提倡什么样的编码和实现方式；“反例”说明需要提防的雷区，以及错误案例。</p>
+<hr>
+<h2 id="一、Java-语言规范"><a href="#一、Java-语言规范" class="headerlink" title="一、Java 语言规范"></a>一、Java 语言规范</h2><p>遵循《阿里巴巴 Java 开发手册》<br>手册下载地址：<a href="https://yq.aliyun.com/articles/69327" target="_blank" rel="noopener">https://yq.aliyun.com/articles/69327</a></p>
+<hr>
+<h2 id="二、Android-资源文件命名与使用"><a href="#二、Android-资源文件命名与使用" class="headerlink" title="二、Android 资源文件命名与使用"></a>二、Android 资源文件命名与使用</h2><ol>
+<li><p>【推荐】资源文件需带模块前缀。</p>
+</li>
+<li><p>【推荐】layout 文件的命名方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Activity 的 layout 以 module_activity 开头</span><br><span class="line"></span><br><span class="line">Fragment 的 layout 以 module_fragment 开头</span><br><span class="line"></span><br><span class="line">Dialog 的 layout 以 module_dialog 开头</span><br><span class="line"></span><br><span class="line">include 的 layout 以 module_include 开头</span><br><span class="line"></span><br><span class="line">ListView 的行 layout 以 module_list_item 开头</span><br><span class="line"></span><br><span class="line">RecyclerView 的 item layout 以 module_recycle_item 开头</span><br><span class="line"></span><br><span class="line">GridView 的行 layout 以 module_grid_item 开头</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>【推荐】drawable 资源名称以小写单词+下划线的方式命名，根据分辨率不同存放在不同的 drawable 目录下，建议只使用一套,例如 drawable-xhdpi。采用规则如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 模块名_业务功能描述_控件描述_控件状态限定词</span><br><span class="line"></span><br><span class="line">如：module_login_btn_pressed,module_tabs_icon_home_normal</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>【推荐】anim 资源名称以小写单词+下划线的方式命名，采用以下规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模块名_逻辑名称_[方向|序号]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>tween 动画资源 ： 尽可能以通用的动画名称命名，如 module_fade_in , module_fade_out , module_push_down_in (动画+方向)；<br>frame 动画资源：尽可能以模 块+功能命名+序号。如：module_loading_grey_001</p>
+<ol start="5">
+<li><p>【推荐】 color 资源使用#AARRGGBB 格式，写入 module_colors.xml 文件中，命名格式采用以下规则：</p>
+<p>模块名<em>逻辑名称</em>颜色<br>如：</p>
+<color name="module_btn_bg_color">#33b5e5e5</color>
+
+
+</li>
+</ol>
+<p>6.【推荐】dimen 资源以小写单词+下划线方式命名，写入 module_dimens.xml 文件中， 采用以下规则：</p>
+<p> 模块名_描述信息</p>
+<p>如：</p>
+ <dimen name="module_horizontal_line_height">1dp</dimen>
+
+<ol start="7">
+<li><p>【推荐】style 资源采用小写单词+下划线方式命名，写入 module_styles.xml 文件中， 采用以下规则：</p>
+<p>父 style 名称.当前 style 名称</p>
+</li>
+</ol>
+<p>如：</p>
+<p>8.【推荐】string 资源文件或者文本用到字符需要全部写入module_strings.xml 文件中， 字符串以小写单词+下划线的方式命名，采用以下规则：</p>
+<p> 模块名_逻辑名称</p>
+<p>如：moudule_login_tips,module_homepage_notice_desc</p>
+<ol start="9">
+<li>【推荐】Id 资源原则上以驼峰法命名，View 组件的资源 id 需要以 View 的缩写作为前缀。常用缩写表如下：</li>
+</ol>
+<p>控件    缩写<br>LinearLayout    ll<br>RelativeLayout    rl<br>ConstraintLayout    cl<br>ListView    lv<br>ScollView    sv<br>TextView    tv<br>Button    btn<br>ImageView    iv<br>CheckBox    cb<br>RadioButton    rb<br>EditText    et</p>
+<p>其它控件的缩写推荐使用小写字母并用下划线进行分割，例如：<br>ProgressBar 对应的缩写为 progress_bar DatePicker 对应的缩写为 date_picker<br>10.【推荐】大分辨率图片（单维度超过 1000）大分辨率图片建议统一放在 xxhdpi 目录下管理，否则将导致占用内存成倍数增加。<br>说明：<br>为了支持多种屏幕尺寸和密度，Android 为多种屏幕提供不同的资源目录进行适配。为不同屏幕密度提供不同的位图可绘制对象，可用于密度特定资源的配置限定符（在下面详述） 包括 ldpi（低）、mdpi（中）、 hdpi（高）、xhdpi（超高）、xxhdpi （超超高）和 xxxhdpi（超超超高）。例如，高密度屏幕的位图应使用 drawable-hdpi/。<br>根据当前的设备屏幕尺寸和密度，将会寻找最匹配的资源，如果将高分辨率图片放入低密度目录，将会造成低端机加载过大图片资源，又可能造成 OOM，同时也是资源浪费，没有必要在低端机使用大图。<br>正例：<br>将 144<em>144 的应用图标 PNG 文件放在 drawable-xxhdpi 目录反例：<br>将 144</em>144 的应用图标 PNG 文件放在 drawable-mhdpi 目录扩展参考：<br><a href="https://developer.android.com/guide/practices/screens_support.html?hl=zh-cn" target="_blank" rel="noopener">https://developer.android.com/guide/practices/screens_support.html?hl=zh-cn</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/" data-id="cjlwfvnsx0000lsutnrd9t1f5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/04/Android学习笔记——多媒体模块/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android学习笔记——多媒体模块</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-BlueTooth/">Android BlueTooth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Android-BlueTooth/" style="font-size: 10px;">Android BlueTooth</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/">Android学习笔记——阿里巴巴Android开发手册</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/04/Android学习笔记——多媒体模块/">Android学习笔记——多媒体模块</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/03/微信小程序开发/">微信小程序开发</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/26/Android开发之手机影音/">Android开发之手机影音</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/23/Android蓝牙开发学习/">Android蓝牙开发学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
