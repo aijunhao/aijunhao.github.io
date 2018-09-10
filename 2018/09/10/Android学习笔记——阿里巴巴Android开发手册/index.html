@@ -16,7 +16,7 @@
 <meta property="og:description" content="版本说明    版本号 制定团队 更新日期 备注     1.0.0 淘宝技术团队等 2018.2.28 正式版，首次公开    本手册以开发者为中心视角分为Java 语言规范（遵循《阿里巴巴Java 开发手册》），Android 资源文件命名与使用，Android 基本组件，UI 与布局，进程、线程与消息通信， 文件与数据库，Bitmap、Drawable 与动画，安全，其他等九大部分，根据约">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/阿里巴巴Android开发手册.PNG">
-<meta property="og:updated_time" content="2018-09-10T15:28:52.629Z">
+<meta property="og:updated_time" content="2018-09-10T15:38:08.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习笔记——阿里巴巴Android开发手册">
 <meta name="twitter:description" content="版本说明    版本号 制定团队 更新日期 备注     1.0.0 淘宝技术团队等 2018.2.28 正式版，首次公开    本手册以开发者为中心视角分为Java 语言规范（遵循《阿里巴巴Java 开发手册》），Android 资源文件命名与使用，Android 基本组件，UI 与布局，进程、线程与消息通信， 文件与数据库，Bitmap、Drawable 与动画，安全，其他等九大部分，根据约">
@@ -125,9 +125,7 @@
 <li><p>【推荐】layout 文件的命名方式。</p>
 </li>
 </ol>
-<blockquote>
-<p>Activity 的 layout 以 module_activity 开头<br>Fragment 的 layout 以 module_fragment 开头<br>Dialog 的 layout 以 module_dialog 开头<br>include 的 layout 以 module_include 开头<br>ListView 的行 layout 以 module_list_item 开头<br>RecyclerView 的 item layout 以 module_recycle_item 开头<br>GridView 的行 layout 以 module_grid_item 开头</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Activity 的 layout 以 module_activity 开头</span><br><span class="line">Fragment 的 layout 以 module_fragment 开头</span><br><span class="line">Dialog 的 layout 以 module_dialog 开头</span><br><span class="line">include 的 layout 以 module_include 开头</span><br><span class="line">ListView 的行 layout 以 module_list_item 开头</span><br><span class="line">RecyclerView 的 item layout 以 module_recycle_item 开头</span><br><span class="line">GridView 的行 layout 以 module_grid_item 开头</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li><p>【推荐】drawable 资源名称以小写单词+下划线的方式命名，根据分辨率不同存放在不同的 drawable 目录下，建议只使用一套,例如 drawable-xhdpi。采用规则如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 模块名_业务功能描述_控件描述_控件状态限定词</span><br><span class="line"></span><br><span class="line">如：module_login_btn_pressed,module_tabs_icon_home_normal</span><br></pre></td></tr></table></figure>
