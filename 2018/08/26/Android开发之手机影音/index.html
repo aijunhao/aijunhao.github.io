@@ -28,7 +28,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/item_video_pager.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/SystemVideoPlayer.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/android_layout_finder.png">
-<meta property="og:updated_time" content="2018-09-12T06:28:35.764Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/外部调用.png">
+<meta property="og:updated_time" content="2018-09-12T08:55:49.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发之手机影音">
 <meta name="twitter:description" content="Anroid开发之手机影音此学习笔记来源于“尚硅谷——Android项目视频——手机影音”  svn资源地址：https://47.96.118.115/svn/MobliePlayer  手机影音项目总结12345678910111213141516171819202122232425262728293031323334353637381. 市场上百分之八十的软件架构2. 读取本地视频3. Vi">
@@ -278,11 +279,26 @@
 <hr>
 <h3 id="通过手机音量按键改变声音大小"><a href="#通过手机音量按键改变声音大小" class="headerlink" title="通过手机音量按键改变声音大小"></a>通过手机音量按键改变声音大小</h3><p>只要添加物理按键监听即可。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 物理按键监听</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> keyCode</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> event</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN)&#123;</span><br><span class="line">        <span class="keyword">if</span> (currentVoice &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            currentVoice --;</span><br><span class="line">        &#125;</span><br><span class="line">        updataVoice(currentVoice, <span class="keyword">false</span>);</span><br><span class="line">        handler.removeMessages(HIDE_MEDIACONTROLLER);</span><br><span class="line">        handler.sendEmptyMessageDelayed(HIDE_MEDIACONTROLLER, <span class="number">5000</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;        <span class="comment">// 返回true将不调用系统声音进度条，反之则有进度条</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_VOLUME_UP)&#123;</span><br><span class="line">        <span class="keyword">if</span> (currentVoice &lt; maxVoice) &#123;</span><br><span class="line">            currentVoice++;</span><br><span class="line">        &#125;</span><br><span class="line">        updataVoice(currentVoice, <span class="keyword">false</span>);</span><br><span class="line">        handler.removeMessages(HIDE_MEDIACONTROLLER);</span><br><span class="line">        handler.sendEmptyMessageDelayed(HIDE_MEDIACONTROLLER, <span class="number">5000</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onKeyDown(keyCode, event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="让其他软件能调用我们的播放器"><a href="#让其他软件能调用我们的播放器" class="headerlink" title="让其他软件能调用我们的播放器"></a>让其他软件能调用我们的播放器</h3>
+<h3 id="让其他软件能调用我们的播放器"><a href="#让其他软件能调用我们的播放器" class="headerlink" title="让其他软件能调用我们的播放器"></a>让其他软件能调用我们的播放器</h3><h4 id="方法一：参照系统源代码，在功能清单源代码中添加属性。"><a href="#方法一：参照系统源代码，在功能清单源代码中添加属性。" class="headerlink" title="方法一：参照系统源代码，在功能清单源代码中添加属性。"></a>方法一：参照系统源代码，在功能清单源代码中添加属性。</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">".activity.SystemVideoPlayer"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">"@string/player_name"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:configChanges</span>=<span class="string">"keyboardHidden|screenSize|orientation"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:theme</span>=<span class="string">"@android:style/Theme.NoTitleBar.Fullscreen"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.BROWSABLE"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"rtsp"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:mimeType</span>=<span class="string">"video/*"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:mimeType</span>=<span class="string">"application/sdp"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.BROWSABLE"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"http"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:mimeType</span>=<span class="string">"video/mp4"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:mimeType</span>=<span class="string">"video/3gp"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:mimeType</span>=<span class="string">"video/3gpp"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:mimeType</span>=<span class="string">"video/3gpp2"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>同时，在strings.xml文本资源文件中添加一个名为“player_name”的字符串，然后在配置文件中SystemVideoPlayer的activity中添加label属性，就是在外部调用的时候显示的名字：</p>
+<p><img src="/2018/08/26/Android开发之手机影音/外部调用.png" alt=""></p>
+<h4 id="文件调用过程如下："><a href="#文件调用过程如下：" class="headerlink" title="文件调用过程如下："></a>文件调用过程如下：</h4><ol>
+<li>文件或图片浏览器intent隐式意图</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 调起系统所有的播放器 - 隐式意图</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">intent.setDataAndType(单个视频地址, <span class="string">"video/*"</span>);</span><br><span class="line">context.startActivity(intent);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>视频播放器被调起并播放</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uri = getIntent().getData();    <span class="comment">// 文件夹、图片浏览器、QQ空间等地址</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置播放地址</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">videoview.setVideoURI(uri);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/26/Android开发之手机影音/" data-id="cjlwg0ecn001ia0ut0u0kugus" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/26/Android开发之手机影音/" data-id="cjlyziddb001h5cutml9wjb8p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -356,6 +372,14 @@
       <ul>
         
           <li>
+            <a href="/2018/09/12/探究活动/">探究活动</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/12/第一行Android代码/">第一行Android代码</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/">Android学习笔记——阿里巴巴Android开发手册</a>
           </li>
         
@@ -365,14 +389,6 @@
         
           <li>
             <a href="/2018/09/03/微信小程序开发/">微信小程序开发</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/26/Android开发之手机影音/">Android开发之手机影音</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/23/Android蓝牙开发学习/">Android蓝牙开发学习</a>
           </li>
         
       </ul>
