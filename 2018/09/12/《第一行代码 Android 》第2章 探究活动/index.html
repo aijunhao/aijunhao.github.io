@@ -7,13 +7,13 @@
   
   <title>《第一行代码 Android》第2章 探究活动 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此博客使用教材为《第一行代码 Android》第2版。  活动(Activity)活动(Activity)是最容易吸引用户的地方，它是一种够可以包含用户界面的组件，主要用于和用户进行交互。 活动的创建活动创建有两种，一种是纯手动创建，一种是Activity自动创建。  纯手动创建：纯手动创建活动有三步：新建layout布局文件、新建java类并加载布局、在AndroidManifest中注册生效。">
+  <meta name="description" content="此博客使用教材为《第一行代码 Android》第2版。 第2章 先从看得到的入手——探究活动 活动(Activity)活动(Activity)是最容易吸引用户的地方，它是一种够可以包含用户界面的组件，主要用于和用户进行交互。 活动的创建活动创建有两种，一种是纯手动创建，一种是Activity自动创建。  纯手动创建：纯手动创建活动有三步：新建layout布局文件、新建java类并加载布局、在And">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《第一行代码 Android》第2章 探究活动">
 <meta property="og:url" content="http://yoursite.com/2018/09/12/《第一行代码 Android 》第2章 探究活动/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="此博客使用教材为《第一行代码 Android》第2版。  活动(Activity)活动(Activity)是最容易吸引用户的地方，它是一种够可以包含用户界面的组件，主要用于和用户进行交互。 活动的创建活动创建有两种，一种是纯手动创建，一种是Activity自动创建。  纯手动创建：纯手动创建活动有三步：新建layout布局文件、新建java类并加载布局、在AndroidManifest中注册生效。">
+<meta property="og:description" content="此博客使用教材为《第一行代码 Android》第2版。 第2章 先从看得到的入手——探究活动 活动(Activity)活动(Activity)是最容易吸引用户的地方，它是一种够可以包含用户界面的组件，主要用于和用户进行交互。 活动的创建活动创建有两种，一种是纯手动创建，一种是Activity自动创建。  纯手动创建：纯手动创建活动有三步：新建layout布局文件、新建java类并加载布局、在And">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/09/12/《第一行代码%20Android%20》第2章%20探究活动/1.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/09/12/《第一行代码%20Android%20》第2章%20探究活动/3.PNG">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/12/《第一行代码%20Android%20》第2章%20探究活动/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/09/12/《第一行代码%20Android%20》第2章%20探究活动/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/09/12/《第一行代码%20Android%20》第2章%20探究活动/生存期.jpg">
-<meta property="og:updated_time" content="2018-09-18T11:57:21.707Z">
+<meta property="og:updated_time" content="2018-09-18T12:05:52.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码 Android》第2章 探究活动">
-<meta name="twitter:description" content="此博客使用教材为《第一行代码 Android》第2版。  活动(Activity)活动(Activity)是最容易吸引用户的地方，它是一种够可以包含用户界面的组件，主要用于和用户进行交互。 活动的创建活动创建有两种，一种是纯手动创建，一种是Activity自动创建。  纯手动创建：纯手动创建活动有三步：新建layout布局文件、新建java类并加载布局、在AndroidManifest中注册生效。">
+<meta name="twitter:description" content="此博客使用教材为《第一行代码 Android》第2版。 第2章 先从看得到的入手——探究活动 活动(Activity)活动(Activity)是最容易吸引用户的地方，它是一种够可以包含用户界面的组件，主要用于和用户进行交互。 活动的创建活动创建有两种，一种是纯手动创建，一种是Activity自动创建。  纯手动创建：纯手动创建活动有三步：新建layout布局文件、新建java类并加载布局、在And">
 <meta name="twitter:image" content="http://yoursite.com/2018/09/12/《第一行代码%20Android%20》第2章%20探究活动/1.PNG">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -100,7 +100,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>此博客使用教材为《第一行代码 Android》第2版。</p>
-<hr>
+<h1 id="第2章-先从看得到的入手——探究活动"><a href="#第2章-先从看得到的入手——探究活动" class="headerlink" title="第2章 先从看得到的入手——探究活动"></a>第2章 先从看得到的入手——探究活动</h1><hr>
 <h3 id="活动-Activity"><a href="#活动-Activity" class="headerlink" title="活动(Activity)"></a>活动(Activity)</h3><p>活动(Activity)是最容易吸引用户的地方，它是一种够可以包含用户界面的组件，主要用于和用户进行交互。</p>
 <h3 id="活动的创建"><a href="#活动的创建" class="headerlink" title="活动的创建"></a>活动的创建</h3><p>活动创建有两种，一种是纯手动创建，一种是Activity自动创建。</p>
 <ol>
@@ -335,7 +335,7 @@
       <ul>
         
           <li>
-            <a href="/2018/09/18/《第一行代码-Android》第3章-UI开发/">《第一行代码_Android》第3章_UI开发</a>
+            <a href="/2018/09/18/《第一行代码-Android》第3章 UI开发/">《第一行代码_Android》第3章_UI开发</a>
           </li>
         
           <li>
