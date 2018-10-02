@@ -581,7 +581,337 @@
 </table>
 <h3 id="TextView文本控件"><a href="#TextView文本控件" class="headerlink" title="TextView文本控件"></a>TextView文本控件</h3><p>TextView的作用就是在界面上显示文本。TextView直接继承了 View，是EditText、Button两个UI组件类的父类，TextView与其子类的类图如下图所示：</p>
 <p><img src="/2018/09/18/《第一行代码-Android》第3章 UI开发/TextView类图.jpg" alt=""></p>
-<p> TextView提供了大量的XML属性，这些XML属性大部分不仅可适用于TextView，而且可适用于它的子类（EditText、Button等）。下表显示了TextView支持的XML属性及相关方法。<br>| 属性                          | 方法                                                     | 描述                                                                                                                                                                                                      |<br>| —————————– | ——————————————————– | ——————————————————————————————————————————————————————————————————— |<br>| android:autoLink              | setAutoLinkMask(int)                                     | 控制是否自动查找并转换 URL、邮箱地址等链接为可点击链接.默认值为”none”，禁止该属性.                                                                                                                        |<br>| android:autoText              | setKeyListener(KeyListener)                              | 如果设置，这表示该 TextView 的文本输入法可以自动更正常见拼写错误.                                                                                                                                         |<br>| android:background            | setBackgroundColor                                       | 设置背景                                                                                                                                                                                                  |<br>| android:bufferType            | setText(CharSequence,TextView.BufferType)                | 决定 getText() 方法返回值的种类.默认值为 “normal”.注意，EditText 和 LogTextBox 总是返回 Editable，及时你指定更低的基本也无济于事.                                                                         |<br>| android:capitalize            | setKeyListener(KeyListener)                              | 如果设置该属性，则指定该 TextView 的文本输入法可以自动改变用户输入的字母为大写.                                                                                                                           |<br>| android:cursorVisible         | setCursorVisible(boolean)                                | 使光标可见（默认）或隐藏.                                                                                                                                                                                 |<br>| android:digits                | setKeyListener(KeyListener)                              | 如果设置，则指定该 TextView 使用数字输入法，只接受指定的字符.                                                                                                                                             |<br>| android:drawableBottom        | setCompoundDrawablesWithIntrinsicBounds(int,int,int,int) | 在文本下方显示可绘制对象.                                                                                                                                                                                 |<br>| android:drawableLeft          | setCompoundDrawablesWithIntrinsicBounds(int,int,int,int) | 在文本左侧显示可绘制对象.                                                                                                                                                                                 |<br>| android:drawablePadding       | setCompoundDrawablePadding(int)                          | 文本和可绘制对象的间距.                                                                                                                                                                                   |<br>| android:drawableRight         | setCompoundDrawablesWithIntrinsicBounds(int,int,int,int) | 在文本右侧显示可绘制对象.                                                                                                                                                                                 |<br>| android:drawableTop           | setCompoundDrawablesWithIntrinsicBounds(int,int,int,int) | 在文本上方显示可绘制对象.                                                                                                                                                                                 |<br>| android:editable              |                                                          | 如果设置，则指定该 TextView 有输入法，如果没有特殊指定，其为文本输入状态.                                                                                                                                 |<br>| android:editorExtras          | setInputExtras(int)                                      | 指向 <input-extras> XML 资源，为输入法的特殊实现提供附加数据.只是当输入法启动时将资源 放入EditorInfo.extras 字段.                                                                                         |<br>| android:ellipsize             | setEllipsize(TextUtils.TruncateAt)                       | 该值为真时，如果文字长度超过视图宽度，文字不会在中途被截断， 而是省略其中一部分.为了将文本作为一个整体显示在一行中， 你可能经常使用横向滚动条或者 singleLine 属性， 现在你也可以使用本属性，它还允许多行. |<br>| android:ems                   | setEms(int)                                              | 使 TextView 精确匹配指定个数的字符宽度.                                                                                                                                                                   |<br>| android:freezesText           | setFreezesText(boolean)                                  | 如果设置，则文本视图会保持完整的文本内容，以及象当前光标位置这样的附近信息.                                                                                                                               |<br>| android:gravity               | setGravity(int)                                          | 指定当显示的文本比视图小时，横向和纵向的对齐方式.                                                                                                                                                         |<br>| android:height                | setHeight(int)                                           | 精确的设置 TextView 的高度.使用布局参数也可以达到相同效果.                                                                                                                                                |<br>| android:hint                  | setHint(int)                                             | 当文本为空时显示的提示信息.                                                                                                                                                                               |<br>| android:imeActionId           | setImeActionLabel(CharSequence,int)                      | 当输入法连接到文本视图时，提供用于 EditorInfo.actionId 的值.                                                                                                                                              |<br>| android:imeActionLabel        | setImeActionLabel(CharSequence,int)                      | 当输入法连接到文本视图时，提供用于 EditorInfo.actionLabel 的值.                                                                                                                                           |<br>| android:imeOptions            | setImeOptions(int)                                       | 附近特性，可用于启动输入法与编辑器的关联，以提高你应用程序的集成效果.                                                                                                                                     |<br>| android:includeFontPadding    | setIncludeFontPadding(boolean)                           | 为上标和下标留出足够的空间，以取代字体上下标.默认为真.                                                                                                                                                    |<br>| android:inputMethod           | setKeyListener(KeyListener)                              | 如果设置，即指定 TextView 使用指定的输入法（使用完全修饰类名）.                                                                                                                                           |<br>| android:inputType             | setRawInputType(int)                                     | 文本域中可放置的数据类型，用于帮助输入法决定如何让用户输入文本.                                                                                                                                           |<br>| android:lineSpacingExtra      | setLineSpacing(float,float)                              | 文本行间距.                                                                                                                                                                                               |<br>| android:lineSpacingMultiplier | setLineSpacing(float,float)                              | 用倍数指定的行间距.                                                                                                                                                                                       |<br>| android:lines                 | setLines(int)                                            | 使 TextView 精确匹配指定行数的高度.                                                                                                                                                                       |<br>| android:linksClickable        | setLinksClickable(boolean)                               | 如果设为假，即使指定的 autoLink 属性正确识别出了链接，点击也不会发生任何动作.                                                                                                                             |<br>| android:marqueeRepeatLimit    | setMarqueeRepeatLimit(int)                               | 字幕动画的重复次数.仅应用于启动字母动画的 TextView.                                                                                                                                                       |<br>| android:maxEms                | setMaxEms(int)                                           | 使 TextView 的最大宽度为指定个数的字符宽度.                                                                                                                                                               |<br>| android:maxHeight             | setMaxHeight(int)                                        | 设置 TextView 的最大高度.                                                                                                                                                                                 |<br>| android:maxLength             | setFilters(InputFilter)                                  | 设置输入过滤器，限制输入的文本最大长度为指定值.                                                                                                                                                           |<br>| android:maxWidth              | setMaxWidth(int)                                         | 设置 TextView 的最大宽度.                                                                                                                                                                                 |<br>| android:minEms                | setMinEms(int)                                           | 使 TextView 的最小宽度为指定个数的字符宽度.                                                                                                                                                               |<br>| android:minHeight             | setMinHeight(int)                                        | 设置 TextView 的最小高度.                                                                                                                                                                                 |<br>| android:minLines              | setMinLines(int)                                         | 使 TextView 的最小高度为指定行数的高度.                                                                                                                                                                   |<br>| android:minWidth              | setMinWidth(int)                                         | 设置 TextView 的最小宽度.                                                                                                                                                                                 |<br>| android:numeric               | setKeyListener(KeyListener)                              | 如果设置，指定 TextView 使用数值输入法.默认值为假.                                                                                                                                                        |<br>| android:password              | setTransformationMethod(TransformationMethod)            | 是否将文本域中的字符显示为代表密码的圆点.                                                                                                                                                                 |<br>| android:phoneNumber           | setKeyListener(KeyListener)                              | 如果设置，则指定 TextView 使用电话号码输入法.默认为假.                                                                                                                                                    |<br>| android:privateImeOptions     | setPrivateImeOptions(String)                             | 附加的内容类型，用于描述文本视图支持的输入法的私有实现.                                                                                                                                                   |<br>| android:scrollHorizontally    | setHorizontallyScrolling(boolean)                        | 是否允许文本比视图宽（允许横向滚动）.                                                                                                                                                                     |<br>| android:selectAllOnFocus      | setSelectAllOnFocus(boolean)                             | 如果文本可选，当该视图得到焦点时将文本全部选中，而不只将光标移动到开始或结尾处.                                                                                                                           |<br>| android:shadowColor           | setShadowLayer(float,float,float,int)                    | 在文本后面显示指定颜色的阴影.                                                                                                                                                                             |<br>| android:shadowDx              | setShadowLayer(float,float,float,int)                    | 阴影横向偏移量.                                                                                                                                                                                           |<br>| android:shadowDy              | setShadowLayer(float,float,float,int)                    | 阴影纵向偏移量.                                                                                                                                                                                           |<br>| android:shadowRadius          | setShadowLayer(float,float,float,int)                    | 设置阴影的范围.                                                                                                                                                                                           |<br>| android:singleLine            | setTransformationMethod(TransformationMethod)            | 限制文本显示与一行中，用横向滚动来代替多行显示.                                                                                                                                                           |<br>| android:text                  | setText(CharSequence,TextView.BufferType)                | 用于显示的文本一定是字符串值，使用‘\;’来转义字符。比如‘\n’或用‘\uxxxx’代表 UNICODE 字符.                                                                                                               |<br>| android:textAllCaps           | setAllCaps(boolean)                                      | 全部使用大写字母来呈现文本.                                                                                                                                                                               |<br>| android:textAppearance        |                                                          | 基本的文字颜色、字体、大小和风格.                                                                                                                                                                         |<br>| android:textColor             | setTextColor(int)                                        | 文本颜色，可能是对其它资源的参照，形式为“@[+][package:]type:name” 或“?[package:][type:]name”形式的主题属性.                                                                                               |<br>| android:textColorHighlight    | setHighlightColor(int)                                   | 选中文本的高亮部分的颜色.                                                                                                                                                                                 |<br>| android:textColorHint         | setHintTextColor(int)                                    | 提示信息的文字颜色.                                                                                                                                                                                       |<br>| android:textColorLink         | setLinkTextColor(int)                                    | 超链接的文字颜色.                                                                                                                                                                                         |<br>| android:textIsSelectable      | isTextSelectable()                                       | 指示非可编辑文本可以选择.                                                                                                                                                                                 |<br>| android:textScaleX            | setTextScaleX(float)                                     | 设置文本的横向缩放因子.                                                                                                                                                                                   |<br>| android:textSize              | setTextSize(int,float)                                   | 文字的大小.推荐以“sp（可缩放像素）”为单位来设置该值（比如 15sp）.                                                                                                                                         |<br>| android:textStyle             | setTypeface(Typeface)                                    | 文字风格（粗体、斜体、粗斜体等）.                                                                                                                                                                         |<br>| android:typeface              | setTypeface(Typeface)                                    | 字体名称（楷体、宋体、仿宋、黑体等）.                                                                                                                                                                     |<br>| android:width                 | setWidth(int)                                            | 精确的设置TextView 的宽度，使用布局参数也可以达到相同效果.                                                                                                                                                |</input-extras></p>
+<p> TextView提供了大量的XML属性，这些XML属性大部分不仅可适用于TextView，而且可适用于它的子类（EditText、Button等）。下表显示了TextView支持的XML属性及相关方法。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:autoLink</td>
+<td>setAutoLinkMask(int)</td>
+<td>控制是否自动查找并转换 URL、邮箱地址等链接为可点击链接.默认值为”none”，禁止该属性.</td>
+</tr>
+<tr>
+<td>android:autoText</td>
+<td>setKeyListener(KeyListener)</td>
+<td>如果设置，这表示该 TextView 的文本输入法可以自动更正常见拼写错误.</td>
+</tr>
+<tr>
+<td>android:background</td>
+<td>setBackgroundColor</td>
+<td>设置背景</td>
+</tr>
+<tr>
+<td>android:bufferType</td>
+<td>setText(CharSequence,TextView.BufferType)</td>
+<td>决定 getText() 方法返回值的种类.默认值为 “normal”.注意，EditText 和 LogTextBox 总是返回 Editable，及时你指定更低的基本也无济于事.</td>
+</tr>
+<tr>
+<td>android:capitalize</td>
+<td>setKeyListener(KeyListener)</td>
+<td>如果设置该属性，则指定该 TextView 的文本输入法可以自动改变用户输入的字母为大写.</td>
+</tr>
+<tr>
+<td>android:cursorVisible</td>
+<td>setCursorVisible(boolean)</td>
+<td>使光标可见（默认）或隐藏.</td>
+</tr>
+<tr>
+<td>android:digits</td>
+<td>setKeyListener(KeyListener)</td>
+<td>如果设置，则指定该 TextView 使用数字输入法，只接受指定的字符.</td>
+</tr>
+<tr>
+<td>android:drawableBottom</td>
+<td>setCompoundDrawablesWithIntrinsicBounds(int,int,int,int)</td>
+<td>在文本下方显示可绘制对象.</td>
+</tr>
+<tr>
+<td>android:drawableLeft</td>
+<td>setCompoundDrawablesWithIntrinsicBounds(int,int,int,int)</td>
+<td>在文本左侧显示可绘制对象.</td>
+</tr>
+<tr>
+<td>android:drawablePadding</td>
+<td>setCompoundDrawablePadding(int)</td>
+<td>文本和可绘制对象的间距.</td>
+</tr>
+<tr>
+<td>android:drawableRight</td>
+<td>setCompoundDrawablesWithIntrinsicBounds(int,int,int,int)</td>
+<td>在文本右侧显示可绘制对象.</td>
+</tr>
+<tr>
+<td>android:drawableTop</td>
+<td>setCompoundDrawablesWithIntrinsicBounds(int,int,int,int)</td>
+<td>在文本上方显示可绘制对象.</td>
+</tr>
+<tr>
+<td>android:editable</td>
+<td></td>
+<td>如果设置，则指定该 TextView 有输入法，如果没有特殊指定，其为文本输入状态.</td>
+</tr>
+<tr>
+<td>android:editorExtras</td>
+<td>setInputExtras(int)</td>
+<td>指向 <input-extras> XML 资源，为输入法的特殊实现提供附加数据.只是当输入法启动时将资源 放入EditorInfo.extras 字段.</input-extras></td>
+</tr>
+<tr>
+<td>android:ellipsize</td>
+<td>setEllipsize(TextUtils.TruncateAt)</td>
+<td>该值为真时，如果文字长度超过视图宽度，文字不会在中途被截断， 而是省略其中一部分.为了将文本作为一个整体显示在一行中， 你可能经常使用横向滚动条或者 singleLine 属性， 现在你也可以使用本属性，它还允许多行.</td>
+</tr>
+<tr>
+<td>android:ems</td>
+<td>setEms(int)</td>
+<td>使 TextView 精确匹配指定个数的字符宽度.</td>
+</tr>
+<tr>
+<td>android:freezesText</td>
+<td>setFreezesText(boolean)</td>
+<td>如果设置，则文本视图会保持完整的文本内容，以及象当前光标位置这样的附近信息.</td>
+</tr>
+<tr>
+<td>android:gravity</td>
+<td>setGravity(int)</td>
+<td>指定当显示的文本比视图小时，横向和纵向的对齐方式.</td>
+</tr>
+<tr>
+<td>android:height</td>
+<td>setHeight(int)</td>
+<td>精确的设置 TextView 的高度.使用布局参数也可以达到相同效果.</td>
+</tr>
+<tr>
+<td>android:hint</td>
+<td>setHint(int)</td>
+<td>当文本为空时显示的提示信息.</td>
+</tr>
+<tr>
+<td>android:imeActionId</td>
+<td>setImeActionLabel(CharSequence,int)</td>
+<td>当输入法连接到文本视图时，提供用于 EditorInfo.actionId 的值.</td>
+</tr>
+<tr>
+<td>android:imeActionLabel</td>
+<td>setImeActionLabel(CharSequence,int)</td>
+<td>当输入法连接到文本视图时，提供用于 EditorInfo.actionLabel 的值.</td>
+</tr>
+<tr>
+<td>android:imeOptions</td>
+<td>setImeOptions(int)</td>
+<td>附近特性，可用于启动输入法与编辑器的关联，以提高你应用程序的集成效果.</td>
+</tr>
+<tr>
+<td>android:includeFontPadding</td>
+<td>setIncludeFontPadding(boolean)</td>
+<td>为上标和下标留出足够的空间，以取代字体上下标.默认为真.</td>
+</tr>
+<tr>
+<td>android:inputMethod</td>
+<td>setKeyListener(KeyListener)</td>
+<td>如果设置，即指定 TextView 使用指定的输入法（使用完全修饰类名）.</td>
+</tr>
+<tr>
+<td>android:inputType</td>
+<td>setRawInputType(int)</td>
+<td>文本域中可放置的数据类型，用于帮助输入法决定如何让用户输入文本.</td>
+</tr>
+<tr>
+<td>android:lineSpacingExtra</td>
+<td>setLineSpacing(float,float)</td>
+<td>文本行间距.</td>
+</tr>
+<tr>
+<td>android:lineSpacingMultiplier</td>
+<td>setLineSpacing(float,float)</td>
+<td>用倍数指定的行间距.</td>
+</tr>
+<tr>
+<td>android:lines</td>
+<td>setLines(int)</td>
+<td>使 TextView 精确匹配指定行数的高度.</td>
+</tr>
+<tr>
+<td>android:linksClickable</td>
+<td>setLinksClickable(boolean)</td>
+<td>如果设为假，即使指定的 autoLink 属性正确识别出了链接，点击也不会发生任何动作.</td>
+</tr>
+<tr>
+<td>android:marqueeRepeatLimit</td>
+<td>setMarqueeRepeatLimit(int)</td>
+<td>字幕动画的重复次数.仅应用于启动字母动画的 TextView.</td>
+</tr>
+<tr>
+<td>android:maxEms</td>
+<td>setMaxEms(int)</td>
+<td>使 TextView 的最大宽度为指定个数的字符宽度.</td>
+</tr>
+<tr>
+<td>android:maxHeight</td>
+<td>setMaxHeight(int)</td>
+<td>设置 TextView 的最大高度.</td>
+</tr>
+<tr>
+<td>android:maxLength</td>
+<td>setFilters(InputFilter)</td>
+<td>设置输入过滤器，限制输入的文本最大长度为指定值.</td>
+</tr>
+<tr>
+<td>android:maxWidth</td>
+<td>setMaxWidth(int)</td>
+<td>设置 TextView 的最大宽度.</td>
+</tr>
+<tr>
+<td>android:minEms</td>
+<td>setMinEms(int)</td>
+<td>使 TextView 的最小宽度为指定个数的字符宽度.</td>
+</tr>
+<tr>
+<td>android:minHeight</td>
+<td>setMinHeight(int)</td>
+<td>设置 TextView 的最小高度.</td>
+</tr>
+<tr>
+<td>android:minLines</td>
+<td>setMinLines(int)</td>
+<td>使 TextView 的最小高度为指定行数的高度.</td>
+</tr>
+<tr>
+<td>android:minWidth</td>
+<td>setMinWidth(int)</td>
+<td>设置 TextView 的最小宽度.</td>
+</tr>
+<tr>
+<td>android:numeric</td>
+<td>setKeyListener(KeyListener)</td>
+<td>如果设置，指定 TextView 使用数值输入法.默认值为假.</td>
+</tr>
+<tr>
+<td>android:password</td>
+<td>setTransformationMethod(TransformationMethod)</td>
+<td>是否将文本域中的字符显示为代表密码的圆点.</td>
+</tr>
+<tr>
+<td>android:phoneNumber</td>
+<td>setKeyListener(KeyListener)</td>
+<td>如果设置，则指定 TextView 使用电话号码输入法.默认为假.</td>
+</tr>
+<tr>
+<td>android:privateImeOptions</td>
+<td>setPrivateImeOptions(String)</td>
+<td>附加的内容类型，用于描述文本视图支持的输入法的私有实现.</td>
+</tr>
+<tr>
+<td>android:scrollHorizontally</td>
+<td>setHorizontallyScrolling(boolean)</td>
+<td>是否允许文本比视图宽（允许横向滚动）.</td>
+</tr>
+<tr>
+<td>android:selectAllOnFocus</td>
+<td>setSelectAllOnFocus(boolean)</td>
+<td>如果文本可选，当该视图得到焦点时将文本全部选中，而不只将光标移动到开始或结尾处.</td>
+</tr>
+<tr>
+<td>android:shadowColor</td>
+<td>setShadowLayer(float,float,float,int)</td>
+<td>在文本后面显示指定颜色的阴影.</td>
+</tr>
+<tr>
+<td>android:shadowDx</td>
+<td>setShadowLayer(float,float,float,int)</td>
+<td>阴影横向偏移量.</td>
+</tr>
+<tr>
+<td>android:shadowDy</td>
+<td>setShadowLayer(float,float,float,int)</td>
+<td>阴影纵向偏移量.</td>
+</tr>
+<tr>
+<td>android:shadowRadius</td>
+<td>setShadowLayer(float,float,float,int)</td>
+<td>设置阴影的范围.</td>
+</tr>
+<tr>
+<td>android:singleLine</td>
+<td>setTransformationMethod(TransformationMethod)</td>
+<td>限制文本显示与一行中，用横向滚动来代替多行显示.</td>
+</tr>
+<tr>
+<td>android:text</td>
+<td>setText(CharSequence,TextView.BufferType)</td>
+<td>用于显示的文本一定是字符串值，使用‘\;’来转义字符。比如‘\n’或用‘\uxxxx’代表 UNICODE 字符.</td>
+</tr>
+<tr>
+<td>android:textAllCaps</td>
+<td>setAllCaps(boolean)</td>
+<td>全部使用大写字母来呈现文本.</td>
+</tr>
+<tr>
+<td>android:textAppearance</td>
+<td></td>
+<td>基本的文字颜色、字体、大小和风格.</td>
+</tr>
+<tr>
+<td>android:textColor</td>
+<td>setTextColor(int)</td>
+<td>文本颜色，可能是对其它资源的参照，形式为“@[+][package:]type:name” 或“?[package:][type:]name”形式的主题属性.</td>
+</tr>
+<tr>
+<td>android:textColorHighlight</td>
+<td>setHighlightColor(int)</td>
+<td>选中文本的高亮部分的颜色.</td>
+</tr>
+<tr>
+<td>android:textColorHint</td>
+<td>setHintTextColor(int)</td>
+<td>提示信息的文字颜色.</td>
+</tr>
+<tr>
+<td>android:textColorLink</td>
+<td>setLinkTextColor(int)</td>
+<td>超链接的文字颜色.</td>
+</tr>
+<tr>
+<td>android:textIsSelectable</td>
+<td>isTextSelectable()</td>
+<td>指示非可编辑文本可以选择.</td>
+</tr>
+<tr>
+<td>android:textScaleX</td>
+<td>setTextScaleX(float)</td>
+<td>设置文本的横向缩放因子.</td>
+</tr>
+<tr>
+<td>android:textSize</td>
+<td>setTextSize(int,float)</td>
+<td>文字的大小.推荐以“sp（可缩放像素）”为单位来设置该值（比如 15sp）.</td>
+</tr>
+<tr>
+<td>android:textStyle</td>
+<td>setTypeface(Typeface)</td>
+<td>文字风格（粗体、斜体、粗斜体等）.</td>
+</tr>
+<tr>
+<td>android:typeface</td>
+<td>setTypeface(Typeface)</td>
+<td>字体名称（楷体、宋体、仿宋、黑体等）.</td>
+</tr>
+<tr>
+<td>android:width</td>
+<td>setWidth(int)</td>
+<td>精确的设置TextView 的宽度，使用布局参数也可以达到相同效果.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>Android中字体大小使用sp作为单位。</p>
 <p>属性测试：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">              android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">              android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">              android:orientation=<span class="string">"vertical"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 设置文字颜色、大小、样式 --&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:text=<span class="string">"红色粗体倾斜的TextView"</span></span><br><span class="line">        android:textColor=<span class="string">"#EA5246"</span></span><br><span class="line">        android:textStyle=<span class="string">"bold|italic"</span></span><br><span class="line">        android:textSize=<span class="string">"18sp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 使用阴影 --&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_centerInParent=<span class="string">"true"</span></span><br><span class="line">        android:shadowColor=<span class="string">"#F9F900"</span></span><br><span class="line">        android:shadowDx=<span class="string">"10.0"</span></span><br><span class="line">        android:shadowDy=<span class="string">"10.0"</span></span><br><span class="line">        android:shadowRadius=<span class="string">"3.0"</span></span><br><span class="line">        android:text=<span class="string">"带阴影的TextView"</span></span><br><span class="line">        android:textColor=<span class="string">"#4A4AFF"</span></span><br><span class="line">        android:textSize=<span class="string">"30sp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 带图片 --&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_centerInParent=<span class="string">"true"</span></span><br><span class="line">        android:drawableTop=<span class="string">"@mipmap/ic_launcher"</span></span><br><span class="line">        android:drawableLeft=<span class="string">"@mipmap/ic_launcher"</span></span><br><span class="line">        android:drawableRight=<span class="string">"@mipmap/ic_launcher"</span></span><br><span class="line">        android:drawableBottom=<span class="string">"@mipmap/ic_launcher"</span></span><br><span class="line">        android:text=<span class="string">"带图片的TextView"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 对邮件、电话、网址增加链接 --&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:text=<span class="string">"邮件：1172949809@qq.com\n电话：18248602820\n博客：http://www.aijunhao.com.cn"</span></span><br><span class="line">        android:autoLink=<span class="string">"email|phone|web"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 实现跑马灯效果 --&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:textSize=<span class="string">"18sp"</span></span><br><span class="line">        android:singleLine=<span class="string">"true"</span></span><br><span class="line">        android:ellipsize=<span class="string">"marquee"</span></span><br><span class="line">        android:marqueeRepeatLimit=<span class="string">"marquee_forever"</span></span><br><span class="line">        android:focusable=<span class="string">"true"</span></span><br><span class="line">        android:focusableInTouchMode=<span class="string">"true"</span></span><br><span class="line">        android:text=<span class="string">"实现跑马灯效果的TextView，Android零基础入门到精通系列教程"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/09/18/《第一行代码-Android》第3章 UI开发/TextViewTest.PNG" alt=""></h2><h3 id="Button按钮控件"><a href="#Button按钮控件" class="headerlink" title="Button按钮控件"></a>Button按钮控件</h3><p>TextView的子类，按钮控件。</p>
