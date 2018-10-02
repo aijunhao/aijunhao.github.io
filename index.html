@@ -906,10 +906,6 @@
 <td>setWidth(int)</td>
 <td>精确的设置TextView 的宽度，使用布局参数也可以达到相同效果.</td>
 </tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 <p>Android中字体大小使用sp作为单位。</p>
@@ -920,7 +916,133 @@
 <hr>
 <h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><p>TextView子类，文本框控件。</p>
 <p>获取EditText中的文本。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String inputText = editText.getText().toString();</span><br></pre></td></tr></table></figure></p>
-<p>EditText比较重要的一个属性是inputType，用于为EditText设置输入类型。<br>| 属性                | 描述                   |<br>| ——————- | ———————- |<br>| none                | 普通字符               |<br>| text                | 普通字符               |<br>| textCapCharacters   | 字母大写               |<br>| textCapWords        | 首字母大写             |<br>| textCapSentences    | 仅第一个字母大写       |<br>| textAutoCorrect     | 自动完成               |<br>| textAutoComplete    | 自动完成               |<br>| textMultiLine       | 多行输入               |<br>| textImeMultiLine    | 输入法多行（如果支持） |<br>| textNoSuggestions   | 不提示                 |<br>| textUri             | 网址                   |<br>| textEmailAddress    | 电子邮件地址           |<br>| textEmailSubject    | 邮件主题               |<br>| textShortMessage    | 短讯                   |<br>| textLongMessage     | 长信息                 |<br>| textPersonName      | 人名                   |<br>| textPostalAddress   | 地址                   |<br>| textPassword        | 密码                   |<br>| textVisiblePassword | 可见密码               |<br>| textWebEditText     | 作为网页表单的文本     |<br>| textFilter          | 文本筛选过滤           |<br>| textPhonetic        | 拼音输入               |<br>| number              | 数字                   |<br>| numberSigned        | 带符号数字格式         |<br>| numberDecimal       | 带小数点的浮点格式     |<br>| phone               | 拨号键盘               |<br>| datetime            | 时间日期               |<br>| date                | 日期键盘               |<br>| time                | 时间键盘               |</p>
+<p>EditText比较重要的一个属性是inputType，用于为EditText设置输入类型。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>普通字符</td>
+</tr>
+<tr>
+<td>text</td>
+<td>普通字符</td>
+</tr>
+<tr>
+<td>textCapCharacters</td>
+<td>字母大写</td>
+</tr>
+<tr>
+<td>textCapWords</td>
+<td>首字母大写</td>
+</tr>
+<tr>
+<td>textCapSentences</td>
+<td>仅第一个字母大写</td>
+</tr>
+<tr>
+<td>textAutoCorrect</td>
+<td>自动完成</td>
+</tr>
+<tr>
+<td>textAutoComplete</td>
+<td>自动完成</td>
+</tr>
+<tr>
+<td>textMultiLine</td>
+<td>多行输入</td>
+</tr>
+<tr>
+<td>textImeMultiLine</td>
+<td>输入法多行（如果支持）</td>
+</tr>
+<tr>
+<td>textNoSuggestions</td>
+<td>不提示</td>
+</tr>
+<tr>
+<td>textUri</td>
+<td>网址</td>
+</tr>
+<tr>
+<td>textEmailAddress</td>
+<td>电子邮件地址</td>
+</tr>
+<tr>
+<td>textEmailSubject</td>
+<td>邮件主题</td>
+</tr>
+<tr>
+<td>textShortMessage</td>
+<td>短讯</td>
+</tr>
+<tr>
+<td>textLongMessage</td>
+<td>长信息</td>
+</tr>
+<tr>
+<td>textPersonName</td>
+<td>人名</td>
+</tr>
+<tr>
+<td>textPostalAddress</td>
+<td>地址</td>
+</tr>
+<tr>
+<td>textPassword</td>
+<td>密码</td>
+</tr>
+<tr>
+<td>textVisiblePassword</td>
+<td>可见密码</td>
+</tr>
+<tr>
+<td>textWebEditText</td>
+<td>作为网页表单的文本</td>
+</tr>
+<tr>
+<td>textFilter</td>
+<td>文本筛选过滤</td>
+</tr>
+<tr>
+<td>textPhonetic</td>
+<td>拼音输入</td>
+</tr>
+<tr>
+<td>number</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>numberSigned</td>
+<td>带符号数字格式</td>
+</tr>
+<tr>
+<td>numberDecimal</td>
+<td>带小数点的浮点格式</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>拨号键盘</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>时间日期</td>
+</tr>
+<tr>
+<td>date</td>
+<td>日期键盘</td>
+</tr>
+<tr>
+<td>time</td>
+<td>时间键盘</td>
+</tr>
+</tbody>
+</table>
 <p>EditText还派生了如下两个子类。</p>
 <ul>
 <li>AutoCompleteTextView：带有自动完成功能的EditText。由于该类通常需要与 Adapter结合使用。</li>
@@ -971,8 +1093,76 @@
 </tbody>
 </table>
 <p>ImageView有两个可以设置图片的属性，分别是：android:src和父类View中的android:background，其中background通常指的是背景，而src指的是内容。另外当使用src填入图片时，是按照图片大小直接填充，并不会进行拉伸，需要配合scaleType进行图片拉伸，而使用background填入图片，则是会根据ImageView给定的大小来进行拉伸(自动填充背景)。</p>
-<p> ImageView所支持的android:scaleType属性可指定如下表。<br>| 属性/方法                                         | 描述                                                                                                                                        |<br>| ————————————————- | ——————————————————————————————————————————————- |<br>| matrix ( ImageView.ScaleType.MATRIX)              | 使用 matrix 方式进行缩放。                                                                                                                  |<br>| fitXY ( lmageView.ScaleType.FIT_XY)               | 对图片横向、纵向独立缩放，使得该图片完全适应于该ImageView,图片的纵横比可能会改变。                                                          |<br>| fitStart (ImageView.ScaleType.FIT_START )         | 保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等）,缩放完成后将该图片放在ImageView的左上角。  |<br>| fitCenter (ImageView.ScaleType.FIT_CENTER )       | 保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等）， 缩放完成后将该图片放在ImageView的中央。  |<br>| fitEnd (ImageView.ScaleType.FIT_END )             | 保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等），缩放完成后将该图片放在ImageView的右下角。 |<br>| center ( ImageView.ScaleType.CENTER)              | 把图片放在 ImageView 的中间，但不进行任何缩放。                                                                                             |<br>| centerCrop ( ImageView.ScaleType.CENTER_CROP)     | 保持纵横比缩放图片，以使得图片能完全覆盖ImageView。只要图片的最短边能显示出来即可。                                                         |<br>| centerlnside (ImageView.ScaleType.CENTER_INSIDE ) | 保持纵横比缩放图片，以使得ImageView能完全显示该图片。                                                                                       |</p>
-<p>控制ImageView显示的图片的方法<br>| 方法                                | 属性                                            |<br>| ———————————– | ———————————————– |<br>| setlmageBitmap(Bitmap bm)           | 使用 Bitmap 位图设置该 ImageView 显示的图片。   |<br>| setlmageDrawable(Drawable drawable) | 使用 Drawable 对象设置该 ImageView 显示的图片。 |<br>| setlmageResource(int resld)         | 使用图片资源ID设置该ImageView显示的图片。       |<br>| setlmageURI(Uri uri)                | 使用图片的URI设置   该ImageView显示的图片。        |</p>
+<p> ImageView所支持的android:scaleType属性可指定如下表。</p>
+<table>
+<thead>
+<tr>
+<th>属性/方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>matrix ( ImageView.ScaleType.MATRIX)</td>
+<td>使用 matrix 方式进行缩放。</td>
+</tr>
+<tr>
+<td>fitXY ( lmageView.ScaleType.FIT_XY)</td>
+<td>对图片横向、纵向独立缩放，使得该图片完全适应于该ImageView,图片的纵横比可能会改变。</td>
+</tr>
+<tr>
+<td>fitStart (ImageView.ScaleType.FIT_START )</td>
+<td>保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等）,缩放完成后将该图片放在ImageView的左上角。</td>
+</tr>
+<tr>
+<td>fitCenter (ImageView.ScaleType.FIT_CENTER )</td>
+<td>保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等）， 缩放完成后将该图片放在ImageView的中央。</td>
+</tr>
+<tr>
+<td>fitEnd (ImageView.ScaleType.FIT_END )</td>
+<td>保持纵横比缩放图片，直到该图片能完全显示在ImageView中（图片较长的边长与ImageView相应的边长相等），缩放完成后将该图片放在ImageView的右下角。</td>
+</tr>
+<tr>
+<td>center ( ImageView.ScaleType.CENTER)</td>
+<td>把图片放在 ImageView 的中间，但不进行任何缩放。</td>
+</tr>
+<tr>
+<td>centerCrop ( ImageView.ScaleType.CENTER_CROP)</td>
+<td>保持纵横比缩放图片，以使得图片能完全覆盖ImageView。只要图片的最短边能显示出来即可。</td>
+</tr>
+<tr>
+<td>centerlnside (ImageView.ScaleType.CENTER_INSIDE )</td>
+<td>保持纵横比缩放图片，以使得ImageView能完全显示该图片。</td>
+</tr>
+</tbody>
+</table>
+<p>控制ImageView显示的图片的方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setlmageBitmap(Bitmap bm)</td>
+<td>使用 Bitmap 位图设置该 ImageView 显示的图片。</td>
+</tr>
+<tr>
+<td>setlmageDrawable(Drawable drawable)</td>
+<td>使用 Drawable 对象设置该 ImageView 显示的图片。</td>
+</tr>
+<tr>
+<td>setlmageResource(int resld)</td>
+<td>使用图片资源ID设置该ImageView显示的图片。</td>
+</tr>
+<tr>
+<td>setlmageURI(Uri uri)</td>
+<td>使用图片的URI设置   该ImageView显示的图片。</td>
+</tr>
+</tbody>
+</table>
 <p>图片资源设置案例，使用setImageDrawable()方法更高效：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ImageView iv, iv2;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        iv = (ImageView) findViewById(R.id.iv);</span><br><span class="line">        iv.setBackgroundColor(Color.BLACK);</span><br><span class="line">        iv.setImageResource(R.drawable.test);</span><br><span class="line"></span><br><span class="line">        iv2 = (ImageView) findViewById(R.id.iv2);</span><br><span class="line">        iv2.setBackgroundColor(Color.GREEN);</span><br><span class="line">        iv2.setImageDrawable(getResources().getDrawable(R.drawable.test));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="ProgressBar进度条组件"><a href="#ProgressBar进度条组件" class="headerlink" title="ProgressBar进度条组件"></a>ProgressBar进度条组件</h3><p>ProgressBar也是一组重要的组件，ProgressBar本身代表了进度条组件，它还派生了两个常用的组件：SeekBar和RatingBar。</p>
@@ -1019,12 +1209,112 @@
 </table>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:orientation</span>=<span class="string">"vertical"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--默认的进度条--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ProgressBar</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--系统提供的水平进度条--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ProgressBar</span></span></span><br><span class="line"><span class="tag">        <span class="attr">style</span>=<span class="string">"@android:style/Widget.ProgressBar.Horizontal"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:max</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:progress</span>=<span class="string">"18"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2018/09/18/《第一行代码-Android》第3章 UI开发/ProgressBar.png" alt=""></p>
-<p>ProgressBar属性方法如下表：<br>| 方法                              | 属性                               | 描述                                     |<br>| ——————————— | ———————————- | —————————————- |<br>| android:max                       | setMax(int)                        | 设置进度条的最大值                       |<br>| android:progress                  | setProgress()                      | 设置进度条已完成进度值                   |<br>| android:progressDrawable          | setProgressDrawable(Drawable)      | 设置轨道对应的Drawable对象，自定义背景图 |<br>| android:indeterminate             | setIndeterminate(boolean)          | 如果设置成true，则进度条不精确显示进度   |<br>| android:indeterminateDrawable     | setIndeterminateDrawable(Drawable) | 设置不显示进度的进度条的Drawable对象     |<br>| android:indeterminateDuration     |                                    | 设置不精确显示进度的持续时间             |<br>| android:maxHeight                 |                                    | 设置最大高度                             |<br>| android:minHeight                 |                                    | 设置最小高度                             |<br>| android:maxWidth                  |                                    | 设置最大宽度                             |<br>| android:minWidth                  |                                    | 设置最小宽度                             |<br>| android:progressTint              |                                    | 主进度条颜色                             |<br>| android:progressTintMode          |                                    | 设置主进度颜色模式                       |<br>| android:secondaryProgress         | setSecondaryProgress(int)          | 设置二级进度条的播放进度                 |<br>| android:secondaryProgressTint     |                                    | 设置二级进度条的颜色                     |<br>| android:secondaryProgressTintMode |                                    | 设置二级进度条的颜色模式                 |</p>
+<p>ProgressBar属性方法如下表：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:max</td>
+<td>setMax(int)</td>
+<td>设置进度条的最大值</td>
+</tr>
+<tr>
+<td>android:progress</td>
+<td>setProgress()</td>
+<td>设置进度条已完成进度值</td>
+</tr>
+<tr>
+<td>android:progressDrawable</td>
+<td>setProgressDrawable(Drawable)</td>
+<td>设置轨道对应的Drawable对象，自定义背景图</td>
+</tr>
+<tr>
+<td>android:indeterminate</td>
+<td>setIndeterminate(boolean)</td>
+<td>如果设置成true，则进度条不精确显示进度</td>
+</tr>
+<tr>
+<td>android:indeterminateDrawable</td>
+<td>setIndeterminateDrawable(Drawable)</td>
+<td>设置不显示进度的进度条的Drawable对象</td>
+</tr>
+<tr>
+<td>android:indeterminateDuration</td>
+<td></td>
+<td>设置不精确显示进度的持续时间</td>
+</tr>
+<tr>
+<td>android:maxHeight</td>
+<td></td>
+<td>设置最大高度</td>
+</tr>
+<tr>
+<td>android:minHeight</td>
+<td></td>
+<td>设置最小高度</td>
+</tr>
+<tr>
+<td>android:maxWidth</td>
+<td></td>
+<td>设置最大宽度</td>
+</tr>
+<tr>
+<td>android:minWidth</td>
+<td></td>
+<td>设置最小宽度</td>
+</tr>
+<tr>
+<td>android:progressTint</td>
+<td></td>
+<td>主进度条颜色</td>
+</tr>
+<tr>
+<td>android:progressTintMode</td>
+<td></td>
+<td>设置主进度颜色模式</td>
+</tr>
+<tr>
+<td>android:secondaryProgress</td>
+<td>setSecondaryProgress(int)</td>
+<td>设置二级进度条的播放进度</td>
+</tr>
+<tr>
+<td>android:secondaryProgressTint</td>
+<td></td>
+<td>设置二级进度条的颜色</td>
+</tr>
+<tr>
+<td>android:secondaryProgressTintMode</td>
+<td></td>
+<td>设置二级进度条的颜色模式</td>
+</tr>
+</tbody>
+</table>
 <p>进度条组件事件属于耗时，执行时在线程中进行。</p>
 <hr>
 <h3 id="SeekBar拖动条组件"><a href="#SeekBar拖动条组件" class="headerlink" title="SeekBar拖动条组件"></a>SeekBar拖动条组件</h3><p>ProgressBar的子类，拖动条，允许用户手动改变的进度条组件，常用于音视频播放器的进度指、音量等可以用户控制的组件。</p>
 <p>有了用户控制功能，少不了的就是监听接口(OnSeekBarChangeListener)。</p>
-<p>特有属性如下表：<br>| 属性           | 描述                 |<br>| ————– | ——————– |<br>| android:thumb | 设置进度条的滑块图片 |</p>
+<p>特有属性如下表：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:thumb</td>
+<td>设置进度条的滑块图片</td>
+</tr>
+</tbody>
+</table>
 <p>接口如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A callback that notifies clients when the progress level has been</span></span><br><span class="line"><span class="comment"> * changed. This includes changes that were initiated by the user through a</span></span><br><span class="line"><span class="comment"> * touch gesture or arrow key/trackball as well as changes that were initiated</span></span><br><span class="line"><span class="comment"> * programmatically.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnSeekBarChangeListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Notification that the progress level has changed. Clients can use the fromUser parameter</span></span><br><span class="line"><span class="comment">     * to distinguish user-initiated changes from those that occurred programmatically.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> seekBar The SeekBar whose progress has changed</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> progress The current progress level. This will be in the range min..max where min</span></span><br><span class="line"><span class="comment">     *                 and max were set by &#123;<span class="doctag">@link</span> ProgressBar#setMin(int)&#125; and</span></span><br><span class="line"><span class="comment">     *                 &#123;<span class="doctag">@link</span> ProgressBar#setMax(int)&#125;, respectively. (The default values for</span></span><br><span class="line"><span class="comment">     *                 min is 0 and max is 100.)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fromUser True if the progress change was initiated by the user.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onProgressChanged</span><span class="params">(SeekBar seekBar, <span class="keyword">int</span> progress, <span class="keyword">boolean</span> fromUser)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Notification that the user has started a touch gesture. Clients may want to use this</span></span><br><span class="line"><span class="comment">     * to disable advancing the seekbar.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> seekBar The SeekBar in which the touch gesture began</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onStartTrackingTouch</span><span class="params">(SeekBar seekBar)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Notification that the user has finished a touch gesture. Clients may want to use this</span></span><br><span class="line"><span class="comment">     * to re-enable advancing the seekbar.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> seekBar The SeekBar in which the touch gesture began</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onStopTrackingTouch</span><span class="params">(SeekBar seekBar)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在使用时，设置SeekBar组件监听接口然后重新方法。</p>
 <hr>
