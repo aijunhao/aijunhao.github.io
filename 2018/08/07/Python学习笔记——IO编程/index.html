@@ -7,18 +7,18 @@
   
   <title>Python学习笔记——IO编程 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：| 文件对象方法        | 执行操作                                                                                      ||:——————- |:———————————">
+  <meta name="description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：    文件对象方法 执行操作     f.close() 关闭文件   f.read(size = -1) 以文件读取size个字符，当为给定size值或给定负值的时候，读取剩余所有的字符，然后作为字符串返回   f.readline() 以写入模式打开，如果文">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python学习笔记——IO编程">
 <meta property="og:url" content="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：| 文件对象方法        | 执行操作                                                                                      ||:——————- |:———————————">
+<meta property="og:description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：    文件对象方法 执行操作     f.close() 关闭文件   f.read(size = -1) 以文件读取size个字符，当为给定size值或给定负值的时候，读取剩余所有的字符，然后作为字符串返回   f.readline() 以写入模式打开，如果文">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-12T10:31:14.584Z">
+<meta property="og:updated_time" content="2018-10-02T14:49:34.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——IO编程">
-<meta name="twitter:description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：| 文件对象方法        | 执行操作                                                                                      ||:——————- |:———————————">
+<meta name="twitter:description" content="IO在计算机中指Input/Output，也就是输入和输出。 这里讲的是对文件的Strea流m处理。  open()方法文件对象方法：    文件对象方法 执行操作     f.close() 关闭文件   f.read(size = -1) 以文件读取size个字符，当为给定size值或给定负值的时候，读取剩余所有的字符，然后作为字符串返回   f.readline() 以写入模式打开，如果文">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -91,10 +91,90 @@
 <p>IO在计算机中指Input/Output，也就是输入和输出。</p>
 <p>这里讲的是对文件的Strea流m处理。</p>
 <hr>
-<h3 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h3><p>文件对象方法：<br>| 文件对象方法        | 执行操作                                                                                      |<br>|:——————- |:——————————————————————————————— |<br>| f.close()           | 关闭文件                                                                                      |<br>| f.read(size = -1)   | 以文件读取size个字符，当为给定size值或给定负值的时候，读取剩余所有的字符，然后作为字符串返回  |<br>| f.readline()        | 以写入模式打开，如果文件存在，则在末尾追加写入                                                |<br>| f.write(str)        | 将字符串成str写入文件                                                                         |<br>| f.writelines(seq)   | 向文件吸入字符串序列seq，seq应该是一个返回字符串的可迭代对象                                  |<br>| f.seek(offset,from) | 当文件找那个移动文件指针，从from(0表示其实位置，1表示当前位置，2表示文件末尾)偏移offset个字节 |<br>| f.tell()            | 返回当前在文件中的为位置                                                                      |</p>
+<h3 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h3><p>文件对象方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">文件对象方法</th>
+<th style="text-align:left">执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">f.close()</td>
+<td style="text-align:left">关闭文件</td>
+</tr>
+<tr>
+<td style="text-align:left">f.read(size = -1)</td>
+<td style="text-align:left">以文件读取size个字符，当为给定size值或给定负值的时候，读取剩余所有的字符，然后作为字符串返回</td>
+</tr>
+<tr>
+<td style="text-align:left">f.readline()</td>
+<td style="text-align:left">以写入模式打开，如果文件存在，则在末尾追加写入</td>
+</tr>
+<tr>
+<td style="text-align:left">f.write(str)</td>
+<td style="text-align:left">将字符串成str写入文件</td>
+</tr>
+<tr>
+<td style="text-align:left">f.writelines(seq)</td>
+<td style="text-align:left">向文件吸入字符串序列seq，seq应该是一个返回字符串的可迭代对象</td>
+</tr>
+<tr>
+<td style="text-align:left">f.seek(offset,from)</td>
+<td style="text-align:left">当文件找那个移动文件指针，从from(0表示其实位置，1表示当前位置，2表示文件末尾)偏移offset个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">f.tell()</td>
+<td style="text-align:left">返回当前在文件中的为位置</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h4 id="读文件-调用open-方法"><a href="#读文件-调用open-方法" class="headerlink" title="读文件: 调用open()方法"></a>读文件: 调用open()方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(file, mode=<span class="string">'r'</span>, buffering=<span class="number">-1</span>, encoding=<span class="keyword">None</span>, errors=<span class="keyword">None</span>, newline=<span class="keyword">None</span>, closefd=<span class="keyword">True</span>, opener=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># file: 文件路径</span></span><br><span class="line"><span class="comment"># mode: 打开模式</span></span><br><span class="line"><span class="comment"># encoding: 读取指定编码的文件</span></span><br><span class="line"><span class="comment"># errors: 是否忽略错误提醒</span></span><br></pre></td></tr></table></figure>
-<p>mode参数如下：<br>| 打开模式 | 执行操作                                   |<br>|:——–:|:—————————————— |<br>|   ‘r’    | 以只读方式打开文件(默认)                   |<br>|   ‘w’    | 以写入的方式打开文件，会覆盖已存在的文件   |<br>|   ‘x’    | 创建一个新文件并打开它进行写入             |<br>|   ‘a’    | 打开写入，如果文件存在，则追加到文件的末尾 |<br>|   ‘b’    | 以二进制模式打开                           |<br>|   ‘t’    | 以文本模式打开文件(默认)                   |<br>|   ‘+’    | 打开磁盘文件进行更新（读写）               |<br>|   ‘U’    | 通用换行模式                               |</p>
+<p>mode参数如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">打开模式</th>
+<th style="text-align:left">执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">‘r’</td>
+<td style="text-align:left">以只读方式打开文件(默认)</td>
+</tr>
+<tr>
+<td style="text-align:center">‘w’</td>
+<td style="text-align:left">以写入的方式打开文件，会覆盖已存在的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">‘x’</td>
+<td style="text-align:left">创建一个新文件并打开它进行写入</td>
+</tr>
+<tr>
+<td style="text-align:center">‘a’</td>
+<td style="text-align:left">打开写入，如果文件存在，则追加到文件的末尾</td>
+</tr>
+<tr>
+<td style="text-align:center">‘b’</td>
+<td style="text-align:left">以二进制模式打开</td>
+</tr>
+<tr>
+<td style="text-align:center">‘t’</td>
+<td style="text-align:left">以文本模式打开文件(默认)</td>
+</tr>
+<tr>
+<td style="text-align:center">‘+’</td>
+<td style="text-align:left">打开磁盘文件进行更新（读写）</td>
+</tr>
+<tr>
+<td style="text-align:center">‘U’</td>
+<td style="text-align:left">通用换行模式</td>
+</tr>
+</tbody>
+</table>
 <p>实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(<span class="string">r'D:\blog\source\_posts\Python学习笔记——IO编程\test.txt'</span>, <span class="string">'r'</span>)        <span class="comment"># 使用'r'模式打开文件</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.read()</span><br><span class="line"></span><br><span class="line"><span class="string">'#include &lt;iostream&gt;\nusing namespace std;\nint main()&#123;\n\tcout &lt;&lt; "Hello, world!" &lt;&lt; endl;\n&#125;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.read()     <span class="comment"># 此时文件指针处于文件末尾，再次读取将没有内容</span></span><br><span class="line"></span><br><span class="line"><span class="string">''</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.tell()     <span class="comment"># 当前文件指针的位置</span></span><br><span class="line"></span><br><span class="line"><span class="number">92</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.seek(<span class="number">0</span>,<span class="number">0</span>)    <span class="comment"># 设置文件指针为文件头</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(file)        <span class="comment"># 将文件内容转为列表类型</span></span><br><span class="line"></span><br><span class="line">[<span class="string">'#include &lt;iostream&gt;\n'</span>, <span class="string">'using namespace std;\n'</span>, <span class="string">'int main()&#123;\n'</span>, <span class="string">'\tcout &lt;&lt; "Hello, world!" &lt;&lt; endl;\n'</span>, <span class="string">'&#125;'</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.seek(<span class="number">0</span>,<span class="number">0</span>)      <span class="comment"># 每当遍历一次文件，文件指针就会改变</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> each_line <span class="keyword">in</span> file:      <span class="comment"># 官方高效率遍历文件的方法</span></span><br><span class="line">    print(each_line)</span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">"Hello, world!"</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.close()      <span class="comment"># 记得关闭文件</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 <h4 id="写文件-调用open-方法，设置打开模式为’w’，调用f-write-等方法写入内容"><a href="#写文件-调用open-方法，设置打开模式为’w’，调用f-write-等方法写入内容" class="headerlink" title="写文件: 调用open()方法，设置打开模式为’w’，调用f.write()等方法写入内容"></a>写文件: 调用open()方法，设置打开模式为’w’，调用f.write()等方法写入内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(file_name, <span class="string">'w'</span>)     <span class="comment"># 新建一个名为"file_name"的可读写文件，可以指定文件编码格式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list = [<span class="string">'123'</span>, <span class="string">'234'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str = <span class="string">'456'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.writelines(list)     <span class="comment"># 将list写入文件中</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.wirte(str)       <span class="comment"># 写入字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.close            <span class="comment"># 记得关闭文件，确保缓存中还未写入磁盘的数据全部写入吸盘。</span></span><br></pre></td></tr></table></figure>
@@ -178,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjmrtp7y600055cutspxt991h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjmypqigz000ad0utqqtsxbuh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -252,11 +332,15 @@
       <ul>
         
           <li>
-            <a href="/2018/10/01/《第一行代码-Android》第4章-碎片/">《第一行代码_Android》第4章_碎片</a>
+            <a href="/2018/10/07/《第一行代码_Android》第5章_广播/">《第一行代码_Android》第5章_广播</a>
           </li>
         
           <li>
-            <a href="/2018/09/18/《第一行代码-Android》第3章 UI开发/">《第一行代码_Android》第3章_UI开发</a>
+            <a href="/2018/10/01/《第一行代码_Android》第4章_碎片/">《第一行代码_Android》第4章_碎片</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/18/《第一行代码_Android》第3章_UI开发/">《第一行代码_Android》第3章_UI开发</a>
           </li>
         
           <li>
@@ -264,11 +348,7 @@
           </li>
         
           <li>
-            <a href="/2018/09/12/《第一行代码 Android 》第2章 探究活动/">《第一行代码 Android》第2章 探究活动</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/12/《第一行代码 Android 》第1章 第一行Android代码/">《第一行代码 Android》第1章 第一行Android代码</a>
+            <a href="/2018/09/12/《第一行代码_Android》第2章_探究活动/">《第一行代码 Android》第2章 探究活动</a>
           </li>
         
       </ul>

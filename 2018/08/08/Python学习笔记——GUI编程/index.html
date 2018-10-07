@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/Button.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/CheckButton1.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG">
-<meta property="og:updated_time" content="2018-09-12T10:31:06.754Z">
+<meta property="og:updated_time" content="2018-10-02T14:49:09.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——GUI编程">
 <meta name="twitter:description" content="GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(f">
@@ -416,7 +416,37 @@
 </tr>
 </tbody>
 </table>
-<p>常用方法<br>| 方法       | 描述                                                                       |<br>|:———- |:————————————————————————– |<br>| deselect() | 清除复选框选中选项。                                                       |<br>| flash()    | 在激活状态颜色和正常颜色之间闪烁几次单选按钮，但保持它开始时的状态。       |<br>| invoke()   | 可以调用此方法来获得与用户单击单选按钮以更改其状态时发生的操作相同的操作。 |<br>| select()   | 设置按钮为选中。                                                           |<br>| toggle()   | 选中与没有选中的选项互相切换。                                             |</p>
+<p>常用方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">deselect()</td>
+<td style="text-align:left">清除复选框选中选项。</td>
+</tr>
+<tr>
+<td style="text-align:left">flash()</td>
+<td style="text-align:left">在激活状态颜色和正常颜色之间闪烁几次单选按钮，但保持它开始时的状态。</td>
+</tr>
+<tr>
+<td style="text-align:left">invoke()</td>
+<td style="text-align:left">可以调用此方法来获得与用户单击单选按钮以更改其状态时发生的操作相同的操作。</td>
+</tr>
+<tr>
+<td style="text-align:left">select()</td>
+<td style="text-align:left">设置按钮为选中。</td>
+</tr>
+<tr>
+<td style="text-align:left">toggle()</td>
+<td style="text-align:left">选中与没有选中的选项互相切换。</td>
+</tr>
+</tbody>
+</table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()         <span class="comment"># 生成窗口</span></span><br><span class="line"></span><br><span class="line">GIRLS = [<span class="string">'西施'</span>, <span class="string">'貂蝉'</span>, <span class="string">'王昭君'</span>, <span class="string">'杨玉环'</span>]</span><br><span class="line">v = []        <span class="comment"># 表示按钮是否被选中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> girl <span class="keyword">in</span> GIRLS:</span><br><span class="line">    v.append(tkinter.IntVar())</span><br><span class="line">    b = tkinter.Checkbutton(root, text=girl, variable=v[<span class="number">-1</span>])</span><br><span class="line">    b.pack(anchor=<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">tkinter.mainloop()</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG" alt=""></p>
 <hr>
@@ -426,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjmrtp7yq00095cutvm2l6zni" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjmypqigp0006d0uto4t1v69y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -500,11 +530,15 @@
       <ul>
         
           <li>
-            <a href="/2018/10/01/《第一行代码-Android》第4章-碎片/">《第一行代码_Android》第4章_碎片</a>
+            <a href="/2018/10/07/《第一行代码_Android》第5章_广播/">《第一行代码_Android》第5章_广播</a>
           </li>
         
           <li>
-            <a href="/2018/09/18/《第一行代码-Android》第3章 UI开发/">《第一行代码_Android》第3章_UI开发</a>
+            <a href="/2018/10/01/《第一行代码_Android》第4章_碎片/">《第一行代码_Android》第4章_碎片</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/18/《第一行代码_Android》第3章_UI开发/">《第一行代码_Android》第3章_UI开发</a>
           </li>
         
           <li>
@@ -512,11 +546,7 @@
           </li>
         
           <li>
-            <a href="/2018/09/12/《第一行代码 Android 》第2章 探究活动/">《第一行代码 Android》第2章 探究活动</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/12/《第一行代码 Android 》第1章 第一行Android代码/">《第一行代码 Android》第1章 第一行Android代码</a>
+            <a href="/2018/09/12/《第一行代码_Android》第2章_探究活动/">《第一行代码 Android》第2章 探究活动</a>
           </li>
         
       </ul>
