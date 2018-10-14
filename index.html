@@ -62,6 +62,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-《第一行代码_Android》第6章_数据持久化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/09/《第一行代码_Android》第6章_数据持久化/" class="article-date">
+  <time datetime="2018-10-09T07:54:49.000Z" itemprop="datePublished">2018-10-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/09/《第一行代码_Android》第6章_数据持久化/">《第一行代码_Android》第6章_数据持久化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此博客使用教材为《第一行代码 Android》第2版。</p>
+<h1 id="第6章-数据存储全方案——详解持久化技术"><a href="#第6章-数据存储全方案——详解持久化技术" class="headerlink" title="第6章 数据存储全方案——详解持久化技术"></a>第6章 数据存储全方案——详解持久化技术</h1><hr>
+<h3 id="持久化技术简介"><a href="#持久化技术简介" class="headerlink" title="持久化技术简介"></a>持久化技术简介</h3><p>数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转化。</p>
+<p>Android中的书持久化技术提供了3种方式用于简单地实现持久化功能。即文件存储、SharedPreference存储和数据库存储。此外还可以SD卡存储，但是较为复杂，而且安全性能也不高。</p>
+<hr>
+<h3 id="文件存储-内部存储"><a href="#文件存储-内部存储" class="headerlink" title="文件存储/内部存储"></a>文件存储/内部存储</h3><p>activity_main.xml:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/edit"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:hint</span>=<span class="string">"Type something here"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>MainActivity.java:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.filepersistencetest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.text.TextUtils;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.widget.EditText;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> EditText edit;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        edit = (EditText) findViewById(R.id.edit);</span><br><span class="line">        String inputText = load();</span><br><span class="line">        <span class="keyword">if</span> (!TextUtils.isEmpty(inputText))&#123;</span><br><span class="line">            edit.setText(inputText);</span><br><span class="line">            edit.setSelection(inputText.length());</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"Restoring succeeded"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件读取</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">load</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        FileInputStream in = <span class="keyword">null</span>;</span><br><span class="line">        BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">        StringBuilder content = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            in = openFileInput(<span class="string">"data"</span>);</span><br><span class="line">            reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(in));</span><br><span class="line">            String line = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">while</span> ((line = reader.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                content.append(line);</span><br><span class="line">                content.append(<span class="string">"\n"</span>);     <span class="comment">// 加入换行</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (reader != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    reader.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> content.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在活动销毁的时候保存文件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        String inputText = edit.getText().toString();</span><br><span class="line">        save(inputText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件存储</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputText</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(String inputText)</span></span>&#123;</span><br><span class="line">        FileOutputStream out = <span class="keyword">null</span>;</span><br><span class="line">        BufferedWriter writer = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            out = openFileOutput(<span class="string">"data"</span>, Context.MODE_PRIVATE);</span><br><span class="line">            writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(out));</span><br><span class="line">            writer.write(inputText);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (writer != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行程序，在编辑框中输入字符，当退出时，会自动保存到data文件中，再次打开时，会先读取data文件中的内容并显示出来。</p>
+<hr>
+<h3 id="SharedPreferences存储"><a href="#SharedPreferences存储" class="headerlink" title="SharedPreferences存储"></a>SharedPreferences存储</h3><p>SharedPreferences是使用键值对的方式来存储数据的，只适合存放一些简单的数据和键值对。文件一般都存放在/data/data/<package name="">/shared_prefs/目录下。</package></p>
+<p>可以用这种方式实现记住密码。</p>
+<p>获取SharedPreferences对象的方法有三种。</p>
+<ol>
+<li><p>Context类中的getSharedPreferences()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * name：文件名，不存在会自动创建一个</span></span><br><span class="line"><span class="comment"> * mode：操作模式，目前只有MODE_PRIVATE一种可用，与传入0效果相同，其他都被删除</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SharedPreferences <span class="title">getSharedPreferences</span><span class="params">(String name, <span class="keyword">int</span> mode)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mBase.getSharedPreferences(name, mode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Activity类中的getPreferences()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 只接收一个操作模式参数，，会自动将当前活动的类名作为文件名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SharedPreferences <span class="title">getPreferences</span><span class="params">(@Context.PreferencesMode <span class="keyword">int</span> mode)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getSharedPreferences(getLocalClassName(), mode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PreferenceManager类中的getDefaultSharedPreferences()方法。<br>只接收一个Context参数，自动使用当前应用程序的包名作为前缀来命名。</p>
+</li>
+</ol>
+<p>得到SharedPreferences对象之后，就可以像文件中存储数据了。步骤如下：</p>
+<ol>
+<li>调用SharedPrederences对象的edit()方法来获取SharedPrederendes.Editor对象。</li>
+<li>向SharedPrederendes.Editor对象中添加数据，如putString()方法添加String类型数据。</li>
+<li>调用apply()方法将添加的数据提交，实现数据存储。</li>
+</ol>
+<p>实例如下，点击“Save data”按钮，进行数据存储，点击“Restore data”按钮，进行数据读取：<br>activity_main.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/save_data"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Save data"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/restore_data"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Restore data"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>MainActivity.java:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.sharedpreferences;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.SharedPreferences;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Button saveData;</span><br><span class="line">    <span class="keyword">private</span> Button restoreData;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        saveData = (Button) findViewById(R.id.save_data);</span><br><span class="line">        restoreData = (Button) findViewById(R.id.restore_data);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 存数据</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        saveData.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 以下三种方法效果相同</span></span><br><span class="line">                SharedPreferences.Editor editor = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE).edit();</span><br><span class="line">                <span class="comment">// SharedPreferences.Editor editor = preferences.edit();</span></span><br><span class="line">                <span class="comment">// SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();</span></span><br><span class="line">                editor.putString(<span class="string">"name"</span>, <span class="string">"Tom"</span>);</span><br><span class="line">                editor.putInt(<span class="string">"age"</span>, <span class="number">28</span>);</span><br><span class="line">                editor.putBoolean(<span class="string">"married"</span>, <span class="keyword">false</span>);</span><br><span class="line">                editor.apply();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 取数据</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        restoreData.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 以下三种方法效果相同</span></span><br><span class="line">                SharedPreferences preferences = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE);</span><br><span class="line">                <span class="comment">// SharedPreferences preferences = getSharedPreferences("data", MODE_PRIVATE);</span></span><br><span class="line">                <span class="comment">// SharedPreferences preferences = getPreferences(MODE_PRIVATE);</span></span><br><span class="line">                String name = preferences.getString(<span class="string">"name"</span>, <span class="string">""</span>);</span><br><span class="line">                <span class="keyword">int</span> age = preferences.getInt(<span class="string">"age"</span>, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">boolean</span> married = preferences.getBoolean(<span class="string">"married"</span>, <span class="keyword">false</span>);</span><br><span class="line">                Log.d(MainActivity.class.getName(),<span class="string">"name is "</span> + name);</span><br><span class="line">                Log.d(MainActivity.class.getName(),<span class="string">"age is "</span> + age);</span><br><span class="line">                Log.d(MainActivity.class.getName(),<span class="string">"married is "</span> + married);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="SQLite数据库存储"><a href="#SQLite数据库存储" class="headerlink" title="SQLite数据库存储"></a>SQLite数据库存储</h3><p>SQLite数据库是android自带的轻量级关系型数据库，可以存储大量复杂的关系型数据。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjn8gp403001ia0ut7dqv1b3k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Git使用教程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/09/Git使用教程/" class="article-date">
@@ -123,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/Git使用教程/" data-id="cjn1fc01o0000rkutmpkwz39x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/Git使用教程/" data-id="cjn8gp3xf0004a0utg98f9in8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -135,9 +204,9 @@
 
 
   
-    <article id="post-Python学习笔记——基础部分/《第一行代码_Android》第5章_广播" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-《第一行代码_Android》第5章_广播" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/07/Python学习笔记——基础部分/《第一行代码_Android》第5章_广播/" class="article-date">
+    <a href="/2018/10/07/《第一行代码_Android》第5章_广播/" class="article-date">
   <time datetime="2018-10-07T10:14:17.000Z" itemprop="datePublished">2018-10-07</time>
 </a>
     
@@ -149,7 +218,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/07/Python学习笔记——基础部分/《第一行代码_Android》第5章_广播/">《第一行代码_Android》第5章_广播</a>
+      <a class="article-title" href="/2018/10/07/《第一行代码_Android》第5章_广播/">《第一行代码_Android》第5章_广播</a>
     </h1>
   
 
@@ -196,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/07/Python学习笔记——基础部分/《第一行代码_Android》第5章_广播/" data-id="cjn1fc1080003rkutjqd5adl8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/07/《第一行代码_Android》第5章_广播/" data-id="cjn8gp401001ha0ut229pgc2a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -368,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/" data-id="cjmypqihu0018d0utw7q91om5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/" data-id="cjn8gp40a001ka0ut0sgpgl2b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -1590,7 +1659,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/18/《第一行代码_Android》第3章_UI开发/" data-id="cjmypqim5001md0utug87bgdp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/18/《第一行代码_Android》第3章_UI开发/" data-id="cjn8gp421001va0utgkpvx846" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -1637,7 +1706,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/hello-world/" data-id="cjmypqihr0014d0utnqhqayrw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/12/hello-world/" data-id="cjn8gp40c001ma0utw8o0gvnk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1831,7 +1900,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第2章_探究活动/" data-id="cjmypqihn0010d0uti4b4s5qu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第2章_探究活动/" data-id="cjn8gp3yi0010a0utca62dtst" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -1871,7 +1940,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第1章_第一行Android代码/" data-id="cjmypqihm000yd0ut6mmwdo4f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第1章_第一行Android代码/" data-id="cjn8gp3yc000sa0ut2y6ad9zj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -2077,7 +2146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/" data-id="cjmypqihj000sd0utd5e5ot69" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/10/Android学习笔记——阿里巴巴Android开发手册/" data-id="cjn8gp3y9000qa0utsnjhqzkf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -2125,58 +2194,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/Android学习笔记——多媒体模块/" data-id="cjmypqiet0000d0utcoh8hfkl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/04/Android学习笔记——多媒体模块/" data-id="cjn8gp3yf000xa0ut1174u362" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-微信小程序开发" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/微信小程序开发/" class="article-date">
-  <time datetime="2018-09-03T07:11:06.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/微信小程序开发/">微信小程序开发</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="微信小程序开发"><a href="#微信小程序开发" class="headerlink" title="微信小程序开发"></a>微信小程序开发</h2><p>使用学习资料如下：《微信小程序开发》</p>
-<p>微信小程序平台：<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">https://mp.weixin.qq.com/</a><br>小程序开发文档如下：<a href="https://developers.weixin.qq.com/miniprogram/dev/?t=20161107" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/?t=20161107</a><br>微信web开发者工具：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18082922" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18082922</a><br>工具介绍：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html</a></p>
-<hr>
-<h3 id="注册并安装开发者工具"><a href="#注册并安装开发者工具" class="headerlink" title="注册并安装开发者工具"></a>注册并安装开发者工具</h3><p>申请小程序开发者账号：<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="noopener">https://mp.weixin.qq.com/wxopen/waregister?action=step1</a> ，按步走如实填写即可。<br><img src="/2018/09/03/微信小程序开发/register.png" alt=""></p>
-<p>如下即为开发者工具登录界面，使用微信开发者账号扫一扫登录：<br><img src="/2018/09/03/微信小程序开发/开发者工具.png" alt=""></p>
-<p>按需求选择开发程序，这里使用“小程序项目”：<br><img src="/2018/09/03/微信小程序开发/开发者工具-choice.png" alt=""></p>
-<p>小程序项目管理界面，项目目录就是文件存放地址，自己选择；登录 <a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">https://mp.weixin.qq.com</a> ，我们可以在菜单 “设置”-“开发设置” 看到小程序的 AppID 了 。<br><img src="/2018/09/03/微信小程序开发/开发者工具-小程序项目.png" alt=""></p>
-<p><img src="/2018/09/03/微信小程序开发/开发者工具-AppID.png" alt=""></p>
-<p>全部设置好后确定，进入开发页面：<br><img src="/2018/09/03/微信小程序开发/FirstWeChatApp.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/微信小程序开发/" data-id="cjmypqihz001fd0utvlt8jalk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
 
     </footer>
   </div>
@@ -2235,11 +2256,15 @@
       <ul>
         
           <li>
+            <a href="/2018/10/09/《第一行代码_Android》第6章_数据持久化/">《第一行代码_Android》第6章_数据持久化</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/09/Git使用教程/">Git使用教程</a>
           </li>
         
           <li>
-            <a href="/2018/10/07/Python学习笔记——基础部分/《第一行代码_Android》第5章_广播/">《第一行代码_Android》第5章_广播</a>
+            <a href="/2018/10/07/《第一行代码_Android》第5章_广播/">《第一行代码_Android》第5章_广播</a>
           </li>
         
           <li>
@@ -2248,10 +2273,6 @@
         
           <li>
             <a href="/2018/09/18/《第一行代码_Android》第3章_UI开发/">《第一行代码_Android》第3章_UI开发</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/12/hello-world/">Hello World</a>
           </li>
         
       </ul>
