@@ -7,18 +7,18 @@
   
   <title>《第一行代码_Android》第5章_广播 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此博客使用教材为《第一行代码 Android》第2版。 第5章 全局大喇叭——详解广播机制 Android四大组件之一 —— 广播接收器 Broadcast Receiver广播接收器的类型：  标准广播：异步执行的广播，在广播发出之后，所有的广播接收器几乎在同一时间接收到这条广播消息。效率较高，无法被截断。 有序广播：同步执行的广播，在广播发出之后，同一时刻只有一个广播接收器能接收到这条广播消息">
+  <meta name="description" content="此博客使用教材为《第一行代码 Android》第2版。 第5章 全局大喇叭——详解广播机制android四大组件之一——Broadcast Receiver  Android四大组件之一 —— 广播接收器 Broadcast Receiver广播接收器的类型：  标准广播：异步执行的广播，在广播发出之后，所有的广播接收器几乎在同一时间接收到这条广播消息。效率较高，无法被截断。 有序广播：同步执行的">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《第一行代码_Android》第5章_广播">
 <meta property="og:url" content="http://yoursite.com/2018/10/07/《第一行代码_Android》第5章_广播/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="此博客使用教材为《第一行代码 Android》第2版。 第5章 全局大喇叭——详解广播机制 Android四大组件之一 —— 广播接收器 Broadcast Receiver广播接收器的类型：  标准广播：异步执行的广播，在广播发出之后，所有的广播接收器几乎在同一时间接收到这条广播消息。效率较高，无法被截断。 有序广播：同步执行的广播，在广播发出之后，同一时刻只有一个广播接收器能接收到这条广播消息">
+<meta property="og:description" content="此博客使用教材为《第一行代码 Android》第2版。 第5章 全局大喇叭——详解广播机制android四大组件之一——Broadcast Receiver  Android四大组件之一 —— 广播接收器 Broadcast Receiver广播接收器的类型：  标准广播：异步执行的广播，在广播发出之后，所有的广播接收器几乎在同一时间接收到这条广播消息。效率较高，无法被截断。 有序广播：同步执行的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-09T05:09:59.756Z">
+<meta property="og:updated_time" content="2018-10-14T09:41:10.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码_Android》第5章_广播">
-<meta name="twitter:description" content="此博客使用教材为《第一行代码 Android》第2版。 第5章 全局大喇叭——详解广播机制 Android四大组件之一 —— 广播接收器 Broadcast Receiver广播接收器的类型：  标准广播：异步执行的广播，在广播发出之后，所有的广播接收器几乎在同一时间接收到这条广播消息。效率较高，无法被截断。 有序广播：同步执行的广播，在广播发出之后，同一时刻只有一个广播接收器能接收到这条广播消息">
+<meta name="twitter:description" content="此博客使用教材为《第一行代码 Android》第2版。 第5章 全局大喇叭——详解广播机制android四大组件之一——Broadcast Receiver  Android四大组件之一 —— 广播接收器 Broadcast Receiver广播接收器的类型：  标准广播：异步执行的广播，在广播发出之后，所有的广播接收器几乎在同一时间接收到这条广播消息。效率较高，无法被截断。 有序广播：同步执行的">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -88,7 +88,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>此博客使用教材为《第一行代码 Android》第2版。</p>
-<h1 id="第5章-全局大喇叭——详解广播机制"><a href="#第5章-全局大喇叭——详解广播机制" class="headerlink" title="第5章 全局大喇叭——详解广播机制"></a>第5章 全局大喇叭——详解广播机制</h1><hr>
+<h1 id="第5章-全局大喇叭——详解广播机制"><a href="#第5章-全局大喇叭——详解广播机制" class="headerlink" title="第5章 全局大喇叭——详解广播机制"></a>第5章 全局大喇叭——详解广播机制</h1><p>android四大组件之一——Broadcast Receiver</p>
+<hr>
 <h3 id="Android四大组件之一-——-广播接收器-Broadcast-Receiver"><a href="#Android四大组件之一-——-广播接收器-Broadcast-Receiver" class="headerlink" title="Android四大组件之一 —— 广播接收器 Broadcast Receiver"></a>Android四大组件之一 —— 广播接收器 Broadcast Receiver</h3><p>广播接收器的类型：</p>
 <ol>
 <li>标准广播：异步执行的广播，在广播发出之后，所有的广播接收器几乎在同一时间接收到这条广播消息。效率较高，无法被截断。</li>

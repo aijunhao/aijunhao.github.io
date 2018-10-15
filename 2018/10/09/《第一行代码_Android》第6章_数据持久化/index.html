@@ -7,18 +7,18 @@
   
   <title>《第一行代码_Android》第6章_数据持久化 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术 持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转化。 Android中的书持久">
+  <meta name="description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《第一行代码_Android》第6章_数据持久化">
 <meta property="og:url" content="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术 持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转化。 Android中的书持久">
+<meta property="og:description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-14T09:32:14.714Z">
+<meta property="og:updated_time" content="2018-10-14T09:42:26.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码_Android》第6章_数据持久化">
-<meta name="twitter:description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术 持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转化。 Android中的书持久">
+<meta name="twitter:description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -88,7 +88,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>此博客使用教材为《第一行代码 Android》第2版。</p>
-<h1 id="第6章-数据存储全方案——详解持久化技术"><a href="#第6章-数据存储全方案——详解持久化技术" class="headerlink" title="第6章 数据存储全方案——详解持久化技术"></a>第6章 数据存储全方案——详解持久化技术</h1><hr>
+<h1 id="第6章-数据存储全方案——详解持久化技术"><a href="#第6章-数据存储全方案——详解持久化技术" class="headerlink" title="第6章 数据存储全方案——详解持久化技术"></a>第6章 数据存储全方案——详解持久化技术</h1><p>android技术之数据存储</p>
+<hr>
 <h3 id="持久化技术简介"><a href="#持久化技术简介" class="headerlink" title="持久化技术简介"></a>持久化技术简介</h3><p>数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转化。</p>
 <p>Android中的书持久化技术提供了3种方式用于简单地实现持久化功能。即文件存储、SharedPreference存储和数据库存储。此外还可以SD卡存储，但是较为复杂，而且安全性能也不高。</p>
 <hr>
