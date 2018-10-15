@@ -16,7 +16,7 @@
 <meta property="og:description" content="此博客使用教材为《第一行代码 Android》第2版。 第7章 跨程序共享数据——探究内容提供器android四大组件之一——Content Provider内容提供器简介内容提供器(Content Provider) 主要用于在不同的应用程序之间实现数据共享的功能，它提供了一套完整的机制，允许一个程序访问一个程序中的数据，同时还能保证被访问数据的安全性。目前，使用内容提供器是android实现跨">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/10/14/《第一行代码-android》第7章-内容提供/权限.PNG">
-<meta property="og:updated_time" content="2018-10-15T08:18:52.264Z">
+<meta property="og:updated_time" content="2018-10-15T08:41:05.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码_android》第7章_内容提供者">
 <meta name="twitter:description" content="此博客使用教材为《第一行代码 Android》第2版。 第7章 跨程序共享数据——探究内容提供器android四大组件之一——Content Provider内容提供器简介内容提供器(Content Provider) 主要用于在不同的应用程序之间实现数据共享的功能，它提供了一套完整的机制，允许一个程序访问一个程序中的数据，同时还能保证被访问数据的安全性。目前，使用内容提供器是android实现跨">
@@ -109,6 +109,13 @@
 <ul>
 <li>一种是使用现有的内容提供器来读取和操作相应程序中的数据。</li>
 <li>另一种是创建自己的内容提供器给我们的数据提供外部访问接口。</li>
+</ul>
+<h4 id="读取和操作相应程序中的数据"><a href="#读取和操作相应程序中的数据" class="headerlink" title="读取和操作相应程序中的数据"></a>读取和操作相应程序中的数据</h4><p>对于每一个应用程序来说，如果想要访问内容提供器中共享的数据，就一定要借助ContentResolver类，可以通过Context中的getContentResolver()方法获取到该类的实例。ContentResolver中提供了一系列的方法用于对数据进行CRUD操作，与SQLiteDatabase中的CRUD操作有些不同。</p>
+<p>ContentResolver中的增删改查都是不接收表名参数的，而是使用一个Uri参数代替，这个参数被称为内容URI。</p>
+<p>内容提供者中的程序建立了唯一标识符，由两部分组成：authority 和 path。</p>
+<ul>
+<li>authority：是用对不同的应用程序做区分的，一般为了避免冲突，都会采用程序包名的方式来进行命名。</li>
+<li>path：</li>
 </ul>
 
       
