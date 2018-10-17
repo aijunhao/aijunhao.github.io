@@ -305,9 +305,55 @@
 </ol>
 <hr>
 <h3 id="turtle角度坐标体系"><a href="#turtle角度坐标体系" class="headerlink" title="turtle角度坐标体系"></a>turtle角度坐标体系</h3><p><img src="/2018/07/29/Python学习笔记——图形绘制/angle.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">turtle.seth(angle)      <span class="comment"># 将turtle当前的方向设置为绝对坐标下的angle角度</span></span><br><span class="line"></span><br><span class="line">turtle.left(angle)      <span class="comment"># 将turtle朝向设置为海龟当前朝向左侧的angle</span></span><br><span class="line"></span><br><span class="line">turtle.right(angle)     <span class="comment"># 将turtle朝向设置为海龟当前朝向右侧的angle</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>turtle.seth(angle)</td>
+<td>将turtle当前的方向设置为绝对坐标下的angle角度</td>
+</tr>
+<tr>
+<td>turtle.left(angle)</td>
+<td>将turtle朝向设置为海龟当前朝向左侧的angle</td>
+</tr>
+<tr>
+<td>turtle.right(angle)</td>
+<td>将turtle朝向设置为海龟当前朝向右侧的angle</td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h3 id="turtle的运动控制函数"><a href="#turtle的运动控制函数" class="headerlink" title="turtle的运动控制函数"></a>turtle的运动控制函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">turtle.fd(d)              <span class="comment"># 走直线，行进距离是d</span></span><br><span class="line">turtle.circle(r,angle)    <span class="comment"># 绘制一个弧形，r是半径，angle是弧形的角度，如果r是正数，则表示圆心在tutle的左侧，如果r是负数，则表示圆心在turtle的右侧</span></span><br><span class="line">turtle.speed(x)           <span class="comment"># x的取值从0到10，越大速度越快</span></span><br><span class="line">turtle.goto(x,y)          <span class="comment"># 可以把画笔直接移动到绝对坐标体系的某一个点</span></span><br></pre></td></tr></table></figure>
+<h3 id="turtle的运动控制函数"><a href="#turtle的运动控制函数" class="headerlink" title="turtle的运动控制函数"></a>turtle的运动控制函数</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>turtle.fd(d)</td>
+<td>走直线，行进距离是d</td>
+</tr>
+<tr>
+<td>turtle.circle(r,angle)</td>
+<td>绘制一个弧形，r是半径，angle是弧形的角度，如果r是正数，则表示圆心在tutle的左侧，如果r是负数，则表示圆心在turtle的右侧</td>
+</tr>
+<tr>
+<td>turtle.speed(x)</td>
+<td>x的取值从0到10，越大速度越快</td>
+</tr>
+<tr>
+<td>turtle.goto(x,y)</td>
+<td>可以把画笔直接移动到绝对坐标体系的某一个点</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h3 id="turtle颜色控制体系"><a href="#turtle颜色控制体系" class="headerlink" title="turtle颜色控制体系"></a>turtle颜色控制体系</h3><p>RGB色彩模式，RGB每色取值范围0-255整数或0-1小数。默认采用小数值，可切换为整数值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turtle.colormode(mode)      <span class="comment"># mode为1，表示用0-1小数表示；mode为255，表示用0-255整数表示</span></span><br></pre></td></tr></table></figure>
@@ -360,7 +406,44 @@
 </tbody>
 </table>
 <hr>
-<h3 id="turtle画笔控制"><a href="#turtle画笔控制" class="headerlink" title="turtle画笔控制"></a>turtle画笔控制</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># turtle画笔默认首先在中心的位置。并且画笔是放下状态</span></span><br><span class="line">turtle.penup()          <span class="comment"># 抬起画笔</span></span><br><span class="line">turtle.pendown()        <span class="comment"># 放下画笔</span></span><br><span class="line">turtle.pensize()        <span class="comment"># 设置画笔的粗细</span></span><br><span class="line">turtle.pencolor()       <span class="comment"># 设置画笔的颜色，str类型颜色字符串，RGB表示</span></span><br><span class="line">turtle.done()           <span class="comment"># 表示状态，使得运行完之后画布不会自动退出</span></span><br><span class="line">turtle.write(c,font=(“Arial”,<span class="number">18</span>,”normal”))      <span class="comment"># 来写文字c，包括汉字</span></span><br><span class="line">turtle.hideturtle()     <span class="comment"># 函数可以隐藏turtle的的画笔</span></span><br></pre></td></tr></table></figure>
+<h3 id="turtle画笔控制"><a href="#turtle画笔控制" class="headerlink" title="turtle画笔控制"></a>turtle画笔控制</h3><h1 id="turtle画笔默认首先在中心的位置。并且画笔是放下状态"><a href="#turtle画笔默认首先在中心的位置。并且画笔是放下状态" class="headerlink" title="turtle画笔默认首先在中心的位置。并且画笔是放下状态"></a>turtle画笔默认首先在中心的位置。并且画笔是放下状态</h1><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>turtle.penup()</td>
+<td>抬起画笔</td>
+</tr>
+<tr>
+<td>turtle.pendown()</td>
+<td>放下画笔</td>
+</tr>
+<tr>
+<td>turtle.pensize()</td>
+<td>设置画笔的粗细</td>
+</tr>
+<tr>
+<td>turtle.pencolor()</td>
+<td>设置画笔的颜色，str类型颜色字符串，RGB表示</td>
+</tr>
+<tr>
+<td>turtle.done()</td>
+<td>表示状态，使得运行完之后画布不会自动退出</td>
+</tr>
+<tr>
+<td>turtle.write(c,font=(“Arial”,18,”normal”))</td>
+<td>来写文字c，包括汉字</td>
+</tr>
+<tr>
+<td>turtle.hideturtle()</td>
+<td>函数可以隐藏turtle的的画笔</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h4 id="实例1：python蟒蛇绘制"><a href="#实例1：python蟒蛇绘制" class="headerlink" title="实例1：python蟒蛇绘制"></a>实例1：python蟒蛇绘制</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.setup(<span class="number">650</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>)    <span class="comment"># 画布长650像素，宽350像素，距离左上角定点200像素，200像素</span></span><br><span class="line">turtle.penup()                      <span class="comment"># 提起笔</span></span><br><span class="line">turtle.fd(<span class="number">-250</span>)                     <span class="comment"># 向前移动-250像素</span></span><br><span class="line">turtle.pendown()                    <span class="comment"># 落笔</span></span><br><span class="line">turtle.pensize(<span class="number">25</span>)                  <span class="comment"># 设置笔宽度为25像素</span></span><br><span class="line">turtle.pencolor(<span class="string">"purple"</span>)           <span class="comment"># 设置笔颜色为紫色</span></span><br><span class="line">turtle.seth(<span class="number">-40</span>)                    <span class="comment"># 角度偏向-40度</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    turtle.circle(<span class="number">40</span>, <span class="number">80</span>)           <span class="comment"># 半径为40，角度为80度，逆时针画圆弧</span></span><br><span class="line">    turtle.circle(<span class="number">-40</span>, <span class="number">80</span>)</span><br><span class="line">turtle.circle(<span class="number">40</span>, <span class="number">40</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span>)                       <span class="comment"># 向前40像素</span></span><br><span class="line">turtle.circle(<span class="number">20</span>, <span class="number">180</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span> * <span class="number">2</span> / <span class="number">3</span>)</span><br><span class="line">turtle.done()                       <span class="comment"># 运行完之后画布不会自动退出</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2018/07/29/Python学习笔记——图形绘制/pythonDraw.gif" alt=""></p>
