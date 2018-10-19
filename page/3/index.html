@@ -62,6 +62,306 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python学习笔记——异常处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/Python学习笔记——异常处理/" class="article-date">
+  <time datetime="2018-08-07T14:22:19.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Python标准异常总结"><a href="#Python标准异常总结" class="headerlink" title="Python标准异常总结"></a>Python标准异常总结</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">异常</th>
+<th style="text-align:left">异常说明</th>
+<th style="text-align:center">出现程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AssertionError</td>
+<td style="text-align:left">断言语句（assert）失败</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">AttributeError</td>
+<td style="text-align:left">尝试访问未知的对象属性</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">EOFError</td>
+<td style="text-align:left">用户输入文件末尾标志EOF（Ctrl+d）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">FloatingPointError</td>
+<td style="text-align:left">浮点计算错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">GeneratorExit</td>
+<td style="text-align:left">generator.close()方法被调用的时候</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ImportError</td>
+<td style="text-align:left">导入模块失败的时候</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">IndexError</td>
+<td style="text-align:left">索引超出序列的范围</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyError</td>
+<td style="text-align:left">字典中查找一个不存在的关键字</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyboardInterrupt</td>
+<td style="text-align:left">用户输入中断键（Ctrl+c）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">MemoryError</td>
+<td style="text-align:left">内存溢出（可通过删除对象释放内存）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">NameError</td>
+<td style="text-align:left">尝试访问一个不存在的变量</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">NotImplementedError</td>
+<td style="text-align:left">尚未实现的方法</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">OSError</td>
+<td style="text-align:left">操作系统产生的异常（例如打开一个不存在的文件）</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">OverflowError</td>
+<td style="text-align:left">数值运算超出最大限制</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ReferenceError</td>
+<td style="text-align:left">弱引用（weak reference）试图访问一个已经被垃圾回收机制回收了的对象</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">RuntimeError</td>
+<td style="text-align:left">一般的运行时错误</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">StopIteration</td>
+<td style="text-align:left">迭代器没有更多的值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SyntaxError</td>
+<td style="text-align:left">Python的语法错误</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">IndentationError</td>
+<td style="text-align:left">缩进错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">TabError</td>
+<td style="text-align:left">Tab和空格混合使用</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SystemError</td>
+<td style="text-align:left">Python编译器系统错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SystemExit</td>
+<td style="text-align:left">Python编译器进程被关闭</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">TypeError</td>
+<td style="text-align:left">不同类型间的无效操作</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">UnboundLocalError</td>
+<td style="text-align:left">访问一个未初始化的本地变量（NameError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeError</td>
+<td style="text-align:left">Unicode相关的错误（ValueError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeEncodeError</td>
+<td style="text-align:left">Unicode编码时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeDecodeError</td>
+<td style="text-align:left">Unicode解码时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeTranslateError</td>
+<td style="text-align:left">Unicode转换时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ValueError</td>
+<td style="text-align:left">传入无效的参数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ZeroDivisionError</td>
+<td style="text-align:left">除数为零</td>
+<td style="text-align:center">常见</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>捕捉异常可以使用try/except语句。</p>
+<p>try/except语句用来检测try语句块中的错误，从而让except语句捕获异常信息并处理。</p>
+<p>如果你不想在异常发生时结束你的程序，只需在try里捕获它。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  &lt;语句块&gt;       <span class="comment"># 运行代码</span></span><br><span class="line"><span class="keyword">except</span> &lt;异常名&gt; [<span class="keyword">as</span> reason]:</span><br><span class="line">  &lt;语句块&gt;       <span class="comment"># 出现错误时执行的语句</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  &lt;语句块&gt;        <span class="comment"># 无论都会被执行的代码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = open(<span class="string">"一个错误的文件.txt"</span>)</span><br><span class="line">    print(f.read())</span><br><span class="line">    f.close()</span><br><span class="line"><span class="keyword">except</span> OSError <span class="keyword">as</span> reason:</span><br><span class="line">    print(<span class="string">'文件出错！错误原因是：'</span> + str(reason))    <span class="comment"># 打印异常名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">文件出错！错误原因是：[Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">'一个错误的文件.txt'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="触发异常"><a href="#触发异常" class="headerlink" title="触发异常"></a>触发异常</h3><p>我们可以使用raise语句自己触发异常。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">raise</span> [Exception [, args [, traceback]]]</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="用户自定义异常类型"><a href="#用户自定义异常类型" class="headerlink" title="用户自定义异常类型"></a>用户自定义异常类型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义异常类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Networkerror</span><span class="params">(RuntimeError)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, arg)</span>:</span></span><br><span class="line">        self.args = arg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 触发该异常，如下所示：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> Networkerror(<span class="string">"Bad hostname"</span>)</span><br><span class="line"><span class="keyword">except</span> Networkerror,e:</span><br><span class="line">    <span class="keyword">print</span> e.args</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjng3ol5m000pbwutsvxwq5gb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python学习笔记——常用模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/Python学习笔记——常用模块/" class="article-date">
+  <time datetime="2018-08-07T08:25:42.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="Python模块篇"><a href="#Python模块篇" class="headerlink" title="Python模块篇"></a>Python模块篇</h2><hr>
+<h3 id="模块导入"><a href="#模块导入" class="headerlink" title="模块导入"></a>模块导入</h3><h4 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h4><p>在文件顶部位置导入模块，然后使用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">import</span> module_name          <span class="comment"># 导入一个模块，同一个模块只会被导入一次</span></span><br><span class="line"></span><br><span class="line">module_name.function()          <span class="comment"># 调用模块中的指定方法</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="from-…-import-语句"><a href="#from-…-import-语句" class="headerlink" title="from … import * 语句"></a>from … import * 语句</h3><p>不适用于大文件，容易重名冲突。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> module_name <span class="keyword">import</span> *    <span class="comment"># 导入名为module_name的模块</span></span><br><span class="line"></span><br><span class="line">function()       <span class="comment"># 直接使用模块中的方法即可</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir()函数"></a>dir()函数</h3><p>返回模块中所有方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(module_name)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h3><p>random模块主要用于生成随机数，由梅森旋转算法生成的伪随机数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">seed(N)</td>
+<td style="text-align:left">初始化给定的随机数种子，默认为当前系统时间</td>
+</tr>
+<tr>
+<td style="text-align:left">random()</td>
+<td style="text-align:left">生成一个[0,1)之间的随机小数，与随机数种子有关</td>
+</tr>
+<tr>
+<td style="text-align:left">randint(a,b)</td>
+<td style="text-align:left">生成一个[a,b]之间的整数</td>
+</tr>
+<tr>
+<td style="text-align:left">randrange(m,n[,k])</td>
+<td style="text-align:left">生成一个[m,n)之间以k为步长的随机整数</td>
+</tr>
+<tr>
+<td style="text-align:left">getrandbits(k)</td>
+<td style="text-align:left">生成一个k比特长的随机整数</td>
+</tr>
+<tr>
+<td style="text-align:left">uniform(a,b)</td>
+<td style="text-align:left">生成一个[a,b]之间的随机小数</td>
+</tr>
+<tr>
+<td style="text-align:left">choice(list)</td>
+<td style="text-align:left">从序列中随机选择一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">shuffle(list)</td>
+<td style="text-align:left">将序列seq中元素随机排列,返回打乱后的序列</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="time模块"><a href="#time模块" class="headerlink" title="time模块"></a>time模块</h3><hr>
+<h3 id="jieba模块"><a href="#jieba模块" class="headerlink" title="jieba模块"></a>jieba模块</h3><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjng3ol58000dbwutdv6mv6p6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python学习笔记——IO编程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/07/Python学习笔记——IO编程/" class="article-date">
@@ -255,7 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjnbgi7c80009tkutio4gyv1n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjng3ol540009bwutvw8egsnp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -455,7 +755,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjnbgi7d1000ltkutvfr0ol3x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjng3ol5q000ubwut3ryw9295" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -532,7 +832,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cjnbgi7e40019tkut8p125j19" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cjng3ol5o000rbwutkos3k53c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -626,7 +926,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cjnbgi7cl000etkutjau4rls8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cjng3ol5a000gbwutwsz86cbq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -689,7 +989,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cjnbgi7d8000qtkut4op7wjq1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cjng3ol5w0011bwut910nah1f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -858,25 +1158,25 @@
 <thead>
 <tr>
 <th style="text-align:left">占位符</th>
-<th style="text-align:center">替换内容</th>
+<th style="text-align:left">替换内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">%d</td>
-<td style="text-align:center">整数</td>
+<td style="text-align:left">整数</td>
 </tr>
 <tr>
 <td style="text-align:left">%f</td>
-<td style="text-align:center">浮点数</td>
+<td style="text-align:left">浮点数</td>
 </tr>
 <tr>
 <td style="text-align:left">%s</td>
-<td style="text-align:center">字符串，万能类型</td>
+<td style="text-align:left">字符串，万能类型</td>
 </tr>
 <tr>
 <td style="text-align:left">%x</td>
-<td style="text-align:center">十六进制整数</td>
+<td style="text-align:left">十六进制整数</td>
 </tr>
 </tbody>
 </table>
@@ -1076,7 +1376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cjnbgi7e10016tkutt4wzrgua" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cjng3ol5c000hbwuthg2e38is" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1198,7 +1498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cjnbgi7df000stkut866z64m8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cjng3ol6o001cbwut7blkueq3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1238,106 +1538,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/《代码整洁之道》/" data-id="cjnbgi7dz0014tkut7itlvglk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/《代码整洁之道》/" data-id="cjng3ol5u000zbwutqtd7imxn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/">book</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hello-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/13/Hello-Hexo/" class="article-date">
-  <time datetime="2018-07-13T09:18:35.000Z" itemprop="datePublished">2018-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/Hello-Hexo/">Hello, Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Hexo-使用介绍"><a href="#Hexo-使用介绍" class="headerlink" title="Hexo 使用介绍"></a>Hexo 使用介绍</h2><h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><p>在命令行中找到hexo安装路径，使用命令：hexo new post “博客名”，创建博客，博客路径为”安装路径/source/_posts/博客名.md”</p>
-<p><img src="/2018/07/13/Hello-Hexo/new.jpg" alt=""></p>
-<h3 id="页面编辑"><a href="#页面编辑" class="headerlink" title="页面编辑"></a>页面编辑</h3><h4 id="文字效果"><a href="#文字效果" class="headerlink" title="文字效果"></a>文字效果</h4><p><em>斜体</em>: *斜体* 或者 _斜体_<br><strong>粗体</strong>：**粗体**<br><strong><em>加粗斜体</em></strong>：***加粗斜体***<br><del>删除线</del>：~~删除线~~</p>
-<h4 id="分级效果"><a href="#分级效果" class="headerlink" title="分级效果"></a>分级效果</h4><p>一级标题: # 一级标题<br>二级标题: ## 二级标题<br>三级标题: ### 三级标题<br>四级标题: #### 四级标题<br>五级标题: ##### 五级标题<br>六级标题: ###### 六级标题</p>
-<h4 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h4><p>行内形式(<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">我的博客</a>): [我的博客](<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a>)<br>自动链接(<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a>): \<a href="https://aijunhao.github.io/\" target="_blank" rel="noopener">https://aijunhao.github.io/\</a></p>
-<h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p>使用“*、+、-”符号交替</p>
-<ul>
-<li>无序列表项1</li>
-</ul>
-<ul>
-<li>无序列表项2</li>
-</ul>
-<ul>
-<li>无序列表项3</li>
-</ul>
-<h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>使用数字或者字母等有序字符</p>
-<ol>
-<li>有序列表项1</li>
-<li>有序列表项2</li>
-<li>有序列表项3</li>
-</ol>
-<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>![](目录名/图片.jpg)</p>
-<p>markdown文章使用的图片路径和hexo博客发布时的图片路径不一致，会导致本地可以显示，github端无法显示的问题。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式:"></a>解决方式:</h4><p>使用<strong>CodeFalling/hexo-asset-image插件</strong></p>
-<h5 id="1-修改post-asset-folder"><a href="#1-修改post-asset-folder" class="headerlink" title="1. 修改post_asset_folder"></a>1. 修改post_asset_folder</h5><p>Hexo安装目录下_config.yml 中有 <strong>post_asset_folder:true</strong>。</p>
-<h5 id="2-安装hexo-asset-image"><a href="#2-安装hexo-asset-image" class="headerlink" title="2. 安装hexo-asset-image"></a>2. 安装hexo-asset-image</h5><p>在hexo目录下执行命令：npm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> –save  进行插件安装。<br>安装完之后，再新建博客时，会发现_post下同时新建了一个与博客同名的文件夹，用来存放图片。</p>
-<p>此时就能同步markdown和hexo图片了。</p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table>
-<thead>
-<tr>
-<th>表头1</th>
-<th style="text-align:left">表头2</th>
-<th style="text-align:center">表头3</th>
-<th style="text-align:right">表头4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-</tbody>
-</table>
-<h3 id="生成及部署博客"><a href="#生成及部署博客" class="headerlink" title="生成及部署博客"></a>生成及部署博客</h3><p>编辑好文章，使用命令：hexo d -g，即可生成及部署，此时可以访问个人网站进行访问了：<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="cjnbgi7bj0004tkutjt0s6haq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
 
     </footer>
   </div>
@@ -1350,7 +1554,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1374,7 +1578,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
     </div>
   </div>
 
@@ -1396,23 +1600,23 @@
       <ul>
         
           <li>
+            <a href="/2018/10/19/Android技术——OkHttp/">Android技术——OkHttp</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/18/Android技术——Android与H5混合开发/">Android高级技术——Android与H5混合开发</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/《第一行代码_Android》第9章_网络技术/">《第一行代码_Android》第9章_网络技术</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/16/《第一行代码_Android》第8章_多媒体/">《第一行代码_Android》第8章_多媒体</a>
           </li>
         
           <li>
-            <a href="/2018/10/14/《第一行代码_Android》第7章_内容提供器/">《第一行代码_android》第7章_内容提供器</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/09/《第一行代码_Android》第6章_数据持久化/">《第一行代码_Android》第6章_数据持久化</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/09/Git使用教程/">Git使用教程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/07/《第一行代码_Android》第5章_广播/">《第一行代码_Android》第5章_广播</a>
+            <a href="/2018/10/14/《第一行代码_Android》第7章_内容提供器/">《第一行代码_Android》第7章_内容提供器</a>
           </li>
         
       </ul>
