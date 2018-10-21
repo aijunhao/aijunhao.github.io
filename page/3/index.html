@@ -62,6 +62,404 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python学习笔记——GUI编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/08/Python学习笔记——GUI编程/" class="article-date">
+  <time datetime="2018-08-08T11:48:50.000Z" itemprop="datePublished">2018-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/08/Python学习笔记——GUI编程/">Python学习笔记——GUI编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>GUI的终极选择：Tkinter</p>
+<h2 id="https-blog-csdn-net-u014380159-article-details-51941842"><a href="#https-blog-csdn-net-u014380159-article-details-51941842" class="headerlink" title="https://blog.csdn.net/u014380159/article/details/51941842"></a><a href="https://blog.csdn.net/u014380159/article/details/51941842" target="_blank" rel="noopener">https://blog.csdn.net/u014380159/article/details/51941842</a></h2><h3 id="第一个实例"><a href="#第一个实例" class="headerlink" title="第一个实例"></a>第一个实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk      <span class="comment"># 导入tkinter模块</span></span><br><span class="line"></span><br><span class="line">root = tk.Tk()        <span class="comment"># 生成窗口实例，即父容器</span></span><br><span class="line"></span><br><span class="line">photo = tk.PhotoImage(file=<span class="string">'bg.gif'</span>)      <span class="comment"># 添加图片</span></span><br><span class="line">theLabel = tk.Label(root,</span><br><span class="line">                  text=<span class="string">'我们一起学猫叫\n一起喵喵喵喵~'</span>,</span><br><span class="line">                  justify=tk.LEFT,</span><br><span class="line">                  image=photo,</span><br><span class="line">                  compound=tk.CENTER,</span><br><span class="line">                  font=(<span class="string">"华康少女文字W5"</span>, <span class="number">20</span>),</span><br><span class="line">                  fg=<span class="string">"white"</span>)</span><br><span class="line"></span><br><span class="line">theLabel.pack()</span><br><span class="line"></span><br><span class="line">tk.mainloop()   <span class="comment"># 进入消息循环</span></span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG" alt=""></h2><h3 id="tkinter-常用方法"><a href="#tkinter-常用方法" class="headerlink" title="tkinter 常用方法"></a>tkinter 常用方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法名</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Tk()</td>
+<td style="text-align:left">生成窗口实例</td>
+<td style="text-align:left">root = tkinter.Tk()</td>
+</tr>
+<tr>
+<td style="text-align:left">title()</td>
+<td style="text-align:left">设置窗口标题</td>
+<td style="text-align:left">root.title(‘title’)</td>
+</tr>
+<tr>
+<td style="text-align:left">geometry()</td>
+<td style="text-align:left">设置窗口大小</td>
+<td style="text-align:left">root.geometry(‘300x200’)</td>
+</tr>
+<tr>
+<td style="text-align:left">mainloop()</td>
+<td style="text-align:left">主事件循环</td>
+<td style="text-align:left">root.mainloop() 或 tkinter.mainloop()</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Label-文本"><a href="#Label-文本" class="headerlink" title="Label 文本"></a>Label 文本</h3><p>标签控件，可以显示文本和位图。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">label = tkinter.Label(master, option=value, ... )</span><br><span class="line"></span><br><span class="line">l.pack()</span><br></pre></td></tr></table></figure></p>
+<p>案例:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</span><br><span class="line"></span><br><span class="line">counter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">counter_label</span><span class="params">(label)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">global</span> counter</span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">        label.config(text=str(counter))</span><br><span class="line">        label.after(<span class="number">1000</span>, count)</span><br><span class="line"></span><br><span class="line">    count()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root = tk.Tk()</span><br><span class="line">root.title(<span class="string">"Counting Seconds"</span>)</span><br><span class="line">label = tk.Label(root, fg=<span class="string">"green"</span>)</span><br><span class="line">label.pack()</span><br><span class="line">counter_label(label)</span><br><span class="line">button = tk.Button(root, text=<span class="string">'Stop'</span>, width=<span class="number">25</span>, command=root.destroy)</span><br><span class="line">button.pack()</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>可选项(option)</th>
+<th>描述</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activebackground</td>
+<td>设置当Label处于活动状态(state选项设置状态)，选择框的背景色。</td>
+<td>activebackground=”#000000”</td>
+</tr>
+<tr>
+<td>activeforeground</td>
+<td>设置当Label处于活动状态(当鼠标点击时)，选择框的文本颜色。</td>
+<td>activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td>anchor=’w’</td>
+</tr>
+<tr>
+<td>bg/background</td>
+<td>标签的背景色。</td>
+<td>bg=”yellow”</td>
+</tr>
+<tr>
+<td>compound</td>
+<td>文本和图像的混合模式</td>
+<td>image=img, <br> compound=tkinter.LEFT</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>按钮文本的颜色。</td>
+<td>fg=”yellow”</td>
+</tr>
+<tr>
+<td>font</td>
+<td>文本字体。</td>
+<td>font=”楷体”</td>
+</tr>
+<tr>
+<td>height/width</td>
+<td>按钮的高度/宽度。</td>
+<td>height=5,width=15</td>
+</tr>
+<tr>
+<td>image</td>
+<td>按钮图片。</td>
+<td>img_png = tkinter.PhotoImage(file = ‘18.gif’)  <br>  button = tkinter.Label(root,image=img_png)</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>显示多行文本的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td>justify=”center” <br> 或 justify=tkinter.CENTER</td>
+</tr>
+<tr>
+<td>text</td>
+<td>按钮的文本内容</td>
+<td>text=”…”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Button-按钮"><a href="#Button-按钮" class="headerlink" title="Button 按钮"></a>Button 按钮</h3><p>按钮控件，在程序中显示按钮。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">button = tkinter.Button(master, option=value, ... )       <span class="comment"># master:按钮父容器,option:可选项</span></span><br><span class="line"></span><br><span class="line">button.pack()       <span class="comment"># 将小部件放置到窗口中</span></span><br></pre></td></tr></table></figure>
+<p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()</span><br><span class="line">button = tkinter.Button(root, text=<span class="string">"Button"</span>)</span><br><span class="line"></span><br><span class="line">button.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/Button.PNG" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>可选项(option)</th>
+<th>描述</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activebackground</td>
+<td>当鼠标点击时，按钮的背景色。</td>
+<td>activebackground=”#000000”</td>
+</tr>
+<tr>
+<td>activeforeground</td>
+<td>当鼠标点击时，按钮的文本颜色。</td>
+<td>activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td>anchor=’w’</td>
+</tr>
+<tr>
+<td>bd</td>
+<td>按钮边框的大小，默认为 2 个像素。</td>
+<td>bd=5</td>
+</tr>
+<tr>
+<td>bg/background</td>
+<td>按钮的背景色。</td>
+<td>bg=”blue”</td>
+</tr>
+<tr>
+<td>command</td>
+<td>按钮关联的函数，当按钮被点击时，执行该函数。</td>
+<td>command=函数名</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>按钮文本的颜色。</td>
+<td>fg=”yellow”</td>
+</tr>
+<tr>
+<td>font</td>
+<td>文本字体。</td>
+<td>font=”楷体”</td>
+</tr>
+<tr>
+<td>height/width</td>
+<td>按钮的高度/宽度。</td>
+<td>height=5,width=15</td>
+</tr>
+<tr>
+<td>image</td>
+<td>按钮图片。</td>
+<td>img_png = tkinter.PhotoImage(file = ‘18.gif’)  <br>  button = tkinter.Button(root,image=img_png)</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>显示多行文本的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td>justify=”center” <br> 或 justify=tkinter.CENTER</td>
+</tr>
+<tr>
+<td>padx/pady</td>
+<td>按钮在x/y轴防线上的内边距。</td>
+<td>padx=30, pady=30</td>
+</tr>
+<tr>
+<td>relief</td>
+<td>边框样式，设置控件3D效果，可选的有：flat(默认)、sunken、raised、groove、ridge。</td>
+<td>relief=”flat”</td>
+</tr>
+<tr>
+<td>state</td>
+<td>设置按钮组件状态,可选的有normal(默认)、active、 disabled。</td>
+<td>state=”disabled”</td>
+</tr>
+<tr>
+<td>underline</td>
+<td>下划线。</td>
+<td>有些小问题。underline=0</td>
+</tr>
+<tr>
+<td>text</td>
+<td>按钮的文本内容</td>
+<td>text=”…”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Checkbutton-复选框"><a href="#Checkbutton-复选框" class="headerlink" title="Checkbutton 复选框"></a>Checkbutton 复选框</h3><p>多选框控件，用于在程序中提供多项选择框。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">c = Checkbutton ( master, option=value, ... )</span><br><span class="line">c.pack()</span><br></pre></td></tr></table></figure>
+<p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()</span><br><span class="line"></span><br><span class="line">c = tkinter.Checkbutton(root, text=<span class="string">"选择框"</span>)</span><br><span class="line"></span><br><span class="line">c.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/CheckButton1.PNG" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">可选项(option)</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">activebackground</td>
+<td style="text-align:left">设置当Button处于活动状态(当鼠标点击时)，选择框的背景色。</td>
+<td style="text-align:left">activebackground=”#000000”</td>
+</tr>
+<tr>
+<td style="text-align:left">activeforeground</td>
+<td style="text-align:left">设置当Button处于活动状态(当鼠标点击时)，选择框的文本颜色。</td>
+<td style="text-align:left">activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td style="text-align:left">anchor</td>
+<td style="text-align:left">锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td style="text-align:left">anchor=’w’</td>
+</tr>
+<tr>
+<td style="text-align:left">bg/background</td>
+<td style="text-align:left">按钮的背景色。</td>
+<td style="text-align:left">bg=”blue”</td>
+</tr>
+<tr>
+<td style="text-align:left">bitmap</td>
+<td style="text-align:left">使用位图，可选项有error，gray75，gray50，gray25，gray12，<br>hourglass，info，questhead，question，warning</td>
+<td style="text-align:left">bitmap=”error”</td>
+</tr>
+<tr>
+<td style="text-align:left">bd</td>
+<td style="text-align:left">边框的大小，默认为 2 个像素</td>
+<td style="text-align:left">bd=10</td>
+</tr>
+<tr>
+<td style="text-align:left">command</td>
+<td style="text-align:left">按钮关联的函数，当按钮被点击时，执行该函数。</td>
+<td style="text-align:left">command=函数名</td>
+</tr>
+<tr>
+<td style="text-align:left">cursor</td>
+<td style="text-align:left">光标的形状设定，可选项有arrow(默认), circle, cross, plus</td>
+<td style="text-align:left">cursor=”circle”</td>
+</tr>
+<tr>
+<td style="text-align:left">disabledforeground</td>
+<td style="text-align:left">禁用选项的前景色</td>
+<td style="text-align:left">disabledforeground=”#123456”</td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">文本字体</td>
+<td style="text-align:left">font=”…”</td>
+</tr>
+<tr>
+<td style="text-align:left">fg</td>
+<td style="text-align:left">选项的前景色</td>
+<td style="text-align:left">fg=”red”</td>
+</tr>
+<tr>
+<td style="text-align:left">image</td>
+<td style="text-align:left">是否使用图标。</td>
+<td style="text-align:left">img = tkinter.PhotoImage(file=”bg.gif”) <br>c = tkinter.Checkbutton(root,image=img)</td>
+</tr>
+<tr>
+<td style="text-align:left">justify</td>
+<td style="text-align:left">多行文本设置不同行之间的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td style="text-align:left">justify=“center” <br> 或 justify=tkinter.CENTER</td>
+</tr>
+<tr>
+<td style="text-align:left">onvalue/offvalue</td>
+<td style="text-align:left">设置 Checkbutton 的状态值。</td>
+<td style="text-align:left">onvalue = 1, offvalue = 0</td>
+</tr>
+<tr>
+<td style="text-align:left">padx/pady</td>
+<td style="text-align:left">设置选择框在x轴/y轴方向上的内边距，默认为1像素</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">relief</td>
+<td style="text-align:left">边框样式，设置控件3D效果，可选的有：flat(默认)、sunken、raised、groove、ridge。</td>
+<td style="text-align:left">relief=”flat”</td>
+</tr>
+<tr>
+<td style="text-align:left">relief=”raised”</td>
+<td style="text-align:left">选中后的颜色。</td>
+<td style="text-align:left">selectcolor=”red”</td>
+</tr>
+<tr>
+<td style="text-align:left">state</td>
+<td style="text-align:left">设置选择框组件状态,可选的有normal(默认)、active、 disabled。</td>
+<td style="text-align:left">state=”disabled”</td>
+</tr>
+<tr>
+<td style="text-align:left">underline</td>
+<td style="text-align:left">下划线。</td>
+<td style="text-align:left">有些小问题。underline=0</td>
+</tr>
+<tr>
+<td style="text-align:left">text</td>
+<td style="text-align:left">选择框的文本内容</td>
+<td style="text-align:left">text=”…”</td>
+</tr>
+<tr>
+<td style="text-align:left">variable</td>
+<td style="text-align:left">变量，variable 的值为 1 或 0，代表着选中或不选中</td>
+<td style="text-align:left">v = tkinter.IntVar() <br> c = tkinter.Checkbutton(root, variable = v)</td>
+</tr>
+</tbody>
+</table>
+<p>常用方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">deselect()</td>
+<td style="text-align:left">清除复选框选中选项。</td>
+</tr>
+<tr>
+<td style="text-align:left">flash()</td>
+<td style="text-align:left">在激活状态颜色和正常颜色之间闪烁几次单选按钮，但保持它开始时的状态。</td>
+</tr>
+<tr>
+<td style="text-align:left">invoke()</td>
+<td style="text-align:left">可以调用此方法来获得与用户单击单选按钮以更改其状态时发生的操作相同的操作。</td>
+</tr>
+<tr>
+<td style="text-align:left">select()</td>
+<td style="text-align:left">设置按钮为选中。</td>
+</tr>
+<tr>
+<td style="text-align:left">toggle()</td>
+<td style="text-align:left">选中与没有选中的选项互相切换。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()         <span class="comment"># 生成窗口</span></span><br><span class="line"></span><br><span class="line">GIRLS = [<span class="string">'西施'</span>, <span class="string">'貂蝉'</span>, <span class="string">'王昭君'</span>, <span class="string">'杨玉环'</span>]</span><br><span class="line">v = []        <span class="comment"># 表示按钮是否被选中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> girl <span class="keyword">in</span> GIRLS:</span><br><span class="line">    v.append(tkinter.IntVar())</span><br><span class="line">    b = tkinter.Checkbutton(root, text=girl, variable=v[<span class="number">-1</span>])</span><br><span class="line">    b.pack(anchor=<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">tkinter.mainloop()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG" alt=""></p>
+<hr>
+<h3 id="Radiobutton"><a href="#Radiobutton" class="headerlink" title="Radiobutton"></a>Radiobutton</h3><p>单选按钮控件，显示一个单选的按钮状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjnijts33000564utgy1z7jes" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python学习笔记——异常处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/07/Python学习笔记——异常处理/" class="article-date">
@@ -259,7 +657,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjng3ol5m000pbwutsvxwq5gb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjnijts9w001564uthi0hou5b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -350,7 +748,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjng3ol58000dbwutdv6mv6p6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjnijts8x000n64uticirw888" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -555,7 +953,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjng3ol540009bwutvw8egsnp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjnijtsa1001964utaqab5n0m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -755,7 +1153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjng3ol5q000ubwut3ryw9295" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjnijts96000p64utngtzo4xi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -832,7 +1230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cjng3ol5o000rbwutkos3k53c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cjnijtsaf001l64utvn2rx8gl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -926,7 +1324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cjng3ol5a000gbwutwsz86cbq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cjnijts4i000a64utbqyyajdy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -989,7 +1387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cjng3ol5w0011bwut910nah1f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cjnijts9e000t64ut2k9jkie2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1376,7 +1774,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cjng3ol5c000hbwuthg2e38is" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cjnijts8s000l64ut0ouvru2z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1498,50 +1896,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cjng3ol6o001cbwut7blkueq3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cjnijts9h000w64ut1glw3nsu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-《代码整洁之道》" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/13/《代码整洁之道》/" class="article-date">
-  <time datetime="2018-07-13T10:59:07.000Z" itemprop="datePublished">2018-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/《代码整洁之道》/">《代码整洁之道》阅读摘记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="细节之中自有天地，整洁成就卓越代码。"><a href="#细节之中自有天地，整洁成就卓越代码。" class="headerlink" title="细节之中自有天地，整洁成就卓越代码。"></a>细节之中自有天地，整洁成就卓越代码。</h3><h2 id="第一章-整洁代码"><a href="#第一章-整洁代码" class="headerlink" title="第一章 整洁代码"></a>第一章 整洁代码</h2><h3 id="糟糕的代码"><a href="#糟糕的代码" class="headerlink" title="糟糕的代码"></a>糟糕的代码</h3><p>&emsp;&emsp;如果你是位有点儿经验的程序员，定然多次遇到过这类困境。我们有专用来形容这事的词：沼泽(wading)。我们趟过代码的水域。我们穿过灌木密布、瀑布暗藏的沼泽地。我们拼命想找到出路，期望有点什么线索能启发我们到底发生了什么事；但是目光所及，只是越来越多死气沉沉的代码。<br>&emsp;&emsp;糟糕的代码就如同沼泽一般，越积越大，最后导致全盘崩溃。<br>&emsp;&emsp;我们都曾经瞟一眼自己亲手造成的混乱，决定弃之而不顾，走向新一天。我们都曾经看到自己的烂程序居然能运行，然后断言运行的烂程序总比没有强。我们都曾经说过有朝一日再回头清理。当然，在那些日子里，我们都没听过勒布朗法则：稍后等于永不(Later equals never)。<br>&emsp;&emsp;<font color="red">混乱导致失败。</font></p>
-<h3 id="态度"><a href="#态度" class="headerlink" title="态度"></a>态度</h3><p>&emsp;&emsp;“不听经理的，我就会被炒鱿鱼？”多半不会。多数经理想要知道实情，即便他们看起来不喜欢实情。多当数经理想要好代码，即便他们总是痴迷于进度。他们会奋力卫护进度和需求；那是他们该干的。你则当以同等的热情卫护代码。<br>&emsp;&emsp;程序员遵从不了解混乱风险的经理的意愿，是不专业的做法。<br>&emsp;&emsp;程序员面临一种基础价值谜题。有那么几年经验的开发者都知道，之前的混乱拖了自己的后腿。但开发者们背负期限的压力，只好制造混乱。简言之，他们没花时间让自己做得更快！<br>&emsp;&emsp;制造混乱无助于赶上期限。混乱只会立刻拖慢你，叫你错过期限。赶上期限的唯一做法——做得快的唯一做法——就是始终尽可能保持代码整洁。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/《代码整洁之道》/" data-id="cjng3ol5u000zbwutqtd7imxn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/">book</a></li></ul>
 
     </footer>
   </div>
@@ -1568,7 +1926,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
     </div>
   </div>
 
@@ -1578,7 +1936,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html5/" style="font-size: 10px;">Html5</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
     </div>
   </div>
 
@@ -1600,6 +1958,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/21/前端-Html5/">Html5</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/19/Android技术——OkHttp/">Android技术——OkHttp</a>
           </li>
         
@@ -1613,10 +1975,6 @@
         
           <li>
             <a href="/2018/10/16/《第一行代码_Android》第8章_多媒体/">《第一行代码_Android》第8章_多媒体</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/14/《第一行代码_Android》第7章_内容提供器/">《第一行代码_Android》第7章_内容提供器</a>
           </li>
         
       </ul>
