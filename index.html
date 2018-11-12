@@ -62,6 +62,95 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Android技术——LBS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/12/Android技术——LBS/" class="article-date">
+  <time datetime="2018-11-12T10:30:28.000Z" itemprop="datePublished">2018-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/12/Android技术——LBS/">Android技术——LBS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android特色开发—LBS-基于位置的服务"><a href="#Android特色开发—LBS-基于位置的服务" class="headerlink" title="Android特色开发—LBS(基于位置的服务)"></a>Android特色开发—LBS(基于位置的服务)</h1><ul>
+<li><p>基于位置的服务简介</p>
+</li>
+<li><p>申请百度开发者账号及获取API Key和SDK</p>
+</li>
+<li><p>Android Studio中配置SDK</p>
+</li>
+</ul>
+<hr>
+<h3 id="基于位置的服务简介"><a href="#基于位置的服务简介" class="headerlink" title="基于位置的服务简介"></a>基于位置的服务简介</h3><p>基于位置的服务围绕的核心就是要先确定用户所在的位置。</p>
+<p>通常有两种技术方式：</p>
+<ol>
+<li><p>一种是通过GPS定位：GPS定位的工作原理是基于手机内置的GPS硬件直接和卫星交互来获取当前的经纬度信息。</p>
+<ul>
+<li>优点：定位精确度非常高。</li>
+<li>缺点：只能在室外使用，室内基本无法收到卫星信号。</li>
+</ul>
+</li>
+<li><p>一种是通过网络定位：网络定位的工作原理是根据手机当前网络附近的三个基站进行测速，以此确定出一个大概的位置。</p>
+<ul>
+<li>优点：在室内室外都能使用。</li>
+<li>缺点：定位精确度不高。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="申请百度开发者账号及获取API-Key和SDK"><a href="#申请百度开发者账号及获取API-Key和SDK" class="headerlink" title="申请百度开发者账号及获取API Key和SDK"></a>申请百度开发者账号及获取API Key和SDK</h3><p>此节我们使用的是第三方公司的SDK，国内在此领域做得比较好的一个是百度，一个是高德。</p>
+<p>这里我们采用百度的LBS。</p>
+<ol>
+<li><p>首先申请百度账号。不解释。</p>
+</li>
+<li><p>申请成为一名百度开发者。</p>
+<p> 打开网址：<a href="http://developer.baidu.com/user/info" target="_blank" rel="noopener">http://developer.baidu.com/user/info</a><br> 如下图填写个人信息，填写带‘*’号的即可：<br> <img src="/2018/11/12/Android技术——LBS/百度开发者.png" alt=""></p>
+</li>
+<li><p>进入百度地图开放平台  </p>
+<p> 网址：<a href="http://lbsyun.baidu.com/apiconsole/key" target="_blank" rel="noopener">http://lbsyun.baidu.com/apiconsole/key</a><br> 刚注册的账号的应用列表是空的，这里我已经使用过这个平台，应有列表有我的项目信息。<br> <img src="/2018/11/12/Android技术——LBS/百度地图开放平台.png" alt=""></p>
+</li>
+<li><p>点击创建应用</p>
+<p> 如下图所示，应用名称自定义，应用类型自定义(这里我们使用Android SDK，给Android设备使用的)，启用服务默认即可。<br> <img src="/2018/11/12/Android技术——LBS/创建应用.png" alt=""></p>
+<p> 开发版SHA1：是在Android Studio项目中的，打开Android Studio，点击右侧的“Gradle”，点击“:app/Tasks/android/signingReport”，在下面会弹出一些信息，找到里面的SHA1复制即可。<br> <img src="/2018/11/12/Android技术——LBS/SHA1.png" alt=""></p>
+<p> 包名：就是Android Studio中SHA1对应项目的包名。</p>
+</li>
+<li><p>点击“提交”按钮</p>
+<p> 此时，在应用列表中就有我们创建出来的项目了，其中“访问位置（AK）”就是API Key。</p>
+</li>
+<li><p>获取SDK</p>
+<p> 网址：<a href="http://lbsyun.baidu.com/index.php?title=sdk/download&amp;action#selected=mapsdk_basicmap,mapsdk_searchfunction,mapsdk_lbscloudsearch,mapsdk_calculationtool,mapsdk_radar" target="_blank" rel="noopener">http://lbsyun.baidu.com/index.php?title=sdk/download&amp;action#selected=mapsdk_basicmap,mapsdk_searchfunction,mapsdk_lbscloudsearch,mapsdk_calculationtool,mapsdk_radar</a></p>
+<p> 百度地图开放平台首页中也可以进入下载SDK页面：<a href="http://lbsyun.baidu.com/index.php?title=首页" target="_blank" rel="noopener">http://lbsyun.baidu.com/index.php?title=首页</a></p>
+<p> 根据需求选择，然后下载sdk。<br> <img src="/2018/11/12/Android技术——LBS/SDK.PNG" alt=""></p>
+</li>
+</ol>
+<h3 id="Android-Studio中配置SDK"><a href="#Android-Studio中配置SDK" class="headerlink" title="Android Studio中配置SDK"></a>Android Studio中配置SDK</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/12/Android技术——LBS/" data-id="cjoe7m1720001fout9f030mez" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Android技术——JSON" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/10/Android技术——JSON/" class="article-date">
@@ -84,7 +173,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="章节介绍"><a href="#章节介绍" class="headerlink" title="章节介绍"></a>章节介绍</h1><p>此节主要讲Android中的JSON及JSON的各种解析方法。</p>
+        <h1 id="Android技术——JSON"><a href="#Android技术——JSON" class="headerlink" title="Android技术——JSON"></a>Android技术——JSON</h1><p>此节主要讲Android中的JSON及JSON的各种解析方法。</p>
 <ul>
 <li><p>JSON简介</p>
 </li>
@@ -207,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/10/Android技术——JSON/" data-id="cjockbzew0006aoutqnjpm4hc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/10/Android技术——JSON/" data-id="cjoe7m17m000afoutnyi7uv15" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -252,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/02/Android技术——StickyListHeaders黏连头部表/" data-id="cjockbzf00009aoutawcjhiet" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/02/Android技术——StickyListHeaders黏连头部表/" data-id="cjoe7m17b0004foutmd1d2drq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -303,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/02/Android技术——BottomSheetLayout底部弹出框/" data-id="cjockbzey0007aout81wqedkx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/02/Android技术——BottomSheetLayout底部弹出框/" data-id="cjoe7m17e0005foutxcmlwh9x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -348,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/Android技术——杂记/" data-id="cjockbzf1000baout43a45kdn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/Android技术——杂记/" data-id="cjoe7m18i000hfout57w1er4a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -442,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/27/Android技术——软件框架/" data-id="cjockbzf3000daoutwz08o67d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/27/Android技术——软件框架/" data-id="cjoe7m18k000ifout76429jn8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -513,7 +602,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/24/Android技术——底部导航栏/" data-id="cjockbzf4000faout4329yxgi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/24/Android技术——底部导航栏/" data-id="cjoe7m17h0008foutnekhypwg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -968,7 +1057,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/前端-Html5/" data-id="cjockbzgx0020aoutmcsnkw0s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/前端-Html5/" data-id="cjoe7m1ac0026foutr8p2gsxw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Html5-Css/">Html5/Css</a></li></ul>
@@ -1054,7 +1143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/19/Android技术——网络框架/" data-id="cjockbzf6000haoutcuskljtn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/19/Android技术——网络框架/" data-id="cjoe7m18p000kfout0l7z9va3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -1099,50 +1188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/18/Android技术——Android与H5混合开发/" data-id="cjockbzdq0001aouts6f8qdvf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-《第一行代码_Android》第9章_网络技术" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/17/《第一行代码_Android》第9章_网络技术/" class="article-date">
-  <time datetime="2018-10-17T11:44:58.000Z" itemprop="datePublished">2018-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/17/《第一行代码_Android》第9章_网络技术/">《第一行代码_Android》第9章_网络技术</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此博客使用教材为《第一行代码 Android》第2版。</p>
-<h1 id="第9章-看看精彩的世界——使用网络技术"><a href="#第9章-看看精彩的世界——使用网络技术" class="headerlink" title="第9章 看看精彩的世界——使用网络技术"></a>第9章 看看精彩的世界——使用网络技术</h1><p>Android与H5及更多更详细的内容见我的博客《Android高级技术——Android与H5互调》。</p>
-<hr>
-<h3 id="WebView的用法"><a href="#WebView的用法" class="headerlink" title="WebView的用法"></a>WebView的用法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        WebView webView = (WebView) findViewById(R.id.web_view);</span><br><span class="line"></span><br><span class="line">        webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);       <span class="comment">// 设置支持JS调用</span></span><br><span class="line">        webView.getSettings().setSupportZoom(<span class="keyword">true</span>);         <span class="comment">//支持缩放</span></span><br><span class="line">        webView.getSettings().setDisplayZoomControls(<span class="keyword">false</span>);        <span class="comment">// 设置不显示缩放按钮</span></span><br><span class="line">        webView.getSettings().setBuiltInZoomControls(<span class="keyword">true</span>);     <span class="comment">// 可任意比例缩放</span></span><br><span class="line">        webView.setVerticalScrollBarEnabled(<span class="keyword">false</span>);</span><br><span class="line">        webView.setInitialScale(<span class="number">145</span>);       <span class="comment">// 设置缩放比例</span></span><br><span class="line">        webView.setWebViewClient(<span class="keyword">new</span> WebViewClient());      <span class="comment">// 使用webview浏览器窗口</span></span><br><span class="line">        webView.loadUrl(<span class="string">"http://www.aijunhao.com.cn"</span>);      <span class="comment">// 加载页面</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/10/17/《第一行代码_Android》第9章_网络技术/myweb.jpg" alt=""></p>
-<h3 id="使用HTTP协议访问网络"><a href="#使用HTTP协议访问网络" class="headerlink" title="使用HTTP协议访问网络"></a>使用HTTP协议访问网络</h3><h3 id="解析XML格式数据"><a href="#解析XML格式数据" class="headerlink" title="解析XML格式数据"></a>解析XML格式数据</h3><h3 id="解析JSON数据"><a href="#解析JSON数据" class="headerlink" title="解析JSON数据"></a>解析JSON数据</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/17/《第一行代码_Android》第9章_网络技术/" data-id="cjockbzgz0023aoutzxlzx0vo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/18/Android技术——Android与H5混合开发/" data-id="cjoe7m16v0000foutdr27fmiz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -1204,6 +1250,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/12/Android技术——LBS/">Android技术——LBS</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/10/Android技术——JSON/">Android技术——JSON</a>
           </li>
         
@@ -1217,10 +1267,6 @@
         
           <li>
             <a href="/2018/10/30/Android技术——杂记/">Android技术——杂记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/27/Android技术——软件框架/">Android技术——主流项目架构(重点)</a>
           </li>
         
       </ul>

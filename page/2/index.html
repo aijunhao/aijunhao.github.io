@@ -62,6 +62,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-《第一行代码_Android》第9章_网络技术" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/17/《第一行代码_Android》第9章_网络技术/" class="article-date">
+  <time datetime="2018-10-17T11:44:58.000Z" itemprop="datePublished">2018-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/17/《第一行代码_Android》第9章_网络技术/">《第一行代码_Android》第9章_网络技术</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此博客使用教材为《第一行代码 Android》第2版。</p>
+<h1 id="第9章-看看精彩的世界——使用网络技术"><a href="#第9章-看看精彩的世界——使用网络技术" class="headerlink" title="第9章 看看精彩的世界——使用网络技术"></a>第9章 看看精彩的世界——使用网络技术</h1><p>Android与H5及更多更详细的内容见我的博客《Android高级技术——Android与H5互调》。</p>
+<hr>
+<h3 id="WebView的用法"><a href="#WebView的用法" class="headerlink" title="WebView的用法"></a>WebView的用法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        WebView webView = (WebView) findViewById(R.id.web_view);</span><br><span class="line"></span><br><span class="line">        webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);       <span class="comment">// 设置支持JS调用</span></span><br><span class="line">        webView.getSettings().setSupportZoom(<span class="keyword">true</span>);         <span class="comment">//支持缩放</span></span><br><span class="line">        webView.getSettings().setDisplayZoomControls(<span class="keyword">false</span>);        <span class="comment">// 设置不显示缩放按钮</span></span><br><span class="line">        webView.getSettings().setBuiltInZoomControls(<span class="keyword">true</span>);     <span class="comment">// 可任意比例缩放</span></span><br><span class="line">        webView.setVerticalScrollBarEnabled(<span class="keyword">false</span>);</span><br><span class="line">        webView.setInitialScale(<span class="number">145</span>);       <span class="comment">// 设置缩放比例</span></span><br><span class="line">        webView.setWebViewClient(<span class="keyword">new</span> WebViewClient());      <span class="comment">// 使用webview浏览器窗口</span></span><br><span class="line">        webView.loadUrl(<span class="string">"http://www.aijunhao.com.cn"</span>);      <span class="comment">// 加载页面</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/17/《第一行代码_Android》第9章_网络技术/myweb.jpg" alt=""></p>
+<h3 id="使用HTTP协议访问网络"><a href="#使用HTTP协议访问网络" class="headerlink" title="使用HTTP协议访问网络"></a>使用HTTP协议访问网络</h3><h3 id="解析XML格式数据"><a href="#解析XML格式数据" class="headerlink" title="解析XML格式数据"></a>解析XML格式数据</h3><h3 id="解析JSON数据"><a href="#解析JSON数据" class="headerlink" title="解析JSON数据"></a>解析JSON数据</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/17/《第一行代码_Android》第9章_网络技术/" data-id="cjoe7m1aa0023foutjwd8aano" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-《第一行代码_Android》第8章_多媒体" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/16/《第一行代码_Android》第8章_多媒体/" class="article-date">
@@ -112,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/《第一行代码_Android》第8章_多媒体/" data-id="cjockbzgu001waout4ro6zy07" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/《第一行代码_Android》第8章_多媒体/" data-id="cjoe7m1a7001zfoutu1bk5gho" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -290,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/《第一行代码_Android》第7章_内容提供器/" data-id="cjockbzgp001qaoutej1day8e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/《第一行代码_Android》第7章_内容提供器/" data-id="cjoe7m1a4001vfoutynlj8fex" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -412,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjockbzgo001oaoutfwop0y4y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjoe7m1a6001xfout10sh568g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -485,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/Git使用教程/" data-id="cjockbzf8000jaout7o0nrycm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/Git使用教程/" data-id="cjoe7m190000ofoutp53aumz4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -559,7 +602,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/07/《第一行代码_Android》第5章_广播/" data-id="cjockbzgs001uaout09kpqj5b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/07/《第一行代码_Android》第5章_广播/" data-id="cjoe7m1a1001rfoutmp2rns43" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -732,7 +775,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/" data-id="cjockbzgl001laoutm0evnbvu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/" data-id="cjoe7m1a2001tfouti0mfyzkm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -1954,7 +1997,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/18/《第一行代码_Android》第3章_UI开发/" data-id="cjockbznx002aaout8hx6aiak" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/18/《第一行代码_Android》第3章_UI开发/" data-id="cjoe7m1cr002ffout0eo6dk70" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -2001,7 +2044,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/hello-world/" data-id="cjockbzge0019aoutio3remhh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/12/hello-world/" data-id="cjoe7m19u001kfoutiui58kia" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2196,47 +2239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第2章_探究活动/" data-id="cjockbzgr001saoutpeiqi041" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-《第一行代码_Android》第1章_第一行Android代码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/12/《第一行代码_Android》第1章_第一行Android代码/" class="article-date">
-  <time datetime="2018-09-12T10:09:50.000Z" itemprop="datePublished">2018-09-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/12/《第一行代码_Android》第1章_第一行Android代码/">《第一行代码 Android》第1章 第一行Android代码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此博客使用教材为《第一行代码 Android》第2版。</p>
-<h1 id="第1章-创建你的第一个Android项目"><a href="#第1章-创建你的第一个Android项目" class="headerlink" title="第1章 创建你的第一个Android项目"></a>第1章 创建你的第一个Android项目</h1><p>此章可以省略</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第1章_第一行Android代码/" data-id="cjockbzgi001haoutxl96rd2w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第2章_探究活动/" data-id="cjoe7m19x001ofoutatsshzkt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -2298,6 +2301,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/12/Android技术——LBS/">Android技术——LBS</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/10/Android技术——JSON/">Android技术——JSON</a>
           </li>
         
@@ -2311,10 +2318,6 @@
         
           <li>
             <a href="/2018/10/30/Android技术——杂记/">Android技术——杂记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/27/Android技术——软件框架/">Android技术——主流项目架构(重点)</a>
           </li>
         
       </ul>
