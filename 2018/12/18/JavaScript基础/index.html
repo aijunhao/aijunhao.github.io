@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/18/JavaScript基础/helloworld.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/18/JavaScript基础/helloworld1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/18/JavaScript基础/helloworld2.jpg">
-<meta property="og:updated_time" content="2018-12-24T10:57:45.419Z">
+<meta property="og:updated_time" content="2019-01-19T07:54:50.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础">
 <meta name="twitter:description" content="JavaScript目录：  JS简介 JS的HelloWorld JS编写位置 JS基本语法 JS注释 数据类型 字面量（常量）和变量 标识符 强制类型转换 运算符   对象 创建对象 对象的 in 运算符 工厂方法创建对象 原型对象 查询对象中属性   函数 自定义函数声明 函数调用 立即执行函数 函数对象方法：call()和apply()   作用域 声明提前 隐含参数：this toStr">
@@ -134,6 +134,18 @@
 </ul>
 </li>
 <li>隐含参数：arguments</li>
+<li>Math工具类<ul>
+<li>ceil()向上取整方法</li>
+<li>floor()向下取整方法</li>
+<li>round()四舍五入方法</li>
+<li>random()生成0到1随机数方法</li>
+<li>max()和min()最大最小方法</li>
+</ul>
+</li>
+<li>包装类<ul>
+<li>String()对象</li>
+</ul>
+</li>
 </ul>
 <hr>
 <h3 id="JS简介"><a href="#JS简介" class="headerlink" title="JS简介"></a>JS简介</h3><p>JavaScript诞生于1995年，它的出现主要是用于处理网页中的前端验证。所谓的前端验证，就是指检查用户输入的内容是否符合一定的规则。</p>
@@ -416,6 +428,37 @@
 <p>如上，函数并没有定义形参，仍然可以使用arguments来获取传入的实参。</p>
 <p>arguments还有一个属性叫callee，对应当前正在指向的函数对象。</p>
 <hr>
+<h3 id="Math工具类"><a href="#Math工具类" class="headerlink" title="Math工具类"></a>Math工具类</h3><p>Math和其他的对象不同，它不是一个构造函数，它属于一个工具类，不用创建对象，它里边封装了数学运算相关的属性和方法。</p>
+<p><a href="http://www.w3school.com.cn/jsref/jsref_obj_math.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/jsref/jsref_obj_math.asp</a></p>
+<h4 id="ceil-向上取整方法"><a href="#ceil-向上取整方法" class="headerlink" title="ceil()向上取整方法"></a>ceil()向上取整方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.ceil(<span class="number">1.1</span>));        <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h4 id="floor-向下取整方法"><a href="#floor-向下取整方法" class="headerlink" title="floor()向下取整方法"></a>floor()向下取整方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.floor(<span class="number">1.1</span>));        <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h4 id="round-四舍五入方法"><a href="#round-四舍五入方法" class="headerlink" title="round()四舍五入方法"></a>round()四舍五入方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.ceil(<span class="number">1.1</span>));        <span class="comment">//  1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.ceil(<span class="number">1.6</span>));        <span class="comment">//  2</span></span><br></pre></td></tr></table></figure>
+<h4 id="random-生成0到1随机数方法"><a href="#random-生成0到1随机数方法" class="headerlink" title="random()生成0到1随机数方法"></a>random()生成0到1随机数方法</h4><p>这个数在0到1之间，但是不包括0和1，可以通过其他的Math方法来实现包括0和1，然后乘一个倍数和加减法操作实现任意范围内的随机数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.random());        <span class="comment">//  0.7679936159463725</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成x-y之间的随机数方法：</span></span><br><span class="line"><span class="comment">// Math.round(Math.random()*(y-x)+x);</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="max-和min-最大最小方法"><a href="#max-和min-最大最小方法" class="headerlink" title="max()和min()最大最小方法"></a>max()和min()最大最小方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max(<span class="number">10</span>, <span class="number">45</span>, <span class="number">30</span>, <span class="number">100</span>);        <span class="comment">// 100</span></span><br><span class="line"><span class="keyword">var</span> min = <span class="built_in">Math</span>.min(<span class="number">10</span>, <span class="number">45</span>, <span class="number">30</span>, <span class="number">100</span>);        <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h3><p>在JS中有三个包装类，这三个包装类可以将基本数据类型的数据转换为对象。</p>
+<p>三个包装类：</p>
+<ul>
+<li><p>String()：可以将基本数据类型的字符串转换为String对象</p>
+</li>
+<li><p>Number()：可以将基本数据类型的数字转换为Number对象</p>
+</li>
+<li><p>Boolean()：可以加个基本数据类型的布尔值转换为Boolean对象</p>
+</li>
+</ul>
+<font color="red">但是注意，我们再实际应用中不会使用基本数据类型的对象，如果使用基本客户数据类型的对象，在做一些比较时可能会带来一些不可预期的结果。</font>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num);       <span class="comment">// Number &#123; 2 &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);        <span class="comment">// object</span></span><br><span class="line"></span><br><span class="line">------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hello"</span>);      </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str);       <span class="comment">// String &#123; "hello" &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str);        <span class="comment">// object</span></span><br><span class="line"></span><br><span class="line">--------------------------------------</span><br><span class="line"></span><br><span class="line">num.hello = <span class="string">"abc"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num.hello);     <span class="comment">// abc</span></span><br><span class="line"></span><br><span class="line">-------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num == num2);         <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>当我们对一些基本数据类型的值去调用属性和方法时，浏览器会临时使用包装类将其转换成对象，然后嗲用对象的属性和方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 方法和属性智能添加对象，不能添加给基本数据类型 */</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">s = s.toString();       <span class="comment">// 临时将s转换成Number对象，然后调用Number对象的toString()方法，用完后销毁</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(s);             <span class="comment">// "123"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> s);      <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line">--------------------------------------</span><br><span class="line"></span><br><span class="line">s.hello = <span class="string">"nihao"</span>;          <span class="comment">// 现在s是string基本数据类型，先转换成String对象添加属性，之后销毁，又变成了string基本数据类型</span></span><br><span class="line"><span class="built_in">console</span>.log(s.hello);       <span class="comment">// "undefined"，因为此处仍然需要先转换为String对象，但是这个String对象不是之前那个有hello属性的对象，因为之前那个已经被销毁了。</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="String对象方法"><a href="#String对象方法" class="headerlink" title="String对象方法"></a>String对象方法</h4><p>字符串在底层是以字符数组的形式保存的。</p>
+<p>字符串对象方法大都对本身没有影响，会返回一个新的值。</p>
+<h5 id="charAt"><a href="#charAt" class="headerlink" title="charAt()"></a>charAt()</h5><p>可以返回字符串中指定位置的字符，和数组下标效果相同。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.charAt(<span class="number">0</span>));     <span class="comment">// h</span></span><br><span class="line"><span class="built_in">console</span>.log(str[<span class="number">0</span>]);            <span class="comment">// h</span></span><br></pre></td></tr></table></figure>
+<h5 id="charCodeAt"><a href="#charCodeAt" class="headerlink" title="charCodeAt()"></a>charCodeAt()</h5><p>返回在指定的位置的字符的 Unicode 编码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.charAt(<span class="number">0</span>));     <span class="comment">// 104</span></span><br></pre></td></tr></table></figure>
+<h5 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h5><p>检索字符串是否包含指定内容（正序），找到返回指定内容的位置，否则返回-1。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">"el"</span>));     <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.indexof(<span class="string">"l"</span>, <span class="number">3</span>));     <span class="comment">// 3，从位置3开始查找指定内容</span></span><br></pre></td></tr></table></figure>
+<h5 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf()"></a>lastIndexOf()</h5><p>检索字符串是否包含指定内容（反序），找到返回指定内容的位置，否则返回-1。</p>
 
       
     </div>
@@ -516,7 +559,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Ai Junhao<br>
+      &copy; 2019 Ai Junhao<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
