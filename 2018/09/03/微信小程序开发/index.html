@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/03/微信小程序开发/开发者工具-AppID.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/03/微信小程序开发/FirstWeChatApp.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/03/微信小程序开发/appjson.jpg">
-<meta property="og:updated_time" content="2019-01-31T06:21:04.050Z">
+<meta property="og:updated_time" content="2019-01-31T06:22:09.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序开发">
 <meta name="twitter:description" content="目录  微信小程序开发基本资料 注册并安装开发者工具 项目介绍 小程序配置 app.json 工具配置 project.config.json 页面配置 page.json WXML 模板 WXSS 样式 JS 交互逻辑   数据绑定 控制属性绑定 控制属性绑定 关键字绑定   列表渲染 wx:for 列表渲染单个组件 block wx:for列表渲染多个组件   尺寸自适应 模板及模板引用">
@@ -168,7 +168,13 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
 </ul>
 <p>更详细的文档可以参考 WXSS 。</p>
 <p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html</a></p>
-
+<h4 id="JS-交互逻辑"><a href="#JS-交互逻辑" class="headerlink" title="JS 交互逻辑"></a>JS 交互逻辑</h4><p>一个服务仅仅只有界面展示是不够的，还需要和用户做交互：响应用户的点击、获取用户的位置等等。在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。</p>
+<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html</a></p>
+<hr>
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><p>WXML页面中的动态数据都是来自js文件Page的data，数据绑定通过双大括号将变量包起来，在WXML页面里将数据值显示出来。Page中的data存放是通过键值对的方式存放。</p>
+<p>大括号是小程序特有的表示方式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        msg: <span class="string">'123'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
