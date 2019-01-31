@@ -2129,7 +2129,48 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
 <hr>
 <h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>可以在大括号内进行简单的运算。</p>
 <h4 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view hidden=&apos;&#123;&#123;flag ? true : false&#125;&#125;&apos;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
-
+<h4 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;a + b&#125;&#125; + &#123;&#123;c&#125;&#125;&lt;/view&gt;      // 3 + 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        a: <span class="number">1</span>, </span><br><span class="line">        b: <span class="number">2</span>,</span><br><span class="line">        c: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">#### 逻辑判断</span><br><span class="line"><span class="string">``</span><span class="string">`wxml</span></span><br><span class="line"><span class="string">index.wxml:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;view wx:if="&#123;&#123;length &gt; 5&#125;&#125;"&gt;&lt;/view&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;&quot;hello&quot; + name&#125;&#125;&lt;/view&gt;     //helloMINA</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        name: <span class="string">'MINA'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><h4 id="wx-for-列表渲染单个组件"><a href="#wx-for-列表渲染单个组件" class="headerlink" title="wx:for 列表渲染单个组件"></a>wx:for 列表渲染单个组件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;!-- arr:数组名, index:键名/索引, item:键值 --&gt;</span><br><span class="line">&lt;!-- 可以通过wx:for-index和wx:for-item修改元素的默认索引和键值 --&gt;</span><br><span class="line">&lt;view wx:for=&quot;&#123;&#123;arr&#125;&#125;&quot; wx:key=&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">    &#123;&#123;index&#125;&#125;:&#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        arr: [<span class="string">"苹果"</span>,<span class="string">"香蕉"</span>,<span class="string">"西瓜"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/09/03/微信小程序开发/列表渲染.jpg" alt="列表渲染"></p>
+<hr>
+<h4 id="block-wx-for列表渲染多个组件"><a href="#block-wx-for列表渲染多个组件" class="headerlink" title="block wx:for列表渲染多个组件"></a>block wx:for列表渲染多个组件</h4><p>使用block标签代替view标签即可。循环之后之后内容，没用多余的标签。</p>
+<hr>
+<h3 id="尺寸自适应"><a href="#尺寸自适应" class="headerlink" title="尺寸自适应"></a>尺寸自适应</h3><p>rpx单位是微信小程序中css的尺寸单位，rpx可以根据屏幕宽度进行自适应。</p>
+<p>规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>rpx换算px (屏幕宽度/750)</th>
+<th>px换算rpx (750/屏幕宽度)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone5</td>
+<td>1rpx = 0.42px 　</td>
+<td>　    1px = 2.34px</td>
+</tr>
+<tr>
+<td>iPhone6</td>
+<td>1rpx = 0.5px 　</td>
+<td>　　　1px = 2rpx</td>
+</tr>
+<tr>
+<td>iPhone6s</td>
+<td>1rpx = 0.552px 　</td>
+<td>　  1px = 1.81rpx</td>
+</tr>
+</tbody>
+</table>
+<p>将屏幕布局设置为750像素，然后使用rpx单位即可自动适应。</p>
+<hr>
+<h3 id="模板及模板引用"><a href="#模板及模板引用" class="headerlink" title="模板及模板引用"></a>模板及模板引用</h3><h4 id="样式导入"><a href="#样式导入" class="headerlink" title="样式导入"></a>样式导入</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"导入的wxss路径"</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
