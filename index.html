@@ -643,6 +643,142 @@
 
 
   
+    <article id="post-前端-Html_Css常见问题解决" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/14/前端-Html_Css常见问题解决/" class="article-date">
+  <time datetime="2018-12-14T11:24:18.000Z" itemprop="datePublished">2018-12-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/14/前端-Html_Css常见问题解决/">前端 - Html_Css常见问题解决</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目录：</p>
+<ul>
+<li>高度塌陷问题<ul>
+<li>父容器的高度塌陷问题</li>
+<li>元素浮动造成的高度塌陷问题</li>
+</ul>
+</li>
+<li>父子元素外边距重叠</li>
+<li>背景闪烁问题</li>
+</ul>
+<hr>
+<h2 id="高度塌陷问题"><a href="#高度塌陷问题" class="headerlink" title="高度塌陷问题"></a>高度塌陷问题</h2><h3 id="父容器的高度塌陷问题"><a href="#父容器的高度塌陷问题" class="headerlink" title="父容器的高度塌陷问题"></a>父容器的高度塌陷问题</h3><h5 id="代码、截图如下："><a href="#代码、截图如下：" class="headerlink" title="代码、截图如下："></a>代码、截图如下：</h5><p>高度塌陷问题的代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box1&#123;</span></span><br><span class="line"><span class="undefined">                border: 10px red solid;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box2&#123;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                width: 100px;</span></span><br><span class="line"><span class="undefined">                background-color: blue;</span></span><br><span class="line"><span class="undefined">                float: left;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box3&#123;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                background-color: yellow;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>高度塌陷的示意图：<br><img src="/2018/12/14/前端-Html_Css常见问题解决/高度塌陷问题.jpg" alt=""></p>
+<p>正常的示意图：<br><img src="/2018/12/14/前端-Html_Css常见问题解决/解决高度缺陷.jpg" alt=""></p>
+<h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><p>在文档流中，父元素的高度默认是被子元素撑开的，也就是子元素多高，父元素就多高。但是当子元素设置浮动以后，子元素就完全脱离文档流，此时将会导致子元素无法撑起父元素的高度，导致父元素的高度塌陷，父元素下的所有元素都会向上移动，这样讲导致页面布局混乱。如案例中的子元素div（box2）设置浮动之后，父元素div（box1）高度塌陷，div（box3）向上移动。</p>
+<h5 id="原理及解决方法："><a href="#原理及解决方法：" class="headerlink" title="原理及解决方法："></a>原理及解决方法：</h5><p><font color="red">方法一：</font>根据W3C的标准，在页面中元素都隐含的一个元素叫做Block Formatting Context，简称BFC，该属性可以设置打开或者关闭，默认是关闭的。</p>
+<p>当开启元素的BFC以后，元素将会具有如下的特性：</p>
+<ol>
+<li>父元素的垂直边距不会和子元素重叠</li>
+<li>开启BFC的元素不会被浮动元素所覆盖</li>
+<li>开启BFC的元素可以包含浮动的子元素</li>
+</ol>
+<p>开启元素的BFC，各有缺陷：</p>
+<ol>
+<li><p>设置元素浮动。不推荐。</p>
+<p> 使用这种方式开启，虽然可以撑开父元素，但是会导致父元素的宽度丢失，也会导致下边元素上移，不能解决问题。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.box1&#123;</span><br><span class="line">    border: 10px red solid;</span><br><span class="line">    float: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <img src="/2018/12/14/前端-Html_Css常见问题解决/设置父容器浮动.jpg" alt=""></p>
+</li>
+<li><p>设置元素绝对定位。不推荐。</p>
+<p> 同上。</p>
+</li>
+<li><p>设置元素display属性为inline-block，将元素转化为内联块元素。不推荐。</p>
+<p> 可以解决问题，但是会导致宽度丢失，不推荐使用。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.box1&#123;</span><br><span class="line">    border: 10px red solid;</span><br><span class="line">    display: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <img src="/2018/12/14/前端-Html_Css常见问题解决/元素转化为内联元素.jpg" alt=""></p>
+</li>
+<li><p>大部分浏览器将元素的overflow设置为非visible的值，推荐hidden。推荐。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.box1&#123;</span><br><span class="line">    border: 10px red solid;</span><br><span class="line"></span><br><span class="line">    zoom: 1;        /* 解决IE6及以下浏览器高度塌陷问题*/</span><br><span class="line">    overflow: hidden;      /* 解决大部分浏览器高度塌陷问题 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <img src="/2018/12/14/前端-Html_Css常见问题解决/解决高度缺陷.jpg" alt=""></p>
+</li>
+</ol>
+<p>IE6及以下浏览器中并不支持BFC，IE6中有另一个隐含的属性叫hasLayout，作用和BFC类似，所以在IE6及以下浏览器可以开启hasLayout来解决高度塌陷问题。</p>
+<p>开启hasLayout副作用最小的方法是将元素的zoom设置为1即可。zoom表示将元素放大几倍。<br>开启hasLayout的方法：</p>
+<ol>
+<li><p>IE6及以下浏览器设置zoom: 1，推荐。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.box1&#123;</span><br><span class="line">    border: 10px red solid;</span><br><span class="line"></span><br><span class="line">    zoom: 1;        /* 解决IE6及以下浏览器高度塌陷问题*/</span><br><span class="line">    overflow: hidden;      /* 解决大部分浏览器高度塌陷问题 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置width和height，推荐。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box1&#123;</span><br><span class="line">    border: 10px red solid;</span><br><span class="line"></span><br><span class="line">    height: xxx;</span><br><span class="line">    width: xxx;        /* 解决IE6及以下浏览器高度塌陷问题*/</span><br><span class="line">    overflow: hidden;      /* 解决大部分浏览器高度塌陷问题 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><font color="red">方法二：</font>尽管上述方法用起来副作用比较小，但是还有一种W3C推荐的方法，使用额外的div和clear的方法来无副作用地清除高度塌陷。</p>
+<p>代码如下，在div（box2）中添加一个新的div专门用来清除浮动，这样就能完美解决高度塌陷问题。但是有一点不好的地方就是，会在代码中加入多余的div结构，但是这样影响并不大。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box1&#123;</span></span><br><span class="line"><span class="undefined">                border: 10px red solid;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box2&#123;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                width: 100px;</span></span><br><span class="line"><span class="undefined">                background-color: blue;</span></span><br><span class="line"><span class="undefined">                float: left;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box3&#123;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                background-color: yellow;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">            </span></span><br><span class="line"><span class="undefined">            .clear&#123;</span></span><br><span class="line"><span class="undefined">                clear: both;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"clear"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><font color="red">最优，方法三：</font>在方法二的基础上进行完善。即不添加多余的div结构，又要解决高度塌陷问题。使用CSS的方法，通过after伪类，向元素后添加一个空白的块元素，然后清除浮动，实现html方法添加div并设置clear的效果。</p>
+<p>关键代码如下，只需要在出现高度塌陷的元素中使用这个类就能实现高度缺陷问题。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:after&#123;</span><br><span class="line">    /* 添加一个空的内容 */</span><br><span class="line">    content: "";</span><br><span class="line">    /* 转换为一个块元素，block、table都行 */</span><br><span class="line">    display: block;</span><br><span class="line">    /* 清除浮动 */</span><br><span class="line">    clear: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 兼容IE6 */</span><br><span class="line">.clearfix&#123;</span><br><span class="line">    zoom: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="元素浮动造成的高度塌陷问题"><a href="#元素浮动造成的高度塌陷问题" class="headerlink" title="元素浮动造成的高度塌陷问题"></a>元素浮动造成的高度塌陷问题</h3><h5 id="代码、截图如下：-1"><a href="#代码、截图如下：-1" class="headerlink" title="代码、截图如下："></a>代码、截图如下：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>ttt<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box1&#123;</span></span><br><span class="line"><span class="undefined">                width: 100px;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                background-color: yellow;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                float: left;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box2&#123;</span></span><br><span class="line"><span class="undefined">                width: 200px;</span></span><br><span class="line"><span class="undefined">                height: 200px;</span></span><br><span class="line"><span class="undefined">                background-color: yellowgreen;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                float: right;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box3&#123;</span></span><br><span class="line"><span class="undefined">                width: 300px;</span></span><br><span class="line"><span class="undefined">                height: 300px;</span></span><br><span class="line"><span class="undefined">                background-color: skyblue;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/14/前端-Html_Css常见问题解决/浮动造成的高度塌陷.jpg" alt=""></p>
+<h5 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h5><p>设置div（box1）向左浮动，div（box2）向右浮动，div（box3）受到其他元素影响，向上偏移。</p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>使用clear属性清除其他元素浮动对当前元素的影响。</p>
+<p>可选值：</p>
+<ul>
+<li>none：不清除</li>
+<li><p>left：清除左侧元素浮动对当前元素的影响。</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: left;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p>  <img src="/2018/12/14/前端-Html_Css常见问题解决/clearleft.jpg" alt=""></p>
+</li>
+<li><p>right：清除右侧元素浮动对当前元素的影响。</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: right;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p>  <img src="/2018/12/14/前端-Html_Css常见问题解决/clearright.jpg" alt=""></p>
+</li>
+<li><p>both：清除左侧和右侧元素浮动对当前元素的影响。就是清除最大影响。</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: both;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p>  <img src="/2018/12/14/前端-Html_Css常见问题解决/clearright.jpg" alt=""></p>
+</li>
+</ul>
+<hr>
+<h2 id="父子元素外边距重叠"><a href="#父子元素外边距重叠" class="headerlink" title="父子元素外边距重叠"></a>父子元素外边距重叠</h2><h5 id="代码、截图如下：-2"><a href="#代码、截图如下：-2" class="headerlink" title="代码、截图如下："></a>代码、截图如下：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box1&#123;</span></span><br><span class="line"><span class="undefined">                height: 200px;</span></span><br><span class="line"><span class="undefined">                width: 200px;</span></span><br><span class="line"><span class="undefined">                background-color: greenyellow;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box2&#123;</span></span><br><span class="line"><span class="undefined">                margin-top: 100px;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                width: 100px;</span></span><br><span class="line"><span class="undefined">                background-color: yellow;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>外边距重叠示意图：<br><img src="/2018/12/14/前端-Html_Css常见问题解决/外边距重叠.jpg" alt=""></p>
+<p>正常示意图：</p>
+<h5 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h5><p>当div（box2）设置上外边距的时候，与父容器div（box1）的外边距重叠了。</p>
+<h5 id="原理及解决方法"><a href="#原理及解决方法" class="headerlink" title="原理及解决方法"></a>原理及解决方法</h5><p>父子容器相邻的垂直外边距会发生重叠，子元素的外边距会传递给父元素。</p>
+<p>和上一个高度塌陷问题一样，可以同样使用一个额外的结构或者CSS方式来解决父子容器边距重合问题。</p>
+<p>最简单的就是使用CSS的方法，通过before伪类，向元素前添加一个空白的块元素将父子元素之间隔开，这样子元素就不能将外边距传递给父元素了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:before&#123;</span><br><span class="line">    /* 添加一个空的内容 */</span><br><span class="line">    content: "";</span><br><span class="line">    /* 转换为一个块元素 */</span><br><span class="line">    display: table;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将类给父元素就行了。</p>
+<hr>
+<h3 id="背景闪烁问题"><a href="#背景闪烁问题" class="headerlink" title="背景闪烁问题"></a>背景闪烁问题</h3><p>关键：图片整合技术 CSS-Sprite，也称雪碧图。</p>
+<p>网页资源在加载外部资源的时候并不是同时加载的，浏览器会在资源被使用时才去加载资源，由于加载图片需要一定的时间，所以在加载和显示的过程中会有一段时间背景图片无法显示，导致闪烁问题。</p>
+<p>比如，使用超链接来设置按钮时，如果将link、hover、active的背景图片加载不同的外部资源时，由于新的外部资源要重新加载，会导致闪烁问题。</p>
+<p>为了解决该问题，可以将三个图片整合为一张图片，这样可以同时将三张图片一起加载（因为合成之后已经是一张图片了，只用加载一次），就不会出现闪烁问题，然后通过background-position设置背景图片的偏移量来切换要显示的图片的位置，这种技术叫图片整合技术（CSS-Sprite）。</p>
+<p>优点：</p>
+<ol>
+<li>将多个图片整合为一张图片，浏览器只需要发送一次请求就可以加载多个图片，提高访问效率，提高用户体验。</li>
+<li>将多个图片整合为一张图片，减小图片的总大小，提高请求的速度，提高用户体验。</li>
+</ol>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/14/前端-Html_Css常见问题解决/" data-id="cjrk7wi1c001510ute3xh2l6z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Html-Css/">Html/Css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-《第一行代码-Android》第12章_最佳的UI体验" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/11/《第一行代码-Android》第12章_最佳的UI体验/" class="article-date">
@@ -1278,100 +1414,6 @@
 
 
   
-    <article id="post-Android技术——软件框架" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/27/Android技术——软件框架/" class="article-date">
-  <time datetime="2018-10-27T07:26:14.000Z" itemprop="datePublished">2018-10-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/27/Android技术——软件框架/">Android技术——主流项目架构(重点)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此节主要讲的是项目开发过程中的一些技巧和软件框架的搭建。</p>
-<hr>
-<h2 id="MVP模式"><a href="#MVP模式" class="headerlink" title="MVP模式"></a>MVP模式</h2><p>简称：MVP 全称：Model-View-Presenter ；MVP 是从经典的模式MVC演变而来，它们的基本思想有相通的地方：Controller/Presenter负责逻辑的处理，Model提供数据，View负责显示。</p>
-<h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><p>MVC模式的结构分为三部分，实体层的Model，视图层的View，以及控制层的Controller。</p>
-<p><img src="/2018/10/27/Android技术——软件框架/mvc.png" alt=""></p>
-<ul>
-<li>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</li>
-<li>而Model层就是JavaBean实体类，用于保存实例数据</li>
-<li>Controller控制器用于更新UI界面和数据实例</li>
-</ul>
-<h3 id="MVP模式-1"><a href="#MVP模式-1" class="headerlink" title="MVP模式"></a>MVP模式</h3><p>在Android项目中，Activity和Fragment占据了大部分的开发工作。如果有一种设计模式（或者说代码结构）专门是为优化Activity和Fragment的代码而产生的，你说这种模式重要不？这就是MVP设计模式。</p>
-<p>按照MVC的分层，Activity和Fragment（后面只说Activity）应该属于View层，用于展示UI界面，以及接收用户的输入，此外还要承担一些生命周期的工作。Activity是在Android开发中充当非常重要的角色，特别是TA的生命周期的功能，所以开发的时候我们经常把一些业务逻辑直接写在Activity里面，这非常直观方便，代价就是Activity会越来越臃肿，超过1000行代码是常有的事，而且如果是一些可以通用的业务逻辑（比如用户登录），写在具体的Activity里就意味着这个逻辑不能复用了。如果有进行代码重构经验的人，看到1000+行的类肯定会有所顾虑。因此，Activity不仅承担了View的角色，还承担了一部分的Controller角色，这样一来V和C就耦合在一起了，虽然这样写方便，但是如果业务调整的话，要维护起来就难了，而且在一个臃肿的Activity类查找业务逻辑的代码也会非常蛋疼，所以看起来有必要在Activity中，把View和Controller抽离开来，而这就是MVP模式的工作。</p>
-<p><img src="/2018/10/27/Android技术——软件框架/mvp.png" alt=""></p>
-<p>优点：</p>
-<ol>
-<li>模型与视图完全分离，我们可以修改视图而不影响模型</li>
-<li>可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部</li>
-<li>我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁。</li>
-<li>如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）</li>
-</ol>
-<hr>
-<h2 id="Dagger2降低层与层之间的耦合"><a href="#Dagger2降低层与层之间的耦合" class="headerlink" title="Dagger2降低层与层之间的耦合"></a>Dagger2降低层与层之间的耦合</h2><p>使用MVP模式之后，虽然层与层之间已经拆分开来，但是层与层之间的耦合还是非常高，<br>Dagger是为Android和Java平台提供的在编译时进行依赖注入的框架。降低MVP层与层之间的耦合。</p>
-<h3 id="dagger2的依赖配置"><a href="#dagger2的依赖配置" class="headerlink" title="dagger2的依赖配置"></a>dagger2的依赖配置</h3><p>在Project的build.gradle中添加butterknife插件：</p>
-<p>在module:xx的build.gradle中：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    // butterknife</span><br><span class="line">    implementation 'com.jakewharton:butterknife:8.8.1'</span><br><span class="line">    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'</span><br><span class="line"></span><br><span class="line">    // dagger2</span><br><span class="line">    implementation 'com.google.dagger:dagger:2.18'</span><br><span class="line">    annotationProcessor 'com.google.dagger:dagger-compiler:2.18'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="ButterKnife插件"><a href="#ButterKnife插件" class="headerlink" title="ButterKnife插件"></a>ButterKnife插件</h2><p>ButterKnife是一个专注于Android系统的View注入框架,以前总是要写很多findViewById来找到View对象，有了ButterKnife可以很轻松的省去这些步骤。是大神JakeWharton的力作，目前使用很广。最重要的一点，使用ButterKnife对性能基本没有损失，因为ButterKnife用到的注解并不是在运行时反射的，而是在编译的时候生成新的class。项目集成起来也是特别方便，使用起来也是特别简单。</p>
-<p>ButterKnife项目地址: <a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="noopener">https://github.com/JakeWharton/butterknife</a></p>
-<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>打开Android Studio中的设置界面,并且点击左边的插件Plugins，在搜索框中输入 “Android ButterKnife Zelezny “</p>
-<p><img src="/2018/10/27/Android技术——软件框架/find.png" alt=""></p>
-<p>点击”Search in repositories”。</p>
-<p><img src="/2018/10/27/Android技术——软件框架/butterknife.png" alt=""></p>
-<p>点击“Install”，完成下载后重新AS即可。</p>
-<h3 id="添加依赖和使用插件"><a href="#添加依赖和使用插件" class="headerlink" title="添加依赖和使用插件"></a>添加依赖和使用插件</h3><p>ButterKnife插件使用时需要在响应的module中添加依赖并在mudule中使用插件。</p>
-<p>在Project的build.gradle中添加butterknife插件：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    </span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath 'com.android.tools.build:gradle:3.1.2'</span><br><span class="line"></span><br><span class="line">        // 生成代码工具，butterknife插件</span><br><span class="line">        classpath 'com.jakewharton:butterknife-gradle-plugin:8.8.1'</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在module:xx的build.gradle中：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'com.jakewharton.butterknife'     // 如果出错，这一行删掉</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    // 这两行需要</span><br><span class="line">    implementation 'com.jakewharton:butterknife:8.8.1'</span><br><span class="line">    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h3><p>在java文件中，选中setContnetView中的布局文件，右键选择”Generate”：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    ButterKnife.bind(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>点击Butterknife。</p>
-<p><img src="/2018/10/27/Android技术——软件框架/generate.png" alt=""></p>
-<p>选择需要创建的项目。</p>
-<p><img src="/2018/10/27/Android技术——软件框架/jb.png" alt=""></p>
-<p>如下界面就是使用butterknife快速创建好的代码。<br><img src="/2018/10/27/Android技术——软件框架/main.png" alt=""></p>
-<hr>
-<h2 id="Retrofit联网框架"><a href="#Retrofit联网框架" class="headerlink" title="Retrofit联网框架"></a>Retrofit联网框架</h2><p>Retrofit是一个功能强大的联网工具，可以看成OKHttp + 数据解析的组合。</p>
-<p>项目地址：<a href="https://github.com/square/retrofit" target="_blank" rel="noopener">https://github.com/square/retrofit</a></p>
-<p>文档介绍：<a href="https://square.github.io/retrofit/" target="_blank" rel="noopener">https://square.github.io/retrofit/</a></p>
-<h3 id="配置Retrofit"><a href="#配置Retrofit" class="headerlink" title="配置Retrofit"></a>配置Retrofit</h3><p>比如添加retrofit 和 gson 以及两者之间的关联：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// retrofit + gson + 关联</span><br><span class="line">implementation 'com.squareup.retrofit2:retrofit:2.4.0'</span><br><span class="line">implementation 'com.google.code.gson:gson:2.8.5'</span><br><span class="line">implementation 'com.squareup.retrofit2:converter-gson:2.4.0'</span><br></pre></td></tr></table></figure></p>
-<p>需要解析时要添加如下对应的依赖。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Gson: com.squareup.retrofit2:converter-gson</span><br><span class="line">Jackson: com.squareup.retrofit2:converter-jackson</span><br><span class="line">Moshi: com.squareup.retrofit2:converter-moshi</span><br><span class="line">Protobuf: com.squareup.retrofit2:converter-protobuf</span><br><span class="line">Wire: com.squareup.retrofit2:converter-wire</span><br><span class="line">Simple XML: com.squareup.retrofit2:converter-simplexml</span><br><span class="line">Scalars (primitives, boxed, and String): com.squareup.retrofit2:converter-scalars</span><br></pre></td></tr></table></figure></p>
-<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
-<li><p>创建Retorfit.Builder对象，通过Builder指定j基本配置信息。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Retrofit.Builder builder = <span class="keyword">new</span> Retrofit.Builder();</span><br><span class="line">    builder.baseUrl(URL);</span><br><span class="line">    builder.addConverterFactory(GsonConverterFactory.create());     <span class="comment">// Gson解析</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置链接和参数</p>
-</li>
-</ol>
-<hr>
-<h2 id="Ormlite数据库操作工具"><a href="#Ormlite数据库操作工具" class="headerlink" title="Ormlite数据库操作工具"></a>Ormlite数据库操作工具</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/27/Android技术——软件框架/" data-id="cjrk7c94a000hgsuthimkzvjx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1390,7 +1432,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
     </div>
   </div>
 
@@ -1400,7 +1442,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 13.33px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a>
     </div>
   </div>
 
@@ -1430,15 +1472,15 @@
           </li>
         
           <li>
+            <a href="/2018/12/14/前端-Html_Css常见问题解决/">前端 - Html_Css常见问题解决</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/11/《第一行代码-Android》第12章_最佳的UI体验/">《第一行代码_Android》第12章_最佳的UI体验</a>
           </li>
         
           <li>
             <a href="/2018/12/04/《Android开发艺术探索》第1章_Activity的生命周期和启动模式/">《Android开发艺术探索》第1章_Activity的生命周期和启动模式</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/12/Android技术——LBS/">Android特色开发—LBS(基于位置的服务)</a>
           </li>
         
       </ul>
