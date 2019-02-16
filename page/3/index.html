@@ -62,6 +62,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-《第一行代码_Android》第8章_多媒体" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/16/《第一行代码_Android》第8章_多媒体/" class="article-date">
+  <time datetime="2018-10-16T08:11:06.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/16/《第一行代码_Android》第8章_多媒体/">《第一行代码_Android》第8章_多媒体</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此博客使用教材为《第一行代码 Android》第2版。</p>
+<h1 id="第8章-丰富你的程序——运用手机多媒体"><a href="#第8章-丰富你的程序——运用手机多媒体" class="headerlink" title="第8章 丰富你的程序——运用手机多媒体"></a>第8章 丰富你的程序——运用手机多媒体</h1><hr>
+<h3 id="使用通知"><a href="#使用通知" class="headerlink" title="使用通知"></a>使用通知</h3><p>一般只有当程序进入到后台的时候我们才需要使用通知，当然不是说程序在前台就不能使用。</p>
+<p>比如下面的例子，点击按钮，发送通知，点击通知，跳转到第二个页面。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.notificationtest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.annotation.SuppressLint;</span><br><span class="line"><span class="keyword">import</span> android.app.Notification;</span><br><span class="line"><span class="keyword">import</span> android.app.NotificationChannel;</span><br><span class="line"><span class="keyword">import</span> android.app.NotificationManager;</span><br><span class="line"><span class="keyword">import</span> android.app.PendingIntent;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.graphics.BitmapFactory;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.os.Build;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.app.NotificationCompat;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> NotificationManager notificationManager;</span><br><span class="line">    <span class="keyword">private</span> String channelId = <span class="string">"1"</span>;                     <span class="comment">//消息通道的id，以后可以通过该id找到该消息通道</span></span><br><span class="line">    <span class="keyword">private</span> String channelName = <span class="string">"程序测试通道名"</span>;     <span class="comment">//消息通道的name</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        Button sendNotice = (Button) findViewById(R.id.send_notice);</span><br><span class="line">        sendNotice.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (v.getId()) &#123;</span><br><span class="line">            <span class="keyword">case</span> R.id.send_notice:</span><br><span class="line">                createNotification(<span class="string">"测试通知"</span>, <span class="string">"Android 8.0是谷歌（Google）推出的智能手机操作系统，2017年3月21日Google 为开发者推出了新的 Android O 首个开发者预览版,2017 Google I/O 开发者大会上发布了第二个Android O开发者预览。\n"</span> +</span><br><span class="line">                        <span class="string">"2017年8月22日，谷歌正式发布了Android 8.0的正式版，其正式名称为：Android Oreo（奥利奥）。2017年12月5日谷歌正式发布了Android 8.1的正式版。\n"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建通知</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> title</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"WrongConstant"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">createNotification</span><span class="params">(String title, String content)</span> </span>&#123;</span><br><span class="line">        NotificationCompat.Builder builder;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置通知的点击跳转事件</span></span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">        PendingIntent pi = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, intent, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取系统提供的通知管理服务</span></span><br><span class="line">        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果是android 8.0 以上的系统，则新建一个消息通道</span></span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line">            <span class="keyword">int</span> importance = NotificationManager.IMPORTANCE_MAX;<span class="comment">//通知的优先级</span></span><br><span class="line">            NotificationChannel channel = <span class="keyword">new</span> NotificationChannel(channelId, channelName, importance);</span><br><span class="line">            notificationManager.createNotificationChannel(channel);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果是8以上的系统。需要传一个channelId.</span></span><br><span class="line">            builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>, channelId);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        builder.setContentTitle(title) <span class="comment">// 创建通知的标题</span></span><br><span class="line">                .setContentText(content) <span class="comment">// 创建通知的内容</span></span><br><span class="line">                .setSmallIcon(R.drawable.ic_launcher_background) <span class="comment">// 创建通知的小图标</span></span><br><span class="line">                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher)) <span class="comment">// 创建通知的大图标</span></span><br><span class="line">                .setWhen(System.currentTimeMillis()) <span class="comment">// 设定通知显示的时间</span></span><br><span class="line">                .setContentIntent(pi) <span class="comment">// 设定点击通知跳转</span></span><br><span class="line">                .setPriority(NotificationCompat.PRIORITY_LOW) <span class="comment">// 设置通知的优先级</span></span><br><span class="line">                .setAutoCancel(<span class="keyword">true</span>) <span class="comment">// 设置点击通知之后通知是否消失</span></span><br><span class="line">                .setSound(Uri.fromFile(<span class="keyword">new</span> File(<span class="string">"/system/media/audio/ringtones/Luna.ogg"</span>))) <span class="comment">// 设置声音</span></span><br><span class="line">                .setVibrate(<span class="keyword">new</span> <span class="keyword">long</span>[]&#123;<span class="number">1000</span>, <span class="number">2000</span>, <span class="number">1000</span>&#125;)        <span class="comment">// 设置震动，数组存放震动状态时间，&#123; 静止，震动，静止&#125;，需要震动权限</span></span><br><span class="line">                .setLights(Color.RED, <span class="number">2000</span>, <span class="number">1000</span>)</span><br><span class="line"><span class="comment">//                .setStyle(new NotificationCompat.BigTextStyle().bigText(content))</span></span><br><span class="line">                .setStyle(<span class="keyword">new</span> NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.test)));</span><br><span class="line"></span><br><span class="line">        Notification notification = builder.build(); <span class="comment">// 创建通知（每个通知必须要调用这个方法来创建）</span></span><br><span class="line">        notificationManager.notify(<span class="number">1</span>, notification);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中，设置NotificationCompat.Builder对象builder的时候，有一个设置setVibrate()方法，设置手机震动，这个需要在Manifest中进行权限设置。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.VIBRATE"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>NotificationCompat.Builder对象中 “setContentTitle()” 和 “setContentText()”，设置标题和内容，其本身言简意赅，所以消息中只会显示单行内容，多的会在末尾显示省略号。</p>
+<p><img src="/2018/10/16/《第一行代码_Android》第8章_多媒体/setTitle.jpg" alt=""></p>
+<p>如果要显示长文字，可以使用setStyle()方法来配合setContent()方法来实现，”setStyle(new NotificationCompat.BigTextStyle().bigText(content))”，这样在通知中就会有一个下拉的按钮，这个content文本就可以在这里面显示出来。</p>
+<p><img src="/2018/10/16/《第一行代码_Android》第8章_多媒体/setStyle.jpg" alt=""></p>
+<p>同样也可以使用setStyle()来显示一张图片，”setStyle(new NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.test)))”。</p>
+<p><img src="/2018/10/16/《第一行代码_Android》第8章_多媒体/setStyle2.jpg" alt=""></p>
+<hr>
+<h3 id="调用摄像头和相册"><a href="#调用摄像头和相册" class="headerlink" title="调用摄像头和相册"></a>调用摄像头和相册</h3><p>SecondActivity.class:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.notificationtest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.graphics.BitmapFactory;</span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.os.Build;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.provider.MediaStore;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.content.FileProvider;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TAKE_PHOTO = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ImageView picture;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Uri imageUri;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_second);</span><br><span class="line"></span><br><span class="line">        Button takePhoto = (Button) findViewById(R.id.take_photo);</span><br><span class="line">        picture = (ImageView) findViewById(R.id.picture);</span><br><span class="line"></span><br><span class="line">        takePhoto.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 创建File对象，用于存储拍照后的图片，将图片命名为output_image.jpg，存放在手机SD卡的应用关联缓存目录下</span></span><br><span class="line">                <span class="comment">// 调用getExternalCacheDir()方法可以得到这个目录</span></span><br><span class="line">                <span class="comment">// 读写SD卡被列为危险权限，需要运行时权限，使用应用关联目录可以跳过这一步。</span></span><br><span class="line">                File outputImage = <span class="keyword">new</span> File(getExternalCacheDir(), <span class="string">"output_image.jpg"</span>);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (outputImage.exists())&#123;</span><br><span class="line">                        outputImage.delete();</span><br><span class="line">                    &#125;</span><br><span class="line">                    outputImage.createNewFile();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= <span class="number">24</span>) &#123;</span><br><span class="line">                    <span class="comment">// FileProvider是一种特殊的内容提供器，对数据进行保护</span></span><br><span class="line">                    <span class="comment">// 调用FileProvider的getUriForFile()方法将File转化成封装过的Uri对象。</span></span><br><span class="line">                    <span class="comment">// getUriForFile(context对象, 任意唯一字符串, 之前创建的File对象)</span></span><br><span class="line">                    imageUri = FileProvider.getUriForFile(SecondActivity.<span class="keyword">this</span>, <span class="string">"com.example.cameraalbumtest.fileprovider"</span>, outputImage);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 调用Uri的fromFile()方法将File对象转换成Uri对象标识着图片的真实路径</span></span><br><span class="line">                    imageUri = Uri.fromFile(outputImage);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 启动相机程序</span></span><br><span class="line">                Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.media.action.IMAGE_CAPTURE"</span>);</span><br><span class="line">                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);     <span class="comment">// 指定图片的输出地址</span></span><br><span class="line">                startActivityForResult(intent, TAKE_PHOTO);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">            <span class="keyword">case</span> TAKE_PHOTO:</span><br><span class="line">                <span class="comment">// 接收TAKE_PHOTO返回的内容</span></span><br><span class="line">                <span class="keyword">if</span> (resultCode == RESULT_OK) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="comment">// 调用BitmapFactory的decodeStream()方法将output_image.jpg解析成Bitmap对象</span></span><br><span class="line">                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));</span><br><span class="line">                        picture.setImageBitmap(bitmap);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在AndroidManifest.xml中注册内容提供器，并获取外存储器写入权限。其中“android:name”属性值就是FileProvider的路径，“android:authorities”属性值与FileProvider.getUriForFile()方法中的第二个参数一致。用“<meta-data>”标签来指定Uri的共享路径，并引用一个“@xml/file_paths”资源，需要手动在res/目录下创建xml文件夹。：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">package</span>=<span class="string">"com.me.notificationtest"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:roundIcon</span>=<span class="string">"@mipmap/ic_launcher_round"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">provider</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:authorities</span>=<span class="string">"com.example.cameraalbumtest.fileprovider"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">"android.support.v4.content.FileProvider"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:grantUriPermissions</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:name</span>=<span class="string">"android.support.FILE_PROVIDER_PATHS"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:resource</span>=<span class="string">"@xml/file_paths"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">provider</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure></meta-data></p>
+<p>file_paths.xml如下，用“<external-path>”指定Uri共享，“name”属性随意，“path”属性表示共享的具体路径，空值表示将整个SD卡进行共享，当然也可以仅共享存放output_image.jpg的路径:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">paths</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">external-path</span></span></span><br><span class="line"><span class="tag">        <span class="attr">name</span>=<span class="string">"my_images"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">path</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">paths</span>&gt;</span></span><br></pre></td></tr></table></figure></external-path></p>
+<p>开启程序，点击按钮，确定保存后返回，可以健康，原先的按钮下面会显示我们刚拍的图片。</p>
+<hr>
+<h3 id="MediaPlayer-简介"><a href="#MediaPlayer-简介" class="headerlink" title="MediaPlayer 简介"></a>MediaPlayer 简介</h3><p>MediaPlayer是Android中的一个多媒体播放类，我们能通过它控制音视频流或本地音视频资源的播放过程，播放网络资源的时候，需要联网权限。</p>
+<p>MediaPlayer处于Android多媒体包下”android.media.MediaPlayer”。</p>
+<p>MediaPlayer.java中的功能实现都借助JNI调到Native层，调用底部c语言。</p>
+<p>下图是一个MediaPlayer对象被支持的播放控制操作驱动的声明周期和状态。其中，椭圆代表MediaPlayer可能驻留的状态，弧线表示驱动MediaPlayer在各个状态之间迁移的播放控制操作。这里有两种类型的弧线。由单箭头开始的弧线代表同步方法调用，而以双箭头开头的弧线代表异步方法调用。图片介绍来源于官方文。</p>
+<p><img src="/2018/10/16/《第一行代码_Android》第8章_多媒体/MeidaPlayerJava类图.png" alt=""></p>
+<p>在我的博客《Android开发之手机影音》项目中有部分关于这方面的介绍。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/16/《第一行代码_Android》第8章_多媒体/" data-id="cjs733wzb002aqcut3kx9mhai" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-《第一行代码_Android》第7章_内容提供器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/14/《第一行代码_Android》第7章_内容提供器/" class="article-date">
@@ -228,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/《第一行代码_Android》第7章_内容提供器/" data-id="cjs1ci10l001z6sutf7rulw9x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/《第一行代码_Android》第7章_内容提供器/" data-id="cjs733wyw0022qcutsbkocadv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -350,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjs1ci10q00236sut344d7ykt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjs733wzb0028qcut7vhadmje" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -423,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/Git使用教程/" data-id="cjs1ci0z1000m6sut3n0juc23" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/Git使用教程/" data-id="cjs733wxl000qqcut44h1o9gc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -497,7 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/07/《第一行代码_Android》第5章_广播/" data-id="cjs1ci10n00216sutz6ipbhl8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/07/《第一行代码_Android》第5章_广播/" data-id="cjs733wzb0024qcut79ot9xfb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -670,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/" data-id="cjs1ci10i001x6sut73ed03n8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/" data-id="cjs733wzb0026qcutc56j73kp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1892,7 +1954,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/18/《第一行代码_Android》第3章_UI开发/" data-id="cjs1ci199003y6sut1r5y70lb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/18/《第一行代码_Android》第3章_UI开发/" data-id="cjs733xbw003xqcuthzj41h34" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1939,7 +2001,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/hello-world/" data-id="cjs1ci0zz001k6sutqgjr9u06" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/12/hello-world/" data-id="cjs733wyw001nqcutct09rn2z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
@@ -2136,7 +2198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第2章_探究活动/" data-id="cjs1ci10g001v6sut2tstvhqf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第2章_探究活动/" data-id="cjs733wyw0020qcut4rfynna6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -2176,177 +2238,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第1章_第一行Android代码/" data-id="cjs1ci10e001t6sut728nrpyn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第1章_第一行Android代码/" data-id="cjs733wyw001rqcutiphzi1j1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-微信小程序开发" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/微信小程序开发/" class="article-date">
-  <time datetime="2018-09-03T07:11:06.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/微信小程序开发/">微信小程序开发</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>目录</p>
-<ul>
-<li>微信小程序开发基本资料</li>
-<li>注册并安装开发者工具</li>
-<li>项目介绍<ul>
-<li>小程序配置 app.json</li>
-<li>工具配置 project.config.json</li>
-<li>页面配置 page.json</li>
-<li>WXML 模板</li>
-<li>WXSS 样式</li>
-<li>JS 交互逻辑</li>
-</ul>
-</li>
-<li>数据绑定<ul>
-<li>控制属性绑定</li>
-<li>控制属性绑定</li>
-<li>关键字绑定</li>
-</ul>
-</li>
-<li>列表渲染<ul>
-<li>wx:for 列表渲染单个组件</li>
-<li>block wx:for列表渲染多个组件</li>
-</ul>
-</li>
-<li>尺寸自适应</li>
-<li>模板及模板引用</li>
-</ul>
-<hr>
-<h3 id="微信小程序开发基本资料"><a href="#微信小程序开发基本资料" class="headerlink" title="微信小程序开发基本资料"></a>微信小程序开发基本资料</h3><p>使用学习资料如下：《微信小程序开发》</p>
-<p>微信小程序平台：<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">https://mp.weixin.qq.com/</a></p>
-<p>小程序开发文档如下：<a href="https://developers.weixin.qq.com/miniprogram/dev/?t=20161107" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/?t=20161107</a></p>
-<p>微信web开发者工具：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18082922" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18082922</a></p>
-<p>工具介绍：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html</a></p>
-<hr>
-<h3 id="注册并安装开发者工具"><a href="#注册并安装开发者工具" class="headerlink" title="注册并安装开发者工具"></a>注册并安装开发者工具</h3><p>申请小程序开发者账号：<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="noopener">https://mp.weixin.qq.com/wxopen/waregister?action=step1</a> ，按步走如实填写即可。<br><img src="/2018/09/03/微信小程序开发/register.png" alt="register.png"></p>
-<p>如下即为开发者工具登录界面，使用微信开发者账号扫一扫登录：<br><img src="/2018/09/03/微信小程序开发/开发者工具.png" alt="开发者工具.png"></p>
-<p>按需求选择开发程序，这里使用“小程序项目”：<br><img src="/2018/09/03/微信小程序开发/开发者工具-choice.png" alt="开发者工具-choice.png"></p>
-<p>小程序项目管理界面，项目目录就是文件存放地址，自己选择；登录 <a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">https://mp.weixin.qq.com</a> ，我们可以在菜单 “设置”-“开发设置” 看到小程序的 AppID 了 。<br><img src="/2018/09/03/微信小程序开发/开发者工具-小程序项目.png" alt="开发者工具-小程序项目.png"></p>
-<p><img src="/2018/09/03/微信小程序开发/开发者工具-AppID.png" alt="开发者工具-AppID.png"></p>
-<p>全部设置好后确定，进入开发页面：<br><img src="/2018/09/03/微信小程序开发/FirstWeChatApp.png" alt="FirstWeChatApp.png"></p>
-<hr>
-<h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><p>项目里边生成了不同类型的文件:</p>
-<ul>
-<li>json 后缀的 JSON 配置文件</li>
-<li>wxml 后缀的 WXML 模板文件</li>
-<li>wxss 后缀的 WXSS 样式文件</li>
-<li>js 后缀的 JS 脚本逻辑文件</li>
-</ul>
-<p>代码构成：<a href="https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/file.html#json-%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/file.html#json-%E9%85%8D%E7%BD%AE</a></p>
-<h4 id="小程序配置-app-json"><a href="#小程序配置-app-json" class="headerlink" title="小程序配置 app.json"></a>小程序配置 app.json</h4><p>app.json 是当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
-<p><img src="/2018/09/03/微信小程序开发/appjson.jpg" alt="appjson.jpg"></p>
-<pre><code>pages字段 —— 用于描述当前小程序所有页面路径，这是为了让微信客户端知道当前你的小程序页面定义在哪个目录。
-window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜色定义等。
-</code></pre><p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE</a></p>
-<h4 id="工具配置-project-config-json"><a href="#工具配置-project-config-json" class="headerlink" title="工具配置 project.config.json"></a>工具配置 project.config.json</h4><p>通常大家在使用一个工具的时候，都会针对各自喜好做一些个性化配置，例如界面颜色、编译配置等等，当你换了另外一台电脑重新安装工具的时候，你还要重新配置。</p>
-<p>考虑到这点，小程序开发者工具在每个项目的根目录都会生成一个 project.config.json，你在工具上做的任何配置都会写入到这个文件，当你重新安装工具或者换电脑工作时，你只要载入同一个项目的代码包，开发者工具就自动会帮你恢复到当时你开发项目时的个性化配置，其中会包括编辑器的颜色、代码上传时自动压缩等等一系列选项。</p>
-<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html</a></p>
-<h4 id="页面配置-page-json"><a href="#页面配置-page-json" class="headerlink" title="页面配置 page.json"></a>页面配置 page.json</h4><p>如果你整个小程序的风格是蓝色调，那么你可以在 app.json 里边声明顶部颜色是蓝色即可。实际情况可能不是这样，可能你小程序里边的每个页面都有不一样的色调来区分不同功能模块，因此我们提供了 page.json，让开发者可以独立定义每个页面的一些属性，例如刚刚说的顶部颜色、是否允许下拉刷新等等。</p>
-<h4 id="WXML-模板"><a href="#WXML-模板" class="headerlink" title="WXML 模板"></a>WXML 模板</h4><p>WXML（WeiXin Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，可以构建出页面的结构。</p>
-<p>从事过网页编程的人知道，网页编程采用的是 HTML + CSS + JS 这样的组合，其中 HTML 是用来描述当前这个页面的结构，CSS 用来描述页面的样子，JS 通常是用来处理这个页面和用户的交互。</p>
-<p>同样道理，在小程序中也有同样的角色，其中 WXML 充当的就是类似 HTML 的角色。</p>
-<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/index.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/index.html</a></p>
-<h4 id="WXSS-样式"><a href="#WXSS-样式" class="headerlink" title="WXSS 样式"></a>WXSS 样式</h4><p>WXSS 具有 CSS 大部分的特性，小程序在 WXSS 也做了一些扩充和修改。</p>
-<ul>
-<li><p>新增了尺寸单位。在写 CSS 样式时，开发者需要考虑到手机设备的屏幕会有不同的宽度和设备像素比，采用一些技巧来换算一些像素单位。WXSS 在底层支持新的尺寸单位 rpx ，开发者可以免去换算的烦恼，只要交给小程序底层来换算即可，由于换算采用的浮点数运算，所以运算结果会和预期结果有一点点偏差。</p>
-</li>
-<li><p>提供了全局的样式和局部样式。和前边 app.json, page.json 的概念相同，你可以写一个 app.wxss 作为全局样式，会作用于当前小程序的所有页面，局部页面样式 page.wxss 仅对当前页面生效。</p>
-</li>
-<li><p>此外 WXSS 仅支持部分 CSS 选择器</p>
-</li>
-</ul>
-<p>更详细的文档可以参考 WXSS 。</p>
-<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html</a></p>
-<h4 id="JS-交互逻辑"><a href="#JS-交互逻辑" class="headerlink" title="JS 交互逻辑"></a>JS 交互逻辑</h4><p>一个服务仅仅只有界面展示是不够的，还需要和用户做交互：响应用户的点击、获取用户的位置等等。在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。</p>
-<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html</a></p>
-<hr>
-<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><p>WXML页面中的动态数据都是来自js文件Page的data，数据绑定通过双大括号将变量包起来，在WXML页面里将数据值显示出来。Page中的data存放是通过键值对的方式存放。</p>
-<p>大括号是小程序特有的表示方式。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        msg: <span class="string">'123'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="组件属性绑定"><a href="#组件属性绑定" class="headerlink" title="组件属性绑定"></a>组件属性绑定</h4><p>将data里的数据绑定到微信小程序的组件上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view id=&quot;item-&#123;&#123;id&#125;&#125;&quot;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        id: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="控制属性绑定"><a href="#控制属性绑定" class="headerlink" title="控制属性绑定"></a>控制属性绑定</h4><p>用来进行if语句条件判断，如果满足条件则执行，否则不执行。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;condition&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        condition: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="关键字绑定"><a href="#关键字绑定" class="headerlink" title="关键字绑定"></a>关键字绑定</h4><p>常用于组件的一些关键字，像复选框组件如果需要等于true则代表选中复选框，false代表不选中复选框。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;checkbox checked=&apos;&#123;&#123;true&#125;&#125;&apos;&gt;&lt;/checkbox&gt;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>可以在大括号内进行简单的运算。</p>
-<h4 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view hidden=&apos;&#123;&#123;flag ? true : false&#125;&#125;&apos;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;a + b&#125;&#125; + &#123;&#123;c&#125;&#125;&lt;/view&gt;      // 3 + 3</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        a: <span class="number">1</span>, </span><br><span class="line">        b: <span class="number">2</span>,</span><br><span class="line">        c: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">#### 逻辑判断</span><br><span class="line"><span class="string">``</span><span class="string">`wxml</span></span><br><span class="line"><span class="string">index.wxml:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;view wx:if="&#123;&#123;length &gt; 5&#125;&#125;"&gt;&lt;/view&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;&quot;hello&quot; + name&#125;&#125;&lt;/view&gt;     //helloMINA</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        name: <span class="string">'MINA'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><h4 id="wx-for-列表渲染单个组件"><a href="#wx-for-列表渲染单个组件" class="headerlink" title="wx:for 列表渲染单个组件"></a>wx:for 列表渲染单个组件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;!-- arr:数组名, index:键名/索引, item:键值 --&gt;</span><br><span class="line">&lt;!-- 可以通过wx:for-index和wx:for-item修改元素的默认索引和键值 --&gt;</span><br><span class="line">&lt;view wx:for=&quot;&#123;&#123;arr&#125;&#125;&quot; wx:key=&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">    &#123;&#123;index&#125;&#125;:&#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        arr: [<span class="string">"苹果"</span>,<span class="string">"香蕉"</span>,<span class="string">"西瓜"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/09/03/微信小程序开发/列表渲染.jpg" alt="列表渲染"></p>
-<hr>
-<h4 id="block-wx-for列表渲染多个组件"><a href="#block-wx-for列表渲染多个组件" class="headerlink" title="block wx:for列表渲染多个组件"></a>block wx:for列表渲染多个组件</h4><p>使用block标签代替view标签即可。循环之后之后内容，没用多余的标签。</p>
-<hr>
-<h3 id="尺寸自适应"><a href="#尺寸自适应" class="headerlink" title="尺寸自适应"></a>尺寸自适应</h3><p>rpx单位是微信小程序中css的尺寸单位，rpx可以根据屏幕宽度进行自适应。</p>
-<p>规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px</p>
-<table>
-<thead>
-<tr>
-<th>设备</th>
-<th>rpx换算px (屏幕宽度/750)</th>
-<th>px换算rpx (750/屏幕宽度)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>iPhone5</td>
-<td>1rpx = 0.42px 　</td>
-<td>　    1px = 2.34px</td>
-</tr>
-<tr>
-<td>iPhone6</td>
-<td>1rpx = 0.5px 　</td>
-<td>　　　1px = 2rpx</td>
-</tr>
-<tr>
-<td>iPhone6s</td>
-<td>1rpx = 0.552px 　</td>
-<td>　  1px = 1.81rpx</td>
-</tr>
-</tbody>
-</table>
-<p>将屏幕布局设置为750像素，然后使用rpx单位即可自动适应。</p>
-<hr>
-<h3 id="模板及模板引用"><a href="#模板及模板引用" class="headerlink" title="模板及模板引用"></a>模板及模板引用</h3><h4 id="样式导入"><a href="#样式导入" class="headerlink" title="样式导入"></a>样式导入</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"导入的wxss路径"</span>;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/微信小程序开发/" data-id="cjs1ci11h002q6sutmp7y63nx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
 
     </footer>
   </div>
@@ -2373,7 +2268,7 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，BOM/">前端，BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，DOM/">前端，DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，tool/">前端，tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，BOM/">前端，BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，DOM/">前端，DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，tool/">前端，tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
     </div>
   </div>
 
@@ -2383,7 +2278,7 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 12px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/blog/" style="font-size: 12px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/前端，BOM/" style="font-size: 10px;">前端，BOM</a> <a href="/tags/前端，DOM/" style="font-size: 10px;">前端，DOM</a> <a href="/tags/前端，tool/" style="font-size: 10px;">前端，tool</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 12px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/blog/" style="font-size: 12px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/前端，BOM/" style="font-size: 10px;">前端，BOM</a> <a href="/tags/前端，DOM/" style="font-size: 10px;">前端，DOM</a> <a href="/tags/前端，tool/" style="font-size: 10px;">前端，tool</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
     </div>
   </div>
 
@@ -2405,6 +2300,10 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
       <ul>
         
           <li>
+            <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
@@ -2418,10 +2317,6 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
         
           <li>
             <a href="/2019/01/19/前端-JavaScript基础-DOM基础/">JavaScript基础_DOM基础</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/18/前端-JavaScript基础/">JavaScript基础</a>
           </li>
         
       </ul>

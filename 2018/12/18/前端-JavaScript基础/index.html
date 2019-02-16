@@ -8,7 +8,7 @@
   <title>JavaScript基础 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="JavaScript目录：  JS简介 JS的HelloWorld JS编写位置 JS基本语法 JS注释 数据类型 字面量（常量）和变量 标识符 强制类型转换 运算符   对象 创建对象 对象的 in 运算符 工厂方法创建对象 原型对象 查询对象中属性   函数 自定义函数声明 函数调用 立即执行函数 函数对象方法：call()和apply()   作用域 声明提前 隐含参数：this toStr">
-<meta name="keywords" content="前端,JavaScript">
+<meta name="keywords" content="JavaScript,前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript基础">
 <meta property="og:url" content="http://yoursite.com/2018/12/18/前端-JavaScript基础/index.html">
@@ -166,7 +166,7 @@
 </ol>
 <hr>
 <h3 id="JS的HelloWorld"><a href="#JS的HelloWorld" class="headerlink" title="JS的HelloWorld"></a>JS的HelloWorld</h3><p>页面中有三条输出指令，JS代码是从上到下一条一条执行的。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /* 控制浏览器弹出一个警告框 */</span></span><br><span class="line"><span class="undefined">            alert("Hello World!");</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /* 向body中添加一个内容 */</span></span><br><span class="line"><span class="undefined">            document.write("Hello World!");</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /* 向控制输出一个内容 */</span></span><br><span class="line"><span class="undefined">            console.log("Hello World!");</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">/* 控制浏览器弹出一个警告框 */</span></span></span><br><span class="line"><span class="javascript">            alert(<span class="string">"Hello World!"</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">/* 向body中添加一个内容 */</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.write(<span class="string">"Hello World!"</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">/* 向控制输出一个内容 */</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"Hello World!"</span>);</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>控制浏览器弹出一个警告框：<br><img src="/2018/12/18/前端-JavaScript基础/helloworld.jpg" alt=""></p>
 <p>向body中添加一个内容：<br><img src="/2018/12/18/前端-JavaScript基础/helloworld1.jpg" alt=""></p>
 <p>向控制输出一个内容：<br><img src="/2018/12/18/前端-JavaScript基础/helloworld2.jpg" alt=""></p>
@@ -493,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/18/前端-JavaScript基础/" data-id="cjs1ci119002i6sutw1p43w9q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/18/前端-JavaScript基础/" data-id="cjs733wzr0035qcutigrdboor" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -535,7 +535,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，BOM/">前端，BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，DOM/">前端，DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，tool/">前端，tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，BOM/">前端，BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，DOM/">前端，DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端，tool/">前端，tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
     </div>
   </div>
 
@@ -545,7 +545,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 12px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/blog/" style="font-size: 12px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/前端，BOM/" style="font-size: 10px;">前端，BOM</a> <a href="/tags/前端，DOM/" style="font-size: 10px;">前端，DOM</a> <a href="/tags/前端，tool/" style="font-size: 10px;">前端，tool</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 12px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/blog/" style="font-size: 12px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/前端，BOM/" style="font-size: 10px;">前端，BOM</a> <a href="/tags/前端，DOM/" style="font-size: 10px;">前端，DOM</a> <a href="/tags/前端，tool/" style="font-size: 10px;">前端，tool</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
     </div>
   </div>
 
@@ -567,6 +567,10 @@
       <ul>
         
           <li>
+            <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
@@ -580,10 +584,6 @@
         
           <li>
             <a href="/2019/01/19/前端-JavaScript基础-DOM基础/">JavaScript基础_DOM基础</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/18/前端-JavaScript基础/">JavaScript基础</a>
           </li>
         
       </ul>
