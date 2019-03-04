@@ -7,18 +7,24 @@
   
   <title>后端基础——Node.js | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录：">
+  <meta name="description" content="目录：  Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 第一个案例 HelloWorld 文件操作 服务器请求   Node.js是什么Node.js 不是一门语言，不是库，不是框架。Node.js 是一个 JavaScript 运行时环境。简单来讲就是 Node.js 可以解析和执行 JS 代码。 以前只有浏览器可以解析JS代码。但是现在JS可以完全脱离">
 <meta name="keywords" content="后端,Node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后端基础——Node.js">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/后端基础——Node-js/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录：">
+<meta property="og:description" content="目录：  Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 第一个案例 HelloWorld 文件操作 服务器请求   Node.js是什么Node.js 不是一门语言，不是库，不是框架。Node.js 是一个 JavaScript 运行时环境。简单来讲就是 Node.js 可以解析和执行 JS 代码。 以前只有浏览器可以解析JS代码。但是现在JS可以完全脱离">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-02T07:12:49.157Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Node-js/node.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Node-js/download.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Node-js/helloworld.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Node-js/读取文件.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Node-js/写入文件.jpg">
+<meta property="og:updated_time" content="2019-03-04T11:37:27.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后端基础——Node.js">
-<meta name="twitter:description" content="目录：">
+<meta name="twitter:description" content="目录：  Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 第一个案例 HelloWorld 文件操作 服务器请求   Node.js是什么Node.js 不是一门语言，不是库，不是框架。Node.js 是一个 JavaScript 运行时环境。简单来讲就是 Node.js 可以解析和执行 JS 代码。 以前只有浏览器可以解析JS代码。但是现在JS可以完全脱离">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/02/后端基础——Node-js/node.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -87,12 +93,79 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目录：</p>
+        <p><img src="/2019/03/02/后端基础——Node-js/node.jpg" alt="node.jpg"></p>
+<p>目录：</p>
+<ul>
+<li>Node.js是什么</li>
+<li>浏览器与Node.js中的JS</li>
+<li>npm</li>
+<li>Node.js能做什么</li>
+<li>第一个案例 HelloWorld</li>
+<li>文件操作</li>
+<li>服务器请求</li>
+</ul>
+<hr>
+<h3 id="Node-js是什么"><a href="#Node-js是什么" class="headerlink" title="Node.js是什么"></a>Node.js是什么</h3><p>Node.js 不是一门语言，不是库，不是框架。Node.js 是一个 JavaScript 运行时环境。简单来讲就是 Node.js 可以解析和执行 JS 代码。</p>
+<p>以前只有浏览器可以解析JS代码。但是现在JS可以完全脱离浏览器来运行，就是因为有Node.js。</p>
+<p>Node.js 基于 Google 的V8引擎，V8引擎执行 Javascript 的速度非常快，性能非常好。</p>
+<p>官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+<hr>
+<h3 id="浏览器与Node-js中的JS"><a href="#浏览器与Node-js中的JS" class="headerlink" title="浏览器与Node.js中的JS"></a>浏览器与Node.js中的JS</h3><p>浏览器中的JS：</p>
+<ul>
+<li>EcmaScript: (基本语法，if，var，function，Object，Array)</li>
+<li>BOM</li>
+<li>DOM</li>
+</ul>
+<p>Node.js中的JS：</p>
+<ul>
+<li>ECMAScript</li>
+<li><font color="red">没有BOM/DOM，服务端不操作页面。</font></li>
+<li>为JS提供了一些服务器级别的API(文件读写，网络服务的构架，网络通信，http服务器等处理)</li>
+</ul>
+<hr>
+<h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>NPM（node package manager），是基于Node.js开发的包管理器。是世界上最大的开源库生态系统。</p>
+<hr>
+<h3 id="Node-js能做什么"><a href="#Node-js能做什么" class="headerlink" title="Node.js能做什么"></a>Node.js能做什么</h3><ul>
+<li>web 服务器后台</li>
+<li>命令行工具<ul>
+<li>npm(node.js)</li>
+<li>git(c语言)</li>
+<li>hexo(node.js)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p><img src="/2019/03/02/后端基础——Node-js/download.jpg" alt="download.jpg"></p>
+<p>一路next即可，重复安装会覆盖。</p>
+<p>安装完node.js之后就是需要安装编辑器了，编辑器有很多，比如vsCode，subline等。</p>
+<hr>
+<h3 id="第一个案例-HelloWorld"><a href="#第一个案例-HelloWorld" class="headerlink" title="第一个案例 HelloWorld"></a>第一个案例 HelloWorld</h3><p>这里我使用的是vsCode。</p>
+<p>之前我们说了，node.js就是JS文件，所以我们只需要新建普通的js文件即可。</p>
+<ol>
+<li><p>创建编写JavaScript文件，注意文件名不能是“node.js”</p>
+</li>
+<li><p>打开终端，定位到JavaScript所属目录</p>
+</li>
+<li><p>输入“node 文件名”执行对应的文件</p>
+</li>
+</ol>
+<p>vsCode自带终端，可以直接在vsCode中打开，或者使用win+R打开cmd执行终端。</p>
+<p><img src="/2019/03/02/后端基础——Node-js/helloworld.jpg" alt="helloworld.jpg"></p>
+<hr>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>浏览器中的JavaScript是没有文件操作的能力的，是Node中的JavaScript有。</p>
+<p>required 指令：我们可以使用 require 指令来载入 Node.js 模块。</p>
+<p><font color="red">fs 模块:</font> 是 file-system 的简写，就是文件系统的意思。</p>
+<p>读取文件：</p>
+<p><img src="/2019/03/02/后端基础——Node-js/读取文件.jpg" alt="读取文件.jpg"></p>
+<p>写入文件：</p>
+<p><img src="/2019/03/02/后端基础——Node-js/写入文件.jpg" alt="写入文件.jpg"></p>
+<hr>
+<h3 id="服务器请求"><a href="#服务器请求" class="headerlink" title="服务器请求"></a>服务器请求</h3><p><font color="red">http 模块:</font> 主要用于创建http server服务。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/后端基础——Node-js/" data-id="cjsr5llay0000zsuteueexxpf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/后端基础——Node-js/" data-id="cjsu9t65v001ywoutuh8qwp3f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
@@ -102,6 +175,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/03/04/移动应用开发——Cordova/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动应用开发——Cordova
+        
+      </div>
+    </a>
   
   
     <a href="/2019/02/16/前端-JavaScript基础-jQuery基础/" id="article-nav-older" class="article-nav-link-wrap">
@@ -125,7 +207,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
     </div>
   </div>
 
@@ -135,7 +217,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 12px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/blog/" style="font-size: 12px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
     </div>
   </div>
 
@@ -157,6 +239,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/02/后端基础——Node-js/">后端基础——Node.js</a>
           </li>
         
@@ -170,10 +256,6 @@
         
           <li>
             <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/08/前端-JavaScript基础-BOM基础/">前端-JavaScript基础-BOM基础</a>
           </li>
         
       </ul>
