@@ -168,7 +168,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2019/03/02/后端基础——Nodejs/node.jpg" alt="node.jpg"><br><!-- TOC --></p>
+        <p><img src="/2019/03/02/后端基础——Nodejs/node.jpg" alt="node.jpg"></p>
+<!-- TOC -->
 <ul>
 <li><a href="#nodejs是什么">Node.js是什么</a></li>
 <li><a href="#浏览器与nodejs中的js">浏览器与Node.js中的JS</a></li>
@@ -186,6 +187,7 @@
 <li><a href="#nodejs-后端项目结构基础">Node.js 后端项目结构基础</a></li>
 <li><a href="#getpost-请求">GET/POST 请求</a><ul>
 <li><a href="#get">GET</a></li>
+<li><a href="#post">POST</a></li>
 </ul>
 </li>
 <li><a href="#重定向">重定向</a><ul>
@@ -195,39 +197,14 @@
 </li>
 </ul>
 <!-- /TOC -->
-<ul>
-<li>Node.js是什么</li>
-<li>浏览器与Node.js中的JS</li>
-<li>npm</li>
-<li>Node.js能做什么</li>
-<li>代码规范及分号原则</li>
-<li>第一个案例 HelloWorld</li>
-<li>文件操作</li>
-<li>服务器请求</li>
-<li>Node 中的模块系统</li>
-<li>文本类型及中文乱码</li>
-<li>Node.js 实现 Apache 功能</li>
-<li>模板引擎 服务器渲染</li>
-<li>Node.js 后端项目结构基础</li>
-<li>GET/POST 请求<ul>
-<li>GET</li>
-<li>POST</li>
-</ul>
-</li>
-<li>重定向<ul>
-<li>301 永久重定向（推荐）</li>
-<li>302 临时重定向</li>
-</ul>
-</li>
-</ul>
 <hr>
-<h3 id="Node-js是什么"><a href="#Node-js是什么" class="headerlink" title="Node.js是什么"></a>Node.js是什么</h3><p>Node.js 不是一门语言，不是库，不是框架。Node.js 是一个 JavaScript 运行时环境。简单来讲就是 Node.js 可以解析和执行 JS 代码。</p>
+<h2 id="Node-js是什么"><a href="#Node-js是什么" class="headerlink" title="Node.js是什么"></a>Node.js是什么</h2><p>Node.js 不是一门语言，不是库，不是框架。Node.js 是一个 JavaScript 运行时环境。简单来讲就是 Node.js 可以解析和执行 JS 代码。</p>
 <p>以前只有浏览器可以解析JS代码。但是现在JS可以完全脱离浏览器来运行，就是因为有Node.js。</p>
 <p>Node.js 基于 Google 的V8引擎，V8引擎执行 Javascript 的速度非常快，性能非常好。</p>
 <p>官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
 <p>文档：<a href="https://nodejs.org/zh-cn/docs/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/docs/</a></p>
 <hr>
-<h3 id="浏览器与Node-js中的JS"><a href="#浏览器与Node-js中的JS" class="headerlink" title="浏览器与Node.js中的JS"></a>浏览器与Node.js中的JS</h3><p>浏览器中的JS：</p>
+<h2 id="浏览器与Node-js中的JS"><a href="#浏览器与Node-js中的JS" class="headerlink" title="浏览器与Node.js中的JS"></a>浏览器与Node.js中的JS</h2><p>浏览器中的JS：</p>
 <ul>
 <li>EcmaScript: (基本语法，if，var，function，Object，Array)</li>
 <li>BOM</li>
@@ -240,9 +217,9 @@
 <li>为JS提供了一些服务器级别的API(文件读写，网络服务的构架，网络通信，http服务器等处理)</li>
 </ul>
 <hr>
-<h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>NPM（node package manager），是基于Node.js开发的包管理器。是世界上最大的开源库生态系统。</p>
+<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p>NPM（node package manager），是基于Node.js开发的包管理器。是世界上最大的开源库生态系统。</p>
 <hr>
-<h3 id="Node-js能做什么"><a href="#Node-js能做什么" class="headerlink" title="Node.js能做什么"></a>Node.js能做什么</h3><ul>
+<h2 id="Node-js能做什么"><a href="#Node-js能做什么" class="headerlink" title="Node.js能做什么"></a>Node.js能做什么</h2><ul>
 <li>web 服务器后台</li>
 <li>命令行工具<ul>
 <li>npm(node.js)</li>
@@ -252,7 +229,7 @@
 </li>
 </ul>
 <hr>
-<h3 id="代码规范及分号原则"><a href="#代码规范及分号原则" class="headerlink" title="代码规范及分号原则"></a>代码规范及分号原则</h3><p>常用的JS代码规范有两种：</p>
+<h2 id="代码规范及分号原则"><a href="#代码规范及分号原则" class="headerlink" title="代码规范及分号原则"></a>代码规范及分号原则</h2><p>常用的JS代码规范有两种：</p>
 <ul>
 <li><p>JavaScript Standard Style: 较为松散</p>
 <p>  <a href="https://standardjs.com/readme-zhcn.html#usage" target="_blank" rel="noopener">https://standardjs.com/readme-zhcn.html#usage</a></p>
@@ -266,11 +243,11 @@
 <p>如果采用无分号代码格式，当一行代码以小括号、大括号、斜引号开头时，在最前面加分号。</p>
 <p>斜引号与单引号类似，都是字符串，单引号只能一行，斜引号中可以换行。</p>
 <hr>
-<h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p><img src="/2019/03/02/后端基础——Nodejs/download.jpg" alt="download.jpg"></p>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p><img src="/2019/03/02/后端基础——Nodejs/download.jpg" alt="download.jpg"></p>
 <p>一路next即可，重复安装会覆盖。</p>
 <p>安装完node.js之后就是需要安装编辑器了，编辑器有很多，比如vsCode，subline等。</p>
 <hr>
-<h3 id="第一个案例-HelloWorld"><a href="#第一个案例-HelloWorld" class="headerlink" title="第一个案例 HelloWorld"></a>第一个案例 HelloWorld</h3><p>这里我使用的是vsCode。</p>
+<h2 id="第一个案例-HelloWorld"><a href="#第一个案例-HelloWorld" class="headerlink" title="第一个案例 HelloWorld"></a>第一个案例 HelloWorld</h2><p>这里我使用的是vsCode。</p>
 <p>之前我们说了，node.js就是JS文件，所以我们只需要新建普通的js文件即可。</p>
 <ol>
 <li><p>创建编写JavaScript文件，注意文件名不能是“node.js”</p>
@@ -283,7 +260,7 @@
 <p>vsCode自带终端，可以直接在vsCode中打开，或者使用win+R打开cmd执行终端。</p>
 <p><img src="/2019/03/02/后端基础——Nodejs/helloworld.jpg" alt="helloworld.jpg"></p>
 <hr>
-<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>浏览器中的JavaScript是没有文件操作的能力的，是Node中的JavaScript有。</p>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>浏览器中的JavaScript是没有文件操作的能力的，是Node中的JavaScript有。</p>
 <p>required 指令：我们可以使用 require 指令来载入 Node.js 模块。</p>
 <p><font color="red">fs 模块:</font> 是 file-system 的简写，就是文件系统的意思。</p>
 <p>读取文件：</p>
@@ -293,7 +270,7 @@
 <p>此外，这里读取文件时用的是非阻塞代码，也就是说我们不需要等待文件读取完，这样就可以在读取文件时同时执行接下来的代码，大大提高了程序的性能。还有一种阻塞代码，是顺序执行的，需要在文件读取完成之后再执行接下来的代码。</p>
 <p>非阻塞代码：fs.readFileSync(‘hello.txt’);</p>
 <hr>
-<h3 id="服务器请求"><a href="#服务器请求" class="headerlink" title="服务器请求"></a>服务器请求</h3><p><font color="red">http 模块:</font> 主要用于创建http server服务。</p>
+<h2 id="服务器请求"><a href="#服务器请求" class="headerlink" title="服务器请求"></a>服务器请求</h2><p><font color="red">http 模块:</font> 主要用于创建http server服务。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 加载 http 核心模块</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务器地址和端口号</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 创建一个 web 服务器，返回一个 server 实例</span></span><br><span class="line"><span class="keyword">const</span> server = http.createServer();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 服务器功能</span></span><br><span class="line"><span class="comment">// 发请求</span></span><br><span class="line"><span class="comment">// 接收请求</span></span><br><span class="line"><span class="comment">// 处理请求</span></span><br><span class="line"><span class="comment">// 发送响应</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收和响应数据</span></span><br><span class="line">server.on(<span class="string">'request'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * request 接收请求</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'收到客户端请求！请求路径为：'</span> + request.url);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * response 响应数据</span></span><br><span class="line"><span class="comment">     *      write 用来给客户端发送响应数据，可以写多次，但是要使用 end 来结束响应，否则客户端会一直等待</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    response.write(<span class="string">'hello'</span>);</span><br><span class="line">    response.write(<span class="string">' nodejs'</span>);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 绑定端口号，启动服务器，可以设置回调函数</span></span><br><span class="line">server.listen(port, hostname, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 如果使用如下形式，引号是斜引号不是单引号</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器启动成功，可以通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 来进行访问`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>如上代码，创建服务器，然后获取返回值“hello world”，这里绑定了端口，运行了js文件之后，在浏览器中输入“<a href="http://127.0.0.1:8888/”即可访问我们当前的服务器，此时浏览器中显示的就是返回值。" target="_blank" rel="noopener">http://127.0.0.1:8888/”即可访问我们当前的服务器，此时浏览器中显示的就是返回值。</a></p>
 <p>在cmd中输入“ctrl + c”关闭服务器。</p>
@@ -301,7 +278,7 @@
 <p>然后看一下我们的上图，是我们在访问服务器时候打印的log，其中默认的是“<a href="http://127.0.0.1:8888/”，我们这里只是显示“/”，还有一个显示“/favicon.ico”，这是浏览器的默认访问小图标。此外还有很多其他的html中使用的静态资源，对于每一个资源浏览器都会发起单独的请求。" target="_blank" rel="noopener">http://127.0.0.1:8888/”，我们这里只是显示“/”，还有一个显示“/favicon.ico”，这是浏览器的默认访问小图标。此外还有很多其他的html中使用的静态资源，对于每一个资源浏览器都会发起单独的请求。</a></p>
 <p>当然此时我们无论访问的是“<a href="http://127.0.0.1:8888/xxx”，这里都返回的是“hello" target="_blank" rel="noopener">http://127.0.0.1:8888/xxx”，这里都返回的是“hello</a> world”，所以我们可以根据“request.url”的不同来设置不同的返回值，实际上现实中也是这样进行的。</p>
 <hr>
-<h3 id="Node-中的模块系统"><a href="#Node-中的模块系统" class="headerlink" title="Node 中的模块系统"></a>Node 中的模块系统</h3><p>在 Node 中，终端无法同时运行多个js文件，就需要使用 require 来让 Node.js 文件可以相互调用。</p>
+<h2 id="Node-中的模块系统"><a href="#Node-中的模块系统" class="headerlink" title="Node 中的模块系统"></a>Node 中的模块系统</h2><p>在 Node 中，终端无法同时运行多个js文件，就需要使用 require 来让 Node.js 文件可以相互调用。</p>
 <p>在 Node 中，模块有三种：</p>
 <ul>
 <li>具名的核心模块，如fs、http</li>
@@ -324,17 +301,17 @@
 <p>b.js:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="string">'bbb'</span>;</span><br><span class="line"></span><br><span class="line">exports.foo = <span class="string">'hello'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(foo);</span><br></pre></td></tr></table></figure></p>
 <p>b 中的 foo 和 exports 出来的 foo 可以不一样：<br><img src="/2019/03/02/后端基础——Nodejs/exports.jpg" alt="exports.jpg"></p>
 <hr>
-<h3 id="文本类型及中文乱码"><a href="#文本类型及中文乱码" class="headerlink" title="文本类型及中文乱码"></a>文本类型及中文乱码</h3><p>服务器默认发送的数据是 utf-8 编码的内容，但是浏览器默认使用当前系统的默认编码去解析，中文操作系统默认是 gbk。所以需要传给浏览器我们使用的编码，这样它就不会调用默认编码了。</p>
+<h2 id="文本类型及中文乱码"><a href="#文本类型及中文乱码" class="headerlink" title="文本类型及中文乱码"></a>文本类型及中文乱码</h2><p>服务器默认发送的数据是 utf-8 编码的内容，但是浏览器默认使用当前系统的默认编码去解析，中文操作系统默认是 gbk。所以需要传给浏览器我们使用的编码，这样它就不会调用默认编码了。</p>
 <p>在 response 中的 setHeader 方法 Content-Type 属性设置 文本类型 和 编码类型 。</p>
 <p>更多 Content-Type 属性：<a href="http://tool.oschina.net/commons/" target="_blank" rel="noopener">http://tool.oschina.net/commons/</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> url = request.url;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'收到客户端请求！请求路径为：'</span> + url);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (url === <span class="string">'/plain'</span>) &#123;</span><br><span class="line">        <span class="comment">// 内容类型：普通文本，utf-8编码</span></span><br><span class="line">        response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain; charset=utf-8'</span>);</span><br><span class="line">        response.end(<span class="string">'Hello World!你好世界！\n'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (url === <span class="string">'/html'</span>) &#123;</span><br><span class="line">        <span class="comment">// 内容类型：html文本，utf-8编码</span></span><br><span class="line">        response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html; charset=utf-8'</span>);</span><br><span class="line">        response.end(<span class="string">'&lt;p&gt;Hello World! &lt;a href=""&gt; 你好世界！&lt;/a&gt; &lt;/p&gt;'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Server running at http://'</span> + hostname + <span class="string">':'</span> + port + <span class="string">'/'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>其实我们访问页面时候，发送请求，返回的不是页面，而是整个页面的字符串，然后在本地进行渲染！！！例如下图就是百度页面，访问时，response回来的是整个页面的代码字符串。</p>
 <p><img src="/2019/03/02/后端基础——Nodejs/response.jpg" alt="response.jpg"></p>
 <hr>
-<h3 id="Node-js-实现-Apache-功能"><a href="#Node-js-实现-Apache-功能" class="headerlink" title="Node.js 实现 Apache 功能"></a>Node.js 实现 Apache 功能</h3><p>在 Apache 服务器中，我们可根据路径来获取资源，Node.js 模拟这种操作也非常简单。</p>
+<h2 id="Node-js-实现-Apache-功能"><a href="#Node-js-实现-Apache-功能" class="headerlink" title="Node.js 实现 Apache 功能"></a>Node.js 实现 Apache 功能</h2><p>在 Apache 服务器中，我们可根据路径来获取资源，Node.js 模拟这种操作也非常简单。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 端口号</span></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span></span><br><span class="line"><span class="comment">// 主机ip</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span></span><br><span class="line"><span class="comment">// 项目路径</span></span><br><span class="line"><span class="keyword">const</span> homeDir = <span class="string">'F:/WorkSpace/nodejs/nodejsDay02/Apache/www'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 访问的网址路径，从'/'开始，不包括 hostname 和 port</span></span><br><span class="line">  <span class="keyword">var</span> url = request.url</span><br><span class="line">  <span class="comment">// 默认的首页文件路径</span></span><br><span class="line">  <span class="keyword">var</span> filePath = <span class="string">'/index.html'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 非首页网址，修改路径</span></span><br><span class="line">  <span class="keyword">if</span> (url !== <span class="string">'/'</span>) &#123;</span><br><span class="line">    filePath = url</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 读取文件</span></span><br><span class="line">  fs.readFile(homeDir + filePath, (error, data) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 文件读取失败，直接返回，不再运行</span></span><br><span class="line">    <span class="keyword">if</span> (error) &#123;</span><br><span class="line">      <span class="keyword">return</span> response.end(<span class="string">'404 Not Found.'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回文件，data是二进制</span></span><br><span class="line">    response.end(data)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 端口监听</span></span><br><span class="line">server.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'服务器启动成功，可以通过http://'</span> + hostname + <span class="string">':'</span> + port + <span class="string">'/访问'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="模板引擎-服务器渲染"><a href="#模板引擎-服务器渲染" class="headerlink" title="模板引擎 服务器渲染"></a>模板引擎 服务器渲染</h3><p>模板引擎最早诞生于服务器领域，后来发展到了前端。</p>
+<h2 id="模板引擎-服务器渲染"><a href="#模板引擎-服务器渲染" class="headerlink" title="模板引擎 服务器渲染"></a>模板引擎 服务器渲染</h2><p>模板引擎最早诞生于服务器领域，后来发展到了前端。</p>
 <p><a href="https://aui.github.io/art-template/zh-cn/index.html" target="_blank" rel="noopener">https://aui.github.io/art-template/zh-cn/index.html</a></p>
 <ol>
 <li><p>安装</p>
@@ -355,7 +332,7 @@
 <p>在 Node 中使用模板引擎，本地打印测试，我们调用http模块就可以response回模板数据也是一样的：</p>
 <p><img src="/2019/03/02/后端基础——Nodejs/模板1.jpg" alt="模板1.jpg"></p>
 <hr>
-<h3 id="Node-js-后端项目结构基础"><a href="#Node-js-后端项目结构基础" class="headerlink" title="Node.js 后端项目结构基础"></a>Node.js 后端项目结构基础</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">项目</span><br><span class="line">    - config                       # 项目配置目录</span><br><span class="line">        - index.js                 # 配置项目中的配置信息</span><br><span class="line">    - models                       # 数据库 model</span><br><span class="line">    - node_modules                 # node.js 的依赖目录（模板文件）</span><br><span class="line">    - plugins                      # 插件目录</span><br><span class="line">    - routes                       # 路由目录</span><br><span class="line">        - hello-world.js           # 测试接口 hello-world</span><br><span class="line">    - utils                        # 工具类相关目录</span><br><span class="line">    - public                       # 公共静态资源目录（css、img、js、lib）</span><br><span class="line">    - views                        # html 视图文件目录</span><br><span class="line">    - app.js                       # 项目入口文件</span><br><span class="line">    - package.json                 # JS 项目工程依赖库</span><br><span class="line">    - readme.md                    # 项目工程如何被使用的说明手册...</span><br></pre></td></tr></table></figure>
+<h2 id="Node-js-后端项目结构基础"><a href="#Node-js-后端项目结构基础" class="headerlink" title="Node.js 后端项目结构基础"></a>Node.js 后端项目结构基础</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">项目</span><br><span class="line">    - config                       # 项目配置目录</span><br><span class="line">        - index.js                 # 配置项目中的配置信息</span><br><span class="line">    - models                       # 数据库 model</span><br><span class="line">    - node_modules                 # node.js 的依赖目录（模板文件）</span><br><span class="line">    - plugins                      # 插件目录</span><br><span class="line">    - routes                       # 路由目录</span><br><span class="line">        - hello-world.js           # 测试接口 hello-world</span><br><span class="line">    - utils                        # 工具类相关目录</span><br><span class="line">    - public                       # 公共静态资源目录（css、img、js、lib）</span><br><span class="line">    - views                        # html 视图文件目录</span><br><span class="line">    - app.js                       # 项目入口文件</span><br><span class="line">    - package.json                 # JS 项目工程依赖库</span><br><span class="line">    - readme.md                    # 项目工程如何被使用的说明手册...</span><br></pre></td></tr></table></figure>
 <p>这样之后，我们就统一处理这些静态资源，所有可访问资源都在public中，哪些资源能被用户访问，哪些资源不能被用户访问，我们都可以通过代码来实现。然后我们在代码中可以集中处理这些资源的访问，使用 indexOf() 方法查找‘/public/’开头的地址，这些是可以访问静态资源的地址请求。但是注意之前要加一个点，表示的是服务器路径，不然就是在本地查找了。</p>
 <p>app.js:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> url = request.url</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (url === <span class="string">'/'</span>) &#123;</span><br><span class="line">    <span class="comment">// 默认访问地址，这种隐藏后缀名的方式可以学习</span></span><br><span class="line">    fs.readFile(<span class="string">'./views/index.html'</span>, (error, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (error) &#123;</span><br><span class="line">        <span class="keyword">return</span> response.end(<span class="string">'404 Not Found.'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      response.end(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (url.indexOf(<span class="string">'/public/'</span>) === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 静态资源访问地址，这些地址都是以‘/public/’开头的</span></span><br><span class="line">    fs.readFile(<span class="string">'.'</span> + url, (error, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (error) &#123;</span><br><span class="line">        <span class="keyword">return</span> response.end(<span class="string">'404 Not Found.'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      response.end(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 其他网址都是不可访问的，我们处理成404错误，也能返回一个自定义的404页面</span></span><br><span class="line">    fs.readFile(<span class="string">'./views/404.html'</span>, (error, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (error) &#123;</span><br><span class="line">        <span class="keyword">return</span> response.end(<span class="string">'404 Not Found.'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      response.end(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'服务器启动成功，可以通过http://'</span> + hostname + <span class="string">':'</span> + port + <span class="string">'/访问'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>注意，使用这种方式之后，我们访问css、js之类的静态资源就不能再使用相对地址表示了！！！要使用服务器url地址访问。</p>
@@ -364,19 +341,19 @@
 <p>然后看一下我们的浏览器编辑器，每一个静态资源都会发送一个请求，这里的请求地址就是 服务器地址 + 端口号 + 服务器url地址。</p>
 <p><img src="/2019/03/02/后端基础——Nodejs/url地址.jpg" alt="url地址.jpg"></p>
 <hr>
-<h3 id="GET-POST-请求"><a href="#GET-POST-请求" class="headerlink" title="GET/POST 请求"></a>GET/POST 请求</h3><p>文档：<a href="http://nodejs.cn/api/url.html" target="_blank" rel="noopener">http://nodejs.cn/api/url.html</a></p>
-<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>对于表单提交的路径，其中有用户动态填写的内容，所以无法判断完整的 url 地址，判断头即可。</p>
+<h2 id="GET-POST-请求"><a href="#GET-POST-请求" class="headerlink" title="GET/POST 请求"></a>GET/POST 请求</h2><p>文档：<a href="http://nodejs.cn/api/url.html" target="_blank" rel="noopener">http://nodejs.cn/api/url.html</a></p>
+<h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>对于表单提交的路径，其中有用户动态填写的内容，所以无法判断完整的 url 地址，判断头即可。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span></span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 解析 URL 字符串，第二参数为 true，则获得对象</span></span><br><span class="line">  <span class="keyword">var</span> urlObject = url.parse(request.url, <span class="literal">true</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(urlObject)</span><br><span class="line">&#125;).listen(port, hostname, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`服务器运行成功，通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 进行访问`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>如下为请求 “<a href="http://localhost:8888/user?name=菜鸟联盟&amp;url=www.runoob.com”" target="_blank" rel="noopener">http://localhost:8888/user?name=菜鸟联盟&amp;url=www.runoob.com”</a> 打印出的 url 对象，我们可以通过 url 对象的属性来获取对应的值。</p>
 <p><img src="/2019/03/02/后端基础——Nodejs/url对象.jpg" alt="url对象.jpg"></p>
 <p>这些属性中比较重要的就是 query（我们提交的表单内容JSON字符串），pathname（表单提交的服务器路径，可以用来判断）。</p>
-<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><p>URL 重定向，也称为 URL 转发，是一种当实际资源，如单个页面、表单或者整个 Web 应用被迁移到新的 URL 下的时候，保持（原有）链接可用的技术。HTTP 协议提供了一种特殊形式的响应—— HTTP 重定向（HTTP redirects）来执行此类操作。 </p>
+<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><p>URL 重定向，也称为 URL 转发，是一种当实际资源，如单个页面、表单或者整个 Web 应用被迁移到新的 URL 下的时候，保持（原有）链接可用的技术。HTTP 协议提供了一种特殊形式的响应—— HTTP 重定向（HTTP redirects）来执行此类操作。 </p>
 <p>Location</p>
 <ul>
 <li>Location 首部指定的是需要将页面重新定向至的地址。一般在响应码为3xx的响应中才会有意义</li>
 </ul>
-<h4 id="301-永久重定向（推荐）"><a href="#301-永久重定向（推荐）" class="headerlink" title="301 永久重定向（推荐）"></a>301 永久重定向（推荐）</h4><p>301代表永久性转移(Permanently Moved)，301重定向是网页更改地址后对搜索引擎友好的最好方法，只要不是暂时搬移的情况,都建议使用301来做转址。</p>
-<h4 id="302-临时重定向"><a href="#302-临时重定向" class="headerlink" title="302 临时重定向"></a>302 临时重定向</h4><p>302代表暂时性转移(Temporarily Moved )，在前些年，不少Black Hat SEO曾广泛应用这项技术作弊，目前，各大主要搜索引擎均加强了打击力度，象Google前些年对Business.com以及近来对BMW德国网站的惩罚。即使网站客观上不是spam，也很容易被搜寻引擎容易误判为spam而遭到惩罚。</p>
+<h3 id="301-永久重定向（推荐）"><a href="#301-永久重定向（推荐）" class="headerlink" title="301 永久重定向（推荐）"></a>301 永久重定向（推荐）</h3><p>301代表永久性转移(Permanently Moved)，301重定向是网页更改地址后对搜索引擎友好的最好方法，只要不是暂时搬移的情况,都建议使用301来做转址。</p>
+<h3 id="302-临时重定向"><a href="#302-临时重定向" class="headerlink" title="302 临时重定向"></a>302 临时重定向</h3><p>302代表暂时性转移(Temporarily Moved )，在前些年，不少Black Hat SEO曾广泛应用这项技术作弊，目前，各大主要搜索引擎均加强了打击力度，象Google前些年对Business.com以及近来对BMW德国网站的惩罚。即使网站客观上不是spam，也很容易被搜寻引擎容易误判为spam而遭到惩罚。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重对象</span></span><br><span class="line"><span class="comment">//    1. 状态码设置为 301 永久重定向；302 临时重定向</span></span><br><span class="line">response.statusCode = <span class="number">301</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    2. 在响应头通过 Location 告诉客户端重定向地址</span></span><br><span class="line">response.setHeader(<span class="string">'Location'</span>, <span class="string">'http://www.baidu.com'</span>)</span><br><span class="line"></span><br><span class="line">response.end()</span><br></pre></td></tr></table></figure>
       
     </div>
