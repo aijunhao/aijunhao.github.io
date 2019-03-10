@@ -7,13 +7,13 @@
   
   <title>前端-ECharts | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录  ECharts简介 五分钟上手ECharts 引入 ECharts 绘制一个简单的图表   option配置项介绍 title 标题组件 toolbox 工具栏组件 tooltip 提示框组件 series[i] 系列列表 legend 图例组件   饼图 仪表图 散点图 雷达图 多坐标系配合 数据区域缩放组件 dataZoom 异步数据加载和更新   ECharts简介ECharts，一">
+  <meta name="description" content="目录   ECharts简介 五分钟上手ECharts 引入 ECharts 绘制一个简单的图表   option配置项介绍 title 标题组件 toolbox 工具栏组件 tooltip 提示框组件 series[i] 系列列表 legend 图例组件   饼图 仪表图 散点图 雷达图 多坐标系配合 数据区域缩放组件 dataZoom    ECharts简介ECharts，一个使用 Java">
 <meta name="keywords" content="JavaScript,前端,echarts">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端-ECharts">
 <meta property="og:url" content="http://yoursite.com/2019/02/13/前端-ECharts/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录  ECharts简介 五分钟上手ECharts 引入 ECharts 绘制一个简单的图表   option配置项介绍 title 标题组件 toolbox 工具栏组件 tooltip 提示框组件 series[i] 系列列表 legend 图例组件   饼图 仪表图 散点图 雷达图 多坐标系配合 数据区域缩放组件 dataZoom 异步数据加载和更新   ECharts简介ECharts，一">
+<meta property="og:description" content="目录   ECharts简介 五分钟上手ECharts 引入 ECharts 绘制一个简单的图表   option配置项介绍 title 标题组件 toolbox 工具栏组件 tooltip 提示框组件 series[i] 系列列表 legend 图例组件   饼图 仪表图 散点图 雷达图 多坐标系配合 数据区域缩放组件 dataZoom    ECharts简介ECharts，一个使用 Java">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/02/13/前端-ECharts/案例.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/02/13/前端-ECharts/工具栏.gif">
@@ -24,10 +24,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/13/前端-ECharts/散点图.gif">
 <meta property="og:image" content="http://yoursite.com/2019/02/13/前端-ECharts/雷达图.gif">
 <meta property="og:image" content="http://yoursite.com/2019/02/13/前端-ECharts/缩放.gif">
-<meta property="og:updated_time" content="2019-02-15T12:31:32.510Z">
+<meta property="og:updated_time" content="2019-03-10T08:08:22.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端-ECharts">
-<meta name="twitter:description" content="目录  ECharts简介 五分钟上手ECharts 引入 ECharts 绘制一个简单的图表   option配置项介绍 title 标题组件 toolbox 工具栏组件 tooltip 提示框组件 series[i] 系列列表 legend 图例组件   饼图 仪表图 散点图 雷达图 多坐标系配合 数据区域缩放组件 dataZoom 异步数据加载和更新   ECharts简介ECharts，一">
+<meta name="twitter:description" content="目录   ECharts简介 五分钟上手ECharts 引入 ECharts 绘制一个简单的图表   option配置项介绍 title 标题组件 toolbox 工具栏组件 tooltip 提示框组件 series[i] 系列列表 legend 图例组件   饼图 仪表图 散点图 雷达图 多坐标系配合 数据区域缩放组件 dataZoom    ECharts简介ECharts，一个使用 Java">
 <meta name="twitter:image" content="http://yoursite.com/2019/02/13/前端-ECharts/案例.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -98,29 +98,30 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>目录</p>
+<!-- TOC -->
 <ul>
-<li>ECharts简介</li>
-<li>五分钟上手ECharts<ul>
-<li>引入 ECharts</li>
-<li>绘制一个简单的图表</li>
+<li><a href="#echarts简介">ECharts简介</a></li>
+<li><a href="#五分钟上手echarts">五分钟上手ECharts</a><ul>
+<li><a href="#引入-echarts">引入 ECharts</a></li>
+<li><a href="#绘制一个简单的图表">绘制一个简单的图表</a></li>
 </ul>
 </li>
-<li>option配置项介绍<ul>
-<li>title 标题组件</li>
-<li>toolbox 工具栏组件</li>
-<li>tooltip 提示框组件</li>
-<li>series[i] 系列列表</li>
-<li>legend 图例组件</li>
+<li><a href="#option配置项介绍">option配置项介绍</a><ul>
+<li><a href="#title-标题组件">title 标题组件</a></li>
+<li><a href="#toolbox-工具栏组件">toolbox 工具栏组件</a></li>
+<li><a href="#tooltip-提示框组件">tooltip 提示框组件</a></li>
+<li><a href="#seriesi-系列列表">series[i] 系列列表</a></li>
+<li><a href="#legend-图例组件">legend 图例组件</a></li>
 </ul>
 </li>
-<li>饼图</li>
-<li>仪表图</li>
-<li>散点图</li>
-<li>雷达图</li>
-<li>多坐标系配合</li>
-<li>数据区域缩放组件 dataZoom</li>
-<li>异步数据加载和更新</li>
+<li><a href="#饼图">饼图</a></li>
+<li><a href="#仪表图">仪表图</a></li>
+<li><a href="#散点图">散点图</a></li>
+<li><a href="#雷达图">雷达图</a></li>
+<li><a href="#多坐标系配合">多坐标系配合</a></li>
+<li><a href="#数据区域缩放组件-datazoom">数据区域缩放组件 dataZoom</a></li>
 </ul>
+<!-- /TOC -->
 <hr>
 <h3 id="ECharts简介"><a href="#ECharts简介" class="headerlink" title="ECharts简介"></a>ECharts简介</h3><p>ECharts，一个使用 JavaScript 实现的开源可视化库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器（IE8/9/10/11，Chrome，Firefox，Safari等），底层依赖轻量级的矢量图形库 ZRender，提供直观，交互丰富，可高度个性化定制的数据可视化图表。</p>
 <p>更多：<a href="https://www.echartsjs.com/feature.html" target="_blank" rel="noopener">https://www.echartsjs.com/feature.html</a></p>
@@ -203,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/13/前端-ECharts/" data-id="cjsu9t6wt004cwouts1zrepse" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/13/前端-ECharts/" data-id="cjt2oa2k5004gz0uttabdz91f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/echarts/">echarts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -245,7 +246,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -255,7 +256,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -277,6 +278,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -290,10 +295,6 @@
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>

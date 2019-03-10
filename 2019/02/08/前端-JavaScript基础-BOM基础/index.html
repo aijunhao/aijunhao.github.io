@@ -7,20 +7,20 @@
   
   <title>前端-JavaScript基础-BOM基础 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录：  什么是BOM BOM对象 window setInterval()定时调动 setTimeout()延时调动   Navigator userAgent 内容说明 浏览器判断   Location History Screen 综合案例——动画 综合案例——轮播图 综合案例——二级菜单   什么是BOMBOM全程Browser Object Model，即浏览器对象模型。 BOM提供了独">
+  <meta name="description" content="目录：   什么是BOM BOM对象 window setInterval()定时调动 setTimeout()延时调动   Navigator userAgent 内容说明 浏览器判断   Location History Screen 综合案例——动画 综合案例——轮播图 综合案例——二级菜单    什么是BOMBOM全程Browser Object Model，即浏览器对象模型。 BOM提供">
 <meta name="keywords" content="JavaScript,前端,BOM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端-JavaScript基础-BOM基础">
 <meta property="og:url" content="http://yoursite.com/2019/02/08/前端-JavaScript基础-BOM基础/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录：  什么是BOM BOM对象 window setInterval()定时调动 setTimeout()延时调动   Navigator userAgent 内容说明 浏览器判断   Location History Screen 综合案例——动画 综合案例——轮播图 综合案例——二级菜单   什么是BOMBOM全程Browser Object Model，即浏览器对象模型。 BOM提供了独">
+<meta property="og:description" content="目录：   什么是BOM BOM对象 window setInterval()定时调动 setTimeout()延时调动   Navigator userAgent 内容说明 浏览器判断   Location History Screen 综合案例——动画 综合案例——轮播图 综合案例——二级菜单    什么是BOMBOM全程Browser Object Model，即浏览器对象模型。 BOM提供">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/02/08/前端-JavaScript基础-BOM基础/轮播图效果.gif">
 <meta property="og:image" content="http://yoursite.com/2019/02/08/前端-JavaScript基础-BOM基础/轮播图原理演示.gif">
-<meta property="og:updated_time" content="2019-02-16T06:39:06.444Z">
+<meta property="og:updated_time" content="2019-03-10T08:07:42.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端-JavaScript基础-BOM基础">
-<meta name="twitter:description" content="目录：  什么是BOM BOM对象 window setInterval()定时调动 setTimeout()延时调动   Navigator userAgent 内容说明 浏览器判断   Location History Screen 综合案例——动画 综合案例——轮播图 综合案例——二级菜单   什么是BOMBOM全程Browser Object Model，即浏览器对象模型。 BOM提供了独">
+<meta name="twitter:description" content="目录：   什么是BOM BOM对象 window setInterval()定时调动 setTimeout()延时调动   Navigator userAgent 内容说明 浏览器判断   Location History Screen 综合案例——动画 综合案例——轮播图 综合案例——二级菜单    什么是BOMBOM全程Browser Object Model，即浏览器对象模型。 BOM提供">
 <meta name="twitter:image" content="http://yoursite.com/2019/02/08/前端-JavaScript基础-BOM基础/轮播图效果.gif">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -91,27 +91,29 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>目录：</p>
+<!-- TOC -->
 <ul>
-<li>什么是BOM</li>
-<li>BOM对象</li>
-<li>window<ul>
-<li>setInterval()定时调动</li>
-<li>setTimeout()延时调动</li>
+<li><a href="#什么是bom">什么是BOM</a></li>
+<li><a href="#bom对象">BOM对象</a></li>
+<li><a href="#window">window</a><ul>
+<li><a href="#setinterval定时调动">setInterval()定时调动</a></li>
+<li><a href="#settimeout延时调动">setTimeout()延时调动</a></li>
 </ul>
 </li>
-<li>Navigator<ul>
-<li>userAgent</li>
-<li>内容说明</li>
-<li>浏览器判断</li>
+<li><a href="#navigator">Navigator</a><ul>
+<li><a href="#useragent">userAgent</a></li>
+<li><a href="#内容说明">内容说明</a></li>
+<li><a href="#浏览器判断">浏览器判断</a></li>
 </ul>
 </li>
-<li>Location</li>
-<li>History</li>
-<li>Screen</li>
-<li>综合案例——动画</li>
-<li>综合案例——轮播图</li>
-<li>综合案例——二级菜单</li>
+<li><a href="#location">Location</a></li>
+<li><a href="#history">History</a></li>
+<li><a href="#screen">Screen</a></li>
+<li><a href="#综合案例动画">综合案例——动画</a></li>
+<li><a href="#综合案例轮播图">综合案例——轮播图</a></li>
+<li><a href="#综合案例二级菜单">综合案例——二级菜单</a></li>
 </ul>
+<!-- /TOC -->
 <hr>
 <h3 id="什么是BOM"><a href="#什么是BOM" class="headerlink" title="什么是BOM"></a>什么是BOM</h3><p>BOM全程Browser Object Model，即浏览器对象模型。</p>
 <p>BOM提供了独立于内容 而与浏览器窗口进行交互的对象；由于BOM主要用于管理窗口与窗口之间的通讯，因此其核心对象是window；BOM由一系列相关的对象构成，并且每个对象都提供了很多方法与属性；BOM缺乏标准，JavaScript语法的标准化组织是ECMA，DOM的标准化组织是W3C，BOM最初是Netscape浏览器标准的一部分。</p>
@@ -198,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/08/前端-JavaScript基础-BOM基础/" data-id="cjsu9t6v8003vwoutd71feput" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/08/前端-JavaScript基础-BOM基础/" data-id="cjt2oa2er003xz0utm3vjscad" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BOM/">BOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -240,7 +242,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -250,7 +252,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -272,6 +274,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -285,10 +291,6 @@
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>

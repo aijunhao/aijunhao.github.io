@@ -7,22 +7,22 @@
   
   <title>Python学习笔记——GUI编程 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(f">
+  <meta name="description" content="第一个实例 tkinter 常用方法 Label 文本 Button 按钮 Checkbutton 复选框 Radiobutton    GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      #">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python学习笔记——GUI编程">
 <meta property="og:url" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(f">
+<meta property="og:description" content="第一个实例 tkinter 常用方法 Label 文本 Button 按钮 Checkbutton 复选框 Radiobutton    GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      #">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/Button.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/CheckButton1.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG">
-<meta property="og:updated_time" content="2019-02-01T07:19:24.553Z">
+<meta property="og:updated_time" content="2019-03-10T08:13:16.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习笔记——GUI编程">
-<meta name="twitter:description" content="GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      # 导入tkinter模块root = tk.Tk()        # 生成窗口实例，即父容器photo = tk.PhotoImage(f">
+<meta name="twitter:description" content="第一个实例 tkinter 常用方法 Label 文本 Button 按钮 Checkbutton 复选框 Radiobutton    GUI的终极选择：Tkinter https://blog.csdn.net/u014380159/article/details/51941842第一个实例12345678910111213141516import tkinter as tk      #">
 <meta name="twitter:image" content="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -92,7 +92,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
+        <!-- TOC -->
+<ul>
+<li><a href="#第一个实例">第一个实例</a></li>
+<li><a href="#tkinter-常用方法">tkinter 常用方法</a></li>
+<li><a href="#label-文本">Label 文本</a></li>
+<li><a href="#button-按钮">Button 按钮</a></li>
+<li><a href="#checkbutton-复选框">Checkbutton 复选框</a></li>
+<li><a href="#radiobutton">Radiobutton</a></li>
+</ul>
+<!-- /TOC -->
+<hr>
 <p>GUI的终极选择：Tkinter</p>
 <h2 id="https-blog-csdn-net-u014380159-article-details-51941842"><a href="#https-blog-csdn-net-u014380159-article-details-51941842" class="headerlink" title="https://blog.csdn.net/u014380159/article/details/51941842"></a><a href="https://blog.csdn.net/u014380159/article/details/51941842" target="_blank" rel="noopener">https://blog.csdn.net/u014380159/article/details/51941842</a></h2><h3 id="第一个实例"><a href="#第一个实例" class="headerlink" title="第一个实例"></a>第一个实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk      <span class="comment"># 导入tkinter模块</span></span><br><span class="line"></span><br><span class="line">root = tk.Tk()        <span class="comment"># 生成窗口实例，即父容器</span></span><br><span class="line"></span><br><span class="line">photo = tk.PhotoImage(file=<span class="string">'bg.gif'</span>)      <span class="comment"># 添加图片</span></span><br><span class="line">theLabel = tk.Label(root,</span><br><span class="line">                  text=<span class="string">'我们一起学猫叫\n一起喵喵喵喵~'</span>,</span><br><span class="line">                  justify=tk.LEFT,</span><br><span class="line">                  image=photo,</span><br><span class="line">                  compound=tk.CENTER,</span><br><span class="line">                  font=(<span class="string">"华康少女文字W5"</span>, <span class="number">20</span>),</span><br><span class="line">                  fg=<span class="string">"white"</span>)</span><br><span class="line"></span><br><span class="line">theLabel.pack()</span><br><span class="line"></span><br><span class="line">tk.mainloop()   <span class="comment"># 进入消息循环</span></span><br></pre></td></tr></table></figure>
 <h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG" alt=""></h2><h3 id="tkinter-常用方法"><a href="#tkinter-常用方法" class="headerlink" title="tkinter 常用方法"></a>tkinter 常用方法</h3><table>
@@ -456,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjsu9t6ji002iwoutvcshsu29" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjt2oa27q002gz0utd4srjior" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -498,7 +508,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -508,7 +518,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -530,6 +540,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -543,10 +557,6 @@
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>

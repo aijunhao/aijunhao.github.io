@@ -7,13 +7,13 @@
   
   <title>微信小程序开发 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录  微信小程序开发基本资料 注册并安装开发者工具 项目介绍 小程序配置 app.json 工具配置 project.config.json 页面配置 page.json WXML 模板 WXSS 样式 JS 交互逻辑   数据绑定 控制属性绑定 控制属性绑定 关键字绑定   列表渲染 wx:for 列表渲染单个组件 block wx:for列表渲染多个组件   尺寸自适应 模板及模板引用">
+  <meta name="description" content="目录  微信小程序开发基本资料 注册并安装开发者工具 项目介绍 小程序配置 app.json 工具配置 project.config.json 页面配置 page.json   WXML 模板 WXSS 样式 JS 交互逻辑   数据绑定 组件属性绑定 控制属性绑定 关键字绑定   运算- [三元运算](#三元运算)  数学运算      微信小程序开发基本资料使用学习资料如下：《微信小程序开发》">
 <meta name="keywords" content="移动端,前端,小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序开发">
 <meta property="og:url" content="http://yoursite.com/2018/09/03/微信小程序开发/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录  微信小程序开发基本资料 注册并安装开发者工具 项目介绍 小程序配置 app.json 工具配置 project.config.json 页面配置 page.json WXML 模板 WXSS 样式 JS 交互逻辑   数据绑定 控制属性绑定 控制属性绑定 关键字绑定   列表渲染 wx:for 列表渲染单个组件 block wx:for列表渲染多个组件   尺寸自适应 模板及模板引用">
+<meta property="og:description" content="目录  微信小程序开发基本资料 注册并安装开发者工具 项目介绍 小程序配置 app.json 工具配置 project.config.json 页面配置 page.json   WXML 模板 WXSS 样式 JS 交互逻辑   数据绑定 组件属性绑定 控制属性绑定 关键字绑定   运算- [三元运算](#三元运算)  数学运算      微信小程序开发基本资料使用学习资料如下：《微信小程序开发》">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/09/03/微信小程序开发/register.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/03/微信小程序开发/开发者工具.png">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/03/微信小程序开发/FirstWeChatApp.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/03/微信小程序开发/appjson.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/09/03/微信小程序开发/列表渲染.jpg">
-<meta property="og:updated_time" content="2019-02-01T07:16:05.023Z">
+<meta property="og:updated_time" content="2019-03-10T08:03:07.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序开发">
-<meta name="twitter:description" content="目录  微信小程序开发基本资料 注册并安装开发者工具 项目介绍 小程序配置 app.json 工具配置 project.config.json 页面配置 page.json WXML 模板 WXSS 样式 JS 交互逻辑   数据绑定 控制属性绑定 控制属性绑定 关键字绑定   列表渲染 wx:for 列表渲染单个组件 block wx:for列表渲染多个组件   尺寸自适应 模板及模板引用">
+<meta name="twitter:description" content="目录  微信小程序开发基本资料 注册并安装开发者工具 项目介绍 小程序配置 app.json 工具配置 project.config.json 页面配置 page.json   WXML 模板 WXSS 样式 JS 交互逻辑   数据绑定 组件属性绑定 控制属性绑定 关键字绑定   运算- [三元运算](#三元运算)  数学运算      微信小程序开发基本资料使用学习资料如下：《微信小程序开发》">
 <meta name="twitter:image" content="http://yoursite.com/2018/09/03/微信小程序开发/register.png">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -96,48 +96,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目录</p>
+        <p>目录<br><!-- TOC --></p>
 <ul>
-<li>微信小程序开发基本资料</li>
-<li>注册并安装开发者工具</li>
-<li>项目介绍<ul>
-<li>小程序配置 app.json</li>
-<li>工具配置 project.config.json</li>
-<li>页面配置 page.json</li>
-<li>WXML 模板</li>
-<li>WXSS 样式</li>
-<li>JS 交互逻辑</li>
+<li><a href="#微信小程序开发基本资料">微信小程序开发基本资料</a></li>
+<li><a href="#注册并安装开发者工具">注册并安装开发者工具</a></li>
+<li><a href="#项目介绍">项目介绍</a><ul>
+<li><a href="#小程序配置-appjson">小程序配置 app.json</a></li>
+<li><a href="#工具配置-projectconfigjson">工具配置 project.config.json</a></li>
+<li><a href="#页面配置-pagejson">页面配置 page.json</a></li>
 </ul>
 </li>
-<li>数据绑定<ul>
-<li>控制属性绑定</li>
-<li>控制属性绑定</li>
-<li>关键字绑定</li>
+<li><a href="#wxml-模板">WXML 模板</a><ul>
+<li><a href="#wxss-样式">WXSS 样式</a></li>
+<li><a href="#js-交互逻辑">JS 交互逻辑</a></li>
 </ul>
 </li>
-<li>列表渲染<ul>
-<li>wx:for 列表渲染单个组件</li>
-<li>block wx:for列表渲染多个组件</li>
+<li><a href="#数据绑定">数据绑定</a><ul>
+<li><a href="#组件属性绑定">组件属性绑定</a></li>
+<li><a href="#控制属性绑定">控制属性绑定</a></li>
+<li><a href="#关键字绑定">关键字绑定</a></li>
 </ul>
 </li>
-<li>尺寸自适应</li>
-<li>模板及模板引用</li>
+<li><a href="#运算">运算</a><pre><code>- [三元运算](#三元运算)
+</code></pre><ul>
+<li><a href="#数学运算">数学运算</a></li>
 </ul>
+</li>
+</ul>
+<!-- /TOC -->
 <hr>
-<h3 id="微信小程序开发基本资料"><a href="#微信小程序开发基本资料" class="headerlink" title="微信小程序开发基本资料"></a>微信小程序开发基本资料</h3><p>使用学习资料如下：《微信小程序开发》</p>
+<h2 id="微信小程序开发基本资料"><a href="#微信小程序开发基本资料" class="headerlink" title="微信小程序开发基本资料"></a>微信小程序开发基本资料</h2><p>使用学习资料如下：《微信小程序开发》</p>
 <p>微信小程序平台：<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">https://mp.weixin.qq.com/</a></p>
 <p>小程序开发文档如下：<a href="https://developers.weixin.qq.com/miniprogram/dev/?t=20161107" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/?t=20161107</a></p>
 <p>微信web开发者工具：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18082922" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18082922</a></p>
 <p>工具介绍：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html</a></p>
 <hr>
-<h3 id="注册并安装开发者工具"><a href="#注册并安装开发者工具" class="headerlink" title="注册并安装开发者工具"></a>注册并安装开发者工具</h3><p>申请小程序开发者账号：<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="noopener">https://mp.weixin.qq.com/wxopen/waregister?action=step1</a> ，按步走如实填写即可。<br><img src="/2018/09/03/微信小程序开发/register.png" alt="register.png"></p>
+<h2 id="注册并安装开发者工具"><a href="#注册并安装开发者工具" class="headerlink" title="注册并安装开发者工具"></a>注册并安装开发者工具</h2><p>申请小程序开发者账号：<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="noopener">https://mp.weixin.qq.com/wxopen/waregister?action=step1</a> ，按步走如实填写即可。<br><img src="/2018/09/03/微信小程序开发/register.png" alt="register.png"></p>
 <p>如下即为开发者工具登录界面，使用微信开发者账号扫一扫登录：<br><img src="/2018/09/03/微信小程序开发/开发者工具.png" alt="开发者工具.png"></p>
 <p>按需求选择开发程序，这里使用“小程序项目”：<br><img src="/2018/09/03/微信小程序开发/开发者工具-choice.png" alt="开发者工具-choice.png"></p>
 <p>小程序项目管理界面，项目目录就是文件存放地址，自己选择；登录 <a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">https://mp.weixin.qq.com</a> ，我们可以在菜单 “设置”-“开发设置” 看到小程序的 AppID 了 。<br><img src="/2018/09/03/微信小程序开发/开发者工具-小程序项目.png" alt="开发者工具-小程序项目.png"></p>
 <p><img src="/2018/09/03/微信小程序开发/开发者工具-AppID.png" alt="开发者工具-AppID.png"></p>
 <p>全部设置好后确定，进入开发页面：<br><img src="/2018/09/03/微信小程序开发/FirstWeChatApp.png" alt="FirstWeChatApp.png"></p>
 <hr>
-<h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><p>项目里边生成了不同类型的文件:</p>
+<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>项目里边生成了不同类型的文件:</p>
 <ul>
 <li>json 后缀的 JSON 配置文件</li>
 <li>wxml 后缀的 WXML 模板文件</li>
@@ -145,20 +146,20 @@
 <li>js 后缀的 JS 脚本逻辑文件</li>
 </ul>
 <p>代码构成：<a href="https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/file.html#json-%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/file.html#json-%E9%85%8D%E7%BD%AE</a></p>
-<h4 id="小程序配置-app-json"><a href="#小程序配置-app-json" class="headerlink" title="小程序配置 app.json"></a>小程序配置 app.json</h4><p>app.json 是当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
+<h3 id="小程序配置-app-json"><a href="#小程序配置-app-json" class="headerlink" title="小程序配置 app.json"></a>小程序配置 app.json</h3><p>app.json 是当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
 <p><img src="/2018/09/03/微信小程序开发/appjson.jpg" alt="appjson.jpg"></p>
 <pre><code>pages字段 —— 用于描述当前小程序所有页面路径，这是为了让微信客户端知道当前你的小程序页面定义在哪个目录。
 window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜色定义等。
 </code></pre><p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE</a></p>
-<h4 id="工具配置-project-config-json"><a href="#工具配置-project-config-json" class="headerlink" title="工具配置 project.config.json"></a>工具配置 project.config.json</h4><p>通常大家在使用一个工具的时候，都会针对各自喜好做一些个性化配置，例如界面颜色、编译配置等等，当你换了另外一台电脑重新安装工具的时候，你还要重新配置。</p>
+<h3 id="工具配置-project-config-json"><a href="#工具配置-project-config-json" class="headerlink" title="工具配置 project.config.json"></a>工具配置 project.config.json</h3><p>通常大家在使用一个工具的时候，都会针对各自喜好做一些个性化配置，例如界面颜色、编译配置等等，当你换了另外一台电脑重新安装工具的时候，你还要重新配置。</p>
 <p>考虑到这点，小程序开发者工具在每个项目的根目录都会生成一个 project.config.json，你在工具上做的任何配置都会写入到这个文件，当你重新安装工具或者换电脑工作时，你只要载入同一个项目的代码包，开发者工具就自动会帮你恢复到当时你开发项目时的个性化配置，其中会包括编辑器的颜色、代码上传时自动压缩等等一系列选项。</p>
 <p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html</a></p>
-<h4 id="页面配置-page-json"><a href="#页面配置-page-json" class="headerlink" title="页面配置 page.json"></a>页面配置 page.json</h4><p>如果你整个小程序的风格是蓝色调，那么你可以在 app.json 里边声明顶部颜色是蓝色即可。实际情况可能不是这样，可能你小程序里边的每个页面都有不一样的色调来区分不同功能模块，因此我们提供了 page.json，让开发者可以独立定义每个页面的一些属性，例如刚刚说的顶部颜色、是否允许下拉刷新等等。</p>
-<h4 id="WXML-模板"><a href="#WXML-模板" class="headerlink" title="WXML 模板"></a>WXML 模板</h4><p>WXML（WeiXin Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，可以构建出页面的结构。</p>
+<h3 id="页面配置-page-json"><a href="#页面配置-page-json" class="headerlink" title="页面配置 page.json"></a>页面配置 page.json</h3><p>如果你整个小程序的风格是蓝色调，那么你可以在 app.json 里边声明顶部颜色是蓝色即可。实际情况可能不是这样，可能你小程序里边的每个页面都有不一样的色调来区分不同功能模块，因此我们提供了 page.json，让开发者可以独立定义每个页面的一些属性，例如刚刚说的顶部颜色、是否允许下拉刷新等等。</p>
+<h2 id="WXML-模板"><a href="#WXML-模板" class="headerlink" title="WXML 模板"></a>WXML 模板</h2><p>WXML（WeiXin Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，可以构建出页面的结构。</p>
 <p>从事过网页编程的人知道，网页编程采用的是 HTML + CSS + JS 这样的组合，其中 HTML 是用来描述当前这个页面的结构，CSS 用来描述页面的样子，JS 通常是用来处理这个页面和用户的交互。</p>
 <p>同样道理，在小程序中也有同样的角色，其中 WXML 充当的就是类似 HTML 的角色。</p>
 <p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/index.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/index.html</a></p>
-<h4 id="WXSS-样式"><a href="#WXSS-样式" class="headerlink" title="WXSS 样式"></a>WXSS 样式</h4><p>WXSS 具有 CSS 大部分的特性，小程序在 WXSS 也做了一些扩充和修改。</p>
+<h3 id="WXSS-样式"><a href="#WXSS-样式" class="headerlink" title="WXSS 样式"></a>WXSS 样式</h3><p>WXSS 具有 CSS 大部分的特性，小程序在 WXSS 也做了一些扩充和修改。</p>
 <ul>
 <li><p>新增了尺寸单位。在写 CSS 样式时，开发者需要考虑到手机设备的屏幕会有不同的宽度和设备像素比，采用一些技巧来换算一些像素单位。WXSS 在底层支持新的尺寸单位 rpx ，开发者可以免去换算的烦恼，只要交给小程序底层来换算即可，由于换算采用的浮点数运算，所以运算结果会和预期结果有一点点偏差。</p>
 </li>
@@ -169,33 +170,33 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
 </ul>
 <p>更详细的文档可以参考 WXSS 。</p>
 <p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html</a></p>
-<h4 id="JS-交互逻辑"><a href="#JS-交互逻辑" class="headerlink" title="JS 交互逻辑"></a>JS 交互逻辑</h4><p>一个服务仅仅只有界面展示是不够的，还需要和用户做交互：响应用户的点击、获取用户的位置等等。在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。</p>
+<h3 id="JS-交互逻辑"><a href="#JS-交互逻辑" class="headerlink" title="JS 交互逻辑"></a>JS 交互逻辑</h3><p>一个服务仅仅只有界面展示是不够的，还需要和用户做交互：响应用户的点击、获取用户的位置等等。在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。</p>
 <p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html</a></p>
 <hr>
-<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><p>WXML页面中的动态数据都是来自js文件Page的data，数据绑定通过双大括号将变量包起来，在WXML页面里将数据值显示出来。Page中的data存放是通过键值对的方式存放。</p>
+<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><p>WXML页面中的动态数据都是来自js文件Page的data，数据绑定通过双大括号将变量包起来，在WXML页面里将数据值显示出来。Page中的data存放是通过键值对的方式存放。</p>
 <p>大括号是小程序特有的表示方式。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        msg: <span class="string">'123'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="组件属性绑定"><a href="#组件属性绑定" class="headerlink" title="组件属性绑定"></a>组件属性绑定</h4><p>将data里的数据绑定到微信小程序的组件上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view id=&quot;item-&#123;&#123;id&#125;&#125;&quot;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="组件属性绑定"><a href="#组件属性绑定" class="headerlink" title="组件属性绑定"></a>组件属性绑定</h3><p>将data里的数据绑定到微信小程序的组件上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view id=&quot;item-&#123;&#123;id&#125;&#125;&quot;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        id: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="控制属性绑定"><a href="#控制属性绑定" class="headerlink" title="控制属性绑定"></a>控制属性绑定</h4><p>用来进行if语句条件判断，如果满足条件则执行，否则不执行。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;condition&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="控制属性绑定"><a href="#控制属性绑定" class="headerlink" title="控制属性绑定"></a>控制属性绑定</h3><p>用来进行if语句条件判断，如果满足条件则执行，否则不执行。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;condition&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        condition: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="关键字绑定"><a href="#关键字绑定" class="headerlink" title="关键字绑定"></a>关键字绑定</h4><p>常用于组件的一些关键字，像复选框组件如果需要等于true则代表选中复选框，false代表不选中复选框。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;checkbox checked=&apos;&#123;&#123;true&#125;&#125;&apos;&gt;&lt;/checkbox&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="关键字绑定"><a href="#关键字绑定" class="headerlink" title="关键字绑定"></a>关键字绑定</h3><p>常用于组件的一些关键字，像复选框组件如果需要等于true则代表选中复选框，false代表不选中复选框。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;checkbox checked=&apos;&#123;&#123;true&#125;&#125;&apos;&gt;&lt;/checkbox&gt;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>可以在大括号内进行简单的运算。</p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p>可以在大括号内进行简单的运算。</p>
 <h4 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view hidden=&apos;&#123;&#123;flag ? true : false&#125;&#125;&apos;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;a + b&#125;&#125; + &#123;&#123;c&#125;&#125;&lt;/view&gt;      // 3 + 3</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        a: <span class="number">1</span>, </span><br><span class="line">        b: <span class="number">2</span>,</span><br><span class="line">        c: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">#### 逻辑判断</span><br><span class="line"><span class="string">``</span><span class="string">`wxml</span></span><br><span class="line"><span class="string">index.wxml:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;view wx:if="&#123;&#123;length &gt; 5&#125;&#125;"&gt;&lt;/view&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;&quot;hello&quot; + name&#125;&#125;&lt;/view&gt;     //helloMINA</span><br></pre></td></tr></table></figure>
+<h3 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;a + b&#125;&#125; + &#123;&#123;c&#125;&#125;&lt;/view&gt;      // 3 + 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        a: <span class="number">1</span>, </span><br><span class="line">        b: <span class="number">2</span>,</span><br><span class="line">        c: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">### 逻辑判断</span><br><span class="line"><span class="string">``</span><span class="string">`wxml</span></span><br><span class="line"><span class="string">index.wxml:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;view wx:if="&#123;&#123;length &gt; 5&#125;&#125;"&gt;&lt;/view&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;&quot;hello&quot; + name&#125;&#125;&lt;/view&gt;     //helloMINA</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        name: <span class="string">'MINA'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><h4 id="wx-for-列表渲染单个组件"><a href="#wx-for-列表渲染单个组件" class="headerlink" title="wx:for 列表渲染单个组件"></a>wx:for 列表渲染单个组件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;!-- arr:数组名, index:键名/索引, item:键值 --&gt;</span><br><span class="line">&lt;!-- 可以通过wx:for-index和wx:for-item修改元素的默认索引和键值 --&gt;</span><br><span class="line">&lt;view wx:for=&quot;&#123;&#123;arr&#125;&#125;&quot; wx:key=&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">    &#123;&#123;index&#125;&#125;:&#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><h3 id="wx-for-列表渲染单个组件"><a href="#wx-for-列表渲染单个组件" class="headerlink" title="wx:for 列表渲染单个组件"></a>wx:for 列表渲染单个组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;!-- arr:数组名, index:键名/索引, item:键值 --&gt;</span><br><span class="line">&lt;!-- 可以通过wx:for-index和wx:for-item修改元素的默认索引和键值 --&gt;</span><br><span class="line">&lt;view wx:for=&quot;&#123;&#123;arr&#125;&#125;&quot; wx:key=&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">    &#123;&#123;index&#125;&#125;:&#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        arr: [<span class="string">"苹果"</span>,<span class="string">"香蕉"</span>,<span class="string">"西瓜"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/09/03/微信小程序开发/列表渲染.jpg" alt="列表渲染"></p>
 <hr>
-<h4 id="block-wx-for列表渲染多个组件"><a href="#block-wx-for列表渲染多个组件" class="headerlink" title="block wx:for列表渲染多个组件"></a>block wx:for列表渲染多个组件</h4><p>使用block标签代替view标签即可。循环之后之后内容，没用多余的标签。</p>
+<h3 id="block-wx-for列表渲染多个组件"><a href="#block-wx-for列表渲染多个组件" class="headerlink" title="block wx:for列表渲染多个组件"></a>block wx:for列表渲染多个组件</h3><p>使用block标签代替view标签即可。循环之后之后内容，没用多余的标签。</p>
 <hr>
-<h3 id="尺寸自适应"><a href="#尺寸自适应" class="headerlink" title="尺寸自适应"></a>尺寸自适应</h3><p>rpx单位是微信小程序中css的尺寸单位，rpx可以根据屏幕宽度进行自适应。</p>
+<h2 id="尺寸自适应"><a href="#尺寸自适应" class="headerlink" title="尺寸自适应"></a>尺寸自适应</h2><p>rpx单位是微信小程序中css的尺寸单位，rpx可以根据屏幕宽度进行自适应。</p>
 <p>规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px</p>
 <table>
 <thead>
@@ -225,11 +226,11 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
 </table>
 <p>将屏幕布局设置为750像素，然后使用rpx单位即可自动适应。</p>
 <hr>
-<h3 id="模板及模板引用"><a href="#模板及模板引用" class="headerlink" title="模板及模板引用"></a>模板及模板引用</h3><h4 id="样式导入"><a href="#样式导入" class="headerlink" title="样式导入"></a>样式导入</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"导入的wxss路径"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="模板及模板引用"><a href="#模板及模板引用" class="headerlink" title="模板及模板引用"></a>模板及模板引用</h2><h3 id="样式导入"><a href="#样式导入" class="headerlink" title="样式导入"></a>样式导入</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"导入的wxss路径"</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/微信小程序开发/" data-id="cjsu9t6k2002twout7v3o4x6p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/微信小程序开发/" data-id="cjt2oa293002rz0ut8hibkvku" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -271,7 +272,7 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -281,7 +282,7 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -303,6 +304,10 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -316,10 +321,6 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>

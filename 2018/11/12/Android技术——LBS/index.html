@@ -7,13 +7,13 @@
   
   <title>Android特色开发—LBS(基于位置的服务) | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录  基于位置的服务简介  申请百度开发者账号及获取API Key和SDK  Android Studio中配置SDK  获取位置信息  获取经纬度 获取地址 获取位置描述 获取周边的POI 获取室内定位   地图  显示基础地图     基于位置的服务简介基于位置的服务围绕的核心就是要先确定用户所在的位置。 通常有两种技术方式：  一种是通过GPS定位：GPS定位的工作原理是基于手机内置的GP">
+  <meta name="description" content="目录  基于位置的服务简介 申请百度开发者账号及获取API Key和SDK Android Studio中配置SDK 获取位置信息 官方权限说明 布局 获取经纬度 获取地址 获取位置描述 获取周边的POI（兴趣点坐标） 获取室内定位 停止定位   地图 官方权限说明 布局 显示地图 在地图中显示定位      基于位置的服务简介基于位置的服务围绕的核心就是要先确定用户所在的位置。 通常有两种技术方">
 <meta name="keywords" content="Android,移动端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android特色开发—LBS(基于位置的服务)">
 <meta property="og:url" content="http://yoursite.com/2018/11/12/Android技术——LBS/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录  基于位置的服务简介  申请百度开发者账号及获取API Key和SDK  Android Studio中配置SDK  获取位置信息  获取经纬度 获取地址 获取位置描述 获取周边的POI 获取室内定位   地图  显示基础地图     基于位置的服务简介基于位置的服务围绕的核心就是要先确定用户所在的位置。 通常有两种技术方式：  一种是通过GPS定位：GPS定位的工作原理是基于手机内置的GP">
+<meta property="og:description" content="目录  基于位置的服务简介 申请百度开发者账号及获取API Key和SDK Android Studio中配置SDK 获取位置信息 官方权限说明 布局 获取经纬度 获取地址 获取位置描述 获取周边的POI（兴趣点坐标） 获取室内定位 停止定位   地图 官方权限说明 布局 显示地图 在地图中显示定位      基于位置的服务简介基于位置的服务围绕的核心就是要先确定用户所在的位置。 通常有两种技术方">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/11/12/Android技术——LBS/百度开发者.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/12/Android技术——LBS/百度地图开放平台.png">
@@ -24,10 +24,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/11/12/Android技术——LBS/解压2.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/11/12/Android技术——LBS/libs.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/11/12/Android技术——LBS/LBS.jpg">
-<meta property="og:updated_time" content="2019-02-01T07:17:12.284Z">
+<meta property="og:updated_time" content="2019-03-10T08:18:42.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android特色开发—LBS(基于位置的服务)">
-<meta name="twitter:description" content="目录  基于位置的服务简介  申请百度开发者账号及获取API Key和SDK  Android Studio中配置SDK  获取位置信息  获取经纬度 获取地址 获取位置描述 获取周边的POI 获取室内定位   地图  显示基础地图     基于位置的服务简介基于位置的服务围绕的核心就是要先确定用户所在的位置。 通常有两种技术方式：  一种是通过GPS定位：GPS定位的工作原理是基于手机内置的GP">
+<meta name="twitter:description" content="目录  基于位置的服务简介 申请百度开发者账号及获取API Key和SDK Android Studio中配置SDK 获取位置信息 官方权限说明 布局 获取经纬度 获取地址 获取位置描述 获取周边的POI（兴趣点坐标） 获取室内定位 停止定位   地图 官方权限说明 布局 显示地图 在地图中显示定位      基于位置的服务简介基于位置的服务围绕的核心就是要先确定用户所在的位置。 通常有两种技术方">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/12/Android技术——LBS/百度开发者.png">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -97,29 +97,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目录</p>
+        <p>目录<br><!-- TOC --></p>
 <ul>
-<li><p>基于位置的服务简介</p>
+<li><a href="#基于位置的服务简介">基于位置的服务简介</a></li>
+<li><a href="#申请百度开发者账号及获取api-key和sdk">申请百度开发者账号及获取API Key和SDK</a></li>
+<li><a href="#android-studio中配置sdk">Android Studio中配置SDK</a></li>
+<li><a href="#获取位置信息">获取位置信息</a><ul>
+<li><a href="#官方权限说明">官方权限说明</a></li>
+<li><a href="#布局">布局</a></li>
+<li><a href="#获取经纬度">获取经纬度</a></li>
+<li><a href="#获取地址">获取地址</a></li>
+<li><a href="#获取位置描述">获取位置描述</a></li>
+<li><a href="#获取周边的poi兴趣点坐标">获取周边的POI（兴趣点坐标）</a></li>
+<li><a href="#获取室内定位">获取室内定位</a></li>
+<li><a href="#停止定位">停止定位</a></li>
+</ul>
 </li>
-<li><p>申请百度开发者账号及获取API Key和SDK</p>
-</li>
-<li><p>Android Studio中配置SDK</p>
-</li>
-<li><p>获取位置信息</p>
-<ol>
-<li>获取经纬度</li>
-<li>获取地址</li>
-<li>获取位置描述</li>
-<li>获取周边的POI</li>
-<li>获取室内定位</li>
-</ol>
-</li>
-<li><p>地图</p>
-<ol>
-<li>显示基础地图</li>
-</ol>
+<li><a href="#地图">地图</a><ul>
+<li><a href="#官方权限说明-1">官方权限说明</a></li>
+<li><a href="#布局-1">布局</a></li>
+<li><a href="#显示地图">显示地图</a></li>
+<li><a href="#在地图中显示定位">在地图中显示定位</a></li>
+</ul>
 </li>
 </ul>
+<!-- /TOC -->
 <hr>
 <h3 id="基于位置的服务简介"><a href="#基于位置的服务简介" class="headerlink" title="基于位置的服务简介"></a>基于位置的服务简介</h3><p>基于位置的服务围绕的核心就是要先确定用户所在的位置。</p>
 <p>通常有两种技术方式：</p>
@@ -258,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/12/Android技术——LBS/" data-id="cjsu9t6tv003gwout5wzxhhei" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/12/Android技术——LBS/" data-id="cjt2oa2e3003kz0utv3adroov" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -300,7 +302,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -310,7 +312,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -332,6 +334,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -345,10 +351,6 @@
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>

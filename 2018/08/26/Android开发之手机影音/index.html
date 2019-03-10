@@ -7,13 +7,13 @@
   
   <title>Android开发之手机影音 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Anroid开发之手机影音此学习笔记来源于“尚硅谷——Android项目视频——手机影音”  svn资源地址：https://47.96.118.115/svn/MobliePlayer  手机影音项目总结12345678910111213141516171819202122232425262728293031323334353637381. 市场上百分之八十的软件架构2. 读取本地视频3. Vi">
+  <meta name="description" content="Anroid开发之手机影音 手机影音项目总结 启动页面 启动跳转- [普通跳转：](#普通跳转) - [单例模式+移除消息实现提前跳转](#单例模式移除消息实现提前跳转) - [通过启动判断](#通过启动判断)  App名与图表 主界面——软件架构分析 主页面——底部选择按钮 主页面——FrameLayout显示 顶部标题栏 自定义标题栏点击事件 本地视频列表布局 1. 写布局，相对布局：Li">
 <meta name="keywords" content="Android,移动端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发之手机影音">
 <meta property="og:url" content="http://yoursite.com/2018/08/26/Android开发之手机影音/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="Anroid开发之手机影音此学习笔记来源于“尚硅谷——Android项目视频——手机影音”  svn资源地址：https://47.96.118.115/svn/MobliePlayer  手机影音项目总结12345678910111213141516171819202122232425262728293031323334353637381. 市场上百分之八十的软件架构2. 读取本地视频3. Vi">
+<meta property="og:description" content="Anroid开发之手机影音 手机影音项目总结 启动页面 启动跳转- [普通跳转：](#普通跳转) - [单例模式+移除消息实现提前跳转](#单例模式移除消息实现提前跳转) - [通过启动判断](#通过启动判断)  App名与图表 主界面——软件架构分析 主页面——底部选择按钮 主页面——FrameLayout显示 顶部标题栏 自定义标题栏点击事件 本地视频列表布局 1. 写布局，相对布局：Li">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/SplashActivity.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/MainActivityTest.jpg">
@@ -30,10 +30,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/android_layout_finder.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/外部调用.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/NetVideo.jpg">
-<meta property="og:updated_time" content="2019-02-01T07:17:24.546Z">
+<meta property="og:updated_time" content="2019-03-10T08:17:48.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发之手机影音">
-<meta name="twitter:description" content="Anroid开发之手机影音此学习笔记来源于“尚硅谷——Android项目视频——手机影音”  svn资源地址：https://47.96.118.115/svn/MobliePlayer  手机影音项目总结12345678910111213141516171819202122232425262728293031323334353637381. 市场上百分之八十的软件架构2. 读取本地视频3. Vi">
+<meta name="twitter:description" content="Anroid开发之手机影音 手机影音项目总结 启动页面 启动跳转- [普通跳转：](#普通跳转) - [单例模式+移除消息实现提前跳转](#单例模式移除消息实现提前跳转) - [通过启动判断](#通过启动判断)  App名与图表 主界面——软件架构分析 主页面——底部选择按钮 主页面——FrameLayout显示 顶部标题栏 自定义标题栏点击事件 本地视频列表布局 1. 写布局，相对布局：Li">
 <meta name="twitter:image" content="http://yoursite.com/2018/08/26/Android开发之手机影音/SplashActivity.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -103,7 +103,74 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Anroid开发之手机影音"><a href="#Anroid开发之手机影音" class="headerlink" title="Anroid开发之手机影音"></a>Anroid开发之手机影音</h2><p>此学习笔记来源于“尚硅谷——Android项目视频——手机影音”</p>
+        <!-- TOC -->
+<ul>
+<li><a href="#anroid开发之手机影音">Anroid开发之手机影音</a><ul>
+<li><a href="#手机影音项目总结">手机影音项目总结</a></li>
+<li><a href="#启动页面">启动页面</a></li>
+<li><a href="#启动跳转">启动跳转</a><pre><code>- [普通跳转：](#普通跳转)
+- [单例模式+移除消息实现提前跳转](#单例模式移除消息实现提前跳转)
+- [通过启动判断](#通过启动判断)
+</code></pre></li>
+<li><a href="#app名与图表">App名与图表</a></li>
+<li><a href="#主界面软件架构分析">主界面——软件架构分析</a></li>
+<li><a href="#主页面底部选择按钮">主页面——底部选择按钮</a></li>
+<li><a href="#主页面framelayout显示">主页面——FrameLayout显示</a></li>
+<li><a href="#顶部标题栏">顶部标题栏</a></li>
+<li><a href="#自定义标题栏点击事件">自定义标题栏点击事件</a></li>
+<li><a href="#本地视频列表布局">本地视频列表布局</a><ul>
+<li><a href="#1-写布局相对布局listview和textview和progressbar并初始化">1. 写布局，相对布局：ListView和TextView和ProgressBar，并初始化</a></li>
+<li><a href="#2-加载本地视频在子线程中加载视频加载的视频放入集合中设置适配器要放在主线程中用handler设置适配器">2. 加载本地视频，在子线程中加载视频，加载的视频放入集合中：设置适配器要放在主线程中，用Handler设置适配器。</a></li>
+<li><a href="#3-设置item的点击事件把视频播放出来">3. 设置item的点击事件，把视频播放出来</a></li>
+</ul>
+</li>
+<li><a href="#activity的生命周期">Activity的生命周期</a></li>
+<li><a href="#activity横竖屏切换的生命周期">Activity横竖屏切换的生命周期</a></li>
+<li><a href="#播放器控制面板">播放器控制面板</a></li>
+<li><a href="#视频seekbar进度更新">视频SeekBar进度更新</a><ul>
+<li><a href="#1-视频的总时长和seekbaar的setmax设置总时长">1. 视频的总时长和SeekBaar的setMax设置总时长)</a></li>
+<li><a href="#2-实例化handler每秒得到当前播放进度seekbar的getprogress更新当前进度">2. 实例化Handler，每秒得到当前播放进度，SeekBar的getProgress更新当前进度</a></li>
+</ul>
+</li>
+<li><a href="#视频seekbar拖动">视频SeekBar拖动</a></li>
+<li><a href="#设置电池状态">设置电池状态</a></li>
+<li><a href="#设置系统时间">设置系统时间</a></li>
+<li><a href="#传递播放列表">传递播放列表</a></li>
+<li><a href="#播放上一个下一个视频及自动跳转">播放上一个/下一个视频及自动跳转</a></li>
+<li><a href="#手势识别">手势识别</a></li>
+<li><a href="#控制面板自动延迟隐藏">控制面板自动延迟隐藏</a></li>
+<li><a href="#自定义videoview实现视频画面大小">自定义VideoView实现视频画面大小</a></li>
+<li><a href="#声音设置">声音设置</a><ul>
+<li><a href="#1-实例化audiomanager">1. 实例化AudioManager</a></li>
+<li><a href="#2-设置当前音量和最大音量">2. 设置当前音量和最大音量</a></li>
+<li><a href="#3-设置seekbar状态变化">3. 设置SeekBar状态变化</a></li>
+<li><a href="#4-静音设置及按钮监听">4. 静音设置及按钮监听</a></li>
+</ul>
+</li>
+<li><a href="#屏幕上下滑动实现声音大小变化">屏幕上下滑动实现声音大小变化</a></li>
+<li><a href="#通过手机音量按键改变声音大小">通过手机音量按键改变声音大小</a></li>
+<li><a href="#让其他软件能调用我们的播放器">让其他软件能调用我们的播放器</a><ul>
+<li><a href="#方法一参照系统源代码在功能清单源代码中添加属性">方法一：参照系统源代码，在功能清单源代码中添加属性。</a></li>
+<li><a href="#文件调用过程如下">文件调用过程如下：</a></li>
+</ul>
+</li>
+<li><a href="#加载播放网络资源视频">加载播放网络资源视频</a></li>
+<li><a href="#添加网络视频缓冲">添加网络视频缓冲</a></li>
+<li><a href="#设置监听播放网络视频卡顿">设置监听播放网络视频卡顿</a></li>
+<li><a href="#自定义监听卡">自定义监听卡</a></li>
+<li><a href="#加载视频等待页面">加载视频等待页面</a></li>
+<li><a href="#设置网速">设置网速</a></li>
+<li><a href="#播放出错处理万能解码框架-vitamio">播放出错处理——万能解码框架 Vitamio</a><ul>
+<li><a href="#1-关联vitamio">1. 关联Vitamio</a></li>
+<li><a href="#2">2.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<hr>
+<h2 id="Anroid开发之手机影音"><a href="#Anroid开发之手机影音" class="headerlink" title="Anroid开发之手机影音"></a>Anroid开发之手机影音</h2><p>此学习笔记来源于“尚硅谷——Android项目视频——手机影音”</p>
 <hr>
 <p>svn资源地址：<a href="https://47.96.118.115/svn/MobliePlayer" target="_blank" rel="noopener">https://47.96.118.115/svn/MobliePlayer</a></p>
 <hr>
@@ -329,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/26/Android开发之手机影音/" data-id="cjsu9t70j004swoutnx0gv898" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/26/Android开发之手机影音/" data-id="cjt2oa2r3004wz0utw5zhifxn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -371,7 +438,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -381,7 +448,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -403,6 +470,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -416,10 +487,6 @@
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>

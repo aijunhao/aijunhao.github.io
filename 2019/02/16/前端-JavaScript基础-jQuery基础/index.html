@@ -7,20 +7,20 @@
   
   <title>前端-JavaScript基础-jQuery基础 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录：  jQuery介绍 jQuery的基本使用 基础语法 文档就绪事件 DOM与jQuery对照 函数/对象：jQuery 与 $   选择器 id 选择器 元素选择器 .class 选择器   CSS (略) 文档操作 (略)  综合练习     事件处理 ready(fn) on(events,[selector],[data],fn) 绑定事件 off(events,[selector]">
+  <meta name="description" content="目录：   jQuery介绍 jQuery的基本使用 基础语法 文档就绪事件 DOM与jQuery对照 函数/对象：jQuery 与 $ jQuery作为函数 jQuery作为对象     选择器 基本选择器 元素选择器 #id 选择器 .class 类选择器 seletor1, seletor2 并集 交集   层次选择器 ancestor descendant 后代选择器 parent&amp;gt;">
 <meta name="keywords" content="JavaScript,前端,jQuery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端-JavaScript基础-jQuery基础">
 <meta property="og:url" content="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录：  jQuery介绍 jQuery的基本使用 基础语法 文档就绪事件 DOM与jQuery对照 函数/对象：jQuery 与 $   选择器 id 选择器 元素选择器 .class 选择器   CSS (略) 文档操作 (略)  综合练习     事件处理 ready(fn) on(events,[selector],[data],fn) 绑定事件 off(events,[selector]">
+<meta property="og:description" content="目录：   jQuery介绍 jQuery的基本使用 基础语法 文档就绪事件 DOM与jQuery对照 函数/对象：jQuery 与 $ jQuery作为函数 jQuery作为对象     选择器 基本选择器 元素选择器 #id 选择器 .class 类选择器 seletor1, seletor2 并集 交集   层次选择器 ancestor descendant 后代选择器 parent&amp;gt;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/轮播图效果.gif">
 <meta property="og:image" content="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/轮播图.gif">
-<meta property="og:updated_time" content="2019-02-28T11:25:32.555Z">
+<meta property="og:updated_time" content="2019-03-10T08:07:17.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端-JavaScript基础-jQuery基础">
-<meta name="twitter:description" content="目录：  jQuery介绍 jQuery的基本使用 基础语法 文档就绪事件 DOM与jQuery对照 函数/对象：jQuery 与 $   选择器 id 选择器 元素选择器 .class 选择器   CSS (略) 文档操作 (略)  综合练习     事件处理 ready(fn) on(events,[selector],[data],fn) 绑定事件 off(events,[selector]">
+<meta name="twitter:description" content="目录：   jQuery介绍 jQuery的基本使用 基础语法 文档就绪事件 DOM与jQuery对照 函数/对象：jQuery 与 $ jQuery作为函数 jQuery作为对象     选择器 基本选择器 元素选择器 #id 选择器 .class 类选择器 seletor1, seletor2 并集 交集   层次选择器 ancestor descendant 后代选择器 parent&amp;gt;">
 <meta name="twitter:image" content="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/轮播图效果.gif">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -91,44 +91,61 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>目录：</p>
+<!-- TOC -->
 <ul>
-<li>jQuery介绍</li>
-<li>jQuery的基本使用<ul>
-<li>基础语法</li>
-<li>文档就绪事件</li>
-<li>DOM与jQuery对照</li>
-<li>函数/对象：jQuery 与 $</li>
-</ul>
-</li>
-<li>选择器<ul>
-<li>id 选择器</li>
-<li>元素选择器</li>
-<li>.class 选择器</li>
-</ul>
-</li>
-<li>CSS (略)</li>
-<li>文档操作 (略)<ul>
-<li><ul>
-<li>综合练习</li>
+<li><a href="#jquery介绍">jQuery介绍</a></li>
+<li><a href="#jquery的基本使用">jQuery的基本使用</a><ul>
+<li><a href="#基础语法">基础语法</a></li>
+<li><a href="#文档就绪事件">文档就绪事件</a></li>
+<li><a href="#dom与jquery对照">DOM与jQuery对照</a></li>
+<li><a href="#函数对象jquery-与-">函数/对象：jQuery 与 $</a><ul>
+<li><a href="#jquery作为函数">jQuery作为函数</a></li>
+<li><a href="#jquery作为对象">jQuery作为对象</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>事件处理<ul>
-<li>ready(fn)</li>
-<li>on(events,[selector],[data],fn) 绑定事件</li>
-<li>off(events,[selector],[fn]) 解除事件</li>
-<li>坐标</li>
-<li>mouseover([[data],fn]) / mouseenter([[data],fn]) / hover([over,]out)</li>
-<li>事件冒泡</li>
-<li>事件委派</li>
+<li><a href="#选择器">选择器</a><ul>
+<li><a href="#基本选择器">基本选择器</a><ul>
+<li><a href="#元素选择器">元素选择器</a></li>
+<li><a href="#id-选择器">#id 选择器</a></li>
+<li><a href="#class-类选择器">.class 类选择器</a></li>
+<li><a href="#seletor1-seletor2-并集">seletor1, seletor2 并集</a></li>
+<li><a href="#交集">交集</a></li>
 </ul>
 </li>
-<li>内置动画</li>
-<li>多库共存</li>
-<li>综合案例——平滑翻页</li>
-<li>jQuery 插件</li>
+<li><a href="#层次选择器">层次选择器</a><ul>
+<li><a href="#ancestor-descendant-后代选择器">ancestor descendant 后代选择器</a></li>
+<li><a href="#parentchild-子元素选择器">parent&gt;child 子元素选择器</a></li>
+<li><a href="#prevnext-下一个兄弟元素选择器">prev+next 下一个兄弟元素选择器</a></li>
+<li><a href="#prevsiblings-之后所有的兄弟元素选择器">prev~siblings 之后所有的兄弟元素选择器</a></li>
 </ul>
+</li>
+<li><a href="#过滤选择器">过滤选择器</a></li>
+<li><a href="#表单选择器">表单选择器</a></li>
+</ul>
+</li>
+<li><a href="#css">CSS</a></li>
+<li><a href="#文档处理">文档处理</a><ul>
+<li><a href="#综合练习">综合练习</a></li>
+</ul>
+</li>
+<li><a href="#事件处理">事件处理</a><ul>
+<li><a href="#readyfn">ready(fn)</a></li>
+<li><a href="#oneventsselectordatafn-绑定事件">on(events,[selector],[data],fn) 绑定事件</a></li>
+<li><a href="#offeventsselectorfn-解除事件">off(events,[selector],[fn]) 解除事件</a></li>
+<li><a href="#坐标">坐标</a></li>
+<li>[mouseover([[data],fn]) / mouseenter([[data],fn]) / hover(<a href="#mouseoverdatafn--mouseenterdatafn--hoveroverout">over,]out)</a></li>
+<li><a href="#事件冒泡">事件冒泡</a></li>
+<li><a href="#事件委派">事件委派</a></li>
+</ul>
+</li>
+<li><a href="#内置动画">内置动画</a></li>
+<li><a href="#多库共存">多库共存</a></li>
+<li><a href="#综合练习平滑翻页">综合练习——平滑翻页</a></li>
+<li><a href="#jquery-插件之-jqueryui">jQuery 插件之 jQueryUI</a></li>
+</ul>
+<!-- /TOC -->
 <hr>
 <h3 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h3><p>官网：<a href="http://jquery.com/" target="_blank" rel="noopener">http://jquery.com/</a></p>
 <p>jQuery 3.3.1 API中文文档：jquery.cuishifeng.cn</p>
@@ -298,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/" data-id="cjsu9t6va003xwout4xz2vnrv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/" data-id="cjt2oa2ez003zz0utcimx9qwc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -340,7 +357,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -350,7 +367,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -372,6 +389,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -385,10 +406,6 @@
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>

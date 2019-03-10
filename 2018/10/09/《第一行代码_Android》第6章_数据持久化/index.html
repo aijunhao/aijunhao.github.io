@@ -7,18 +7,18 @@
   
   <title>《第一行代码_Android》第6章_数据持久化 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转">
+  <meta name="description" content="第6章 数据存储全方案——详解持久化技术 持久化技术简介 文件存储/内部存储 SharedPreferences存储 SQLite数据库存储 创建/更新表 数据操作 添加数据——insert()方法 删除数据 更新数据 查询数据        此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化">
 <meta name="keywords" content="Android,移动端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《第一行代码_Android》第6章_数据持久化">
 <meta property="og:url" content="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转">
+<meta property="og:description" content="第6章 数据存储全方案——详解持久化技术 持久化技术简介 文件存储/内部存储 SharedPreferences存储 SQLite数据库存储 创建/更新表 数据操作 添加数据——insert()方法 删除数据 更新数据 查询数据        此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-01T07:18:27.018Z">
+<meta property="og:updated_time" content="2019-03-10T08:16:26.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码_Android》第6章_数据持久化">
-<meta name="twitter:description" content="此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转">
+<meta name="twitter:description" content="第6章 数据存储全方案——详解持久化技术 持久化技术简介 文件存储/内部存储 SharedPreferences存储 SQLite数据库存储 创建/更新表 数据操作 添加数据——insert()方法 删除数据 更新数据 查询数据        此博客使用教材为《第一行代码 Android》第2版。 第6章 数据存储全方案——详解持久化技术android技术之数据存储  持久化技术简介数据持久化">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -87,8 +87,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>此博客使用教材为《第一行代码 Android》第2版。</p>
-<h1 id="第6章-数据存储全方案——详解持久化技术"><a href="#第6章-数据存储全方案——详解持久化技术" class="headerlink" title="第6章 数据存储全方案——详解持久化技术"></a>第6章 数据存储全方案——详解持久化技术</h1><p>android技术之数据存储</p>
+        <!-- TOC -->
+<ul>
+<li><a href="#第6章-数据存储全方案详解持久化技术">第6章 数据存储全方案——详解持久化技术</a><ul>
+<li><a href="#持久化技术简介">持久化技术简介</a></li>
+<li><a href="#文件存储内部存储">文件存储/内部存储</a></li>
+<li><a href="#sharedpreferences存储">SharedPreferences存储</a></li>
+<li><a href="#sqlite数据库存储">SQLite数据库存储</a><ul>
+<li><a href="#创建更新表">创建/更新表</a></li>
+<li><a href="#数据操作">数据操作</a></li>
+<li><a href="#添加数据insert方法">添加数据——insert()方法</a></li>
+<li><a href="#删除数据">删除数据</a></li>
+<li><a href="#更新数据">更新数据</a></li>
+<li><a href="#查询数据">查询数据</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<hr>
+<p>此博客使用教材为《第一行代码 Android》第2版。</p>
+<h2 id="第6章-数据存储全方案——详解持久化技术"><a href="#第6章-数据存储全方案——详解持久化技术" class="headerlink" title="第6章 数据存储全方案——详解持久化技术"></a>第6章 数据存储全方案——详解持久化技术</h2><p>android技术之数据存储</p>
 <hr>
 <h3 id="持久化技术简介"><a href="#持久化技术简介" class="headerlink" title="持久化技术简介"></a>持久化技术简介</h3><p>数据持久化就是指将那些内存中的瞬时数据保存到存储设备中，保证即使在手机或电脑关机的情况下，这些数据任然不会丢失。保存在内存中的数据是处于瞬时状态的，而保存在存储设备中的数据是处于持久状态的，持久化技术则提供了一种机制可以让数据在顺数状态和持久化状态之间进行转化。</p>
 <p>Android中的书持久化技术提供了3种方式用于简单地实现持久化功能。即文件存储、SharedPreference存储和数据库存储。此外还可以SD卡存储，但是较为复杂，而且安全性能也不高。</p>
@@ -175,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjsu9t6uv003rwoutdnlrms5m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjt2oa2em003tz0utzefhjsfj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -217,7 +237,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -227,7 +247,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -249,6 +269,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -262,10 +286,6 @@
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>

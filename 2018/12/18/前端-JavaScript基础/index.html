@@ -7,21 +7,21 @@
   
   <title>JavaScript基础 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript目录：  JS简介 JS的HelloWorld JS编写位置 JS基本语法 JS注释 数据类型 字面量（常量）和变量 标识符 强制类型转换 运算符   对象 创建对象 对象的 in 运算符 工厂方法创建对象 原型对象 查询对象中属性   函数 自定义函数声明 函数调用 立即执行函数 函数对象方法：call()和apply()   作用域 声明提前 隐含参数：this toStr">
+  <meta name="description" content="目录：   JS简介 JS的HelloWorld JS编写位置 JS基本语法 JS注释 数据类型 字面量（常量）和变量 标识符 强制类型转换 运算符   对象 创建对象 对象的 in 运算符 工厂方法创建对象 构造函数 原型对象 查询对象中属性   函数 自定义函数声明 函数调用 立即执行函数 函数对象方法：call()和apply()   作用域 声明提前 隐含参数：this toString方">
 <meta name="keywords" content="JavaScript,前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript基础">
 <meta property="og:url" content="http://yoursite.com/2018/12/18/前端-JavaScript基础/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="JavaScript目录：  JS简介 JS的HelloWorld JS编写位置 JS基本语法 JS注释 数据类型 字面量（常量）和变量 标识符 强制类型转换 运算符   对象 创建对象 对象的 in 运算符 工厂方法创建对象 原型对象 查询对象中属性   函数 自定义函数声明 函数调用 立即执行函数 函数对象方法：call()和apply()   作用域 声明提前 隐含参数：this toStr">
+<meta property="og:description" content="目录：   JS简介 JS的HelloWorld JS编写位置 JS基本语法 JS注释 数据类型 字面量（常量）和变量 标识符 强制类型转换 运算符   对象 创建对象 对象的 in 运算符 工厂方法创建对象 构造函数 原型对象 查询对象中属性   函数 自定义函数声明 函数调用 立即执行函数 函数对象方法：call()和apply()   作用域 声明提前 隐含参数：this toString方">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/12/18/前端-JavaScript基础/helloworld.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/18/前端-JavaScript基础/helloworld1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/18/前端-JavaScript基础/helloworld2.jpg">
-<meta property="og:updated_time" content="2019-02-12T14:48:53.956Z">
+<meta property="og:updated_time" content="2019-03-10T08:03:40.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础">
-<meta name="twitter:description" content="JavaScript目录：  JS简介 JS的HelloWorld JS编写位置 JS基本语法 JS注释 数据类型 字面量（常量）和变量 标识符 强制类型转换 运算符   对象 创建对象 对象的 in 运算符 工厂方法创建对象 原型对象 查询对象中属性   函数 自定义函数声明 函数调用 立即执行函数 函数对象方法：call()和apply()   作用域 声明提前 隐含参数：this toStr">
+<meta name="twitter:description" content="目录：   JS简介 JS的HelloWorld JS编写位置 JS基本语法 JS注释 数据类型 字面量（常量）和变量 标识符 强制类型转换 运算符   对象 创建对象 对象的 in 运算符 工厂方法创建对象 构造函数 原型对象 查询对象中属性   函数 自定义函数声明 函数调用 立即执行函数 函数对象方法：call()和apply()   作用域 声明提前 隐含参数：this toString方">
 <meta name="twitter:image" content="http://yoursite.com/2018/12/18/前端-JavaScript基础/helloworld.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -91,68 +91,81 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JavaScript目录：</p>
+        <p>目录：</p>
+<!-- TOC -->
 <ul>
-<li>JS简介</li>
-<li>JS的HelloWorld</li>
-<li>JS编写位置</li>
-<li>JS基本语法<ul>
-<li>JS注释</li>
-<li>数据类型</li>
-<li>字面量（常量）和变量</li>
-<li>标识符</li>
-<li>强制类型转换</li>
-<li>运算符</li>
+<li><a href="#js简介">JS简介</a></li>
+<li><a href="#js的helloworld">JS的HelloWorld</a></li>
+<li><a href="#js编写位置">JS编写位置</a></li>
+<li><a href="#js基本语法">JS基本语法</a><ul>
+<li><a href="#js注释">JS注释</a></li>
+<li><a href="#数据类型">数据类型</a></li>
+<li><a href="#字面量常量和变量">字面量（常量）和变量</a></li>
+<li><a href="#标识符">标识符</a></li>
+<li><a href="#强制类型转换">强制类型转换</a></li>
+<li><a href="#运算符">运算符</a></li>
 </ul>
 </li>
-<li>对象<ul>
-<li>创建对象</li>
-<li>对象的 in 运算符</li>
-<li>工厂方法创建对象</li>
-<li>原型对象</li>
-<li>查询对象中属性</li>
+<li><a href="#对象">对象</a><ul>
+<li><a href="#创建对象">创建对象</a></li>
+<li><a href="#对象的-in-运算符">对象的 in 运算符</a></li>
+<li><a href="#工厂方法创建对象">工厂方法创建对象</a></li>
+<li><a href="#构造函数">构造函数</a></li>
+<li><a href="#原型对象">原型对象</a></li>
+<li><a href="#查询对象中属性">查询对象中属性</a></li>
 </ul>
 </li>
-<li>函数<ul>
-<li>自定义函数声明</li>
-<li>函数调用</li>
-<li>立即执行函数</li>
-<li>函数对象方法：call()和apply()</li>
+<li><a href="#函数">函数</a><ul>
+<li><a href="#自定义函数声明">自定义函数声明</a></li>
+<li><a href="#函数调用">函数调用</a></li>
+<li><a href="#立即执行函数">立即执行函数</a></li>
+<li><a href="#函数对象方法call和apply">函数对象方法：call()和apply()</a></li>
 </ul>
 </li>
-<li>作用域</li>
-<li>声明提前</li>
-<li>隐含参数：this</li>
-<li>toString方法</li>
-<li>垃圾回收(GC)</li>
-<li>数组（Array）<ul>
-<li>创建数组</li>
-<li>数组存取</li>
-<li>数组长度</li>
-<li>数组遍历</li>
-<li>数组去重</li>
+<li><a href="#作用域">作用域</a></li>
+<li><a href="#声明提前">声明提前</a></li>
+<li><a href="#隐含参数this">隐含参数：this</a></li>
+<li><a href="#tostring方法">toString方法</a></li>
+<li><a href="#垃圾回收gc">垃圾回收(GC)</a></li>
+<li><a href="#数组array">数组（Array）</a><ul>
+<li><a href="#创建数组">创建数组</a></li>
+<li><a href="#数组存取">数组存取</a></li>
+<li><a href="#数组长度">数组长度</a></li>
+<li><a href="#数组遍历">数组遍历</a></li>
 </ul>
 </li>
-<li>隐含参数：arguments</li>
-<li>Math工具类<ul>
-<li>ceil()向上取整方法</li>
-<li>floor()向下取整方法</li>
-<li>round()四舍五入方法</li>
-<li>random()生成0到1随机数方法</li>
-<li>max()和min()最大最小方法</li>
+<li><a href="#数组排序sort">数组排序(sort)</a></li>
+<li><a href="#隐含参数arguments">隐含参数：arguments</a></li>
+<li><a href="#math工具类">Math工具类</a><ul>
+<li><a href="#ceil向上取整方法">ceil()向上取整方法</a></li>
+<li><a href="#floor向下取整方法">floor()向下取整方法</a></li>
+<li><a href="#round四舍五入方法">round()四舍五入方法</a></li>
+<li><a href="#random生成0到1随机数方法">random()生成0到1随机数方法</a></li>
+<li><a href="#max和min最大最小方法">max()和min()最大最小方法</a></li>
 </ul>
 </li>
-<li>包装类<ul>
-<li>String()对象</li>
-</ul>
-</li>
-<li>JSON<ul>
-<li>JSON转成JS对象</li>
-<li>JS对象转成JSON</li>
-<li>兼容IE7，不常用</li>
+<li><a href="#包装类">包装类</a><ul>
+<li><a href="#string对象方法">String对象方法</a><ul>
+<li><a href="#charat">charAt()</a></li>
+<li><a href="#charcodeat">charCodeAt()</a></li>
+<li><a href="#indexof">indexOf()</a></li>
+<li><a href="#lastindexof">lastIndexOf()</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li><a href="#json">JSON</a><ul>
+<li><a href="#json转成js对象">JSON转成JS对象</a></li>
+<li><a href="#js对象转成json">JS对象转成JSON</a></li>
+<li><a href="#兼容ie7不常用">兼容IE7，不常用</a><ul>
+<li><a href="#第一种方法不常用不建议用">第一种方法：不常用，不建议用。</a></li>
+<li><a href="#第二种方法引入外部js文件进行处理">第二种方法：引入外部js文件进行处理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
 <hr>
 <h3 id="JS简介"><a href="#JS简介" class="headerlink" title="JS简介"></a>JS简介</h3><p>JavaScript诞生于1995年，它的出现主要是用于处理网页中的前端验证。所谓的前端验证，就是指检查用户输入的内容是否符合一定的规则。</p>
 <p>时至今日，JS已经不仅仅是前端验证了。还有网页动态效果、后端NodeJS等。</p>
@@ -493,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/18/前端-JavaScript基础/" data-id="cjsu9t6xf004hwoutjovpcivg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/18/前端-JavaScript基础/" data-id="cjt2oa2ky004lz0utlf5xhxas" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -535,7 +548,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -545,7 +558,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -567,6 +580,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/10/软件配置/">软件配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
           </li>
         
@@ -580,10 +597,6 @@
         
           <li>
             <a href="/2019/02/13/前端-ECharts/">前端-ECharts</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/12/前端-JavaScript基础-tool工具集合/">前端-JavaScript基础-tool工具集合</a>
           </li>
         
       </ul>
