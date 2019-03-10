@@ -7,19 +7,20 @@
   
   <title>移动应用开发——Cordova | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录：  Cordova 简介   Cordova 简介Cordova 全称 Apache Cordova，是一款开放源代码的移动开发框架，原名PhoneGap。">
+  <meta name="description" content="目录：  Cordova 简介 前置基础介绍 环境配置   Cordova 简介Cordova 全称 Apache Cordova，是一款开放源代码的移动开发框架，原名PhoneGap。 API 文档：https://cordova.apache.org/docs/en/3.0.0/index.html API 中文文档：http://www.dba.cn/book/cordova/  前置基础">
 <meta name="keywords" content="移动端,前端,android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动应用开发——Cordova">
 <meta property="og:url" content="http://yoursite.com/2019/03/04/移动应用开发——Cordova/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录：  Cordova 简介   Cordova 简介Cordova 全称 Apache Cordova，是一款开放源代码的移动开发框架，原名PhoneGap。">
+<meta property="og:description" content="目录：  Cordova 简介 前置基础介绍 环境配置   Cordova 简介Cordova 全称 Apache Cordova，是一款开放源代码的移动开发框架，原名PhoneGap。 API 文档：https://cordova.apache.org/docs/en/3.0.0/index.html API 中文文档：http://www.dba.cn/book/cordova/  前置基础">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/移动应用开发——Cordova/cordova_bot.png">
-<meta property="og:updated_time" content="2019-03-04T11:34:14.234Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/移动应用开发——Cordova/config介绍.jpg">
+<meta property="og:updated_time" content="2019-03-05T12:37:22.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动应用开发——Cordova">
-<meta name="twitter:description" content="目录：  Cordova 简介   Cordova 简介Cordova 全称 Apache Cordova，是一款开放源代码的移动开发框架，原名PhoneGap。">
+<meta name="twitter:description" content="目录：  Cordova 简介 前置基础介绍 环境配置   Cordova 简介Cordova 全称 Apache Cordova，是一款开放源代码的移动开发框架，原名PhoneGap。 API 文档：https://cordova.apache.org/docs/en/3.0.0/index.html API 中文文档：http://www.dba.cn/book/cordova/  前置基础">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/04/移动应用开发——Cordova/cordova_bot.png">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -93,9 +94,48 @@
 <p>目录：</p>
 <ul>
 <li>Cordova 简介</li>
+<li>前置基础介绍</li>
+<li>环境配置</li>
 </ul>
 <hr>
 <h3 id="Cordova-简介"><a href="#Cordova-简介" class="headerlink" title="Cordova 简介"></a>Cordova 简介</h3><p>Cordova 全称 Apache Cordova，是一款开放源代码的移动开发框架，原名PhoneGap。</p>
+<p>API 文档：<a href="https://cordova.apache.org/docs/en/3.0.0/index.html" target="_blank" rel="noopener">https://cordova.apache.org/docs/en/3.0.0/index.html</a></p>
+<p>API 中文文档：<a href="http://www.dba.cn/book/cordova/" target="_blank" rel="noopener">http://www.dba.cn/book/cordova/</a></p>
+<hr>
+<h3 id="前置基础介绍"><a href="#前置基础介绍" class="headerlink" title="前置基础介绍"></a>前置基础介绍</h3><p>Cordova 是移动端混合开发（综合原生和web的优点）。所以，要学 Cordova 需要原生开发的只是，android 或者 ios 根据需求；web 开发，HTML+CSS+JS。</p>
+<hr>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><p>Cordova 是移动端混合开发，所以在配置环境的时候需要分别配置原生开发环境和web开发环境。</p>
+<p>这里我们只使用 android 原生配置。</p>
+<ol>
+<li><p>jdk</p>
+<p> java 开发环境，因为 android 是以 java 为基础的。</p>
+</li>
+<li><p>android studio</p>
+<p> 有些教材会使用 eclipse ，但是 eclipse 已经淘汰了，android studio 是开发 android 的主流软件。</p>
+<p> 需要配置 sdk 和 avd (手机模拟器)。</p>
+<p> 因为需要开发 android ，需要在 android 编辑器中调试啥的。</p>
+</li>
+<li><p>Node.js</p>
+<p> Cordova 是使用Node.js 进行管理。需要 npm 包管理器进行下载。</p>
+</li>
+<li><p>Cordova 安装及配置</p>
+<ul>
+<li><p>安装完 Node.js 之后，使用管理员身份运行 Node.js command prompt.exe。</p>
+</li>
+<li><p>npm 下载安装 cordova：在命令行中输入 “npm install -g cordova”。</p>
+</li>
+<li><p>创建 cordova 项目：在命令行中输入 “cordova create 项目名”。</p>
+</li>
+<li><p>给项目添加 android 或者 ios 平台：先 “cd 项目名” 进入项目，输入命令 “cordova platform add android” 添加 android 平台，ios平台同上。“cordova platform remove android” 删除平台。此时项目的platform中就会添加对应的平台项目。然后使用 android studio 打开即可。</p>
+</li>
+<li><p>编译可运行的文件：“cordova build android”。</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><p>基础 android 部分忽略。只讲特殊部分。</p>
+<h4 id="config-xml"><a href="#config-xml" class="headerlink" title="config.xml"></a>config.xml</h4><p><img src="/2019/03/04/移动应用开发——Cordova/config介绍.jpg" alt="config介绍.jpg"></p>
 
       
     </div>
@@ -112,7 +152,7 @@
 <nav id="article-nav">
   
   
-    <a href="/2019/03/02/后端基础——Node-js/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/03/02/后端基础——Nodejs/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">后端基础——Node.js</div>
     </a>
@@ -169,7 +209,7 @@
           </li>
         
           <li>
-            <a href="/2019/03/02/后端基础——Node-js/">后端基础——Node.js</a>
+            <a href="/2019/03/02/后端基础——Nodejs/">后端基础——Node.js</a>
           </li>
         
           <li>
