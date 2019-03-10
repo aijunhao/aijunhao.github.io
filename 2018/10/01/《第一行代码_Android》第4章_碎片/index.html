@@ -7,13 +7,13 @@
   
   <title>《第一行代码_Android》第4章_碎片 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第4章 手机平板要兼顾——探究碎片 碎片是什么 碎片的简单用法 动态添加碎片 碎片中模拟返回栈 碎片的生命周期 碎片的状态： 碎片的回调方法：   限定符自适应单双页模式碎片 碎片实例——一个简易版的新闻应用 创建新闻实体类 创建双页模式下的新闻内容的碎片和布局 创建单页模式下的新闻碎片和布局 记载新闻标题列表碎片 给RecyclerView添加适配器        此博客使用教材为《第一行代">
+  <meta name="description" content="目录：   第4章 手机平板要兼顾——探究碎片 碎片是什么 碎片的简单用法 动态添加碎片 碎片中模拟返回栈 碎片的生命周期 碎片的状态： 碎片的回调方法：   限定符自适应单双页模式碎片 碎片实例——一个简易版的新闻应用 创建新闻实体类 创建双页模式下的新闻内容的碎片和布局 创建单页模式下的新闻碎片和布局 记载新闻标题列表碎片 给RecyclerView添加适配器        此博客使用教材为《">
 <meta name="keywords" content="Android,移动端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《第一行代码_Android》第4章_碎片">
 <meta property="og:url" content="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="第4章 手机平板要兼顾——探究碎片 碎片是什么 碎片的简单用法 动态添加碎片 碎片中模拟返回栈 碎片的生命周期 碎片的状态： 碎片的回调方法：   限定符自适应单双页模式碎片 碎片实例——一个简易版的新闻应用 创建新闻实体类 创建双页模式下的新闻内容的碎片和布局 创建单页模式下的新闻碎片和布局 记载新闻标题列表碎片 给RecyclerView添加适配器        此博客使用教材为《第一行代">
+<meta property="og:description" content="目录：   第4章 手机平板要兼顾——探究碎片 碎片是什么 碎片的简单用法 动态添加碎片 碎片中模拟返回栈 碎片的生命周期 碎片的状态： 碎片的回调方法：   限定符自适应单双页模式碎片 碎片实例——一个简易版的新闻应用 创建新闻实体类 创建双页模式下的新闻内容的碎片和布局 创建单页模式下的新闻碎片和布局 记载新闻标题列表碎片 给RecyclerView添加适配器        此博客使用教材为《">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/设计方案1.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/设计方案2.PNG">
@@ -21,10 +21,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/生命周期.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/phone-fragment.PNG">
 <meta property="og:image" content="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/table-fragment.PNG">
-<meta property="og:updated_time" content="2019-03-10T08:15:51.597Z">
+<meta property="og:updated_time" content="2019-03-10T08:49:24.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码_Android》第4章_碎片">
-<meta name="twitter:description" content="第4章 手机平板要兼顾——探究碎片 碎片是什么 碎片的简单用法 动态添加碎片 碎片中模拟返回栈 碎片的生命周期 碎片的状态： 碎片的回调方法：   限定符自适应单双页模式碎片 碎片实例——一个简易版的新闻应用 创建新闻实体类 创建双页模式下的新闻内容的碎片和布局 创建单页模式下的新闻碎片和布局 记载新闻标题列表碎片 给RecyclerView添加适配器        此博客使用教材为《第一行代">
+<meta name="twitter:description" content="目录：   第4章 手机平板要兼顾——探究碎片 碎片是什么 碎片的简单用法 动态添加碎片 碎片中模拟返回栈 碎片的生命周期 碎片的状态： 碎片的回调方法：   限定符自适应单双页模式碎片 碎片实例——一个简易版的新闻应用 创建新闻实体类 创建双页模式下的新闻内容的碎片和布局 创建单页模式下的新闻碎片和布局 记载新闻标题列表碎片 给RecyclerView添加适配器        此博客使用教材为《">
 <meta name="twitter:image" content="http://yoursite.com/2018/10/01/《第一行代码_Android》第4章_碎片/设计方案1.PNG">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -94,7 +94,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- TOC -->
+        <p>目录：</p>
+<!-- TOC -->
 <ul>
 <li><a href="#第4章-手机平板要兼顾探究碎片">第4章 手机平板要兼顾——探究碎片</a><ul>
 <li><a href="#碎片是什么">碎片是什么</a></li>
@@ -301,7 +302,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -311,7 +312,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
