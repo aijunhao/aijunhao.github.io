@@ -7,16 +7,15 @@
   
   <title>后端基础——Node.js | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录：   Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 代码规范及分号原则 下载安装 第一个案例 HelloWorld 文件操作 服务器请求 Node 中的模块系统 文件作用域 通信规则 加载 require require 的作用: 加载规则： 语法：   导出：exports       Node.js 是前端工程师进阶高级工程师必备内容。  No">
+  <meta name="description" content="目录：   Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 代码规范及分号原则 下载安装 第一个案例 HelloWorld 文件操作 服务器请求 Node 中的模块系统 文件作用域 通信规则 加载 require require 的作用: 加载规则： 语法：   导出：exports     文本类型及中文乱码 Node.js 实现 Apache 功能 ar">
 <meta name="keywords" content="JavaScript,后端,Node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后端基础——Node.js">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录：   Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 代码规范及分号原则 下载安装 第一个案例 HelloWorld 文件操作 服务器请求 Node 中的模块系统 文件作用域 通信规则 加载 require require 的作用: 加载规则： 语法：   导出：exports       Node.js 是前端工程师进阶高级工程师必备内容。  No">
+<meta property="og:description" content="目录：   Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 代码规范及分号原则 下载安装 第一个案例 HelloWorld 文件操作 服务器请求 Node 中的模块系统 文件作用域 通信规则 加载 require require 的作用: 加载规则： 语法：   导出：exports     文本类型及中文乱码 Node.js 实现 Apache 功能 ar">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/node.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/MarkdownTOC.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/download.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/helloworld.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/读取文件.jpg">
@@ -28,10 +27,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/url地址访问.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/url地址.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/url对象.jpg">
-<meta property="og:updated_time" content="2019-03-11T07:13:09.337Z">
+<meta property="og:updated_time" content="2019-03-11T07:20:22.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后端基础——Node.js">
-<meta name="twitter:description" content="目录：   Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 代码规范及分号原则 下载安装 第一个案例 HelloWorld 文件操作 服务器请求 Node 中的模块系统 文件作用域 通信规则 加载 require require 的作用: 加载规则： 语法：   导出：exports       Node.js 是前端工程师进阶高级工程师必备内容。  No">
+<meta name="twitter:description" content="目录：   Node.js是什么 浏览器与Node.js中的JS npm Node.js能做什么 代码规范及分号原则 下载安装 第一个案例 HelloWorld 文件操作 服务器请求 Node 中的模块系统 文件作用域 通信规则 加载 require require 的作用: 加载规则： 语法：   导出：exports     文本类型及中文乱码 Node.js 实现 Apache 功能 ar">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/02/后端基础——Nodejs/node.png">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -102,7 +101,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="/2019/03/02/后端基础——Nodejs/node.png" alt="node.png"></p>
-<p><img src="/2019/03/02/后端基础——Nodejs/MarkdownTOC.jpg" alt="MarkdownTOC.jpg"></p>
 <p>目录：</p>
 <!-- TOC -->
 <ul>
@@ -127,6 +125,20 @@
 <li><a href="#导出exports">导出：exports</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#文本类型及中文乱码">文本类型及中文乱码</a></li>
+<li><a href="#nodejs-实现-apache-功能">Node.js 实现 Apache 功能</a></li>
+<li><a href="#art-template-模板引擎">art-template 模板引擎</a></li>
+<li><a href="#nodejs-后端项目结构基础">Node.js 后端项目结构基础</a></li>
+<li><a href="#getpost-请求">GET/POST 请求</a><ul>
+<li><a href="#get">GET</a></li>
+<li><a href="#post">POST</a></li>
+</ul>
+</li>
+<li><a href="#重定向">重定向</a><ul>
+<li><a href="#301-永久重定向推荐">301 永久重定向（推荐）</a></li>
+<li><a href="#302-临时重定向">302 临时重定向</a></li>
 </ul>
 </li>
 </ul>
@@ -244,7 +256,7 @@
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出文件</span></span><br><span class="line">exports.a = <span class="number">123</span></span><br><span class="line">exports.b = <span class="string">'hello'</span></span><br><span class="line">exports.c = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'ccc'</span>)</span><br><span class="line">&#125;</span><br><span class="line">exports.d = &#123;</span><br><span class="line">    foo: <span class="string">'bar'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入文件</span></span><br><span class="line"><span class="keyword">var</span> ret = <span class="built_in">require</span>(<span class="string">'./xxx.js'</span>)       <span class="comment">// ret是一个对象</span></span><br><span class="line"><span class="keyword">var</span> a = ret.a</span><br><span class="line"><span class="keyword">var</span> b = ret.b</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导出单个成员（返回值就是函数、字符串）</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 导出文件</span></span><br><span class="line">    <span class="comment">// 这种方式多导出会后者覆盖前者</span></span><br><span class="line">    <span class="built_in">module</span>.exports = <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导入文件</span></span><br><span class="line">    <span class="keyword">var</span> ret = <span class="built_in">require</span>(<span class="string">'./xxx.js'</span>)       <span class="comment">// ret === 'hello'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导出文件</span></span><br><span class="line">    <span class="comment">// 导出单个成员JSON字符串，但是这个成员包涵多个数据</span></span><br><span class="line">    <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">        add: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x + y</span><br><span class="line">        &#125;,</span><br><span class="line">        str: <span class="string">'hello'</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出文件</span></span><br><span class="line"><span class="comment">// 这种方式多导出会后者覆盖前者</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入文件</span></span><br><span class="line"><span class="keyword">var</span> ret = <span class="built_in">require</span>(<span class="string">'./xxx.js'</span>)       <span class="comment">// ret === 'hello'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出文件</span></span><br><span class="line"><span class="comment">// 导出单个成员JSON字符串，但是这个成员包涵多个数据</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    add: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y</span><br><span class="line">    &#125;,</span><br><span class="line">    str: <span class="string">'hello'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><code>exports</code> 是 <code>module.exports</code> 的引用，只要不给 <code>exports</code> 或 <code>module.exports</code> 重新赋值，就不会断开这之间的引用，所以如果给引用对象的内部添加内容，这两个是相同的。变量和数值之间的关系。</p>
@@ -312,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/后端基础——Nodejs/" data-id="cjt2oa2at003az0utk35y3isi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/后端基础——Nodejs/" data-id="cjt40pl730032loutzv3gmtpe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>

@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/10/软件配置/" data-id="cjt2oa2590017z0ut5qe7a4w1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/10/软件配置/" data-id="cjt40pl2q0012loutfj7wkfki" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
@@ -215,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/04/移动应用开发——Cordova/" data-id="cjt2oa25c001az0uthxwp9aa3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/04/移动应用开发——Cordova/" data-id="cjt40pl2p0010lout33islcma" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -250,7 +250,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="/2019/03/02/后端基础——Nodejs/node.png" alt="node.png"></p>
-<p><img src="/2019/03/02/后端基础——Nodejs/MarkdownTOC.jpg" alt="MarkdownTOC.jpg"></p>
 <p>目录：</p>
 <!-- TOC -->
 <ul>
@@ -275,6 +274,20 @@
 <li><a href="#导出exports">导出：exports</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#文本类型及中文乱码">文本类型及中文乱码</a></li>
+<li><a href="#nodejs-实现-apache-功能">Node.js 实现 Apache 功能</a></li>
+<li><a href="#art-template-模板引擎">art-template 模板引擎</a></li>
+<li><a href="#nodejs-后端项目结构基础">Node.js 后端项目结构基础</a></li>
+<li><a href="#getpost-请求">GET/POST 请求</a><ul>
+<li><a href="#get">GET</a></li>
+<li><a href="#post">POST</a></li>
+</ul>
+</li>
+<li><a href="#重定向">重定向</a><ul>
+<li><a href="#301-永久重定向推荐">301 永久重定向（推荐）</a></li>
+<li><a href="#302-临时重定向">302 临时重定向</a></li>
 </ul>
 </li>
 </ul>
@@ -392,7 +405,7 @@
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出文件</span></span><br><span class="line">exports.a = <span class="number">123</span></span><br><span class="line">exports.b = <span class="string">'hello'</span></span><br><span class="line">exports.c = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'ccc'</span>)</span><br><span class="line">&#125;</span><br><span class="line">exports.d = &#123;</span><br><span class="line">    foo: <span class="string">'bar'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入文件</span></span><br><span class="line"><span class="keyword">var</span> ret = <span class="built_in">require</span>(<span class="string">'./xxx.js'</span>)       <span class="comment">// ret是一个对象</span></span><br><span class="line"><span class="keyword">var</span> a = ret.a</span><br><span class="line"><span class="keyword">var</span> b = ret.b</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导出单个成员（返回值就是函数、字符串）</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 导出文件</span></span><br><span class="line">    <span class="comment">// 这种方式多导出会后者覆盖前者</span></span><br><span class="line">    <span class="built_in">module</span>.exports = <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导入文件</span></span><br><span class="line">    <span class="keyword">var</span> ret = <span class="built_in">require</span>(<span class="string">'./xxx.js'</span>)       <span class="comment">// ret === 'hello'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导出文件</span></span><br><span class="line">    <span class="comment">// 导出单个成员JSON字符串，但是这个成员包涵多个数据</span></span><br><span class="line">    <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">        add: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x + y</span><br><span class="line">        &#125;,</span><br><span class="line">        str: <span class="string">'hello'</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出文件</span></span><br><span class="line"><span class="comment">// 这种方式多导出会后者覆盖前者</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入文件</span></span><br><span class="line"><span class="keyword">var</span> ret = <span class="built_in">require</span>(<span class="string">'./xxx.js'</span>)       <span class="comment">// ret === 'hello'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出文件</span></span><br><span class="line"><span class="comment">// 导出单个成员JSON字符串，但是这个成员包涵多个数据</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    add: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y</span><br><span class="line">    &#125;,</span><br><span class="line">    str: <span class="string">'hello'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><code>exports</code> 是 <code>module.exports</code> 的引用，只要不给 <code>exports</code> 或 <code>module.exports</code> 重新赋值，就不会断开这之间的引用，所以如果给引用对象的内部添加内容，这两个是相同的。变量和数值之间的关系。</p>
@@ -460,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/后端基础——Nodejs/" data-id="cjt2oa2at003az0utk35y3isi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/后端基础——Nodejs/" data-id="cjt40pl730032loutzv3gmtpe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
@@ -719,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/" data-id="cjt2oa2ez003zz0utcimx9qwc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/" data-id="cjt40plac003rloutx337d1rt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -860,7 +873,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/13/前端-ECharts/" data-id="cjt2oa2k5004gz0uttabdz91f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/13/前端-ECharts/" data-id="cjt40pldh0048loutd1elaa3l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/echarts/">echarts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -916,7 +929,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/12/前端-JavaScript基础-tool工具集合/" data-id="cjt2oa2570015z0ut6gwvh08b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/前端-JavaScript基础-tool工具集合/" data-id="cjt40pl2m000xloutx30lg8j5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -1060,7 +1073,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/08/前端-JavaScript基础-BOM基础/" data-id="cjt2oa2er003xz0utm3vjscad" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/08/前端-JavaScript基础-BOM基础/" data-id="cjt40plaa003ploutqowmgpky" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BOM/">BOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -1182,7 +1195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/前端-浏览器兼容/" data-id="cjt2oa28v002oz0ut4i7l6ryx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/前端-浏览器兼容/" data-id="cjt40pl4z002gloutsvk4z0th" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1676,7 +1689,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/前端-JavaScript基础-DOM基础/" data-id="cjt2oa2n5004oz0utn1xvttn4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/前端-JavaScript基础-DOM基础/" data-id="cjt40plf8004glout2au5sppc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -2125,7 +2138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/18/前端-JavaScript基础/" data-id="cjt2oa2ky004lz0utlf5xhxas" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/18/前端-JavaScript基础/" data-id="cjt40pleh004dloutrg1vnps3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
