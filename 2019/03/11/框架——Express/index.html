@@ -7,18 +7,18 @@
   
   <title>框架——Express | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Express 简介 Express 安装及入门 静态服务   Express 简介原生的 http 在某些方面不足以应对我们的开发需求，框架的目的就是提高效率，让我们的代码更高度统一。 Express 是一个保持最小规模的灵活的 Node.js Web 应用程序开发框架，为 Web 和移动应用程序提供一组强大的功能。 官网：http://www.expressjs.com.cn/ Expre">
-<meta name="keywords" content="JavaScript,后端,Node,框架">
+  <meta name="description" content="Express 简介 Express 安装及入门 静态服务 使用 art-template 模板引擎 安装 在 Express 中加载 express-art-template 模板 在 Express 中使用模板引擎   基本路由 GET POST body-parser 安装 body-parser 配置 获取 POST 数据     重定向 项目分析 清晰的文档 路由设计 项目结构分离">
+<meta name="keywords" content="JavaScript,后端,框架,Node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="框架——Express">
 <meta property="og:url" content="http://yoursite.com/2019/03/11/框架——Express/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="Express 简介 Express 安装及入门 静态服务   Express 简介原生的 http 在某些方面不足以应对我们的开发需求，框架的目的就是提高效率，让我们的代码更高度统一。 Express 是一个保持最小规模的灵活的 Node.js Web 应用程序开发框架，为 Web 和移动应用程序提供一组强大的功能。 官网：http://www.expressjs.com.cn/ Expre">
+<meta property="og:description" content="Express 简介 Express 安装及入门 静态服务 使用 art-template 模板引擎 安装 在 Express 中加载 express-art-template 模板 在 Express 中使用模板引擎   基本路由 GET POST body-parser 安装 body-parser 配置 获取 POST 数据     重定向 项目分析 清晰的文档 路由设计 项目结构分离">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-12T08:15:06.223Z">
+<meta property="og:updated_time" content="2019-03-15T08:56:38.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="框架——Express">
-<meta name="twitter:description" content="Express 简介 Express 安装及入门 静态服务   Express 简介原生的 http 在某些方面不足以应对我们的开发需求，框架的目的就是提高效率，让我们的代码更高度统一。 Express 是一个保持最小规模的灵活的 Node.js Web 应用程序开发框架，为 Web 和移动应用程序提供一组强大的功能。 官网：http://www.expressjs.com.cn/ Expre">
+<meta name="twitter:description" content="Express 简介 Express 安装及入门 静态服务 使用 art-template 模板引擎 安装 在 Express 中加载 express-art-template 模板 在 Express 中使用模板引擎   基本路由 GET POST body-parser 安装 body-parser 配置 获取 POST 数据     重定向 项目分析 清晰的文档 路由设计 项目结构分离">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -92,24 +92,137 @@
 <li><a href="#express-简介">Express 简介</a></li>
 <li><a href="#express-安装及入门">Express 安装及入门</a></li>
 <li><a href="#静态服务">静态服务</a></li>
+<li><a href="#使用-art-template-模板引擎">使用 art-template 模板引擎</a><ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#在-express-中加载-express-art-template-模板">在 Express 中加载 express-art-template 模板</a></li>
+<li><a href="#在-express-中使用模板引擎">在 Express 中使用模板引擎</a></li>
+</ul>
+</li>
+<li><a href="#基本路由">基本路由</a><ul>
+<li><a href="#get">GET</a></li>
+<li><a href="#post">POST</a><ul>
+<li><a href="#body-parser-安装">body-parser 安装</a></li>
+<li><a href="#body-parser-配置">body-parser 配置</a></li>
+<li><a href="#获取-post-数据">获取 POST 数据</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#重定向">重定向</a></li>
+<li><a href="#项目分析">项目分析</a><ul>
+<li><a href="#清晰的文档">清晰的文档</a></li>
+<li><a href="#路由设计">路由设计</a></li>
+<li><a href="#项目结构分离">项目结构分离</a></li>
+<li><a href="#代码规范">代码规范</a><ul>
+<li><a href="#统一的代码风格">统一的代码风格</a></li>
+<li><a href="#代码分离模块职责单一">代码分离，模块职责单一</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <!-- /TOC -->
 <h2 id="Express-简介"><a href="#Express-简介" class="headerlink" title="Express 简介"></a>Express 简介</h2><p>原生的 http 在某些方面不足以应对我们的开发需求，框架的目的就是提高效率，让我们的代码更高度统一。</p>
 <p>Express 是一个保持最小规模的灵活的 Node.js Web 应用程序开发框架，为 Web 和移动应用程序提供一组强大的功能。</p>
 <p>官网：<a href="http://www.expressjs.com.cn/" target="_blank" rel="noopener">http://www.expressjs.com.cn/</a></p>
 <h2 id="Express-安装及入门"><a href="#Express-安装及入门" class="headerlink" title="Express 安装及入门"></a>Express 安装及入门</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 新建项目文件夹并进入</span><br><span class="line">&gt; <span class="built_in">mkdir</span> express_demo</span><br><span class="line">&gt; <span class="built_in">cd</span> express_demo</span><br><span class="line"></span><br><span class="line">// 创建 package.json 文件</span><br><span class="line">&gt; npm init</span><br><span class="line"></span><br><span class="line">// 安装 Express，最好用cnpm</span><br><span class="line">&gt; npm install express --save</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建服务器应用程序，相当于原生 Node 的 http.createServer</span></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当服务器收到 get 请求 / 的时候，执行回调函数，相当于原生 Node 中解析 get 请求的 request.url === '/'</span></span><br><span class="line">app.get(<span class="string">'/'</span>, (request, response) =&gt; &#123;</span><br><span class="line">  response.send(<span class="string">'hello express'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相当于 server.listen</span></span><br><span class="line">app.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`服务器已启动，通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 访问`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建服务器应用程序，相当于原生 Node 的 var server =  http.createServer()</span></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当服务器收到 get 请求 / 的时候，执行回调函数，相当于原生 Node 中解析 get 请求的 request.url === '/'</span></span><br><span class="line">app.get(<span class="string">'/'</span>, (request, response) =&gt; &#123;</span><br><span class="line">  response.send(<span class="string">'hello express'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相当于 server.listen</span></span><br><span class="line">app.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`服务器已启动，通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 访问`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>通过这个案例我们大概可以看出来，Express 和原生的 Node 大致相同，但是可以将项目更清晰。</p>
 <hr>
 <h2 id="静态服务"><a href="#静态服务" class="headerlink" title="静态服务"></a>静态服务</h2><p>为了提供诸如图像、CSS 文件和 JavaScript 文件之类的静态文件，请使用 Express 中的 express.static 内置中间件函数。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 当前 js 文件与公共目录同级</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 公开 public 目录，如通过127.0.0.1:8888/img/1.jpg 路径 public/img 目录下的 1.jpg 图片资源</span></span><br><span class="line">app.use(express.static(<span class="string">'public'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 公开 public 目录，并通过虚拟路径 '/public' 前缀访问，127.0.0.1:8888/public/img/1.jpg 路径 public/img 目录下的 1.jpg 图片资源</span></span><br><span class="line">app.use(<span class="string">'/public'</span>, express.static(<span class="string">'public'</span>))</span><br></pre></td></tr></table></figure>
-<pre><code class="shell">
-</code></pre>
-
+<hr>
+<h2 id="使用-art-template-模板引擎"><a href="#使用-art-template-模板引擎" class="headerlink" title="使用 art-template 模板引擎"></a>使用 art-template 模板引擎</h2><p>中文文档：<a href="https://aui.github.io/art-template/express/" target="_blank" rel="noopener">https://aui.github.io/art-template/express/</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>express-art-template</code> 模板引擎是依赖 <code>art-template</code> 的，所以在安装时需要安装<code>art-template</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save art-template</span><br><span class="line">npm install --save express-art-template</span><br></pre></td></tr></table></figure>
+<h3 id="在-Express-中加载-express-art-template-模板"><a href="#在-Express-中加载-express-art-template-模板" class="headerlink" title="在 Express 中加载 express-art-template 模板"></a>在 Express 中加载 express-art-template 模板</h3><p>加载 <code>express-art-template</code> 模板方法与加载其他的模块略有不同，在 <code>require</code> 之后还需要配置需要渲染的文件，在官方案例中是使用 <code>art</code> 后缀的文件，但是这种文件编辑时没有语法高亮，我们可以使用 <code>.html</code> 后缀的前端文件来进行渲染。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置使用 art-template 模板引擎，</span></span><br><span class="line"><span class="comment">// 第一个参数：当渲染以该后缀的文件时，使用 art-template 模板引擎</span></span><br><span class="line">app.engine(<span class="string">'html'</span>, <span class="built_in">require</span>(<span class="string">'express-art-template'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="在-Express-中使用模板引擎"><a href="#在-Express-中使用模板引擎" class="headerlink" title="在 Express 中使用模板引擎"></a>在 Express 中使用模板引擎</h3><p><code>express</code> 默认所有的视图渲染存储目录(html文件之类)的路径为 <code>views</code>，需要注意。但是可以使用 <code>app.set()</code> 方法来修改默认的路径。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建服务器应用程序，相当于原生 Node 的 http.createServer</span></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置使用 art-template 模板引擎，</span></span><br><span class="line"><span class="comment">// 第一个参数：当渲染以该后缀的文件时，使用 art-template 模板引擎</span></span><br><span class="line">app.engine(<span class="string">'html'</span>, <span class="built_in">require</span>(<span class="string">'express-art-template'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果要修改 views 默认路径</span></span><br><span class="line">app.set(<span class="string">'views'</span>, <span class="string">'模板所在路径'</span>)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 将模板源代码编译成函数并立刻执行，默认是放在 views 目录下</span></span><br><span class="line">  res.render(<span class="string">'index.html'</span>, &#123;</span><br><span class="line">    title: <span class="string">'express模板测试'</span>,</span><br><span class="line">    content: <span class="string">'主页'</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相当于 server.listen</span></span><br><span class="line">app.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`服务器已启动，通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 访问`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html 渲染模板文件 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; content &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="基本路由"><a href="#基本路由" class="headerlink" title="基本路由"></a>基本路由</h2><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>在 <code>express</code> 中，<code>GET</code> 方法已经非常方便了，不需要像原生的一样从服务器获取 <code>request</code> 然后获取 <code>request.url</code> 路径标识，之后再进行路由选择。在 <code>express</code> 中 <code>GET</code> 直接进行路由选择，效率大大提高。</p>
+<p>同时，原生中使用 <code>response.end()</code> 或者 <code>response.write()</code> 响应页面，在 <code>express</code> 中使用 <code>response.send()</code> 响应页面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/'</span>, (request, response) =&gt; &#123;</span><br><span class="line">    response.send()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><p>在 <code>express</code> 中没有内置获取表单 <code>POST</code> 请求体的API，这里我们需要一个 <code>express</code> 的第三方包 <code>body-parser</code>。</p>
+<p><a href="http://www.expressjs.com.cn/en/resources/middleware/body-parser.html" target="_blank" rel="noopener">http://www.expressjs.com.cn/en/resources/middleware/body-parser.html</a></p>
+<h4 id="body-parser-安装"><a href="#body-parser-安装" class="headerlink" title="body-parser 安装"></a>body-parser 安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install body-parser</span><br></pre></td></tr></table></figure>
+<h4 id="body-parser-配置"><a href="#body-parser-配置" class="headerlink" title="body-parser 配置"></a>body-parser 配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置 body-parser 中间件（用来配置 POST 的插件）</span></span><br><span class="line"><span class="comment">// parse application/x-www-form-urlencoded</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// parse application/json</span></span><br><span class="line">app.use(bodyParser.json())</span><br></pre></td></tr></table></figure>
+<h4 id="获取-POST-数据"><a href="#获取-POST-数据" class="headerlink" title="获取 POST 数据"></a>获取 POST 数据</h4><p>配置完这个中间件之后，<code>request</code> 中会多出一个 <code>body</code> 属性，通过 <code>body</code> 属性就能获取 <code>post</code> 请求数据了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单使用，打印出这个 post 数据</span></span><br><span class="line">app.use(<span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>)</span><br><span class="line">  response.write(<span class="string">'you posted;\n'</span>)</span><br><span class="line">  <span class="comment">// post 数据在 request.body 中，将其转为 JSON 数据并打印出来。</span></span><br><span class="line">  response.end(<span class="built_in">JSON</span>.stringify(request.body, <span class="literal">null</span>, <span class="number">2</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/'</span>, (request, response) =&gt; &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 重定向，不需要再管 statusCode 和 Location 值类的了，只需要使用这个方法传入目的地址即可。</span></span><br><span class="line">  res.redirect(<span class="string">'/'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h2><p>在项目中，不会使用原生的 <code>Node</code> 进行开发。</p>
+<h3 id="清晰的文档"><a href="#清晰的文档" class="headerlink" title="清晰的文档"></a>清晰的文档</h3><p>无论如何，开发项目必须写详细的项目文档。</p>
+<h3 id="路由设计"><a href="#路由设计" class="headerlink" title="路由设计"></a>路由设计</h3><p>在 WEB 开发中，很关键的一步就是路由设计，清楚的路由设计是大型项目的保证。</p>
+<p>如下，为一个只涉及学生信息增删改查的小项目的路由设计，需要写明请求方法、路径、参数和页面功能备注等：</p>
+<table>
+<thead>
+<tr>
+<th>请求方法</th>
+<th>请求路径</th>
+<th>get参数</th>
+<th>post 参数</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/students</td>
+<td>—</td>
+<td>—</td>
+<td>渲染首页</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/students/new</td>
+<td>—</td>
+<td>—</td>
+<td>渲染添加学生页面</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/students</td>
+<td>—</td>
+<td>nameage/gender/hobbies</td>
+<td>处理添加学生请求</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/students/edit</td>
+<td>id</td>
+<td>—</td>
+<td>渲染编辑页面</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/students/edit</td>
+<td>—</td>
+<td>id/name/age/gender/hobbies</td>
+<td>处理编辑请求</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/students/delete</td>
+<td>id</td>
+<td>name/age/gender/hobbies</td>
+<td>处理删除请求</td>
+</tr>
+</tbody>
+</table>
+<h3 id="项目结构分离"><a href="#项目结构分离" class="headerlink" title="项目结构分离"></a>项目结构分离</h3><p>静态页面和公共资源目录分离</p>
+<h3 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3><h4 id="统一的代码风格"><a href="#统一的代码风格" class="headerlink" title="统一的代码风格"></a>统一的代码风格</h4><p>代码风格不统一会让维护和团队开发比较困难。</p>
+<h4 id="代码分离，模块职责单一"><a href="#代码分离，模块职责单一" class="headerlink" title="代码分离，模块职责单一"></a>代码分离，模块职责单一</h4><p>在开发中，会将代码细化，使其功能分离。代码分离会让项目结构更加清晰，便于开发和维护。</p>
+<p>在 <code>node</code> 开发中，入口模块 <code>index.js</code> 中只负责创建服务、做服务相关配置、挂载路由、监听端口等功能。至于具体的每个部分的代码将其细化到各个专门的文件中，这样方便大型项目后期开发，让项目更加清晰。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * index.js 入门模块</span></span><br><span class="line"><span class="comment"> * 职责：</span></span><br><span class="line"><span class="comment"> *  创建服务</span></span><br><span class="line"><span class="comment"> *  做服务相关配置</span></span><br><span class="line"><span class="comment"> *      模板引擎</span></span><br><span class="line"><span class="comment"> *      body-parser 解析表单 post 请求体</span></span><br><span class="line"><span class="comment"> *      提供静态资源服务</span></span><br><span class="line"><span class="comment"> *  挂载路由</span></span><br><span class="line"><span class="comment"> *  监听端口启动服务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入模块</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> router = <span class="built_in">require</span>(<span class="string">'./router'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 端口号及服务器地址</span></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">8888</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载模板引擎</span></span><br><span class="line">app.engine(<span class="string">'html'</span>, <span class="built_in">require</span>(<span class="string">'express-art-template'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开放公共空间</span></span><br><span class="line">app.use(<span class="string">'/node_modules/'</span>, express.static(<span class="string">'./node_modules/'</span>))</span><br><span class="line">app.use(<span class="string">'/public/'</span>, express.static(<span class="string">'./public/'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把路由容器挂载到 app 服务中</span></span><br><span class="line">app.use(router)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 端口监听</span></span><br><span class="line">app.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`服务器已启动，通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 访问`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * router.js 路由模块</span></span><br><span class="line"><span class="comment"> * 职责：</span></span><br><span class="line"><span class="comment"> *  处理路由</span></span><br><span class="line"><span class="comment"> *  根据不同的请求方法和请求路径设置具体的请求处理函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 引入数据操作模块</span></span><br><span class="line"><span class="keyword">var</span> db = <span class="built_in">require</span>(<span class="string">'./db'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 引入 express ，专门用来包装路由的</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 创建一个路由容器</span></span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 把路由挂载到 router 路由容器中</span></span><br><span class="line">router.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  res.rander(<span class="string">'index.html'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.post(<span class="string">'/'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载异步数据渲染模板</span></span><br><span class="line">router.get(<span class="string">'/xxx'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  db.find(<span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.status(<span class="number">500</span>).send(<span class="string">'Server error.'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 从文件中读取到的数据一定是字符串，所以需要手动转成对象</span></span><br><span class="line">    <span class="keyword">var</span> labels = data.labels</span><br><span class="line">    <span class="keyword">var</span> students = data.students</span><br><span class="line"></span><br><span class="line">    res.render(<span class="string">'index.html'</span>, &#123;</span><br><span class="line">      labels: labels,</span><br><span class="line">      students: students</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 把 router 导出</span></span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 封装异步 API</span></span><br><span class="line"><span class="comment"> * 在获取异步操作中的内容时，需要通过回调函数来获取其中的内容</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * db.js 数据操作文件模块</span></span><br><span class="line"><span class="comment"> * 职责：</span></span><br><span class="line"><span class="comment"> *  操作文件中的数据，只处理数据，不关心业务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dbPath = <span class="string">'./db.json'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用回调函数返回异步操作结果</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询数据</span></span><br><span class="line"><span class="comment"> * callback 中的参数</span></span><br><span class="line"><span class="comment"> *      第一个参数是 err</span></span><br><span class="line"><span class="comment"> *          成功是 null</span></span><br><span class="line"><span class="comment"> *          错误是 err对象</span></span><br><span class="line"><span class="comment"> *      第二个参数是 数据解析结果</span></span><br><span class="line"><span class="comment"> *          成功是 数组</span></span><br><span class="line"><span class="comment"> *          错误是 underfinded</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.find = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">  fs.readFile(dbPath, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="keyword">return</span> callback(err)</span><br><span class="line">    &#125;</span><br><span class="line">    callback(<span class="literal">null</span>, <span class="built_in">JSON</span>.parse(data))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 增添数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.insert = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 更新数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.update = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.delete = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/框架——Express/" data-id="cjt5i3k0h001bcoutf3vt08k9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/框架——Express/" data-id="cjtbebtjy002mgwutxqwam8me" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
@@ -119,6 +232,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/03/13/后端基础——GET和POST/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          后端基础——GET和POST
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/10/软件配置/" id="article-nav-older" class="article-nav-link-wrap">
@@ -142,7 +264,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -152,7 +274,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.33px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.67px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 11.67px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/后端/" style="font-size: 11.67px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/框架/" style="font-size: 11.67px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+      <a href="/tags/Android/" style="font-size: 18.57px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.43px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 14.29px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 11.43px;">Node</a> <a href="/tags/Python/" style="font-size: 17.14px;">Python</a> <a href="/tags/blog/" style="font-size: 11.43px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 15.71px;">前端</a> <a href="/tags/后端/" style="font-size: 12.86px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a> <a href="/tags/框架/" style="font-size: 11.43px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -174,23 +296,23 @@
       <ul>
         
           <li>
+            <a href="/2019/03/15/数据库——MySql/">数据库——MySql</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/数据库——MongoDB/">数据库——MongoDB</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/MongoDB/">MongoDB</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/13/后端基础——GET和POST/">后端基础——GET和POST</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/11/框架——Express/">框架——Express</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/10/软件配置/">软件配置</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/04/移动应用开发——Cordova/">移动应用开发——Cordova</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/02/后端基础——Nodejs/">后端基础——Node.js</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/16/前端-JavaScript基础-jQuery基础/">前端-JavaScript基础-jQuery基础</a>
           </li>
         
       </ul>
