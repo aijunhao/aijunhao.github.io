@@ -7,23 +7,23 @@
   
   <title>数据库——MongoDB | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MongoDB 介绍 关系型数据库和非关系型数据库 关系型数据库特点 非关系型数据库     MongoDB 下载及安装 下载 安装 配置环境变量 新建数据目录 修改默认数据目录   连接数据库   MongoDB 查 查看所有数据库 查看当前所在的数据库 查询文档 查询所有 单文档查询 格式化显示 条件查询语句 AND 条件 OR 条件     MongoDB 增 创建/切换数据库 创建集合">
+  <meta name="description" content="MongoDB 介绍 关系型数据库和非关系型数据库 关系型数据库特点 非关系型数据库     MongoDB 下载及安装 下载 安装 配置环境变量 新建数据目录 修改默认数据目录   连接数据库   MongoDB 查 查看所有数据库 查看当前所在的数据库 查询文档 查询所有 单文档查询 格式化显示 条件查询语句 AND 条件 OR 条件 $type 操作符     MongoDB 增 创建/">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库——MongoDB">
 <meta property="og:url" content="http://yoursite.com/2019/03/15/数据库——MongoDB/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="MongoDB 介绍 关系型数据库和非关系型数据库 关系型数据库特点 非关系型数据库     MongoDB 下载及安装 下载 安装 配置环境变量 新建数据目录 修改默认数据目录   连接数据库   MongoDB 查 查看所有数据库 查看当前所在的数据库 查询文档 查询所有 单文档查询 格式化显示 条件查询语句 AND 条件 OR 条件     MongoDB 增 创建/切换数据库 创建集合">
+<meta property="og:description" content="MongoDB 介绍 关系型数据库和非关系型数据库 关系型数据库特点 非关系型数据库     MongoDB 下载及安装 下载 安装 配置环境变量 新建数据目录 修改默认数据目录   连接数据库   MongoDB 查 查看所有数据库 查看当前所在的数据库 查询文档 查询所有 单文档查询 格式化显示 条件查询语句 AND 条件 OR 条件 $type 操作符     MongoDB 增 创建/">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/注意点.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/cmd.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/第一次执行.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/第二次执行.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/连接数据库.jpg">
-<meta property="og:updated_time" content="2019-03-16T11:19:54.031Z">
+<meta property="og:updated_time" content="2019-03-16T11:41:46.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库——MongoDB">
-<meta name="twitter:description" content="MongoDB 介绍 关系型数据库和非关系型数据库 关系型数据库特点 非关系型数据库     MongoDB 下载及安装 下载 安装 配置环境变量 新建数据目录 修改默认数据目录   连接数据库   MongoDB 查 查看所有数据库 查看当前所在的数据库 查询文档 查询所有 单文档查询 格式化显示 条件查询语句 AND 条件 OR 条件     MongoDB 增 创建/切换数据库 创建集合">
+<meta name="twitter:description" content="MongoDB 介绍 关系型数据库和非关系型数据库 关系型数据库特点 非关系型数据库     MongoDB 下载及安装 下载 安装 配置环境变量 新建数据目录 修改默认数据目录   连接数据库   MongoDB 查 查看所有数据库 查看当前所在的数据库 查询文档 查询所有 单文档查询 格式化显示 条件查询语句 AND 条件 OR 条件 $type 操作符     MongoDB 增 创建/">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/注意点.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -124,6 +124,7 @@
 <li><a href="#条件查询语句">条件查询语句</a></li>
 <li><a href="#and-条件">AND 条件</a></li>
 <li><a href="#or-条件">OR 条件</a></li>
+<li><a href="#type-操作符"><code>$type</code> 操作符</a></li>
 </ul>
 </li>
 </ul>
@@ -279,6 +280,81 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.col.find(&#123;key1:value1, key2:value2&#125;).pretty()</span><br></pre></td></tr></table></figure>
 <h4 id="OR-条件"><a href="#OR-条件" class="headerlink" title="OR 条件"></a>OR 条件</h4><p>OR 条件语句使用了关键字 <code>$or</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.col.find(</span><br><span class="line">   &#123;</span><br><span class="line">        $or: [</span><br><span class="line">            &#123;key1: value1&#125;, &#123;key2:value2&#125;</span><br><span class="line">        ]</span><br><span class="line">   &#125;</span><br><span class="line">).pretty()</span><br></pre></td></tr></table></figure>
+<h4 id="type-操作符"><a href="#type-操作符" class="headerlink" title="$type 操作符"></a><code>$type</code> 操作符</h4><p>检索集合中匹配的数据类型，并返回结果。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.col.find(&#123;"键名" : &#123;$type : 类型字符串/对应的数字标签 &#125;&#125;)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>数字</th>
+<th>类型</th>
+<th>数字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Double</td>
+<td>1</td>
+<td>Regular Expression</td>
+<td>11</td>
+</tr>
+<tr>
+<td>String</td>
+<td>2</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>3</td>
+<td>JavaScript</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>4</td>
+<td>Symbol</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Binary data</td>
+<td>5</td>
+<td>JavaScript (with scope)</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Undefined(已废弃)</td>
+<td>6</td>
+<td>32-bit integer</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Object id</td>
+<td>7</td>
+<td>Timestamp</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>8</td>
+<td>64-bit integer</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>9</td>
+<td>Min key</td>
+<td>255</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>10</td>
+<td>Max key</td>
+<td>127</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.col.find()</span><br><span class="line">&#123; "_id" : ObjectId("5c8cb31eca4aff6ebfd76983"), "title" : "MongoDB" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd26fca4aff6ebfd76984"), "title" : "123", "by" : "asdf" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd37cca4aff6ebfd76985"), "title" : 123 &#125;</span><br><span class="line"></span><br><span class="line">// 查询 "title" 数据类型为 'string' 的数据。</span><br><span class="line"><span class="meta">&gt;</span> db.col.find(&#123;"title": &#123;$type: 'string'&#125;&#125;)</span><br><span class="line">&#123; "_id" : ObjectId("5c8cb31eca4aff6ebfd76983"), "title" : "MongoDB" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd26fca4aff6ebfd76984"), "title" : "123", "by" : "asdf" &#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="MongoDB-增"><a href="#MongoDB-增" class="headerlink" title="MongoDB 增"></a>MongoDB 增</h2><h3 id="创建-切换数据库"><a href="#创建-切换数据库" class="headerlink" title="创建/切换数据库"></a>创建/切换数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> use mydbs</span><br><span class="line">switched to db mydbs</span><br></pre></td></tr></table></figure>
 <p>使用 <code>use</code> 创建名为 <code>mydbs</code> 的数据库，如果数据库不存在，则创建数据库，否则切换到指定数据库。</p>
