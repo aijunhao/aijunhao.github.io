@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端-JavaScript基础-EcamScript6 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作 Promise 对象 Promise 状态 then() 方法 Node.js 中 Promise 案例 前端请求数据时的 Promise       EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作Promise 对象Promise 对象用于解决异步操作的回调地狱（函数作为参数层层嵌">
+<meta name="keywords" content="JavaScript,前端,EcamScript6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端-JavaScript基础-EcamScript6">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作 Promise 对象 Promise 状态 then() 方法 Node.js 中 Promise 案例 前端请求数据时的 Promise       EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作Promise 对象Promise 对象用于解决异步操作的回调地狱（函数作为参数层层嵌">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/Promise.jpg">
+<meta property="og:updated_time" content="2019-03-19T17:42:05.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端-JavaScript基础-EcamScript6">
+<meta name="twitter:description" content="EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作 Promise 对象 Promise 状态 then() 方法 Node.js 中 Promise 案例 前端请求数据时的 Promise       EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作Promise 对象Promise 对象用于解决异步操作的回调地狱（函数作为参数层层嵌">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/Promise.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端-JavaScript基础-EcamScript6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/18/前端-JavaScript基础-EcamScript6/" class="article-date">
+  <time datetime="2019-03-18T08:59:13.000Z" itemprop="datePublished">2019-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端-JavaScript基础-EcamScript6
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#ecamscript-6-简介">EcamScript 6 简介</a></li>
+<li><a href="#声明与表达式">声明与表达式</a></li>
+<li><a href="#内置对象">内置对象</a></li>
+<li><a href="#运算符与语句">运算符与语句</a></li>
+<li><a href="#异步操作">异步操作</a><ul>
+<li><a href="#promise-对象">Promise 对象</a><ul>
+<li><a href="#promise-状态">Promise 状态</a></li>
+<li><a href="#then-方法">then() 方法</a></li>
+<li><a href="#nodejs-中-promise-案例">Node.js 中 Promise 案例</a></li>
+<li><a href="#前端请求数据时的-promise">前端请求数据时的 Promise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="EcamScript-6-简介"><a href="#EcamScript-6-简介" class="headerlink" title="EcamScript 6 简介"></a>EcamScript 6 简介</h2><hr>
+<h2 id="声明与表达式"><a href="#声明与表达式" class="headerlink" title="声明与表达式"></a>声明与表达式</h2><hr>
+<h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><hr>
+<h2 id="运算符与语句"><a href="#运算符与语句" class="headerlink" title="运算符与语句"></a>运算符与语句</h2><hr>
+<h2 id="异步操作"><a href="#异步操作" class="headerlink" title="异步操作"></a>异步操作</h2><h3 id="Promise-对象"><a href="#Promise-对象" class="headerlink" title="Promise 对象"></a>Promise 对象</h3><p><code>Promise</code> 对象用于解决异步操作的回调地狱（函数作为参数层层嵌套）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 虽然解决了异步操作的先后顺序，单数出现了回调地域</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'./a.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line"></span><br><span class="line">  fs.readFile(<span class="string">'./b.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line"></span><br><span class="line">    fs.readFile(<span class="string">'./c.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="Promise-状态"><a href="#Promise-状态" class="headerlink" title="Promise 状态"></a>Promise 状态</h4><p><code>Promise</code> 异步操作有三种状态：<code>pending（进行中）</code>、 <code>resolved（已定型） /fulfilled（已成功）</code> 和  <code>rejected（已失败）</code>。</p>
+<p><code>Promise</code>对象只有：从 <code>pending</code> 变为 <code>Resolved</code> 和从 <code>pending</code> 变为 <code>rejected</code> 的状态改变。只要处于 <code>resolved</code> 和 <code>rejected</code> ，状态就不会再变了。</p>
+<p><img src="/2019/03/18/前端-JavaScript基础-EcamScript6/Promise.jpg" alt="Promise.jpg"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Promise 对象的使用</span></span><br><span class="line"><span class="keyword">var</span> myPromise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">  异步操作方法(xxx, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="comment">// 承诺任务失败，Pending 状态变成 Rejected</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 承诺任务完成，Pending 状态变成 Resolve</span></span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>Promise</code> 对象一旦新建就会被执行，中途无法被取消。</p>
+<h4 id="then-方法"><a href="#then-方法" class="headerlink" title="then() 方法"></a>then() 方法</h4><p><code>then()</code> 方法接收两个回调函数作为参数，两个函数只会有一个被调用。</p>
+<ul>
+<li><p>第一个参数是 <code>Promise</code> 执行成功 <code>Resolve</code> 状态时的回调。</p>
+</li>
+<li><p>第二个参数是 <code>Promise</code> 执行失败 <code>Reject</code> 状态时的回调。</p>
+</li>
+</ul>
+<p><code>then()</code> 方法会在异步操作完成之后执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个异步操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myPromise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">  fs.readFile(<span class="string">'./a.txt'</span>, <span class="string">'utf-8'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="comment">// 承诺任务失败，Pending 状态变成 Rejected</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 承诺任务完成，Pending 状态变成 Resolve</span></span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">myPromise.then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'文件读取失败，错误对象：'</span>, err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>then()</code> 方法可以链式调用，每个 <code>then()</code> 方法的一个回调函数中 <code>return</code> 下一个要执行的异步操作的 <code>Promise</code> 对象，这样第二个异步操作就会在第一个异步操作之后执行，这样就确保了异步操作的执行顺序问题，同时也避免了回调地域问题。</p>
+<h4 id="Node-js-中-Promise-案例"><a href="#Node-js-中-Promise-案例" class="headerlink" title="Node.js 中 Promise 案例"></a>Node.js 中 Promise 案例</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node.js 中多个异步操作依次执行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  fs.readFile(<span class="string">'./a.txt'</span>, <span class="string">'utf-8'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="comment">// 承诺任务失败，Pending 状态变成 Rejected</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 承诺任务完成，Pending 状态变成 Resolve</span></span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  fs.readFile(<span class="string">'./b.txt'</span>, <span class="string">'utf-8'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="comment">// 承诺任务失败，Pending 状态变成 Rejected</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 承诺任务完成，Pending 状态变成 Resolve</span></span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  fs.readFile(<span class="string">'./c.txt'</span>, <span class="string">'utf-8'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="comment">// 承诺任务失败，Pending 状态变成 Rejected</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 承诺任务完成，Pending 状态变成 Resolve</span></span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1</span><br><span class="line">  .then(</span><br><span class="line">    data =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">      <span class="keyword">return</span> p2</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'文件读取失败，错误对象：'</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">  .then(</span><br><span class="line">    data =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">      <span class="keyword">return</span> p3</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'文件读取失败，错误对象：'</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">  .then(</span><br><span class="line">    data =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'文件读取失败，错误对象：'</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为了简化代码，可以将这个异步操作封装成 API</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pReadFile</span> (<span class="params">filePath</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    fs.readFile(filePath, <span class="string">'utf-8'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="comment">// 承诺任务失败，Pending 状态变成 Rejected</span></span><br><span class="line">        reject(err)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 承诺任务完成，Pending 状态变成 Resolve</span></span><br><span class="line">        resolve(data)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pReadFile(<span class="string">'./a.txt'</span>)</span><br><span class="line">  .then(</span><br><span class="line">    data =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">      <span class="keyword">return</span> pReadFile(<span class="string">'./b.txt'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'文件读取失败，错误对象：'</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">  .then(</span><br><span class="line">    data =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">      <span class="keyword">return</span> pReadFile(<span class="string">'./c.txt'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'文件读取失败，错误对象：'</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">  .then(</span><br><span class="line">    data =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'文件读取失败，错误对象：'</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<h4 id="前端请求数据时的-Promise"><a href="#前端请求数据时的-Promise" class="headerlink" title="前端请求数据时的 Promise"></a>前端请求数据时的 Promise</h4><p>这里使用 <code>ajax</code> 请求 <code>API</code> 数据时，有时会出现一个页面需要请求多个不同的 <code>API</code>，少则三五个，多则七八个，因彼此间有先后顺序，此时就需要保证异步请求的先后顺序了，<code>jQuery</code> 中已经支持了 <code>Promise</code>。</p>
+<p>这个案例需要 <code>API</code> 数据，可以用 <code>json-server</code> 工具来模拟。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"user_form"</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 模板内容 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/template"</span> <span class="attr">id</span>=<span class="string">"tpl"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; user.username &#125;&#125;"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; user.age &#125;&#125;"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span>职业<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="undefined">                &#123;&#123; each jobs&#125;&#125;</span></span><br><span class="line"><span class="javascript">                    &#123;&#123; <span class="keyword">if</span> user.jobId === $value.id&#125;&#125;</span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; $value.id &#125;&#125;"</span> <span class="attr">selected</span>&gt;</span>&#123;&#123; $value.name &#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="javascript">                    &#123;&#123; <span class="keyword">else</span> &#125;&#125;</span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; $value.id &#125;&#125;"</span>&gt;</span>&#123;&#123; $value.name &#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span></span><br><span class="line"><span class="javascript">                    &#123;&#123; /<span class="keyword">if</span> &#125;&#125;</span></span><br><span class="line"><span class="undefined">                &#123;&#123; /each &#125;&#125;</span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 引用模板 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"node_modules/art-template/lib/template-web.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引用 jQuery --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"node_modules/jquery/dist/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 模板渲染 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        /**</span></span><br><span class="line"><span class="undefined">         *  未用 promise</span></span><br><span class="line"><span class="undefined">         * /</span></span><br><span class="line"><span class="javascript">        <span class="comment">// var data = &#123;&#125;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// get('http://127.0.0.1:3000/users/4', userData =&gt; &#123;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//     get('http://127.0.0.1:3000/jobs', jobsData =&gt; &#123;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         // 此处需要转为对象</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         data.user = JSON.parse(userData)</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         data.jobs = JSON.parse(jobsData)</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         console.log(userData, jobsData)</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         var htmlStr = template('tpl', data)</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         document.querySelector("#user_form").innerHTML = htmlStr</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//     &#125;)</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// &#125;)</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        /**</span></span><br><span class="line"><span class="undefined">         *  使用 promise 的 jQuery</span></span><br><span class="line"><span class="undefined">         * /</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> data = &#123;&#125;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// userData，jobsData 返回时就是对象了</span></span></span><br><span class="line"><span class="javascript">        $.get(<span class="string">'http://127.0.0.1:3000/users/4'</span>).then(<span class="function"><span class="params">userData</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="undefined">            data.user = userData</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> $.get(<span class="string">'http://127.0.0.1:3000/jobs'</span>)</span></span><br><span class="line"><span class="javascript">        &#125;).then(<span class="function"><span class="params">jobsData</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="undefined">            data.jobs = jobsData</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> htmlStr = template(<span class="string">'tpl'</span>, data)</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.querySelector(<span class="string">"#user_form"</span>).innerHTML = htmlStr</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        /**</span></span><br><span class="line"><span class="undefined">         * 封装 ajax 获取网络请求的方法</span></span><br><span class="line"><span class="undefined">         **/</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">url, callback</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> oReq = <span class="keyword">new</span> XMLHttpRequest()</span></span><br><span class="line"><span class="javascript">            oReq.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">                callback(oReq.responseText)</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="javascript">            oReq.open(<span class="string">"get"</span>, url, <span class="literal">true</span>)</span></span><br><span class="line"><span class="undefined">            oReq.send()</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// data.json</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"users"</span>:[</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">1</span>,<span class="attr">"username"</span>:<span class="string">"admin"</span>,<span class="attr">"age"</span>:<span class="number">28</span>,<span class="attr">"jobId"</span>:<span class="number">3</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">2</span>,<span class="attr">"username"</span>:<span class="string">"admin"</span>,<span class="attr">"age"</span>:<span class="number">28</span>,<span class="attr">"jobId"</span>:<span class="number">4</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">3</span>,<span class="attr">"username"</span>:<span class="string">"admin"</span>,<span class="attr">"age"</span>:<span class="number">28</span>,<span class="attr">"jobId"</span>:<span class="number">5</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">4</span>,<span class="attr">"username"</span>:<span class="string">"admin"</span>,<span class="attr">"age"</span>:<span class="number">28</span>,<span class="attr">"jobId"</span>:<span class="number">5</span>&#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"jobs"</span>:[</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">1</span>,<span class="attr">"name"</span>:<span class="string">"学生"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">2</span>,<span class="attr">"name"</span>:<span class="string">"老师"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">3</span>,<span class="attr">"name"</span>:<span class="string">"司机"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">4</span>,<span class="attr">"name"</span>:<span class="string">"画家"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">5</span>,<span class="attr">"name"</span>:<span class="string">"演员"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">"id"</span>:<span class="number">6</span>,<span class="attr">"name"</span>:<span class="string">"电竞"</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/" data-id="cjtg2fvlo002to4utnio12d3b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/19/后端基础——npm常见包/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          后端基础——npm常见包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/15/数据库——MySQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据库——MySQL</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 18.57px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.43px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 15.71px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.86px;">Node</a> <a href="/tags/Python/" style="font-size: 17.14px;">Python</a> <a href="/tags/blog/" style="font-size: 11.43px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.14px;">前端</a> <a href="/tags/后端/" style="font-size: 14.29px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a> <a href="/tags/框架/" style="font-size: 11.43px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/19/后端基础——npm常见包/">后端基础——npm常见包</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/前端-JavaScript基础-EcamScript6/">前端-JavaScript基础-EcamScript6</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/数据库——MySQL/">数据库——MySQL</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/数据库——MongoDB/">数据库——MongoDB</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/MongoDB/">MongoDB</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
