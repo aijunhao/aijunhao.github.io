@@ -62,6 +62,405 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-《第一行代码_Android》第2章_探究活动" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/12/《第一行代码_Android》第2章_探究活动/" class="article-date">
+  <time datetime="2018-09-12T10:10:26.000Z" itemprop="datePublished">2018-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/12/《第一行代码_Android》第2章_探究活动/">《第一行代码 Android》第2章 探究活动</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#第2章-先从看得到的入手探究活动">第2章 先从看得到的入手——探究活动</a><ul>
+<li><a href="#活动activity">活动(Activity)</a></li>
+<li><a href="#活动的创建">活动的创建</a></li>
+<li><a href="#在活动中使用menu菜单">在活动中使用Menu菜单</a></li>
+<li><a href="#使用intent在活动之间穿梭">使用Intent在活动之间穿梭</a><ul>
+<li><a href="#1-显示intent">1. 显示Intent</a></li>
+<li><a href="#2-隐式intent">2. 隐式Intent</a></li>
+<li><a href="#intent向下一个活动传递数据">Intent向下一个活动传递数据</a></li>
+<li><a href="#intent向上一个活动返回数据">Intent向上一个活动返回数据</a></li>
+</ul>
+</li>
+<li><a href="#活动的生命周期">活动的生命周期</a><ul>
+<li><a href="#活动状态">活动状态</a></li>
+<li><a href="#活动的生存期">活动的生存期</a></li>
+<li><a href="#生命周期">生命周期</a></li>
+<li><a href="#活动临时数据保存">活动临时数据保存</a></li>
+</ul>
+</li>
+<li><a href="#活动的启动模式">活动的启动模式</a><ul>
+<li><a href="#standard">standard</a></li>
+<li><a href="#singletop">singleTop</a></li>
+<li><a href="#singletask">singleTask</a></li>
+<li><a href="#singleinstance">singleInstance</a></li>
+</ul>
+</li>
+<li><a href="#如何让界面对应活动">如何让界面对应活动</a></li>
+<li><a href="#随时随地退出程序">随时随地退出程序</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<hr>
+<p>此博客使用教材为《第一行代码 Android》第2版。</p>
+<h2 id="第2章-先从看得到的入手——探究活动"><a href="#第2章-先从看得到的入手——探究活动" class="headerlink" title="第2章 先从看得到的入手——探究活动"></a>第2章 先从看得到的入手——探究活动</h2><p>android四大组件之一——Activity</p>
+<hr>
+<h3 id="活动-Activity"><a href="#活动-Activity" class="headerlink" title="活动(Activity)"></a>活动(Activity)</h3><p>活动(Activity)是最容易吸引用户的地方，它是一种够可以包含用户界面的组件，主要用于和用户进行交互。</p>
+<h3 id="活动的创建"><a href="#活动的创建" class="headerlink" title="活动的创建"></a>活动的创建</h3><p>活动创建有两种，一种是纯手动创建，一种是Activity自动创建。</p>
+<ol>
+<li>纯手动创建：<br>纯手动创建活动有三步：新建layout布局文件、新建java类并加载布局、在AndroidManifest中注册生效。<br><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/1.PNG" alt=""></li>
+</ol>
+<ul>
+<li><p>第一步 新建layout资源文件：在app/res目录下的layout文件夹右击-&gt;New-&gt;Layout resource file-&gt;输入文件名并选择合适的布局方式。<br><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/3.PNG" alt=""></p>
+</li>
+<li><p>第二步 新建java类：app/java目录下的com.me.androidfirstlinecode包(每个人可能不同)右击-&gt;New-&gt;Java Class-&gt;输入包名并继承需要的Activity父类，并重写onCreate方法，并使用setContentView方法加载布局文件。<br><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/2.PNG" alt=""></p>
+</li>
+<li><p>第三步 在AndroidManifest中注册：所有活动只有注册后才能生效，注册声明要放在\&lt;application>标签内。其中第19行是我们新的activity的注册。这里“.test”是“com.me.androidfirstlinecode.test”的缩写，由于在最外层的\&lt;manifest>标签中已经通过package属性制定了程序的包名是“com.me.androidfirstlinecode”(第3行)，因此在注册活动时这一部分可以省略了。12行到18行是另一个名为MainActivity的活动的注册。13到17行是设置该活动为主活动，就是软件运行时的第一个活动，主活动只能有一个。<br><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/4.PNG" alt=""></p>
+</li>
+</ul>
+<ol start="2">
+<li>Activity自动创建：<br>自动创建就是直接创建一个activity，系统将自动完成纯手动创建的三个步奏。</li>
+</ol>
+<p>app/java目录下的com.me.androidfirstlinecode包(每个人可能不同)右击-&gt;New-&gt;Activity-&gt;Empty Activity。</p>
+<p>两种方式创建actiivty，效果完全相同，使用自动创建的方法省时省力并且不容易出错。</p>
+<hr>
+<h3 id="在活动中使用Menu菜单"><a href="#在活动中使用Menu菜单" class="headerlink" title="在活动中使用Menu菜单"></a>在活动中使用Menu菜单</h3><p>手机屏幕空间非常有限，使用Menu菜单将节省大量的空间。</p>
+<p>在res目录下新建一个menu文件夹，右击目录-&gt;New-&gt;Directory，文件夹名为menu，在这个文件夹下再新建一个名叫 main 的Menu resource file。</p>
+<p>在main.xml中创建两个菜单项代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/add_item"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"Add"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/remove_item"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"Remove"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>回到Activity中来使用Ctrl+O快捷键重写onCreateOptionsMenu方法来给当前活动创建菜单:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</span><br><span class="line">    getMenuInflater().inflate(R.menu.main, menu);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Ctrl+鼠标左键打开inflate()方法的源码，可以看到inflate()方法接受两个参数，第一个参数用来只等我们通过哪一个资源文件来创建菜单，第二个参数指定我们的菜单项将添加到一个Menu对象中，就是onCreateOptionMenu()方法中传入的menu参数。</p>
+<p><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/5.PNG" alt=""></p>
+<p>onCreateOptionMenu()方法返回值为true，表示允许创建的菜单显示出来，返回false就不显示。</p>
+<p>重写onOptionsItemSelected()方法，，给定义的菜单定义响应事件，通过Toast弹出消息进行测试：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (item.getItemId())&#123;</span><br><span class="line">        <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"You clicked Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"You clicked Remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/6.PNG" alt=""></p>
+<p><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/7.PNG" alt=""></p>
+<hr>
+<h3 id="使用Intent在活动之间穿梭"><a href="#使用Intent在活动之间穿梭" class="headerlink" title="使用Intent在活动之间穿梭"></a>使用Intent在活动之间穿梭</h3><p>真正的程序不止一个活动，往往由多个活动组成，活动之间的跳转和数据传输是必不可少的。</p>
+<p>Intent是Android程序中各组件之间进行交互的一种重要方式，它不仅可以指明当前组件想要执行的动作，还可以在不同组件之间传递数据。Intent一般可用于启动活动，启动服务以及发送广播等场景。</p>
+<p>Intent分为两种，显示Intent和隐式Intent。</p>
+<h4 id="1-显示Intent"><a href="#1-显示Intent" class="headerlink" title="1. 显示Intent"></a>1. 显示Intent</h4><p>Intent有多个构造函数，其中一个如下图所示，接收两个参数，第一个参数Context要求提供一个启动活动的上下文，第二个参数Class指的是要启动的目标活动。</p>
+<p><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/8.PNG" alt=""></p>
+<p>新建一个Activity，将主活动设置为新的Activity，并添加一个button按钮，同时给按钮设置点击监听，并在监听中使用Intent将活动跳转到MainActivity中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button button = findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(SecondActivity.<span class="keyword">this</span>, MainActivity.class);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-隐式Intent"><a href="#2-隐式Intent" class="headerlink" title="2. 隐式Intent"></a>2. 隐式Intent</h4><p>相比显示Intent，隐式Intent含蓄了许多，它并不明确指出我们要启动哪一个活动，而是指定了一系列更为抽象的action和category等信息，然后交给系统去分析这个Intent，并帮我们找出适合的活动去启动。这个合适的获取简单来说就是可以响应我们这个隐式Intent的活动。</p>
+<p>例如，在AndroidManifest中设置MainActivity的action和category：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.activitytest.ACTION_START"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>除此之外，还可以在\&lt;intent-filter>中配置\&lt;data>把标签，用于更精确指定当前活动能响应什么类型的数据(过滤器)。</p>
+<ul>
+<li>android:scheme。用于指定数据的协议部分，如http、rtsp(直播)。</li>
+<li>android:host。用于指定数据的主机名部分，如网址中的“<a href="http://www.baidu.com”域名或者“120.79.254.54”主机地址。" target="_blank" rel="noopener">www.baidu.com”域名或者“120.79.254.54”主机地址。</a></li>
+<li>android:port。用于指定数据的端口部分，如主机名后的8080端口。</li>
+<li>android:path。用于指定主机名和端口之后的部分，如网址之后的文件地址。</li>
+<li>android:mimeType。用于指定可以处理的数据类型，可以使用通配符，如video/*、video/mp4。</li>
+</ul>
+<p>只有\&lt;data>标签中指定的内容和Intent中携带的Data(setData方法接收Uri对象)完全一致时，当前活动才能够响应该Intent。</p>
+<p>然后在SecondeActivity的按钮监听事件中隐式调用Intent访问MainActivity：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button button = findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.activitytest.ACTION_START"</span>);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这样的效果和显示Intent完全相同。注意，这里的action名可以自定义，只要自己的对应就行，但由于使用action字符串使得程序之间交互更加容易，为了防止程序之间相互影响，一般命名方式是包名+action名。</p>
+<p>每个Intent只能指定一个action和多个category。每个activity可以有多个action和category。</p>
+<p>隐式Intent更多用法：</p>
+<ol>
+<li>调用网页<br>在SecondActivity中调用网页：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Button btnBrowser = findViewById(R.id.btn_browser);</span><br><span class="line">btnBrowser.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">        intent.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样，点击按钮，就会调用系统的浏览器。</p>
+<p>此外，还有结合\&lt;data>标签让系统调用我们的activity。新建一个ThirdActivity，设置AndroidManifest文件该activiyt的\&lt;intent-filter>标签内容为：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".ThirdActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">tools:ignore</span>=<span class="string">"AppLinkUrlError"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"http"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这样运行程序，点击SecondActivity中的按钮，系统会跳出选项，让用户选择是使用系统浏览器还是我们自定义的ThirdActivity。<br><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/1.jpg" alt=""></p>
+<p>其他隐式Intent调用案例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 显式调用</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">button = findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.activitytest.ACTION_START"</span>);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 浏览器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">btnBrowser = findViewById(R.id.btn_browser);</span><br><span class="line">btnBrowser.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">        intent.setData(Uri.parse(<span class="string">"http://www.aijunhao.com.cn"</span>));</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 邮件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">btnEmail = findViewById(R.id.btn_email);</span><br><span class="line">btnEmail.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_SENDTO);</span><br><span class="line">        intent.setData(Uri.parse(<span class="string">"mailto:1172949809@qq.com"</span>));</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 电话</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">btnDail = findViewById(R.id.btn_dail);</span><br><span class="line">btnDail.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_DIAL);</span><br><span class="line">        intent.setData(Uri.parse(<span class="string">"tel:10086"</span>));</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 地图定位</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">btnMap = findViewById(R.id.btn_map);</span><br><span class="line">btnMap.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">        intent.setData(Uri.parse(<span class="string">"geo:00.000000, -00.000000"</span>));</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="Intent向下一个活动传递数据"><a href="#Intent向下一个活动传递数据" class="headerlink" title="Intent向下一个活动传递数据"></a>Intent向下一个活动传递数据</h4><ol>
+<li>Int、String等数据传递。</li>
+</ol>
+<p>案例：从SecondActivity将传递到ThirdActivity中。</p>
+<p>SecondActivity发送数据：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 普通数据传递</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        btnSendMessage = findViewById(R.id.btn_send_message);</span><br><span class="line">        btnSendMessage.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                Intent intent = <span class="keyword">new</span> Intent(SecondActivity.<span class="keyword">this</span>, ThirdActivity.class);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 方法一</span></span><br><span class="line">                String data = <span class="string">"Hello ThirdActivity"</span>;</span><br><span class="line">                <span class="keyword">int</span> number = <span class="number">100</span>;</span><br><span class="line">                intent.putExtra(<span class="string">"data"</span>, data);</span><br><span class="line">                intent.putExtra(<span class="string">"number"</span>, number);</span><br><span class="line"></span><br><span class="line"><span class="comment">//                // 方法二</span></span><br><span class="line"><span class="comment">//                Bundle bundle = new Bundle();</span></span><br><span class="line"><span class="comment">//                bundle.putString("data", "Hello ThirdActivity");</span></span><br><span class="line"><span class="comment">//                bundle.putInt("number", 100);</span></span><br><span class="line"><span class="comment">//                intent.putExtras(bundle);</span></span><br><span class="line"></span><br><span class="line">                startActivity(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>ThirdActivity接收数据：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> TextView tvDataShow;</span><br><span class="line">    <span class="keyword">private</span> TextView tvNumberShow;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_third);</span><br><span class="line"></span><br><span class="line">        tvDataShow = findViewById(R.id.tv_data_show);</span><br><span class="line">        tvNumberShow = findViewById(R.id.tv_number_show);</span><br><span class="line"></span><br><span class="line">        Intent intent = getIntent();</span><br><span class="line">        <span class="comment">// 方法一</span></span><br><span class="line">        String data = intent.getStringExtra(<span class="string">"data"</span>);</span><br><span class="line">        <span class="keyword">int</span> number = intent.getIntExtra(<span class="string">"number"</span>,<span class="number">0</span>);    <span class="comment">// 查看源码会发现这里有默认值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        // 方法二</span></span><br><span class="line"><span class="comment">//        Bundle bundle = intent.getExtras();</span></span><br><span class="line"><span class="comment">//        String data = bundle.getString("data");</span></span><br><span class="line"><span class="comment">//        int number = bundle.getInt("number");</span></span><br><span class="line"></span><br><span class="line">        tvDataShow.setText(<span class="string">"String值:"</span> + data);</span><br><span class="line">        tvNumberShow.setText(<span class="string">"Int值:"</span> + number);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/2.jpg" alt=""></p>
+<ol start="2">
+<li>对象传递，序列化。<br>Parcleable和Serializable两种序列化方式的比较：</li>
+</ol>
+<ul>
+<li>在使用内存的时候，Parcelable比Serializable性能高，所以推荐使用Parcelable。</li>
+<li>Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC。</li>
+<li>Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性。在外界有变化的情况下。尽管Serializable效率低点，但此时还是建议使用Serializable。</li>
+</ul>
+<p>案例：Serializable序列化。</p>
+<p>先将类继承Serializable:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 作者：AiJunhao</span></span><br><span class="line"><span class="comment"> * 日期：2018/9/17 15:47</span></span><br><span class="line"><span class="comment"> * 描述：</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String data;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> number;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestClass</span><span class="params">(String data, <span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">        <span class="keyword">this</span>.number = number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNumber</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.number = number;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>SecondActivity发送数据：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">btnSendMessage = findViewById(R.id.btn_send_message);</span><br><span class="line">btnSendMessage.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(SecondActivity.<span class="keyword">this</span>, ThirdActivity.class);</span><br><span class="line"></span><br><span class="line">        TestClass str = <span class="keyword">new</span> TestClass(<span class="string">"hello world!"</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line">        bundle.putSerializable(<span class="string">"str"</span>, str);</span><br><span class="line">        intent.putExtras(bundle);</span><br><span class="line"></span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>ThirdActivity接收数据：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> TextView tvDataShow;</span><br><span class="line"><span class="keyword">private</span> TextView tvNumberShow;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_third);</span><br><span class="line"></span><br><span class="line">    tvDataShow = findViewById(R.id.tv_data_show);</span><br><span class="line">    tvNumberShow = findViewById(R.id.tv_number_show);</span><br><span class="line"></span><br><span class="line">    Intent intent = getIntent();</span><br><span class="line"></span><br><span class="line">    TestClass str = (TestClass) getIntent().getSerializableExtra(<span class="string">"str"</span>);</span><br><span class="line"></span><br><span class="line">    tvDataShow.setText(<span class="string">"String值:"</span> + data);</span><br><span class="line">    tvNumberShow.setText(<span class="string">"Int值:"</span> + number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Intent向上一个活动返回数据"><a href="#Intent向上一个活动返回数据" class="headerlink" title="Intent向上一个活动返回数据"></a>Intent向上一个活动返回数据</h4><p>startActivityForResult()方法</p>
+<hr>
+<h3 id="活动的生命周期"><a href="#活动的生命周期" class="headerlink" title="活动的生命周期"></a>活动的生命周期</h3><p>Android中的活动是可以层叠的。我们没启动一个新的活动，就会覆盖在原活动之上，然后点击Back键会销毁最上面的活动，下面的一个活动就会重新显示出来。</p>
+<p>Android是使用任务(Task)来管理活动的，一个任务就是一组存放在栈里的活动的集合，这个栈称为返回栈(Back Stack)。在默认情况下，每当启动一个新的活动，它会在返回栈中入栈，并处于栈顶的位置。当按下Back键或调用finish()方法去销毁一个活动时，处于栈顶的活动会出栈，这时前一个入栈的活动救护重新出于栈顶的位置。系统总是会显示处于栈顶的活动给用户。</p>
+<h4 id="活动状态"><a href="#活动状态" class="headerlink" title="活动状态"></a>活动状态</h4><p>每个活动在器生命周期中最多可能会有4中状态。</p>
+<ol>
+<li><p>运行状态。当一个活动处于活动栈的栈顶位置，这个活动就处于运行状态。系统一般不会回收这样的活动。</p>
+</li>
+<li><p>暂停状态。当一个活动不再处于栈顶位置，但任然可视，活动就处于暂停状态。如对话框形式的活动只会占据屏幕中间的区域，周围显示的就是上一个活动，这个活动就处于暂停状态。只有在内存极低的情况下，系统才会回收这样的活动。</p>
+</li>
+<li><p>停止状态。当一个活动不再处于栈顶位置，并且完全不可见的时候，就处于停止状态。这种状态不稳定，系统会给这种活动保留相应的状态和成员变量，但是如果其他地方需要使用内存，这样的活动有可能被回收。</p>
+</li>
+<li><p>销毁状态。当活动从返回栈中移除后就变成销毁状态。系统会回收这样的活动保证手机内存充足。</p>
+</li>
+</ol>
+<h4 id="活动的生存期"><a href="#活动的生存期" class="headerlink" title="活动的生存期"></a>活动的生存期</h4><p><img src="/2018/09/12/《第一行代码_Android》第2章_探究活动/生存期.jpg" alt=""></p>
+<ul>
+<li><p>onCreate()。每个活动中我们都重写了这个方法,它会在活动第一次被创建的时候调用。你应该在这个方法中完成活动的初始化操作,比如说加载布局、绑定事件等。</p>
+</li>
+<li><p>onStart()。这个方法在活动由不可见变为可见的时候调用。</p>
+</li>
+<li><p>onResume()。这个方法在活动准备好和用户进行交互的时候调用。此时的活动一定位于返回栈的栈顶,并且处于运行状态。</p>
+</li>
+<li><p>onPause()。这个方法在系统准备去启动或者恢复另一个活动的时候调用。我们通常会在这个方法中将一些消耗 CPU 的资源释放掉,以及保存一些关键数据,但这个方法的执行速度一定要快,不然会影响到新的栈顶活动的使用。</p>
+</li>
+<li><p>onStop()。这个方法在活动完全不可见的时候调用。它和 onPause()方法的主要区别在于,如果启动的新活动是一个对话框式的活动,那么 onPause()方法会得到执行,而 onStop() 方法并不会执行。</p>
+</li>
+<li><p>onDestroy()。这个方法在活动被销毁之前调用,之后活动的状态将变为销毁状态。</p>
+</li>
+<li><p>onRestart()。这个方法在活动由停止状态变为运行状态之前调用,也就是活动被重新启动了。</p>
+</li>
+</ul>
+<p>以上七个方法中除了 onRestart()方法,其他都是两两相对的,从而又可以将活动分为三<br>种生存期。</p>
+<ol>
+<li><p>完整生存期。活动在 onCreate()方法和 onDestroy()方法之间所经历的，就是完整生存期。一般情况下，一个活动会在 onCreate()方法中完成各种初始化操作，而在 onDestroy()方法中完成释放内存的操作。</p>
+</li>
+<li><p>可见生存期。活动在 onStart()方法和 onStop()方法之间所经历的，就是可见生存期。在可见生存期内，活动对于用户总是可见的，即便有可能无法和用户进行交互。我们可以通过这两个方法，合理地管理那些对用户可见的资源。比如在 onStart()方法中对资源进行加载，而在 onStop()方法中对资源进行释放，从而保证处于停止状态的活动不会占用过多内存。</p>
+</li>
+<li><p>前台生存期。活动在 onResume()方法和 onPause()方法之间所经历的，就是前台生存期。在前台生存期内，活动总是处于运行状态的，此时的活动是可以和用户进行相互的，我们平时看到和接触最多的也这个状态下的活动。</p>
+</li>
+</ol>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ol>
+<li><p>创建Activity的时候执行的方法：<br>onCreate() –&gt; onStart() –&gt; onResume()</p>
+</li>
+<li><p>销毁Activity的时候执行的方法：<br>onPause() –&gt; onStop() –&gt; onDestroy()</p>
+</li>
+</ol>
+<p>A页面跳转到B页面，点击返回，这个过程的生命周期：</p>
+<ol>
+<li><p>B页面完全覆盖A页面的情况，两个activity替换<br> a. A跳转B页面的生命周期方法执行顺序：<br> onPause(A) –&gt; onCreate(B) –&gt; onStart(B) –&gt; onResume(B) –&gt; onStop(A)</p>
+<p> b. B页面点击后返回的生命周期方法执行顺序：<br> onPause(B) –&gt; onRestart(A) –&gt; onStart(A) –&gt; onResume(A) –&gt; onStop(B) –&gt; onDestroy(B)</p>
+</li>
+<li><p>B页面不完全覆盖A页面的情况，对话框形式弹出activity<br> a. A跳转B页面的生命周期方法执行顺序：<br> onPause(A) –&gt; onCreate(B) –&gt; onStart(B) –&gt; onResume(B)</p>
+<p> b. B页面点击后返回的生命周期方法执行顺序：<br> onPause(B) –&gt; onResume(A) –&gt; onStop(B) –&gt; onDestroy(B)</p>
+</li>
+</ol>
+<p>可以在程序中测试，在AndroidManifest中注册设置活动theme为Dialog即可将活动设置为弹出框形式。</p>
+<h4 id="活动临时数据保存"><a href="#活动临时数据保存" class="headerlink" title="活动临时数据保存"></a>活动临时数据保存</h4><p>当活动进入到停止状态，被系统回收后重新启动该活动，将不再执行onRestar()方法，而是onCreate()方法，这时如果临时数据不被保存将全被清空。</p>
+<p>Acvtivity提供了一个onSavaInstanceState()回调方法,这个方法会保证一定在活动被回收之前调用,因此我们可以通过这个方法来解决活动被回收时临时数据得不到保存的问题.</p>
+<p>onSavaInstanceState()方法会携带一个Bundle类型的参数用来保存临时数据。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">    outState.putString(<span class="string">"data_string"</span>, <span class="string">"hello world"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当再次启动活动时在onCreate()方法中解析这个Bundle对象就能实现数据恢复。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    Log.d(TAG, <span class="string">"onCreate"</span>);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>)&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="活动的启动模式"><a href="#活动的启动模式" class="headerlink" title="活动的启动模式"></a>活动的启动模式</h3><p>活动的启动模式有4种，分别是standard、singleTop、singleTask和singleInstance，在AndroidManifest中通过给\&lt;activity>标签指定android:launchMode属性来选择启动模式。</p>
+<h4 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h4><p>默认启动模式。这种模式不限制活动的启动次数，所以可能会出现同一个activity同时启动多次的情况，比如使用一个按钮点击跳转到自身activity时，就会出现同一个活动创建并启动多次，要退出也是退出多次。所以这种模式不是非常合理。</p>
+<h4 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h4><p>当活动的启动模式指定为singTop，在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的活动实例。当然如果活动不再栈顶，还是会创建活动。</p>
+<p>这种模式解决了重复创建栈顶活动的问题。</p>
+<h4 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h4><p>当活动的启动模式指定为singleTask，每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已经存在则直接使用该实例，并把这个活动之上的所有活动的出栈，如果栈中没有这个活动，则创建一个新的活动实例。</p>
+<h4 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h4><p>指定为singleInstance模式的活动会启动一个新的返回栈来管理这个活动。而以上三种方式都是在一个返回栈中实现操作。</p>
+<hr>
+<h3 id="如何让界面对应活动"><a href="#如何让界面对应活动" class="headerlink" title="如何让界面对应活动"></a>如何让界面对应活动</h3><p>当项目比较大的时候，活动比较多，然后知道某个界面要修改它就比较麻烦，需要找到界面对应的活动。</p>
+<p>要解决这个问题，可以在项目中添加一个BaseActivity中间类，继承项目中使用的父类，然后让activity继承BaseActivity类，这时候只要在BaseActivity类中添加适当的Log信息，如在onCreate()方法中添加一行<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(<span class="string">"BaseActivity"</span>, getClass().getSimpleName());</span><br></pre></td></tr></table></figure></p>
+<p>之后当界面对应的活动被调用时Logcat就会打印Log信息，这样就能轻易查明某个界面对应的活动了。</p>
+<hr>
+<h3 id="随时随地退出程序"><a href="#随时随地退出程序" class="headerlink" title="随时随地退出程序"></a>随时随地退出程序</h3><p>如果要随时随地注销或者退出程序，只需要一个专门的集合类对所有的活动进行管理就可以了。</p>
+<p>集合类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.activitylifecycletest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 作者：AiJunhao</span></span><br><span class="line"><span class="comment"> * 日期：2018/9/18 19:35</span></span><br><span class="line"><span class="comment"> * 描述：</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Activity activity:activities)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在基础类中调用集合类，当活动onCreate()时往集合类中添加活动，当活动onDestroy()时将集合类移除对应活动。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.activitylifecycletest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.annotation.Nullable;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 作者：AiJunhao</span></span><br><span class="line"><span class="comment"> * 日期：2018/9/18 19:39</span></span><br><span class="line"><span class="comment"> * 描述：</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = BaseActivity.class.getName();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(TAG, getClass().getSimpleName());</span><br><span class="line">        ActivityCollector.addActivity(<span class="keyword">this</span>);        <span class="comment">// 往集合类中添加activity</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        ActivityCollector.removeActivity(<span class="keyword">this</span>);     <span class="comment">// 当前activity销毁时移除集合类中的对应activity</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后在想要退出的地方调用ActivityCollector.finishAll()方法就行。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/12/《第一行代码_Android》第2章_探究活动/" data-id="cjtl8ned1003w4gutqqx3av4e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-微信小程序开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/03/微信小程序开发/" class="article-date">
+  <time datetime="2018-09-03T07:11:06.000Z" itemprop="datePublished">2018-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/03/微信小程序开发/">微信小程序开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目录<br><!-- TOC --></p>
+<ul>
+<li><a href="#微信小程序开发基本资料">微信小程序开发基本资料</a></li>
+<li><a href="#注册并安装开发者工具">注册并安装开发者工具</a></li>
+<li><a href="#项目介绍">项目介绍</a><ul>
+<li><a href="#小程序配置-appjson">小程序配置 app.json</a></li>
+<li><a href="#工具配置-projectconfigjson">工具配置 project.config.json</a></li>
+<li><a href="#页面配置-pagejson">页面配置 page.json</a></li>
+</ul>
+</li>
+<li><a href="#wxml-模板">WXML 模板</a><ul>
+<li><a href="#wxss-样式">WXSS 样式</a></li>
+<li><a href="#js-交互逻辑">JS 交互逻辑</a></li>
+</ul>
+</li>
+<li><a href="#数据绑定">数据绑定</a><ul>
+<li><a href="#组件属性绑定">组件属性绑定</a></li>
+<li><a href="#控制属性绑定">控制属性绑定</a></li>
+<li><a href="#关键字绑定">关键字绑定</a></li>
+</ul>
+</li>
+<li><a href="#运算">运算</a><pre><code>- [三元运算](#三元运算)
+</code></pre><ul>
+<li><a href="#数学运算">数学运算</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<hr>
+<h2 id="微信小程序开发基本资料"><a href="#微信小程序开发基本资料" class="headerlink" title="微信小程序开发基本资料"></a>微信小程序开发基本资料</h2><p>使用学习资料如下：《微信小程序开发》</p>
+<p>微信小程序平台：<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">https://mp.weixin.qq.com/</a></p>
+<p>小程序开发文档如下：<a href="https://developers.weixin.qq.com/miniprogram/dev/?t=20161107" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/?t=20161107</a></p>
+<p>微信web开发者工具：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18082922" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=18082922</a></p>
+<p>工具介绍：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html</a></p>
+<hr>
+<h2 id="注册并安装开发者工具"><a href="#注册并安装开发者工具" class="headerlink" title="注册并安装开发者工具"></a>注册并安装开发者工具</h2><p>申请小程序开发者账号：<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="noopener">https://mp.weixin.qq.com/wxopen/waregister?action=step1</a> ，按步走如实填写即可。<br><img src="/2018/09/03/微信小程序开发/register.png" alt="register.png"></p>
+<p>如下即为开发者工具登录界面，使用微信开发者账号扫一扫登录：<br><img src="/2018/09/03/微信小程序开发/开发者工具.png" alt="开发者工具.png"></p>
+<p>按需求选择开发程序，这里使用“小程序项目”：<br><img src="/2018/09/03/微信小程序开发/开发者工具-choice.png" alt="开发者工具-choice.png"></p>
+<p>小程序项目管理界面，项目目录就是文件存放地址，自己选择；登录 <a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">https://mp.weixin.qq.com</a> ，我们可以在菜单 “设置”-“开发设置” 看到小程序的 AppID 了 。<br><img src="/2018/09/03/微信小程序开发/开发者工具-小程序项目.png" alt="开发者工具-小程序项目.png"></p>
+<p><img src="/2018/09/03/微信小程序开发/开发者工具-AppID.png" alt="开发者工具-AppID.png"></p>
+<p>全部设置好后确定，进入开发页面：<br><img src="/2018/09/03/微信小程序开发/FirstWeChatApp.png" alt="FirstWeChatApp.png"></p>
+<hr>
+<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>项目里边生成了不同类型的文件:</p>
+<ul>
+<li>json 后缀的 JSON 配置文件</li>
+<li>wxml 后缀的 WXML 模板文件</li>
+<li>wxss 后缀的 WXSS 样式文件</li>
+<li>js 后缀的 JS 脚本逻辑文件</li>
+</ul>
+<p>代码构成：<a href="https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/file.html#json-%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/file.html#json-%E9%85%8D%E7%BD%AE</a></p>
+<h3 id="小程序配置-app-json"><a href="#小程序配置-app-json" class="headerlink" title="小程序配置 app.json"></a>小程序配置 app.json</h3><p>app.json 是当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
+<p><img src="/2018/09/03/微信小程序开发/appjson.jpg" alt="appjson.jpg"></p>
+<pre><code>pages字段 —— 用于描述当前小程序所有页面路径，这是为了让微信客户端知道当前你的小程序页面定义在哪个目录。
+window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜色定义等。
+</code></pre><p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE</a></p>
+<h3 id="工具配置-project-config-json"><a href="#工具配置-project-config-json" class="headerlink" title="工具配置 project.config.json"></a>工具配置 project.config.json</h3><p>通常大家在使用一个工具的时候，都会针对各自喜好做一些个性化配置，例如界面颜色、编译配置等等，当你换了另外一台电脑重新安装工具的时候，你还要重新配置。</p>
+<p>考虑到这点，小程序开发者工具在每个项目的根目录都会生成一个 project.config.json，你在工具上做的任何配置都会写入到这个文件，当你重新安装工具或者换电脑工作时，你只要载入同一个项目的代码包，开发者工具就自动会帮你恢复到当时你开发项目时的个性化配置，其中会包括编辑器的颜色、代码上传时自动压缩等等一系列选项。</p>
+<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html</a></p>
+<h3 id="页面配置-page-json"><a href="#页面配置-page-json" class="headerlink" title="页面配置 page.json"></a>页面配置 page.json</h3><p>如果你整个小程序的风格是蓝色调，那么你可以在 app.json 里边声明顶部颜色是蓝色即可。实际情况可能不是这样，可能你小程序里边的每个页面都有不一样的色调来区分不同功能模块，因此我们提供了 page.json，让开发者可以独立定义每个页面的一些属性，例如刚刚说的顶部颜色、是否允许下拉刷新等等。</p>
+<h2 id="WXML-模板"><a href="#WXML-模板" class="headerlink" title="WXML 模板"></a>WXML 模板</h2><p>WXML（WeiXin Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，可以构建出页面的结构。</p>
+<p>从事过网页编程的人知道，网页编程采用的是 HTML + CSS + JS 这样的组合，其中 HTML 是用来描述当前这个页面的结构，CSS 用来描述页面的样子，JS 通常是用来处理这个页面和用户的交互。</p>
+<p>同样道理，在小程序中也有同样的角色，其中 WXML 充当的就是类似 HTML 的角色。</p>
+<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/index.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/index.html</a></p>
+<h3 id="WXSS-样式"><a href="#WXSS-样式" class="headerlink" title="WXSS 样式"></a>WXSS 样式</h3><p>WXSS 具有 CSS 大部分的特性，小程序在 WXSS 也做了一些扩充和修改。</p>
+<ul>
+<li><p>新增了尺寸单位。在写 CSS 样式时，开发者需要考虑到手机设备的屏幕会有不同的宽度和设备像素比，采用一些技巧来换算一些像素单位。WXSS 在底层支持新的尺寸单位 rpx ，开发者可以免去换算的烦恼，只要交给小程序底层来换算即可，由于换算采用的浮点数运算，所以运算结果会和预期结果有一点点偏差。</p>
+</li>
+<li><p>提供了全局的样式和局部样式。和前边 app.json, page.json 的概念相同，你可以写一个 app.wxss 作为全局样式，会作用于当前小程序的所有页面，局部页面样式 page.wxss 仅对当前页面生效。</p>
+</li>
+<li><p>此外 WXSS 仅支持部分 CSS 选择器</p>
+</li>
+</ul>
+<p>更详细的文档可以参考 WXSS 。</p>
+<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html</a></p>
+<h3 id="JS-交互逻辑"><a href="#JS-交互逻辑" class="headerlink" title="JS 交互逻辑"></a>JS 交互逻辑</h3><p>一个服务仅仅只有界面展示是不够的，还需要和用户做交互：响应用户的点击、获取用户的位置等等。在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。</p>
+<p>更多：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html</a></p>
+<hr>
+<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><p>WXML页面中的动态数据都是来自js文件Page的data，数据绑定通过双大括号将变量包起来，在WXML页面里将数据值显示出来。Page中的data存放是通过键值对的方式存放。</p>
+<p>大括号是小程序特有的表示方式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        msg: <span class="string">'123'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="组件属性绑定"><a href="#组件属性绑定" class="headerlink" title="组件属性绑定"></a>组件属性绑定</h3><p>将data里的数据绑定到微信小程序的组件上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view id=&quot;item-&#123;&#123;id&#125;&#125;&quot;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        id: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="控制属性绑定"><a href="#控制属性绑定" class="headerlink" title="控制属性绑定"></a>控制属性绑定</h3><p>用来进行if语句条件判断，如果满足条件则执行，否则不执行。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;condition&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        condition: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="关键字绑定"><a href="#关键字绑定" class="headerlink" title="关键字绑定"></a>关键字绑定</h3><p>常用于组件的一些关键字，像复选框组件如果需要等于true则代表选中复选框，false代表不选中复选框。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;checkbox checked=&apos;&#123;&#123;true&#125;&#125;&apos;&gt;&lt;/checkbox&gt;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p>可以在大括号内进行简单的运算。</p>
+<h4 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view hidden=&apos;&#123;&#123;flag ? true : false&#125;&#125;&apos;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;a + b&#125;&#125; + &#123;&#123;c&#125;&#125;&lt;/view&gt;      // 3 + 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        a: <span class="number">1</span>, </span><br><span class="line">        b: <span class="number">2</span>,</span><br><span class="line">        c: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">### 逻辑判断</span><br><span class="line"><span class="string">``</span><span class="string">`wxml</span></span><br><span class="line"><span class="string">index.wxml:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;view wx:if="&#123;&#123;length &gt; 5&#125;&#125;"&gt;&lt;/view&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;view&gt;&#123;&#123;&quot;hello&quot; + name&#125;&#125;&lt;/view&gt;     //helloMINA</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        name: <span class="string">'MINA'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><h3 id="wx-for-列表渲染单个组件"><a href="#wx-for-列表渲染单个组件" class="headerlink" title="wx:for 列表渲染单个组件"></a>wx:for 列表渲染单个组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.wxml:</span><br><span class="line"></span><br><span class="line">&lt;!-- arr:数组名, index:键名/索引, item:键值 --&gt;</span><br><span class="line">&lt;!-- 可以通过wx:for-index和wx:for-item修改元素的默认索引和键值 --&gt;</span><br><span class="line">&lt;view wx:for=&quot;&#123;&#123;arr&#125;&#125;&quot; wx:key=&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">    &#123;&#123;index&#125;&#125;:&#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index.js</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        arr: [<span class="string">"苹果"</span>,<span class="string">"香蕉"</span>,<span class="string">"西瓜"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/09/03/微信小程序开发/列表渲染.jpg" alt="列表渲染"></p>
+<hr>
+<h3 id="block-wx-for列表渲染多个组件"><a href="#block-wx-for列表渲染多个组件" class="headerlink" title="block wx:for列表渲染多个组件"></a>block wx:for列表渲染多个组件</h3><p>使用block标签代替view标签即可。循环之后之后内容，没用多余的标签。</p>
+<hr>
+<h2 id="尺寸自适应"><a href="#尺寸自适应" class="headerlink" title="尺寸自适应"></a>尺寸自适应</h2><p>rpx单位是微信小程序中css的尺寸单位，rpx可以根据屏幕宽度进行自适应。</p>
+<p>规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>rpx换算px (屏幕宽度/750)</th>
+<th>px换算rpx (750/屏幕宽度)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone5</td>
+<td>1rpx = 0.42px 　</td>
+<td>　    1px = 2.34px</td>
+</tr>
+<tr>
+<td>iPhone6</td>
+<td>1rpx = 0.5px 　</td>
+<td>　　　1px = 2rpx</td>
+</tr>
+<tr>
+<td>iPhone6s</td>
+<td>1rpx = 0.552px 　</td>
+<td>　  1px = 1.81rpx</td>
+</tr>
+</tbody>
+</table>
+<p>将屏幕布局设置为750像素，然后使用rpx单位即可自动适应。</p>
+<hr>
+<h2 id="模板及模板引用"><a href="#模板及模板引用" class="headerlink" title="模板及模板引用"></a>模板及模板引用</h2><h3 id="样式导入"><a href="#样式导入" class="headerlink" title="样式导入"></a>样式导入</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"导入的wxss路径"</span>;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/03/微信小程序开发/" data-id="cjtl8ne3z003f4gutdy4igaa0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Android开发之手机影音" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/26/Android开发之手机影音/" class="article-date">
@@ -377,7 +776,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/26/Android开发之手机影音/" data-id="cjtg2fw6s005do4utlojv5lug" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/26/Android开发之手机影音/" data-id="cjtl8nete00594gutsmecufrd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -494,7 +893,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/23/Android蓝牙开发学习/" data-id="cjtg2fvle002lo4ut0vqdpoyu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/23/Android蓝牙开发学习/" data-id="cjtl8ne0y002d4gutzmtbw1it" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -985,7 +1384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/" data-id="cjtg2fvwe003yo4ut3mdy7p5a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/" data-id="cjtl8necz003u4gutf0bxhf9h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1048,7 +1447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/" data-id="cjtg2fv6m000qo4utqwfpuxlb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/" data-id="cjtl8ndg5000z4gut0rm6lyu4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1456,7 +1855,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjtg2fvlg002no4utgy3q0osv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="cjtl8ne0t002b4gut0k18ruk2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1673,7 +2072,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjtg2fv6f000ko4ut8z0fneic" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjtl8ndfw000n4guthce3ivwx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1780,7 +2179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjtg2fv6l000po4utuqquttcn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjtl8ndfz000r4gut9ewskbo3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1998,324 +2397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjtg2fv68000do4uttn6zf3wv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Python学习笔记——图形绘制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/29/Python学习笔记——图形绘制/" class="article-date">
-  <time datetime="2018-07-29T15:44:04.000Z" itemprop="datePublished">2018-07-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/29/Python学习笔记——图形绘制/">Python学习笔记——图形绘制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<!-- TOC -->
-<ul>
-<li><a href="#python图形绘制turtle库使用">Python图形绘制——turtle库使用</a></li>
-<li><a href="#设置画布大小">设置画布大小</a></li>
-<li><a href="#turtle空间坐标体系">turtle空间坐标体系</a></li>
-<li><a href="#turtle角度坐标体系">turtle角度坐标体系</a></li>
-<li><a href="#turtle的运动控制函数">turtle的运动控制函数</a></li>
-<li><a href="#turtle颜色控制体系">turtle颜色控制体系</a><ul>
-<li><a href="#常用rgb色彩">常用RGB色彩</a></li>
-</ul>
-</li>
-<li><a href="#turtle画笔控制">turtle画笔控制</a><ul>
-<li><a href="#turtle画笔默认首先在中心的位置并且画笔是放下状态">turtle画笔默认首先在中心的位置。并且画笔是放下状态</a></li>
-<li><a href="#实例1python蟒蛇绘制">实例1：python蟒蛇绘制</a></li>
-<li><a href="#实例2-绘制多个同切圆">实例2 绘制多个同切圆</a></li>
-<li><a href="#实例3-绘制五角星">实例3 绘制五角星</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<hr>
-<h3 id="Python图形绘制——turtle库使用"><a href="#Python图形绘制——turtle库使用" class="headerlink" title="Python图形绘制——turtle库使用"></a>Python图形绘制——turtle库使用</h3><p><img src="/2018/07/29/Python学习笔记——图形绘制/turtle.png" alt=""></p>
-<hr>
-<p>要使用turtle库，需要导入先turtle库<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="设置画布大小"><a href="#设置画布大小" class="headerlink" title="设置画布大小"></a>设置画布大小</h3><p>画布就是turtle为我们展开用于绘图区域，我们可以设置它的大小和初始位置。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">语法<span class="number">1</span>：</span><br><span class="line">turtle.screensize(canvwidth=<span class="keyword">None</span>, canvheight=<span class="keyword">None</span>, bg=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">参数:</span><br><span class="line">canvwidth：画布的宽(单位像素)，可为空，默认<span class="number">400</span>px</span><br><span class="line">canvheight：画布的高(单位像素)，可为空，默认<span class="number">300</span>px</span><br><span class="line">bg：背景颜色，可为空，默认白色</span><br><span class="line"></span><br><span class="line">语法<span class="number">2</span>：</span><br><span class="line">turtle.setup(width=<span class="number">0.5</span>, height=<span class="number">0.75</span>, startx=<span class="keyword">None</span>, starty=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">参数:</span><br><span class="line">width, height: 画布的宽和高，为整数时, 表示像素; 为小数时, 表示占据电脑屏幕的比例。不可为空。</span><br><span class="line">startx, starty: 画布距离左上角顶点的位置，如果为空，则窗口位于屏幕中心</span><br></pre></td></tr></table></figure></p>
-<p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">turtle.screensize(<span class="number">800</span>, <span class="number">600</span>, <span class="string">"green"</span>)      <span class="comment"># 自定义画布宽为800px，高为600px，背景被绿色</span></span><br><span class="line">turtle.screensize()         <span class="comment">#返回默认大小宽400px，高300px，背景白色</span></span><br><span class="line"></span><br><span class="line">turtle.setup(<span class="number">0.6</span>, <span class="number">0.6</span>)</span><br><span class="line">turtle.setup(<span class="number">800</span>, <span class="number">800</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="turtle空间坐标体系"><a href="#turtle空间坐标体系" class="headerlink" title="turtle空间坐标体系"></a>turtle空间坐标体系</h3><ol>
-<li><p>绝对坐标体系：画布中心是(0,0)就是我们初中就开始学的绝对坐标体系</p>
-</li>
-<li><p>相对坐标体系，turtle是海龟，头部朝向左侧为正，右侧朝向为负的一个体系</p>
-</li>
-</ol>
-<hr>
-<h3 id="turtle角度坐标体系"><a href="#turtle角度坐标体系" class="headerlink" title="turtle角度坐标体系"></a>turtle角度坐标体系</h3><p><img src="/2018/07/29/Python学习笔记——图形绘制/angle.png" alt=""></p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>turtle.seth(angle)</td>
-<td>将turtle当前的方向设置为绝对坐标下的angle角度</td>
-</tr>
-<tr>
-<td>turtle.left(angle)</td>
-<td>将turtle朝向设置为海龟当前朝向左侧的angle</td>
-</tr>
-<tr>
-<td>turtle.right(angle)</td>
-<td>将turtle朝向设置为海龟当前朝向右侧的angle</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="turtle的运动控制函数"><a href="#turtle的运动控制函数" class="headerlink" title="turtle的运动控制函数"></a>turtle的运动控制函数</h3><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>turtle.fd(d)</td>
-<td>走直线，行进距离是d</td>
-</tr>
-<tr>
-<td>turtle.circle(r,angle)</td>
-<td>绘制一个弧形，r是半径，angle是弧形的角度，如果r是正数，则表示圆心在tutle的左侧，如果r是负数，则表示圆心在turtle的右侧</td>
-</tr>
-<tr>
-<td>turtle.speed(x)</td>
-<td>x的取值从0到10，越大速度越快</td>
-</tr>
-<tr>
-<td>turtle.goto(x,y)</td>
-<td>可以把画笔直接移动到绝对坐标体系的某一个点</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="turtle颜色控制体系"><a href="#turtle颜色控制体系" class="headerlink" title="turtle颜色控制体系"></a>turtle颜色控制体系</h3><p>RGB色彩模式，RGB每色取值范围0-255整数或0-1小数。默认采用小数值，可切换为整数值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turtle.colormode(mode)      <span class="comment"># mode为1，表示用0-1小数表示；mode为255，表示用0-255整数表示</span></span><br></pre></td></tr></table></figure>
-<h4 id="常用RGB色彩"><a href="#常用RGB色彩" class="headerlink" title="常用RGB色彩"></a>常用RGB色彩</h4><table>
-<thead>
-<tr>
-<th>英文名称</th>
-<th style="text-align:left">RGB整数值</th>
-<th style="text-align:center">RGB小数值</th>
-<th style="text-align:right">中文名称</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>white</td>
-<td style="text-align:left">255,255,255</td>
-<td style="text-align:center">1,1,1</td>
-<td style="text-align:right">白色</td>
-</tr>
-<tr>
-<td>yellow</td>
-<td style="text-align:left">255,255,0</td>
-<td style="text-align:center">1,1,0</td>
-<td style="text-align:right">黄色</td>
-</tr>
-<tr>
-<td>magenta</td>
-<td style="text-align:left">255,0,255</td>
-<td style="text-align:center">1,0,1</td>
-<td style="text-align:right">洋红</td>
-</tr>
-<tr>
-<td>cyan</td>
-<td style="text-align:left">0,255,255</td>
-<td style="text-align:center">0,1,1</td>
-<td style="text-align:right">青色</td>
-</tr>
-<tr>
-<td>blue</td>
-<td style="text-align:left">0,0,255</td>
-<td style="text-align:center">0,0,1</td>
-<td style="text-align:right">蓝色</td>
-</tr>
-<tr>
-<td>black</td>
-<td style="text-align:left">0,0,0</td>
-<td style="text-align:center">0,0,0</td>
-<td style="text-align:right">黑色</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="turtle画笔控制"><a href="#turtle画笔控制" class="headerlink" title="turtle画笔控制"></a>turtle画笔控制</h3><h4 id="turtle画笔默认首先在中心的位置。并且画笔是放下状态"><a href="#turtle画笔默认首先在中心的位置。并且画笔是放下状态" class="headerlink" title="turtle画笔默认首先在中心的位置。并且画笔是放下状态"></a>turtle画笔默认首先在中心的位置。并且画笔是放下状态</h4><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>turtle.penup()</td>
-<td>抬起画笔</td>
-</tr>
-<tr>
-<td>turtle.pendown()</td>
-<td>放下画笔</td>
-</tr>
-<tr>
-<td>turtle.pensize()</td>
-<td>设置画笔的粗细</td>
-</tr>
-<tr>
-<td>turtle.pencolor()</td>
-<td>设置画笔的颜色，str类型颜色字符串，RGB表示</td>
-</tr>
-<tr>
-<td>turtle.done()</td>
-<td>表示状态，使得运行完之后画布不会自动退出</td>
-</tr>
-<tr>
-<td>turtle.write(c,font=(“Arial”,18,”normal”))</td>
-<td>来写文字c，包括汉字</td>
-</tr>
-<tr>
-<td>turtle.hideturtle()</td>
-<td>函数可以隐藏turtle的的画笔</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h4 id="实例1：python蟒蛇绘制"><a href="#实例1：python蟒蛇绘制" class="headerlink" title="实例1：python蟒蛇绘制"></a>实例1：python蟒蛇绘制</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.setup(<span class="number">650</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>)    <span class="comment"># 画布长650像素，宽350像素，距离左上角定点200像素，200像素</span></span><br><span class="line">turtle.penup()                      <span class="comment"># 提起笔</span></span><br><span class="line">turtle.fd(<span class="number">-250</span>)                     <span class="comment"># 向前移动-250像素</span></span><br><span class="line">turtle.pendown()                    <span class="comment"># 落笔</span></span><br><span class="line">turtle.pensize(<span class="number">25</span>)                  <span class="comment"># 设置笔宽度为25像素</span></span><br><span class="line">turtle.pencolor(<span class="string">"purple"</span>)           <span class="comment"># 设置笔颜色为紫色</span></span><br><span class="line">turtle.seth(<span class="number">-40</span>)                    <span class="comment"># 角度偏向-40度</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    turtle.circle(<span class="number">40</span>, <span class="number">80</span>)           <span class="comment"># 半径为40，角度为80度，逆时针画圆弧</span></span><br><span class="line">    turtle.circle(<span class="number">-40</span>, <span class="number">80</span>)</span><br><span class="line">turtle.circle(<span class="number">40</span>, <span class="number">40</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span>)                       <span class="comment"># 向前40像素</span></span><br><span class="line">turtle.circle(<span class="number">20</span>, <span class="number">180</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span> * <span class="number">2</span> / <span class="number">3</span>)</span><br><span class="line">turtle.done()                       <span class="comment"># 运行完之后画布不会自动退出</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/29/Python学习笔记——图形绘制/pythonDraw.gif" alt=""></p>
-<h4 id="实例2-绘制多个同切圆"><a href="#实例2-绘制多个同切圆" class="headerlink" title="实例2 绘制多个同切圆"></a>实例2 绘制多个同切圆</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.pensize(<span class="number">2</span>)   <span class="comment"># 设置画笔宽度</span></span><br><span class="line">turtle.circle(<span class="number">10</span>)   <span class="comment"># 画圆，半径为正(负)，表示圆心在画笔的左边(右边)画圆</span></span><br><span class="line">turtle.circle(<span class="number">40</span>)</span><br><span class="line">turtle.circle(<span class="number">80</span>)</span><br><span class="line">turtle.circle(<span class="number">160</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/29/Python学习笔记——图形绘制/Gif.gif" alt=""></p>
-<h4 id="实例3-绘制五角星"><a href="#实例3-绘制五角星" class="headerlink" title="实例3 绘制五角星"></a>实例3 绘制五角星</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line">color(<span class="string">'red'</span>, <span class="string">'red'</span>)     <span class="comment"># 第一个是线条颜色，第二个是填充颜色</span></span><br><span class="line">begin_fill()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    fd(<span class="number">200</span>)     <span class="comment"># 控制长度</span></span><br><span class="line">    rt(<span class="number">144</span>)     <span class="comment"># 角度</span></span><br><span class="line">end_fill()</span><br><span class="line">done()</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/29/Python学习笔记——图形绘制/StarDraw.gif" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjtg2fv6b000go4ut3uwz8o12" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Python学习笔记——面向对象编程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/28/Python学习笔记——面向对象编程/" class="article-date">
-  <time datetime="2018-07-28T15:28:02.000Z" itemprop="datePublished">2018-07-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/28/Python学习笔记——面向对象编程/">Python学习笔记——面向对象编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<!-- TOC -->
-<ul>
-<li><a href="#封装encapsulation">封装(encapsulation)</a></li>
-<li><a href="#继承inheritance">继承(Inheritance)</a></li>
-<li><a href="#多态polymorphism">多态(Polymorphism)</a></li>
-<li><a href="#获取对象信息">获取对象信息</a><ul>
-<li><a href="#type">type()</a></li>
-<li><a href="#isinstance">isinstance()</a></li>
-</ul>
-</li>
-<li><a href="#实例属性和类属性">实例属性和类属性</a></li>
-<li><a href="#魔法方法">魔法方法</a><ul>
-<li><a href="#\_\_new\_\_cls--">__new__(cls[, … ])</a></li>
-<li><a href="#\_\_init\_\_self--">__init__(self[, … ])</a></li>
-<li><a href="#\_\_del\_\_self">__del__(self)</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p>面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。</p>
-<hr>
-<p>面向对象的三大特点：封装、继承、多态。</p>
-<hr>
-<p>面向对象最重要的概念就是类(Class)和实例(Instance),类是抽象的模板，而实例是根据类创建出来的一个个具体的“对象”。</p>
-<hr>
-<h3 id="封装-encapsulation"><a href="#封装-encapsulation" class="headerlink" title="封装(encapsulation)"></a>封装(encapsulation)</h3><p>把客观事物封装成抽象的类。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> 类名<span class="params">(父类)</span>:</span>   <span class="comment"># 类名以大写字母开头，父类不确定可以使用object类</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 构造方法</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, 属性名 * n)</span>:</span></span><br><span class="line">    <span class="comment"># 属性</span></span><br><span class="line">    self.属性名 = 属性名      <span class="comment"># public类型 ，self相当于C++的this</span></span><br><span class="line">    self.__属性名 = 属性名    <span class="comment"># private类型</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 方法</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">get_</span>属性<span class="params">(self)</span>:</span>       <span class="comment"># 输出保护</span></span><br><span class="line">    <span class="keyword">return</span> self.__属性</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">set_</span>属性<span class="params">(self)</span>:</span></span><br><span class="line">    self.__属性 = 属性      <span class="comment"># 写入保护</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> 自定义方法<span class="params">(self)</span>:</span></span><br><span class="line">    具体内容</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test = 类名()     <span class="comment"># 对象时类的实例化，类是对象的抽象化。</span></span><br></pre></td></tr></table></figure>
-<p>注意：</p>
-<ol>
-<li><p>变量名类似<strong>xxx</strong>的，是特殊变量，特殊变量是可以直接访问的，不是private变量。</p>
-</li>
-<li><p>以一个下划线开头的实例变量名，比如_name，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，视为私有变量，不要随意访问。</p>
-</li>
-<li><p>不能直接访问Student类中<strong>name属性是因为Python解释器对外把</strong>name变量改成了_Student__name，所以，仍然可以通过_Student__name来访问<strong>name变量。**但是强烈建议不要这么干，因为不同版本的Python解释器可能会把</strong>name改成不同的变量名**</p>
-</li>
-</ol>
-<p>实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, score)</span>:</span></span><br><span class="line">        self.__name = name</span><br><span class="line">        self.__score = score</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_score</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'%s: %s'</span> % (self.__name, self.__score))</span><br></pre></td></tr></table></figure></p>
-<p>反例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">59</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_name()</span><br><span class="line"><span class="string">'Bart Simpson'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name = <span class="string">'New Name'</span> <span class="comment">#  错误方法设置__name变量！</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name   <span class="comment"># 错误的获取__name属性</span></span><br><span class="line"><span class="string">'New Name'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_name() <span class="comment"># get_name()内部返回self.__name</span></span><br><span class="line"><span class="string">'Bart Simpson'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python没有错误阻止机制，上述代码中错误的设置__name变量和错误和获取__name属性虽然看上去没毛病，但是实际上这个__name变量和class内部的__name变量不是同一个变量！</span></span><br><span class="line"><span class="comment"># 外部的代码给bart新增了一个__name变量，而而内部的__name变量被python解释器自动改成了_Student__name，所以，接下去获取内部的__name变量属性，仍然是原先那个值。</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="继承-Inheritance"><a href="#继承-Inheritance" class="headerlink" title="继承(Inheritance)"></a>继承(Inheritance)</h3><p>在OOP程序设计中，当我们定义一个class的时候，可以从某个现有的class继承，新的class称为子类（Subclass），而被继承的class称为基类、父类或超类（Base class、Super class）。</p>
-<p>所有类的父类是object。另外，Python支持多重继承，即一个子类同时继承多个父类。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(self)</span>:</span></span><br><span class="line">	       print(<span class="string">"正在调用父类的方法。。。"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span>    <span class="comment"># 继承父类</span></span><br><span class="line">	       <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p = Parent()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.hello()</span><br><span class="line"></span><br><span class="line">正在调用父类的方法。。。</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = Child()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.hello()     <span class="comment"># 调用父类方法</span></span><br><span class="line"></span><br><span class="line">正在调用父类的方法。。。</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(self)</span>:</span>     <span class="comment"># 方法覆盖</span></span><br><span class="line">	       print(<span class="string">"正在调用子类的方法..."</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = Child()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.hello()</span><br><span class="line"></span><br><span class="line">正在调用子类的方法...</span><br></pre></td></tr></table></figure>
-<p>当子类继承父类时，可以使用<strong>super()方法</strong>调用父类方法。</p>
-<hr>
-<h3 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态(Polymorphism)"></a>多态(Polymorphism)</h3><p>多态指的是一类事物有多种形态。</p>
-<hr>
-<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><h4 id="type"><a href="#type" class="headerlink" title="type()"></a>type()</h4><p>基本类型判断，使用type()函数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">123</span>)       <span class="comment"># int类型</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">int</span>'&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(<span class="string">'str'</span>)</span>     # <span class="title">str</span>类型</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">str</span>'&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(None)</span>      # <span class="title">None</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">NoneType</span>'&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span><span class="params">(abs)</span>       # 内置函数</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">builtin_function_or_method</span>'&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"># 比较两个类型是否相同</span></span><br><span class="line">&gt;&gt;&gt; type(123) == type(456)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">123</span>) == int</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">'abc'</span>) == type(<span class="string">'123'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">'abc'</span>) == str</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">'abc'</span>) == type(<span class="number">123</span>)</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="isinstance"><a href="#isinstance" class="headerlink" title="isinstance()"></a>isinstance()</h4><p>继承关系判断，当然能用type()判断的类型也能用isinstance()判断。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(a, object)   <span class="comment"># 判断object类是不是在对象a的父类链上。</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], (list, tuple))</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (list, tuple))</span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="meta">... </span>    name = <span class="string">'Student'</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = Student() <span class="comment"># 创建实例s</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(Student.name) <span class="comment"># 打印类的name属性</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.name = <span class="string">'Michael'</span> <span class="comment"># 给实例绑定name属性</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性</span></span><br><span class="line">Michael</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(Student.name) <span class="comment"># 但是类属性并未消失，用Student.name仍然可以访问</span></span><br><span class="line">Student</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> s.name <span class="comment"># 如果删除实例的name属性</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了</span></span><br><span class="line">Student</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="魔法方法"><a href="#魔法方法" class="headerlink" title="魔法方法"></a>魔法方法</h3><h4 id="new-cls-…"><a href="#new-cls-…" class="headerlink" title="__new__(cls[, … ])"></a>__new__(cls[, … ])</h4><p>是在一个对象实例化的时候所调用的第一个方法，主要是用于继承一个不可变的类型比如一个 tuple 或者 string。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">CapStr</span><span class="params">(str)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, string)</span>:</span></span><br><span class="line">		string = string.upper()</span><br><span class="line">		<span class="keyword">return</span> str.__new__(cls, string)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = CapStr(<span class="string">'Hello, World!'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="string">'HELLO, WORLD!'</span></span><br></pre></td></tr></table></figure>
-<h4 id="init-self-…"><a href="#init-self-…" class="headerlink" title="__init__(self[, … ])"></a>__init__(self[, … ])</h4><p>构造器，当一个实例被创建的时候调用的初始化方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y)</span>:</span>    <span class="comment"># 无返回，给对象初始化时需要调用</span></span><br><span class="line">		self.x = x</span><br><span class="line">		self.y = y</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">getPeri</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> (self.x + self.y)* <span class="number">2</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">getArea</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self.x * self.y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rect = Rectangle(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rect.getPeri()</span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rect.getArea()</span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="del-self"><a href="#del-self" class="headerlink" title="__del__(self)"></a>__del__(self)</h4><p>析构器，当一个实例被销毁的时候调用的方法，作为内置的垃圾回收机制。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(<span class="string">'__init__方法被调用了...'</span>)</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">		print(<span class="string">'__del__方法被调用了...'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = C()</span><br><span class="line">__init__方法被调用了...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> c</span><br><span class="line">__del__方法被调用了...</span><br></pre></td></tr></table></figure>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cjtg2fv6j000mo4utbbb24x1v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjtl8ndfr000g4gutkual34zm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -2345,7 +2427,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -2355,7 +2437,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.57px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.43px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 15.71px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.86px;">Node</a> <a href="/tags/Python/" style="font-size: 17.14px;">Python</a> <a href="/tags/blog/" style="font-size: 11.43px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.14px;">前端</a> <a href="/tags/后端/" style="font-size: 14.29px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a> <a href="/tags/框架/" style="font-size: 11.43px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+      <a href="/tags/Android/" style="font-size: 18.75px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.25px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.5px;">Node</a> <a href="/tags/Python/" style="font-size: 16.25px;">Python</a> <a href="/tags/blog/" style="font-size: 11.25px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.5px;">前端</a> <a href="/tags/后端/" style="font-size: 13.75px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.25px;">数据库</a> <a href="/tags/框架/" style="font-size: 12.5px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -2377,6 +2459,14 @@
       <ul>
         
           <li>
+            <a href="/2019/03/23/框架——Vuejs/">框架——Vue.js</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/20/模板引擎——art-template/">模板引擎——art-template</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/19/后端基础——npm常见包/">后端基础——npm常见包</a>
           </li>
         
@@ -2386,14 +2476,6 @@
         
           <li>
             <a href="/2019/03/15/数据库——MySQL/">数据库——MySQL</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/15/数据库——MongoDB/">数据库——MongoDB</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/15/MongoDB/">MongoDB</a>
           </li>
         
       </ul>

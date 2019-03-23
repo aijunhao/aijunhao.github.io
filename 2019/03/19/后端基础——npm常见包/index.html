@@ -7,19 +7,19 @@
   
   <title>后端基础——npm常见包 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="npm 基础 项目初始化 下载模块包 其他常用命令 npm 被墙问题   常用包使用 json-server http-server art-template     npm 基础NPM（node package manager），是基于Node.js开发的包管理器。是世界上最大的开源库生态系统。 中文文档： https://www.npmjs.cn/官网： https://www.npmjs">
+  <meta name="description" content="npm 基础 项目初始化 下载模块包 其他常用命令 npm 被墙问题   常用包使用 json-server 安装 创建 JSON 模拟数据文件 启动服务   http-server art-template 安装   express-art-template 安装   body-parser body-parser 安装 body-parser 配置 Express 获取 POST 数据">
 <meta name="keywords" content="JavaScript,后端,Node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后端基础——npm常见包">
 <meta property="og:url" content="http://yoursite.com/2019/03/19/后端基础——npm常见包/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="npm 基础 项目初始化 下载模块包 其他常用命令 npm 被墙问题   常用包使用 json-server http-server art-template     npm 基础NPM（node package manager），是基于Node.js开发的包管理器。是世界上最大的开源库生态系统。 中文文档： https://www.npmjs.cn/官网： https://www.npmjs">
+<meta property="og:description" content="npm 基础 项目初始化 下载模块包 其他常用命令 npm 被墙问题   常用包使用 json-server 安装 创建 JSON 模拟数据文件 启动服务   http-server art-template 安装   express-art-template 安装   body-parser body-parser 安装 body-parser 配置 Express 获取 POST 数据">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/19/后端基础——npm常见包/json-server.jpg">
-<meta property="og:updated_time" content="2019-03-19T13:48:52.939Z">
+<meta property="og:updated_time" content="2019-03-22T10:39:13.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后端基础——npm常见包">
-<meta name="twitter:description" content="npm 基础 项目初始化 下载模块包 其他常用命令 npm 被墙问题   常用包使用 json-server http-server art-template     npm 基础NPM（node package manager），是基于Node.js开发的包管理器。是世界上最大的开源库生态系统。 中文文档： https://www.npmjs.cn/官网： https://www.npmjs">
+<meta name="twitter:description" content="npm 基础 项目初始化 下载模块包 其他常用命令 npm 被墙问题   常用包使用 json-server 安装 创建 JSON 模拟数据文件 启动服务   http-server art-template 安装   express-art-template 安装   body-parser body-parser 安装 body-parser 配置 Express 获取 POST 数据">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/19/后端基础——npm常见包/json-server.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -99,9 +99,34 @@
 </ul>
 </li>
 <li><a href="#常用包使用">常用包使用</a><ul>
-<li><a href="#json-server">json-server</a></li>
+<li><a href="#json-server">json-server</a><ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#创建-json-模拟数据文件">创建 JSON 模拟数据文件</a></li>
+<li><a href="#启动服务">启动服务</a></li>
+</ul>
+</li>
 <li><a href="#http-server">http-server</a></li>
-<li><a href="#art-template">art-template</a></li>
+<li><a href="#art-template">art-template</a><ul>
+<li><a href="#安装-1">安装</a></li>
+</ul>
+</li>
+<li><a href="#express-art-template">express-art-template</a><ul>
+<li><a href="#安装-2">安装</a></li>
+</ul>
+</li>
+<li><a href="#body-parser">body-parser</a><ul>
+<li><a href="#body-parser-安装">body-parser 安装</a></li>
+<li><a href="#body-parser-配置">body-parser 配置</a></li>
+<li><a href="#express-获取-post-数据">Express 获取 POST 数据</a></li>
+</ul>
+</li>
+<li><a href="#express-session">express-session</a><ul>
+<li><a href="#express-session-安装">express-session 安装</a></li>
+<li><a href="#express-session-配置">express-session 配置</a></li>
+<li><a href="#express-session-使用">express-session 使用</a></li>
+</ul>
+</li>
+<li><a href="#blueimp-md5">blueimp-md5</a></li>
 </ul>
 </li>
 </ul>
@@ -138,23 +163,50 @@
 <p>配置之后，之后所有的下载都是从淘宝镜像下载的。</p>
 <hr>
 <h2 id="常用包使用"><a href="#常用包使用" class="headerlink" title="常用包使用"></a>常用包使用</h2><p>在开发中，有很多包对我们的测试和开发非常有用，这里做一个积累。</p>
-<h3 id="json-server"><a href="#json-server" class="headerlink" title="json-server"></a>json-server</h3><p>视频教程：<a href="https://egghead.io/lessons/javascript-creating-demo-apis-with-json-server" target="_blank" rel="noopener">https://egghead.io/lessons/javascript-creating-demo-apis-with-json-server</a></p>
-<p>git教程：<a href="https://github.com/typicode/json-server" target="_blank" rel="noopener">https://github.com/typicode/json-server</a></p>
+<h3 id="json-server"><a href="#json-server" class="headerlink" title="json-server"></a>json-server</h3><p>使用本地 <code>JSON</code> 文件数据模拟 <code>API</code> 数据的工具。</p>
 <p>在开发中很多时候我们并不想使用简单的静态数据，而是希望自己起一个本地的mock-server来完全模拟请求以及请求回来的过程。json-server是一个很好的可以替我们完成这一工作的工具。我们只需要提供一个json文件，或者写几行简单的js脚本就可以模拟出 <code>RESTful API</code> 的接口。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm install -g json-server</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看版本号</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> json-server -v</span></span><br></pre></td></tr></table></figure>
-<p>安装之后创建一个 <code>json</code> 文件，用来模拟提供接口数据：</p>
+<p>视频教程：<a href="https://egghead.io/lessons/javascript-creating-demo-apis-with-json-server" target="_blank" rel="noopener">https://egghead.io/lessons/javascript-creating-demo-apis-with-json-server</a></p>
+<p>git教程：<a href="https://github.com/typicode/json-server" target="_blank" rel="noopener">https://github.com/typicode/json-server</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm install -g json-server</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看版本号</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> json-server -v</span></span><br></pre></td></tr></table></figure>
+<h4 id="创建-JSON-模拟数据文件"><a href="#创建-JSON-模拟数据文件" class="headerlink" title="创建 JSON 模拟数据文件"></a>创建 JSON 模拟数据文件</h4><p>安装之后创建一个 <code>json</code> 文件，用来模拟提供接口数据：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// data.json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"users"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">"username"</span>: <span class="string">"admin"</span>,</span><br><span class="line">            <span class="attr">"age"</span>: <span class="number">28</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">2</span>,</span><br><span class="line">            <span class="attr">"username"</span>: <span class="string">"admin"</span>,</span><br><span class="line">            <span class="attr">"age"</span>: <span class="number">28</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">"username"</span>: <span class="string">"admin"</span>,</span><br><span class="line">            <span class="attr">"age"</span>: <span class="number">28</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后就是在 <code>json</code> 文件目录下启动服务了。</p>
+<h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><p>然后就是在 <code>json</code> 文件目录下启动服务了。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动服务命令，实时监测 data.json 的变化</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> json-server --watch data.json</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动服务命令，不监测变化，data.json 文件内容变化后不重启服务接口内容不变</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> json-server data.json</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">f:\WorkSpace\nodejs\05&gt;json-server --watch data.json</span><br><span class="line"></span><br><span class="line">  \&#123;^_^&#125;/ hi!</span><br><span class="line"></span><br><span class="line">  Loading data.json</span><br><span class="line">  Done</span><br><span class="line"></span><br><span class="line">  Resources</span><br><span class="line">  http://localhost:3000/users</span><br><span class="line"></span><br><span class="line">  Home</span><br><span class="line">  http://localhost:3000</span><br><span class="line"></span><br><span class="line">  Type s + enter at any time to create a snapshot of the database</span><br><span class="line">  Watching...</span><br><span class="line"></span><br><span class="line">GET /db 200 2.483 ms - 608</span><br><span class="line">GET /__rules 404 8.024 ms - 2</span><br></pre></td></tr></table></figure>
 <p>然后浏览器访问 <a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> 可以查看我们的主页，此时基本满足所有 API 操作。</p>
 <p><img src="/2019/03/19/后端基础——npm常见包/json-server.jpg" alt="json-server.jpg"></p>
-<h3 id="http-server"><a href="#http-server" class="headerlink" title="http-server"></a>http-server</h3><h3 id="art-template"><a href="#art-template" class="headerlink" title="art-template"></a>art-template</h3><p>模板引擎</p>
+<hr>
+<h3 id="http-server"><a href="#http-server" class="headerlink" title="http-server"></a>http-server</h3><hr>
+<h3 id="art-template"><a href="#art-template" class="headerlink" title="art-template"></a>art-template</h3><p>前端模板引擎。</p>
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i art-template -S</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="express-art-template"><a href="#express-art-template" class="headerlink" title="express-art-template"></a>express-art-template</h3><p>在 <code>express</code> 中使用的 <code>art-template</code> 模板引擎。</p>
+<h4 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i art-template -S</span><br><span class="line">npm i express-art-template -S</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="body-parser"><a href="#body-parser" class="headerlink" title="body-parser"></a>body-parser</h3><p>在 <code>Express</code> 中没有内置获取表单 <code>POST</code> 请求体的API，这里我们需要一个 <code>Express</code> 的第三方包 <code>body-parser</code>。</p>
+<p><a href="http://www.expressjs.com.cn/en/resources/middleware/body-parser.html" target="_blank" rel="noopener">http://www.expressjs.com.cn/en/resources/middleware/body-parser.html</a></p>
+<h4 id="body-parser-安装"><a href="#body-parser-安装" class="headerlink" title="body-parser 安装"></a>body-parser 安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install body-parser</span><br></pre></td></tr></table></figure>
+<h4 id="body-parser-配置"><a href="#body-parser-配置" class="headerlink" title="body-parser 配置"></a>body-parser 配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="comment">// 引包</span></span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置 body-parser</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.use(router)</span><br></pre></td></tr></table></figure>
+<h4 id="Express-获取-POST-数据"><a href="#Express-获取-POST-数据" class="headerlink" title="Express 获取 POST 数据"></a>Express 获取 POST 数据</h4><p>配置完这个中间件之后，<code>request</code> 中会多出一个 <code>body</code> 属性，通过 <code>body</code> 属性就能获取 <code>post</code> 请求数据了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单使用，打印出这个 post 数据</span></span><br><span class="line">app.use(<span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>)</span><br><span class="line">  response.write(<span class="string">'you posted;\n'</span>)</span><br><span class="line">  <span class="comment">// post 数据在 request.body 中，将其转为 JSON 数据并打印出来。</span></span><br><span class="line">  response.end(<span class="built_in">JSON</span>.stringify(request.body, <span class="literal">null</span>, <span class="number">2</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="express-session"><a href="#express-session" class="headerlink" title="express-session"></a>express-session</h3><p><code>Express</code> 的 <code>Session</code> 和 <code>Cookie</code> 中间件。</p>
+<p><code>Express</code> 文档：<a href="http://www.expressjs.com.cn/en/resources/middleware/session.html" target="_blank" rel="noopener">http://www.expressjs.com.cn/en/resources/middleware/session.html</a></p>
+<h4 id="express-session-安装"><a href="#express-session-安装" class="headerlink" title="express-session 安装"></a>express-session 安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i express-session -S</span><br></pre></td></tr></table></figure>
+<h4 id="express-session-配置"><a href="#express-session-配置" class="headerlink" title="express-session 配置"></a>express-session 配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="comment">// 引包</span></span><br><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置 session</span></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  <span class="comment">// 自定义的二次加密字符串</span></span><br><span class="line">  secret: <span class="string">'keyboard cat'</span>,</span><br><span class="line">  resave: <span class="literal">false</span>,</span><br><span class="line">  saveUninitialized: <span class="literal">true</span></span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.use(router)</span><br></pre></td></tr></table></figure>
+<h4 id="express-session-使用"><a href="#express-session-使用" class="headerlink" title="express-session 使用"></a>express-session 使用</h4><p><code>session</code> 参数都存在 <code>request</code> 中，只要通过 <code>request.session.xxx</code> 就能进行 <code>session</code> 信息的存取操作了。</p>
+<p>如下页面，先进行注册并自动登录，<code>req</code> 存储登录状态；然后跳转到首页，<code>req</code> 获取到登录状态，进行进一步的处理，保持页面处于登录状态。</p>
+<p>但是注意，这种做法的 <code>session</code> 默认是存储在服务器的内存中的，也就是说只要服务器已关闭，所有 <code>session</code> 都会被清除，所以有时候需要进行永久化存储。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// router.js 路由独立页面</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 首页</span></span><br><span class="line">router.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.session.user)    <span class="comment">// userObject</span></span><br><span class="line">  <span class="comment">// 将用户对象传入渲染页面</span></span><br><span class="line">  res.render(<span class="string">'index.html'</span>, &#123;</span><br><span class="line">    user: req.session.user</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册页面处理</span></span><br><span class="line">router.post(<span class="string">'/register'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  </span><br><span class="line">  ……</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 注册成功，保存 session</span></span><br><span class="line">  req.session.user = userObject</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="blueimp-md5"><a href="#blueimp-md5" class="headerlink" title="blueimp-md5"></a>blueimp-md5</h3><p><a href="https://www.npmjs.com/package/blueimp-md5" target="_blank" rel="noopener">https://www.npmjs.com/package/blueimp-md5</a></p>
+<p>数据加密。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i blueimp-md5 -S</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> md5 = <span class="built_in">require</span>(<span class="string">'blueimp-md5'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过post获取注册信息等……</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 一般进行两层以上加密</span></span><br><span class="line">body.password = md5(md5(body.pawword))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 然后保存账号密码到数据库</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 之后，数据库中的加密内容就是乱码了。</span></span><br><span class="line"><span class="string">"password"</span> : <span class="string">"d9b1d7db4cd6e70935368a1efb10e377"</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/19/后端基础——npm常见包/" data-id="cjtg2fv6x0017o4utl9rdp8te" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/19/后端基础——npm常见包/" data-id="cjtl8ne1h002q4guto4yqa6sc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
@@ -164,6 +216,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/03/20/模板引擎——art-template/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          模板引擎——art-template
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/18/前端-JavaScript基础-EcamScript6/" id="article-nav-older" class="article-nav-link-wrap">
@@ -187,7 +248,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -197,7 +258,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.57px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.43px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 15.71px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.86px;">Node</a> <a href="/tags/Python/" style="font-size: 17.14px;">Python</a> <a href="/tags/blog/" style="font-size: 11.43px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.14px;">前端</a> <a href="/tags/后端/" style="font-size: 14.29px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a> <a href="/tags/框架/" style="font-size: 11.43px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+      <a href="/tags/Android/" style="font-size: 18.75px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.25px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.5px;">Node</a> <a href="/tags/Python/" style="font-size: 16.25px;">Python</a> <a href="/tags/blog/" style="font-size: 11.25px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.5px;">前端</a> <a href="/tags/后端/" style="font-size: 13.75px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.25px;">数据库</a> <a href="/tags/框架/" style="font-size: 12.5px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -219,6 +280,14 @@
       <ul>
         
           <li>
+            <a href="/2019/03/23/框架——Vuejs/">框架——Vue.js</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/20/模板引擎——art-template/">模板引擎——art-template</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/19/后端基础——npm常见包/">后端基础——npm常见包</a>
           </li>
         
@@ -228,14 +297,6 @@
         
           <li>
             <a href="/2019/03/15/数据库——MySQL/">数据库——MySQL</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/15/数据库——MongoDB/">数据库——MongoDB</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/15/MongoDB/">MongoDB</a>
           </li>
         
       </ul>
