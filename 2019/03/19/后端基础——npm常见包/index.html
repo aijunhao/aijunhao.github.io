@@ -16,7 +16,8 @@
 <meta property="og:description" content="npm 基础 项目初始化 下载模块包 其他常用命令 npm 被墙问题   常用包使用 json-server 安装 创建 JSON 模拟数据文件 启动服务   http-server art-template 安装   express-art-template 安装   body-parser body-parser 安装 body-parser 配置 Express 获取 POST 数据">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/19/后端基础——npm常见包/json-server.jpg">
-<meta property="og:updated_time" content="2019-03-29T05:31:39.891Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/后端基础——npm常见包/animate.png">
+<meta property="og:updated_time" content="2019-03-31T09:50:22.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后端基础——npm常见包">
 <meta name="twitter:description" content="npm 基础 项目初始化 下载模块包 其他常用命令 npm 被墙问题   常用包使用 json-server 安装 创建 JSON 模拟数据文件 启动服务   http-server art-template 安装   express-art-template 安装   body-parser body-parser 安装 body-parser 配置 Express 获取 POST 数据">
@@ -120,15 +121,10 @@
 <li><a href="#express-获取-post-数据">Express 获取 POST 数据</a></li>
 </ul>
 </li>
-<li><a href="#express-session">express-session</a><ul>
-<li><a href="#express-session-安装">express-session 安装</a></li>
-<li><a href="#express-session-配置">express-session 配置</a></li>
-<li><a href="#express-session-使用">express-session 使用</a></li>
-</ul>
-</li>
+<li><a href="#express-session">express-session</a></li>
 <li><a href="#blueimp-md5">blueimp-md5</a></li>
 <li><a href="#axios">axios</a></li>
-<li><a href="#vue-axios">vue-axios</a></li>
+<li><a href="#animatecss">animate.css</a></li>
 </ul>
 </li>
 </ul>
@@ -194,18 +190,39 @@
 <hr>
 <h3 id="express-session"><a href="#express-session" class="headerlink" title="express-session"></a>express-session</h3><p><code>Express</code> 的 <code>Session</code> 和 <code>Cookie</code> 中间件。</p>
 <p><code>Express</code> 文档：<a href="http://www.expressjs.com.cn/en/resources/middleware/session.html" target="_blank" rel="noopener">http://www.expressjs.com.cn/en/resources/middleware/session.html</a></p>
-<h4 id="express-session-安装"><a href="#express-session-安装" class="headerlink" title="express-session 安装"></a>express-session 安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i express-session -S</span><br></pre></td></tr></table></figure>
-<h4 id="express-session-配置"><a href="#express-session-配置" class="headerlink" title="express-session 配置"></a>express-session 配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="comment">// 引包</span></span><br><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置 session</span></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  <span class="comment">// 自定义的二次加密字符串</span></span><br><span class="line">  secret: <span class="string">'keyboard cat'</span>,</span><br><span class="line">  resave: <span class="literal">false</span>,</span><br><span class="line">  saveUninitialized: <span class="literal">true</span></span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.use(router)</span><br></pre></td></tr></table></figure>
-<h4 id="express-session-使用"><a href="#express-session-使用" class="headerlink" title="express-session 使用"></a>express-session 使用</h4><p><code>session</code> 参数都存在 <code>request</code> 中，只要通过 <code>request.session.xxx</code> 就能进行 <code>session</code> 信息的存取操作了。</p>
+<p><strong>安装</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i express-session -S</span><br></pre></td></tr></table></figure>
+<p><strong>配置</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="comment">// 引包</span></span><br><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置 session</span></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  <span class="comment">// 自定义的二次加密字符串</span></span><br><span class="line">  secret: <span class="string">'keyboard cat'</span>,</span><br><span class="line">  resave: <span class="literal">false</span>,</span><br><span class="line">  saveUninitialized: <span class="literal">true</span></span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.use(router)</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<p><code>session</code> 参数都存在 <code>request</code> 中，只要通过 <code>request.session.xxx</code> 就能进行 <code>session</code> 信息的存取操作了。</p>
 <p>如下页面，先进行注册并自动登录，<code>req</code> 存储登录状态；然后跳转到首页，<code>req</code> 获取到登录状态，进行进一步的处理，保持页面处于登录状态。</p>
 <p>但是注意，这种做法的 <code>session</code> 默认是存储在服务器的内存中的，也就是说只要服务器已关闭，所有 <code>session</code> 都会被清除，所以有时候需要进行永久化存储。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// router.js 路由独立页面</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 首页</span></span><br><span class="line">router.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.session.user)    <span class="comment">// userObject</span></span><br><span class="line">  <span class="comment">// 将用户对象传入渲染页面</span></span><br><span class="line">  res.render(<span class="string">'index.html'</span>, &#123;</span><br><span class="line">    user: req.session.user</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册页面处理</span></span><br><span class="line">router.post(<span class="string">'/register'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  </span><br><span class="line">  ……</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 注册成功，保存 session</span></span><br><span class="line">  req.session.user = userObject</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="blueimp-md5"><a href="#blueimp-md5" class="headerlink" title="blueimp-md5"></a>blueimp-md5</h3><p><a href="https://www.npmjs.com/package/blueimp-md5" target="_blank" rel="noopener">https://www.npmjs.com/package/blueimp-md5</a></p>
 <p>数据加密。</p>
+<p><strong>安装</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i blueimp-md5 -S</span><br></pre></td></tr></table></figure>
+<p><strong>配置及使用</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> md5 = <span class="built_in">require</span>(<span class="string">'blueimp-md5'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过post获取注册信息等……</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 一般进行两层以上加密</span></span><br><span class="line">body.password = md5(md5(body.pawword))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 然后保存账号密码到数据库</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 之后，数据库中的加密内容就是乱码了。</span></span><br><span class="line"><span class="string">"password"</span> : <span class="string">"d9b1d7db4cd6e70935368a1efb10e377"</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><h3 id="vue-axios"><a href="#vue-axios" class="headerlink" title="vue-axios"></a>vue-axios</h3>
+<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><p><code>axios</code> 是基于 <code>promise</code> 的异步请求。</p>
+<p><code>npm</code> 教程：<a href="https://www.npmjs.com/package/axios" target="_blank" rel="noopener">https://www.npmjs.com/package/axios</a></p>
+<p><strong>安装</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i axios -S</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="animate-css"><a href="#animate-css" class="headerlink" title="animate.css"></a>animate.css</h3><p><code>animate.css</code> 是一组很酷、有趣的跨浏览器动画，供您在项目中使用。</p>
+<p>官网： <a href="https://daneden.github.io/animate.css/" target="_blank" rel="noopener">https://daneden.github.io/animate.css/</a></p>
+<p>所有动画效果都可以在官网首页进行预览。</p>
+<p><img src="/2019/03/19/后端基础——npm常见包/animate.png" alt="animate.png"></p>
+<p><strong>安装</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i animate.css -S</span><br></pre></td></tr></table></figure>
+<p><strong>配置</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"node_modules/animate.css/animate.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>因为它是 <code>css</code> 类，所以使用非常简单，只需要在 <code>class</code> 中添加指定类名即可。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 添加了四个类：动画执行类、无限循环类、弹跳类、延迟类 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"animated infinite bounce delay-2s"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其他更详细内容见官网介绍。</p>
+
       
     </div>
     <footer class="article-footer">
