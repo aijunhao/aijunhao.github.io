@@ -62,6 +62,224 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python学习笔记——IO编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/Python学习笔记——IO编程/" class="article-date">
+  <time datetime="2018-08-07T06:19:49.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/07/Python学习笔记——IO编程/">Python学习笔记——IO编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#open方法">open()方法</a><ul>
+<li><a href="#读文件-调用open方法">读文件: 调用open()方法</a></li>
+<li><a href="#写文件-调用open方法设置打开模式为w调用fwrite等方法写入内容">写文件: 调用open()方法，设置打开模式为’w’，调用f.write()等方法写入内容</a></li>
+</ul>
+</li>
+<li><a href="#os模块">os模块</a></li>
+<li><a href="#pickle-模块泡菜">pickle 模块(泡菜)</a></li>
+<li><a href="#stringio-模块">StringIO 模块</a></li>
+<li><a href="#bytesio-模块">BytesIO 模块</a></li>
+</ul>
+<!-- /TOC -->
+<hr>
+<p>IO在计算机中指Input/Output，也就是输入和输出。</p>
+<p>这里讲的是对文件的Strea流m处理。</p>
+<hr>
+<h3 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h3><p>文件对象方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">文件对象方法</th>
+<th style="text-align:left">执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">f.close()</td>
+<td style="text-align:left">关闭文件</td>
+</tr>
+<tr>
+<td style="text-align:left">f.read(size = -1)</td>
+<td style="text-align:left">以文件读取size个字符，当为给定size值或给定负值的时候，读取剩余所有的字符，然后作为字符串返回</td>
+</tr>
+<tr>
+<td style="text-align:left">f.readline()</td>
+<td style="text-align:left">以写入模式打开，如果文件存在，则在末尾追加写入</td>
+</tr>
+<tr>
+<td style="text-align:left">f.write(str)</td>
+<td style="text-align:left">将字符串成str写入文件</td>
+</tr>
+<tr>
+<td style="text-align:left">f.writelines(seq)</td>
+<td style="text-align:left">向文件吸入字符串序列seq，seq应该是一个返回字符串的可迭代对象</td>
+</tr>
+<tr>
+<td style="text-align:left">f.seek(offset,from)</td>
+<td style="text-align:left">当文件找那个移动文件指针，从from(0表示其实位置，1表示当前位置，2表示文件末尾)偏移offset个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">f.tell()</td>
+<td style="text-align:left">返回当前在文件中的为位置</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="读文件-调用open-方法"><a href="#读文件-调用open-方法" class="headerlink" title="读文件: 调用open()方法"></a>读文件: 调用open()方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(file, mode=<span class="string">'r'</span>, buffering=<span class="number">-1</span>, encoding=<span class="keyword">None</span>, errors=<span class="keyword">None</span>, newline=<span class="keyword">None</span>, closefd=<span class="keyword">True</span>, opener=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># file: 文件路径</span></span><br><span class="line"><span class="comment"># mode: 打开模式</span></span><br><span class="line"><span class="comment"># encoding: 读取指定编码的文件</span></span><br><span class="line"><span class="comment"># errors: 是否忽略错误提醒</span></span><br></pre></td></tr></table></figure>
+<p>mode参数如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">打开模式</th>
+<th style="text-align:left">执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">‘r’</td>
+<td style="text-align:left">以只读方式打开文件(默认)</td>
+</tr>
+<tr>
+<td style="text-align:center">‘w’</td>
+<td style="text-align:left">以写入的方式打开文件，会覆盖已存在的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">‘x’</td>
+<td style="text-align:left">创建一个新文件并打开它进行写入</td>
+</tr>
+<tr>
+<td style="text-align:center">‘a’</td>
+<td style="text-align:left">打开写入，如果文件存在，则追加到文件的末尾</td>
+</tr>
+<tr>
+<td style="text-align:center">‘b’</td>
+<td style="text-align:left">以二进制模式打开</td>
+</tr>
+<tr>
+<td style="text-align:center">‘t’</td>
+<td style="text-align:left">以文本模式打开文件(默认)</td>
+</tr>
+<tr>
+<td style="text-align:center">‘+’</td>
+<td style="text-align:left">打开磁盘文件进行更新（读写）</td>
+</tr>
+<tr>
+<td style="text-align:center">‘U’</td>
+<td style="text-align:left">通用换行模式</td>
+</tr>
+</tbody>
+</table>
+<p>实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(<span class="string">r'D:\blog\source\_posts\Python学习笔记——IO编程\test.txt'</span>, <span class="string">'r'</span>)        <span class="comment"># 使用'r'模式打开文件</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.read()</span><br><span class="line"></span><br><span class="line"><span class="string">'#include &lt;iostream&gt;\nusing namespace std;\nint main()&#123;\n\tcout &lt;&lt; "Hello, world!" &lt;&lt; endl;\n&#125;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.read()     <span class="comment"># 此时文件指针处于文件末尾，再次读取将没有内容</span></span><br><span class="line"></span><br><span class="line"><span class="string">''</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.tell()     <span class="comment"># 当前文件指针的位置</span></span><br><span class="line"></span><br><span class="line"><span class="number">92</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.seek(<span class="number">0</span>,<span class="number">0</span>)    <span class="comment"># 设置文件指针为文件头</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(file)        <span class="comment"># 将文件内容转为列表类型</span></span><br><span class="line"></span><br><span class="line">[<span class="string">'#include &lt;iostream&gt;\n'</span>, <span class="string">'using namespace std;\n'</span>, <span class="string">'int main()&#123;\n'</span>, <span class="string">'\tcout &lt;&lt; "Hello, world!" &lt;&lt; endl;\n'</span>, <span class="string">'&#125;'</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.seek(<span class="number">0</span>,<span class="number">0</span>)      <span class="comment"># 每当遍历一次文件，文件指针就会改变</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> each_line <span class="keyword">in</span> file:      <span class="comment"># 官方高效率遍历文件的方法</span></span><br><span class="line">    print(each_line)</span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">"Hello, world!"</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.close()      <span class="comment"># 记得关闭文件</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="写文件-调用open-方法，设置打开模式为’w’，调用f-write-等方法写入内容"><a href="#写文件-调用open-方法，设置打开模式为’w’，调用f-write-等方法写入内容" class="headerlink" title="写文件: 调用open()方法，设置打开模式为’w’，调用f.write()等方法写入内容"></a>写文件: 调用open()方法，设置打开模式为’w’，调用f.write()等方法写入内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>file = open(file_name, <span class="string">'w'</span>)     <span class="comment"># 新建一个名为"file_name"的可读写文件，可以指定文件编码格式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list = [<span class="string">'123'</span>, <span class="string">'234'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str = <span class="string">'456'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.writelines(list)     <span class="comment"># 将list写入文件中</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.wirte(str)       <span class="comment"># 写入字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>file.close            <span class="comment"># 记得关闭文件，确保缓存中还未写入磁盘的数据全部写入吸盘。</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h3><p>os模块，系统文件操作模块。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getcwd()</td>
+<td style="text-align:left">获取当前文件路径</td>
+</tr>
+<tr>
+<td style="text-align:left">rename(path)</td>
+<td style="text-align:left">重命名文件</td>
+</tr>
+<tr>
+<td style="text-align:left">chdir(path)</td>
+<td style="text-align:left">改变当前工作目录</td>
+</tr>
+<tr>
+<td style="text-align:left">mkdir(path)</td>
+<td style="text-align:left">创建单层目录</td>
+</tr>
+<tr>
+<td style="text-align:left">makedirs(path)</td>
+<td style="text-align:left">创建多层目录</td>
+</tr>
+<tr>
+<td style="text-align:left">rmdir(path)</td>
+<td style="text-align:left">删除空目录</td>
+</tr>
+<tr>
+<td style="text-align:left">remove(path)</td>
+<td style="text-align:left">删除指定文件</td>
+</tr>
+<tr>
+<td style="text-align:left">system(command)</td>
+<td style="text-align:left">运行系统shell命令</td>
+</tr>
+<tr>
+<td style="text-align:left">os.curdir</td>
+<td style="text-align:left">指代当前目录</td>
+</tr>
+<tr>
+<td style="text-align:left">os.pardir</td>
+<td style="text-align:left">指代上一级目录</td>
+</tr>
+<tr>
+<td style="text-align:left">os.sep</td>
+<td style="text-align:left">输出操作系统特定的路径分隔符(win下为’\\‘，Linux下为’/‘)</td>
+</tr>
+<tr>
+<td style="text-align:left">os.linesep</td>
+<td style="text-align:left">当前平台的终止符(win下为’\r\n’，Linux下为’\n’)</td>
+</tr>
+<tr>
+<td style="text-align:left">os.name</td>
+<td style="text-align:left">指代当前使用的操作系统</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&gt;&gt;&gt; os.getcwd()       <span class="comment"># 当前目录</span></span><br><span class="line"><span class="string">'D:\\Python'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.chdir(<span class="string">r'F:\python'</span>)    <span class="comment"># 修改当前目录</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.mkdir(<span class="string">'test'</span>)          <span class="comment"># 在当前目录下新建文件</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.makedirs(<span class="string">r'F:\python\test2\test2'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.rename(<span class="string">'test'</span>, <span class="string">'t'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.listdir()</span><br><span class="line">[<span class="string">'.idea'</span>, <span class="string">'t'</span>, <span class="string">'CalCircle.py'</span>, <span class="string">'curver.ico'</span>, <span class="string">'FindMaxAndMin.py'</span>, <span class="string">'helloName.py'</span>, <span class="string">'KochDrawV1.py'</span>, <span class="string">'PythonDraw.py'</span>, <span class="string">'Python打飞机小游戏'</span>, <span class="string">'StarDraw.py'</span>, <span class="string">'TangentCirclesDraw.py'</span>, <span class="string">'TempConvert.py'</span>, <span class="string">'test'</span>, <span class="string">'Test.py'</span>, <span class="string">'TestIDLE.py'</span>, <span class="string">'TextProBarV1.py'</span>, <span class="string">'TimeDraw.py'</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.system(<span class="string">'cmd'</span>)      <span class="comment"># 运行命令行</span></span><br><span class="line"></span><br><span class="line"><span class="number">-1073741510</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.system(<span class="string">'calc'</span>)     <span class="comment"># 打开计算器功能</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="pickle-模块-泡菜"><a href="#pickle-模块-泡菜" class="headerlink" title="pickle 模块(泡菜)"></a>pickle 模块(泡菜)</h3><p>Python数据永久储存，将对象以文件的形式存放在磁盘上。该文件只能在python中使用。</p>
+<p>pickle序列化后的数据，可读性差，人一般无法识别。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list = [<span class="number">123</span>, <span class="number">3.14</span>, <span class="string">'test'</span>, [<span class="string">'python'</span>, <span class="string">'list'</span>]]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle_file = open(<span class="string">'my_list.pkl'</span>, <span class="string">'wb'</span>)     <span class="comment"># 新建一个特殊文件，二进制可读写</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle.dump(my_list, pickle_file)     <span class="comment"># 将对象保存到文件pickle_file中</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle_file.close()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle_file = open(<span class="string">'my_list.pkl'</span>, <span class="string">'rb'</span>)       <span class="comment"># 用二进制只读方式打开</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list2 = pickle.load(pickle_file)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(my_list2)</span><br><span class="line"></span><br><span class="line">[<span class="number">123</span>, <span class="number">3.14</span>, <span class="string">'test'</span>, [<span class="string">'python'</span>, <span class="string">'list'</span>]]</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="StringIO-模块"><a href="#StringIO-模块" class="headerlink" title="StringIO 模块"></a>StringIO 模块</h3><p>StringIO顾名思义就是在内存中以IO流方式读写str。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = StringIO()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'hello'</span>)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">' '</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'world!'</span>)</span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.getvalue()</span><br><span class="line"><span class="string">'hello world!'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = StringIO(<span class="string">'Hello!\nHi!\nGoodbye!'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"><span class="meta">... </span>    s = f.readline()</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> s == <span class="string">''</span>:</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">break</span></span><br><span class="line"><span class="meta">... </span>    print(s.strip())</span><br><span class="line">...</span><br><span class="line">Hello!</span><br><span class="line">Hi!</span><br><span class="line">Goodbye!</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="BytesIO-模块"><a href="#BytesIO-模块" class="headerlink" title="BytesIO 模块"></a>BytesIO 模块</h3><p>BytesIO实现了在内存中读写bytes，实现二进制数据操作。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = BytesIO()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(f.getvalue())</span><br><span class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = BytesIO(<span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.read()</span><br><span class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cju2odvev000mowut73802x2j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python学习笔记——图形绘制" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/29/Python学习笔记——图形绘制/" class="article-date">
@@ -271,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cju1cqmlj000gw4utjy2nll8k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cju2odvfe000sowut880t3pkd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -367,7 +585,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cju1cqmlr000ow4utt2xrkn3g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cju2odvfm000vowut0bvy5p5p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -478,7 +696,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cju1cqmlh000fw4ut1e11uiei" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cju2odvf6000oowutxchbrjj7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -574,7 +792,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cju1cqmlv000qw4utjpaq925q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cju2odvfw0015owutgu2grwa4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1049,7 +1267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cju1cqn0i004tw4utua2c7lob" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cju2odwd0004mowutamc8vuoh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1192,7 +1410,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cju1cqmm0000sw4utj2iicqm1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cju2odvfr0010owutw7sqhyfj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1314,7 +1532,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="cju1cqml40008w4utwwnlcskn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="cju2odvee000howuttv3m72gr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
@@ -1363,7 +1581,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
     </div>
   </div>
 
@@ -1376,7 +1594,11 @@
       <ul>
         
           <li>
-            <a href="/2019/03/23/框架——Vuejs/">框架——Vue.js</a>
+            <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-模块化开发</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/23/框架-Vuejs/">框架-Vue.js基础</a>
           </li>
         
           <li>
@@ -1389,10 +1611,6 @@
         
           <li>
             <a href="/2019/03/18/前端-JavaScript基础-EcamScript6/">前端-JavaScript基础-EcamScript6</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/15/数据库——MySQL/">数据库——MySQL</a>
           </li>
         
       </ul>
