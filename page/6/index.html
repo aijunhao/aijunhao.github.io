@@ -62,6 +62,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python学习笔记——常用模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/Python学习笔记——常用模块/" class="article-date">
+  <time datetime="2018-08-07T08:25:42.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#python模块篇">Python模块篇</a><ul>
+<li><a href="#模块导入">模块导入</a><ul>
+<li><a href="#import语句">import语句</a></li>
+</ul>
+</li>
+<li><a href="#from--import--语句">from … import * 语句</a></li>
+<li><a href="#dir函数">dir()函数</a></li>
+<li><a href="#random模块">random模块</a></li>
+<li><a href="#time模块">time模块</a></li>
+<li><a href="#jieba模块">jieba模块</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<hr>
+<h2 id="Python模块篇"><a href="#Python模块篇" class="headerlink" title="Python模块篇"></a>Python模块篇</h2><hr>
+<h3 id="模块导入"><a href="#模块导入" class="headerlink" title="模块导入"></a>模块导入</h3><h4 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h4><p>在文件顶部位置导入模块，然后使用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">import</span> module_name          <span class="comment"># 导入一个模块，同一个模块只会被导入一次</span></span><br><span class="line"></span><br><span class="line">module_name.function()          <span class="comment"># 调用模块中的指定方法</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="from-…-import-语句"><a href="#from-…-import-语句" class="headerlink" title="from … import * 语句"></a>from … import * 语句</h3><p>不适用于大文件，容易重名冲突。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> module_name <span class="keyword">import</span> *    <span class="comment"># 导入名为module_name的模块</span></span><br><span class="line"></span><br><span class="line">function()       <span class="comment"># 直接使用模块中的方法即可</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir()函数"></a>dir()函数</h3><p>返回模块中所有方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(module_name)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h3><p>random模块主要用于生成随机数，由梅森旋转算法生成的伪随机数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">seed(N)</td>
+<td style="text-align:left">初始化给定的随机数种子，默认为当前系统时间</td>
+</tr>
+<tr>
+<td style="text-align:left">random()</td>
+<td style="text-align:left">生成一个[0,1)之间的随机小数，与随机数种子有关</td>
+</tr>
+<tr>
+<td style="text-align:left">randint(a,b)</td>
+<td style="text-align:left">生成一个[a,b]之间的整数</td>
+</tr>
+<tr>
+<td style="text-align:left">randrange(m,n[,k])</td>
+<td style="text-align:left">生成一个[m,n)之间以k为步长的随机整数</td>
+</tr>
+<tr>
+<td style="text-align:left">getrandbits(k)</td>
+<td style="text-align:left">生成一个k比特长的随机整数</td>
+</tr>
+<tr>
+<td style="text-align:left">uniform(a,b)</td>
+<td style="text-align:left">生成一个[a,b]之间的随机小数</td>
+</tr>
+<tr>
+<td style="text-align:left">choice(list)</td>
+<td style="text-align:left">从序列中随机选择一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">shuffle(list)</td>
+<td style="text-align:left">将序列seq中元素随机排列,返回打乱后的序列</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="time模块"><a href="#time模块" class="headerlink" title="time模块"></a>time模块</h3><hr>
+<h3 id="jieba模块"><a href="#jieba模块" class="headerlink" title="jieba模块"></a>jieba模块</h3><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cju2oh7n4000ob8utgz68ffze" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python学习笔记——IO编程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/07/Python学习笔记——IO编程/" class="article-date">
@@ -268,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cju2odvev000mowut73802x2j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cju2oh7mr000cb8utt3pbpd2c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -489,7 +596,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cju2odvfe000sowut880t3pkd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cju2oh7mx000gb8ut9dvmvopc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -585,7 +692,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cju2odvfm000vowut0bvy5p5p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cju2oh7n3000nb8utxnuuo8iw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -696,7 +803,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cju2odvf6000oowutxchbrjj7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cju2oh7mt000fb8ut7rlemi5g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -792,7 +899,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cju2odvfw0015owutgu2grwa4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cju2oh7n7000qb8utfwjvbt3u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1267,7 +1374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cju2odwd0004mowutamc8vuoh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cju2oh7ye0054b8uthq1074bt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1410,7 +1517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cju2odvfr0010owutw7sqhyfj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cju2oh7n9000sb8utrj5kjs2g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1532,7 +1639,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="cju2odvee000howuttv3m72gr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="cju2oh7mb0008b8utkubtmrbo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
@@ -1572,7 +1679,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.75px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.25px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.5px;">Node</a> <a href="/tags/Python/" style="font-size: 16.25px;">Python</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/blog/" style="font-size: 11.25px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.5px;">前端</a> <a href="/tags/后端/" style="font-size: 13.75px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.25px;">数据库</a> <a href="/tags/框架/" style="font-size: 12.5px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+      <a href="/tags/Android/" style="font-size: 18.89px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.11px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.22px;">Node</a> <a href="/tags/Python/" style="font-size: 15.56px;">Python</a> <a href="/tags/Vue/" style="font-size: 12.22px;">Vue</a> <a href="/tags/blog/" style="font-size: 11.11px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.78px;">前端</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.11px;">数据库</a> <a href="/tags/框架/" style="font-size: 14.44px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -1598,6 +1705,10 @@
           </li>
         
           <li>
+            <a href="/2019/03/23/框架——Vuejs/">框架——Vue.js基础</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/23/框架-Vuejs/">框架-Vue.js基础</a>
           </li>
         
@@ -1607,10 +1718,6 @@
         
           <li>
             <a href="/2019/03/19/后端基础——npm常见包/">后端基础——npm常见包</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/18/前端-JavaScript基础-EcamScript6/">前端-JavaScript基础-EcamScript6</a>
           </li>
         
       </ul>
