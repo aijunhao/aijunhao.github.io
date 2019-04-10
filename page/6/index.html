@@ -62,6 +62,330 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python学习笔记——异常处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/Python学习笔记——异常处理/" class="article-date">
+  <time datetime="2018-08-07T14:22:19.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#python标准异常总结">Python标准异常总结</a></li>
+<li><a href="#异常处理">异常处理</a></li>
+<li><a href="#触发异常">触发异常</a></li>
+<li><a href="#用户自定义异常类型">用户自定义异常类型</a></li>
+</ul>
+<!-- /TOC -->
+<h3 id="Python标准异常总结"><a href="#Python标准异常总结" class="headerlink" title="Python标准异常总结"></a>Python标准异常总结</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">异常</th>
+<th style="text-align:left">异常说明</th>
+<th style="text-align:center">出现程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AssertionError</td>
+<td style="text-align:left">断言语句（assert）失败</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">AttributeError</td>
+<td style="text-align:left">尝试访问未知的对象属性</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">EOFError</td>
+<td style="text-align:left">用户输入文件末尾标志EOF（Ctrl+d）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">FloatingPointError</td>
+<td style="text-align:left">浮点计算错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">GeneratorExit</td>
+<td style="text-align:left">generator.close()方法被调用的时候</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ImportError</td>
+<td style="text-align:left">导入模块失败的时候</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">IndexError</td>
+<td style="text-align:left">索引超出序列的范围</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyError</td>
+<td style="text-align:left">字典中查找一个不存在的关键字</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyboardInterrupt</td>
+<td style="text-align:left">用户输入中断键（Ctrl+c）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">MemoryError</td>
+<td style="text-align:left">内存溢出（可通过删除对象释放内存）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">NameError</td>
+<td style="text-align:left">尝试访问一个不存在的变量</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">NotImplementedError</td>
+<td style="text-align:left">尚未实现的方法</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">OSError</td>
+<td style="text-align:left">操作系统产生的异常（例如打开一个不存在的文件）</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">OverflowError</td>
+<td style="text-align:left">数值运算超出最大限制</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ReferenceError</td>
+<td style="text-align:left">弱引用（weak reference）试图访问一个已经被垃圾回收机制回收了的对象</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">RuntimeError</td>
+<td style="text-align:left">一般的运行时错误</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">StopIteration</td>
+<td style="text-align:left">迭代器没有更多的值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SyntaxError</td>
+<td style="text-align:left">Python的语法错误</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">IndentationError</td>
+<td style="text-align:left">缩进错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">TabError</td>
+<td style="text-align:left">Tab和空格混合使用</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SystemError</td>
+<td style="text-align:left">Python编译器系统错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SystemExit</td>
+<td style="text-align:left">Python编译器进程被关闭</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">TypeError</td>
+<td style="text-align:left">不同类型间的无效操作</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">UnboundLocalError</td>
+<td style="text-align:left">访问一个未初始化的本地变量（NameError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeError</td>
+<td style="text-align:left">Unicode相关的错误（ValueError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeEncodeError</td>
+<td style="text-align:left">Unicode编码时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeDecodeError</td>
+<td style="text-align:left">Unicode解码时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeTranslateError</td>
+<td style="text-align:left">Unicode转换时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ValueError</td>
+<td style="text-align:left">传入无效的参数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ZeroDivisionError</td>
+<td style="text-align:left">除数为零</td>
+<td style="text-align:center">常见</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>捕捉异常可以使用try/except语句。</p>
+<p>try/except语句用来检测try语句块中的错误，从而让except语句捕获异常信息并处理。</p>
+<p>如果你不想在异常发生时结束你的程序，只需在try里捕获它。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  &lt;语句块&gt;       <span class="comment"># 运行代码</span></span><br><span class="line"><span class="keyword">except</span> &lt;异常名&gt; [<span class="keyword">as</span> reason]:</span><br><span class="line">  &lt;语句块&gt;       <span class="comment"># 出现错误时执行的语句</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  &lt;语句块&gt;        <span class="comment"># 无论都会被执行的代码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = open(<span class="string">"一个错误的文件.txt"</span>)</span><br><span class="line">    print(f.read())</span><br><span class="line">    f.close()</span><br><span class="line"><span class="keyword">except</span> OSError <span class="keyword">as</span> reason:</span><br><span class="line">    print(<span class="string">'文件出错！错误原因是：'</span> + str(reason))    <span class="comment"># 打印异常名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">文件出错！错误原因是：[Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">'一个错误的文件.txt'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="触发异常"><a href="#触发异常" class="headerlink" title="触发异常"></a>触发异常</h3><p>我们可以使用raise语句自己触发异常。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">raise</span> [Exception [, args [, traceback]]]</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="用户自定义异常类型"><a href="#用户自定义异常类型" class="headerlink" title="用户自定义异常类型"></a>用户自定义异常类型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义异常类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Networkerror</span><span class="params">(RuntimeError)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, arg)</span>:</span></span><br><span class="line">        self.args = arg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 触发该异常，如下所示：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> Networkerror(<span class="string">"Bad hostname"</span>)</span><br><span class="line"><span class="keyword">except</span> Networkerror,e:</span><br><span class="line">    <span class="keyword">print</span> e.args</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="cjub4ubdk000iy8utnmlca9k6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python学习笔记——常用模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/Python学习笔记——常用模块/" class="article-date">
+  <time datetime="2018-08-07T08:25:42.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/07/Python学习笔记——常用模块/">Python学习笔记——常用模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#python模块篇">Python模块篇</a><ul>
+<li><a href="#模块导入">模块导入</a><ul>
+<li><a href="#import语句">import语句</a></li>
+</ul>
+</li>
+<li><a href="#from--import--语句">from … import * 语句</a></li>
+<li><a href="#dir函数">dir()函数</a></li>
+<li><a href="#random模块">random模块</a></li>
+<li><a href="#time模块">time模块</a></li>
+<li><a href="#jieba模块">jieba模块</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<hr>
+<h2 id="Python模块篇"><a href="#Python模块篇" class="headerlink" title="Python模块篇"></a>Python模块篇</h2><hr>
+<h3 id="模块导入"><a href="#模块导入" class="headerlink" title="模块导入"></a>模块导入</h3><h4 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h4><p>在文件顶部位置导入模块，然后使用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">import</span> module_name          <span class="comment"># 导入一个模块，同一个模块只会被导入一次</span></span><br><span class="line"></span><br><span class="line">module_name.function()          <span class="comment"># 调用模块中的指定方法</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="from-…-import-语句"><a href="#from-…-import-语句" class="headerlink" title="from … import * 语句"></a>from … import * 语句</h3><p>不适用于大文件，容易重名冲突。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> module_name <span class="keyword">import</span> *    <span class="comment"># 导入名为module_name的模块</span></span><br><span class="line"></span><br><span class="line">function()       <span class="comment"># 直接使用模块中的方法即可</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir()函数"></a>dir()函数</h3><p>返回模块中所有方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(module_name)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h3><p>random模块主要用于生成随机数，由梅森旋转算法生成的伪随机数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">seed(N)</td>
+<td style="text-align:left">初始化给定的随机数种子，默认为当前系统时间</td>
+</tr>
+<tr>
+<td style="text-align:left">random()</td>
+<td style="text-align:left">生成一个[0,1)之间的随机小数，与随机数种子有关</td>
+</tr>
+<tr>
+<td style="text-align:left">randint(a,b)</td>
+<td style="text-align:left">生成一个[a,b]之间的整数</td>
+</tr>
+<tr>
+<td style="text-align:left">randrange(m,n[,k])</td>
+<td style="text-align:left">生成一个[m,n)之间以k为步长的随机整数</td>
+</tr>
+<tr>
+<td style="text-align:left">getrandbits(k)</td>
+<td style="text-align:left">生成一个k比特长的随机整数</td>
+</tr>
+<tr>
+<td style="text-align:left">uniform(a,b)</td>
+<td style="text-align:left">生成一个[a,b]之间的随机小数</td>
+</tr>
+<tr>
+<td style="text-align:left">choice(list)</td>
+<td style="text-align:left">从序列中随机选择一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">shuffle(list)</td>
+<td style="text-align:left">将序列seq中元素随机排列,返回打乱后的序列</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="time模块"><a href="#time模块" class="headerlink" title="time模块"></a>time模块</h3><hr>
+<h3 id="jieba模块"><a href="#jieba模块" class="headerlink" title="jieba模块"></a>jieba模块</h3><hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——常用模块/" data-id="cjub4ubd9000fy8ut568ihpx6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python学习笔记——IO编程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/07/Python学习笔记——IO编程/" class="article-date">
@@ -268,7 +592,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cju2org1c000qxcutluhc8u8f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——IO编程/" data-id="cjub4ubd1000cy8utyi4nx16h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -489,7 +813,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cju2org1f000rxcutyjbxe8oy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/Python学习笔记——图形绘制/" data-id="cjub4ubdq000ky8uth67kbqsk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -585,7 +909,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cju2org1l000wxcutcyoyyhvd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/28/Python学习笔记——面向对象编程/" data-id="cjub4ube5000ny8utafabi6zx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -696,7 +1020,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cju2org1h000sxcutfx31bx0b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/Python学习笔记——函数式编程/" data-id="cjub4ubdd000gy8uthbf230lc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -792,7 +1116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cju2org1r0015xcutinmg5h7b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/Python学习笔记——高级特性/" data-id="cjub4ubf0000vy8ut34c4etxl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1267,7 +1591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cju2orgxe004nxcut1bhni9xg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cjub4uc6s005hy8utpjllyy12" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1410,7 +1734,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cju2org1o0010xcuto10m5951" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="cjub4ubek000qy8utayismaa4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -1532,7 +1856,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="cju2org12000lxcut53o6bgku" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="cjub4ubbv0007y8utotfokluz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
@@ -1562,7 +1886,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECharts/">ECharts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
     </div>
   </div>
 
@@ -1572,7 +1896,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.57px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.43px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 15.71px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.86px;">Node</a> <a href="/tags/Python/" style="font-size: 15.71px;">Python</a> <a href="/tags/Vue/" style="font-size: 11.43px;">Vue</a> <a href="/tags/blog/" style="font-size: 11.43px;">blog</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.14px;">前端</a> <a href="/tags/后端/" style="font-size: 14.29px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a> <a href="/tags/框架/" style="font-size: 14.29px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+      <a href="/tags/Android/" style="font-size: 18.89px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.11px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.22px;">Node</a> <a href="/tags/Python/" style="font-size: 15.56px;">Python</a> <a href="/tags/Vue/" style="font-size: 13.33px;">Vue</a> <a href="/tags/blog/" style="font-size: 11.11px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.78px;">前端</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.11px;">数据库</a> <a href="/tags/框架/" style="font-size: 14.44px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -1594,7 +1918,15 @@
       <ul>
         
           <li>
-            <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-模块化开发</a>
+            <a href="/2019/04/10/前端-UI/">前端-UI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/10/框架-Vue-cli3/">框架-Vue-cli 3.x脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
           </li>
         
           <li>
@@ -1603,14 +1935,6 @@
         
           <li>
             <a href="/2019/03/20/模板引擎——art-template/">模板引擎——art-template</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/19/后端基础——npm常见包/">后端基础——npm常见包</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/18/前端-JavaScript基础-EcamScript6/">前端-JavaScript基础-EcamScript6</a>
           </li>
         
       </ul>
