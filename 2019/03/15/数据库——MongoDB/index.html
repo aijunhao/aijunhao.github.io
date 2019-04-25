@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/第一次执行.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/第二次执行.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/数据库——MongoDB/连接数据库.jpg">
-<meta property="og:updated_time" content="2019-04-18T15:52:30.321Z">
+<meta property="og:updated_time" content="2019-04-25T09:09:18.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库——MongoDB">
 <meta name="twitter:description" content="MongoDB 介绍 关系型数据库和非关系型数据库 关系型数据库特点 非关系型数据库     MongoDB 下载及安装 下载 安装 配置环境变量 新建数据目录 修改默认数据目录   连接数据库   MongoDB 可视化工具 MongoDB Compass MongoDB 查 查看所有数据库 查看当前所在的数据库 查询文档 查询所有 单文档查询 格式化显示 条件查询语句 AND 条件 OR">
@@ -456,12 +456,12 @@
 <p><code>_id</code> 和 <code>id</code> 是不同的东西。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; "_id" : ObjectId("5cb5ccfc4812c41cecf62554"), "gender" : 1, "name" : "123", "age" : 3, "hobbies" : "1" &#125;</span><br><span class="line"></span><br><span class="line">&#123; "_id" : ObjectId("5cb5ccfc4812c41cecf62555")，</span><br><span class="line">"id" : 1, "name" : "234" &#125;</span><br></pre></td></tr></table></figure>
 <p><code>_id</code> 是计算机生成的唯一标识符。</p>
-<p>如果要使用 <code>findById()</code> 之类的根据 <code>Id</code> 来查询的的方法，这个 <code>Id</code> 指的是 <code>_id</code> 而不是 <code>id</code>。</p>
+<p>如果要使用 <code>findById()</code> 之类的根据 <code>Id</code> 来查询的的方法，这个 <code>Id</code> 指的是 <code>_id</code> 而不是 <code>id</code>，<code>_id</code> 是唯一的，<code>id</code> 可以不唯一。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/数据库——MongoDB/" data-id="cjumtrdg4003ghsutgrua7tk8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/数据库——MongoDB/" data-id="cjuwgm1sy003dsguto8hmucp3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -535,7 +535,11 @@
       <ul>
         
           <li>
-            <a href="/2019/04/11/框架-Vue-实战项目/">Vue+Node+Mongodb全栈开发</a>
+            <a href="/2019/04/25/框架-Vuex/">框架-Vuex</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/11/JS全栈开发/">Vue+Node+Mongodb全栈开发</a>
           </li>
         
           <li>
@@ -548,10 +552,6 @@
         
           <li>
             <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/23/框架-Vuejs/">框架-Vue.js基础</a>
           </li>
         
       </ul>

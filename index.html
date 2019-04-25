@@ -62,9 +62,74 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-框架-Vue-实战项目" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-框架-Vuex" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/04/11/框架-Vue-实战项目/" class="article-date">
+    <a href="/2019/04/25/框架-Vuex/" class="article-date">
+  <time datetime="2019-04-25T09:07:40.000Z" itemprop="datePublished">2019-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/框架-Vuex/">框架-Vuex</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<!-- /TOC -->
+<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p>Vuex 是一个专为 Vue.js 应用程序开发的<strong>状态管理模式</strong> 。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
+<h2 id="状态管理模式"><a href="#状态管理模式" class="headerlink" title="状态管理模式"></a>状态管理模式</h2><p>如下为一个基本的 <code>Vue</code> 实例。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="comment">// state</span></span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// view</span></span><br><span class="line">  template: <span class="string">"&lt;div&gt;&#123;&#123; count &#125;&#125;&lt;/div&gt;"</span>,</span><br><span class="line">  <span class="comment">// actions</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">    increment () &#123;</span><br><span class="line">      <span class="keyword">this</span>.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这个状态自管理应用包含以下几个部分：</p>
+<ul>
+<li><strong>state</strong>，驱动应用的数据源；</li>
+<li><strong>view</strong>，以声明方式将 <strong>state</strong> 映射到视图；</li>
+<li><strong>actions</strong>，响应在 <strong>view</strong> 上的用户输入导致的状态变化。</li>
+</ul>
+<p>以下是一个官网提供的表示<strong>单向数据流</strong>理念的简单示意：</p>
+<p><img src="/2019/04/25/框架-Vuex/Vue状态管理模式.png" alt="Vue状态管理模式"></p>
+<p>但是，当我们的应用遇到<strong>多个组件共享状态</strong>时，单向数据流的简洁性很容易被破坏：</p>
+<ul>
+<li>多个视图依赖于同一状态。</li>
+<li>来自不同视图的行为需要变更同一状态。</li>
+</ul>
+<p>因此，将组件的共享状态抽取出来，以一个全局单例模式管理，在这种模式下，任何组件都能获取状态或者触发行为！</p>
+<p>这种管理模式就是 <code>Vuex</code> 状态管理模式。</p>
+<p><img src="/2019/04/25/框架-Vuex/Vuex状态管理模式.png" alt="Vue状态管理模式"></p>
+<p>这种管理模式不再是 <code>Actions</code> 直接更新 <code>State</code> ，而是通过中间增加的 <code>Mutations</code> 来操作。</p>
+<h2 id="什么情况下应该使用-Vuex"><a href="#什么情况下应该使用-Vuex" class="headerlink" title="什么情况下应该使用 Vuex"></a>什么情况下应该使用 Vuex</h2><p><code>Vuex</code> 可以帮助我们管理共享状态，并附带了更多的概念和框架。这需要对短期和长期效益进行权衡。</p>
+<p>如果不打算开发大型单页应用，使用 <code>Vuex</code> 可能是繁琐冗余的。如果应用够简单，最好不要使用 <code>Vuex</code> 。一个简单的 <code>store</code> 模式就足够所需了。但是，如果需要构建一个中大型单页应用，很可能会考虑如何更好地在组件外部管理状态，<code>Vuex</code> 将会成为自然而然的选择。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br></pre></td></tr></table></figure>
+<p>配置，我们一般将 <code>Vuex</code> 单独封装，然后导入到 <code>main.js</code> 入口文件中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">"vuex"</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;&#125;,</span><br><span class="line">  mutations: &#123;&#125;,</span><br><span class="line">  actions: &#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/25/框架-Vuex/" data-id="cjuwgm1ap001asgutftyhvqz2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS全栈开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/11/JS全栈开发/" class="article-date">
   <time datetime="2019-04-11T09:50:03.000Z" itemprop="datePublished">2019-04-11</time>
 </a>
     
@@ -76,7 +141,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/11/框架-Vue-实战项目/">Vue+Node+Mongodb全栈开发</a>
+      <a class="article-title" href="/2019/04/11/JS全栈开发/">Vue+Node+Mongodb全栈开发</a>
     </h1>
   
 
@@ -84,48 +149,160 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>此文介绍我全栈开发项目的一些心得。全栈，前端、后端、数据库实现分离。</p>
-<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>使用到的高级内容：</p>
+        <!-- TOC -->
 <ul>
-<li><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">Vue.js</a> 是一套用于构建用户界面的渐进式框架</li>
-<li><a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener">vue-cli 3.x</a> 是 <code>Vue.js</code> 开发的标准工具（脚手架）</li>
-<li><a href="http://www.bootcss.com/" target="_blank" rel="noopener">Bootstrap 3/4</a> 前端开发框架（代码块）</li>
-<li><a href="http://mint-ui.github.io/" target="_blank" rel="noopener">Mint-UI</a> 基于 <code>Vue.js</code> 的移动端组件库</li>
-<li><a href="http://dev.dcloud.net.cn/mui/" target="_blank" rel="noopener">MUI</a> 前端开发框架（代码块）</li>
-<li><a href="https://router.vuejs.org/zh/" target="_blank" rel="noopener">Vue Router</a> 是 <code>Vue.js</code> 前端路由管理器</li>
-<li><a href="https://echarts.baidu.com/" target="_blank" rel="noopener">ECharts</a> 使用 <code>JavaScript</code> 实现的开源可视化库</li>
-<li><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">Iconfont</a> 阿里巴巴矢量图标库</li>
-<li><a href="https://www.npmjs.com/package/axios" target="_blank" rel="noopener">Axios</a> 一个基于 promise 的 HTTP 库</li>
-<li><a href="https://www.webpackjs.com/" target="_blank" rel="noopener">Webpack</a> 是前端资源模块化管理和打包工具</li>
+<li><a href="#介绍">介绍</a><ul>
+<li><a href="#前端">前端</a></li>
+<li><a href="#后端">后端</a></li>
+<li><a href="#数据库">数据库</a></li>
 </ul>
+</li>
+<li><a href="#基本装及配置">基本装及配置</a><ul>
+<li><a href="#nodejs-安装">Node.js 安装</a></li>
+<li><a href="#npm-包管理器-安装">NPM 包管理器 安装</a></li>
+<li><a href="#vuejs-安装">Vue.js 安装</a></li>
+<li><a href="#vue-cli-安装">Vue-cli 安装</a></li>
+<li><a href="#git-版本管理工具">Git 版本管理工具</a></li>
+</ul>
+</li>
+<li><a href="#基础框架搭建">基础框架搭建</a><ul>
+<li><a href="#vue-cli3x-构建前端架构">Vue-cli3.x 构建前端架构</a></li>
+<li><a href="#node--express--mongdb-构建后端架构">Node + Express + MongDb 构建后端架构</a><ul>
+<li><a href="#indexjs-入口文件">index.js 入口文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>此文介绍我全栈开发项目的一些心得。全栈，前端、后端、数据库实现分离。</p>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.npmjs.com/package/axios" target="_blank" rel="noopener">Axios</a></td>
+<td>一个基于 promise 的 HTTP 库</td>
+<td><code>Vue 2.x</code> 之后推荐使用，取代 <code>vue-resoure</code></td>
+</tr>
+<tr>
+<td><a href="http://www.bootcss.com/" target="_blank" rel="noopener">Bootstrap 3/4</a></td>
+<td>前端开发框架</td>
+<td>代码块</td>
+</tr>
+<tr>
+<td><a href="https://echarts.baidu.com/" target="_blank" rel="noopener">ECharts</a></td>
+<td>使用 <code>JavaScript</code> 实现的开源可视化库</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://element.eleme.cn/#/zh-CN" target="_blank" rel="noopener">Element</a></td>
+<td>基于 <code>Vue 2.0</code> 的桌面端组件库</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">Vue.js</a></td>
+<td>是一套用于构建用户界面的渐进式框架</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">Iconfont</a></td>
+<td>阿里巴巴矢量图标库</td>
+<td>是图片集</td>
+</tr>
+<tr>
+<td><a href="http://mint-ui.github.io/" target="_blank" rel="noopener">Mint-UI</a></td>
+<td>基于 <code>Vue.js</code> 的移动端组件库</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://dev.dcloud.net.cn/mui/" target="_blank" rel="noopener">MUI</a></td>
+<td>前端开发框架</td>
+<td>代码块，不支持 npm 下载，不支持 <code>vue-cli 3.x</code></td>
+</tr>
+<tr>
+<td><a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener">Vue-cli 3.x</a></td>
+<td>是 <code>Vue.js</code> 开发的标准工具</td>
+<td>俗称脚手架工具</td>
+</tr>
+<tr>
+<td><a href="https://router.vuejs.org/zh/" target="_blank" rel="noopener">Vue Router</a></td>
+<td>是 <code>Vue.js</code> 前端路由管理器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.webpackjs.com/" target="_blank" rel="noopener">Webpack</a></td>
+<td>是前端资源模块化管理和打包工具</td>
+</tr>
+</tbody>
+</table>
 <h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>使用到的内容：</p>
-<ul>
-<li><p><a href="http://nodejs.cn/" target="_blank" rel="noopener">Node.js</a> 是一个基于 <code>Chrome V8</code> 引擎的 <code>JavaScript</code> 运行环境</p>
-</li>
-<li><p><a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">NPM</a> 是 <code>Node.js</code> 世界的包管理器。</p>
-</li>
-<li><a href="http://www.expressjs.com.cn/" target="_blank" rel="noopener">Express</a> 基于 <code>Node.js</code>的 <code>Web</code> 开发框架</li>
-<li><a href="http://mongoosejs.net/" target="_blank" rel="noopener">Mongoose</a> 用于 <code>Node.js</code> 的优雅 <code>MongoDB</code> 对象建模 </li>
-</ul>
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
-<li><a href="http://www.mongodb.org.cn/" target="_blank" rel="noopener">MongoDB</a> 基于分布式文件存储的数据库</li>
-</ul>
-<h2 id="开发工具安装及配置"><a href="#开发工具安装及配置" class="headerlink" title="开发工具安装及配置"></a>开发工具安装及配置</h2><h3 id="Node-js-安装"><a href="#Node-js-安装" class="headerlink" title="Node.js 安装"></a>Node.js 安装</h3><p>官网下载安装包，默认安装即可，在Windows上安装时务必选择全部组件，包括勾选 <code>Add to Path</code> ，会自动添加到 <code>path</code> ，无需配置。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 验证</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> node -v</span></span><br><span class="line">v10.15.2</span><br></pre></td></tr></table></figure>
-<h3 id="NPM-包管理器-安装"><a href="#NPM-包管理器-安装" class="headerlink" title="NPM 包管理器 安装"></a>NPM 包管理器 安装</h3><p>无需额外安装，<code>Node.js</code> 有内置安装。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.expressjs.com.cn/" target="_blank" rel="noopener">Express</a></td>
+<td>基于 <code>Node.js</code>的 <code>Web</code> 开发框架</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://nodejs.cn/" target="_blank" rel="noopener">Node.js</a></td>
+<td>是一个基于 <code>Chrome V8</code> 引擎的 <code>JavaScript</code> 运行环境</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">NPM</a></td>
+<td>是 <code>Node.js</code> 世界的包管理器。</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://mongoosejs.net/" target="_blank" rel="noopener">Mongoose</a></td>
+<td>用于 <code>Node.js</code> 的优雅 <code>MongoDB</code> 对象建模</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.mongodb.org.cn/" target="_blank" rel="noopener">MongoDB</a></td>
+<td>基于分布式文件存储的数据库</td>
+</tr>
+</tbody>
+</table>
+<h2 id="基本装及配置"><a href="#基本装及配置" class="headerlink" title="基本装及配置"></a>基本装及配置</h2><h3 id="Node-js-安装"><a href="#Node-js-安装" class="headerlink" title="Node.js 安装"></a>Node.js 安装</h3><p>官网下载安装包，默认安装即可，在 Windows 上安装时务必选择全部组件，包括勾选 <code>Add to Path</code> ，会自动添加到 <code>path</code> ，无需配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 验证</span><br><span class="line"><span class="meta">&gt;</span> node -v</span><br><span class="line">v10.15.2</span><br></pre></td></tr></table></figure>
+<h3 id="NPM-包管理器-安装"><a href="#NPM-包管理器-安装" class="headerlink" title="NPM 包管理器 安装"></a>NPM 包管理器 安装</h3><p>无需额外安装，<code>Node.js</code>  有内置安装。</p>
 <h3 id="Vue-js-安装"><a href="#Vue-js-安装" class="headerlink" title="Vue.js 安装"></a>Vue.js 安装</h3><p>正式项目中需要全局安装。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 全局安装最新 3.x 版本</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm i -g vue</span></span><br></pre></td></tr></table></figure>
-<h3 id="Vue-cli-安装"><a href="#Vue-cli-安装" class="headerlink" title="Vue-cli 安装"></a>Vue-cli 安装</h3><p>使用当前最新的 <code>Vue-cli</code> 3.x 版本的脚手架工具。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 全局安装 Vue-cli</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm i -g @vue/cli</span></span><br></pre></td></tr></table></figure>
-<h3 id="git-版本管理工具"><a href="#git-版本管理工具" class="headerlink" title="git 版本管理工具"></a>git 版本管理工具</h3><h2 id="基础框架搭建"><a href="#基础框架搭建" class="headerlink" title="基础框架搭建"></a>基础框架搭建</h2><h3 id="后端-1"><a href="#后端-1" class="headerlink" title="后端"></a>后端</h3><p>后端起到的作用是提供 api 接口数据、数据库操作。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 全局安装</span><br><span class="line"><span class="meta">&gt;</span> npm i -g vue</span><br></pre></td></tr></table></figure>
+<h3 id="Vue-cli-安装"><a href="#Vue-cli-安装" class="headerlink" title="Vue-cli 安装"></a>Vue-cli 安装</h3><p>推荐使用当前最新的 <code>Vue-cli</code> 3.x 版本的脚手架工具。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 全局安装 Vue-cli</span><br><span class="line"><span class="meta">&gt;</span> npm i -g @vue/cli</span><br></pre></td></tr></table></figure>
+<h3 id="Git-版本管理工具"><a href="#Git-版本管理工具" class="headerlink" title="Git 版本管理工具"></a>Git 版本管理工具</h3><h2 id="基础框架搭建"><a href="#基础框架搭建" class="headerlink" title="基础框架搭建"></a>基础框架搭建</h2><h3 id="Vue-cli3-x-构建前端架构"><a href="#Vue-cli3-x-构建前端架构" class="headerlink" title="Vue-cli3.x 构建前端架构"></a>Vue-cli3.x 构建前端架构</h3><h3 id="Node-Express-MongDb-构建后端架构"><a href="#Node-Express-MongDb-构建后端架构" class="headerlink" title="Node + Express + MongDb 构建后端架构"></a>Node + Express + MongDb 构建后端架构</h3><p>后端起到的作用是提供 api 接口数据、数据库操作。</p>
 <p>使用 <code>Node.js</code> + <code>Express</code> 。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装 express</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm i -S express</span></span><br></pre></td></tr></table></figure>
-<h4 id="index-js-入口文件"><a href="#index-js-入口文件" class="headerlink" title="index.js 入口文件"></a>index.js 入口文件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'./router'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">5000</span></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.use(router)</span><br><span class="line"></span><br><span class="line">app.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`服务器启动成功，通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 访问`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装 express</span><br><span class="line"><span class="meta">&gt;</span> npm i -S express</span><br></pre></td></tr></table></figure>
+<h4 id="index-js-入口文件"><a href="#index-js-入口文件" class="headerlink" title="index.js 入口文件"></a>index.js 入口文件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">"./router"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">5000</span>;</span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">"127.0.0.1"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.use(router);</span><br><span class="line"></span><br><span class="line">app.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器启动成功，通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 访问`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/11/框架-Vue-实战项目/" data-id="cjumtrcxy001lhsutrp5cxopn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/11/JS全栈开发/" data-id="cjuwgm197000bsgut9mvgwbge" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -242,7 +419,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/前端-UI/" data-id="cjumtrcxn001bhsutnoah1k5e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/前端-UI/" data-id="cjuwgm1aj0015sgutamnav4m5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
@@ -280,8 +457,27 @@
 <ul>
 <li><a href="#vue-cli-3x-简介">vue-cli 3.x 简介</a></li>
 <li><a href="#安装">安装</a></li>
-<li><a href="#创建项目">创建项目</a></li>
-<li><a href="#项目配置">项目配置</a></li>
+<li><a href="#创建项目">创建项目</a><ul>
+<li><a href="#代码创建">代码创建</a><ul>
+<li><a href="#新建项目">新建项目</a></li>
+<li><a href="#选择创建方式">选择创建方式</a></li>
+<li><a href="#选择需要的配置">选择需要的配置</a><ul>
+<li><a href="#路由选择">路由选择</a></li>
+<li><a href="#css-预处理器选择">CSS 预处理器选择</a></li>
+<li><a href="#代码风格及格式化选择">代码风格及格式化选择</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#图形化界面创建">图形化界面创建</a></li>
+</ul>
+</li>
+<li><a href="#项目简介">项目简介</a><ul>
+<li><a href="#public-文件夹">public 文件夹</a></li>
+</ul>
+</li>
+<li><a href="#项目配置">项目配置</a><pre><code>- [关闭 eslint 语法限制](#关闭-eslint-语法限制)
+</code></pre></li>
 <li><a href="#项目运行">项目运行</a></li>
 <li><a href="#构建项目">构建项目</a></li>
 </ul>
@@ -310,8 +506,24 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli @vue/cli-service-global</span><br></pre></td></tr></table></figure>
 <p>检查版本。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -V</span><br></pre></td></tr></table></figure>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="纯代码创建"><a href="#纯代码创建" class="headerlink" title="纯代码创建"></a>纯代码创建</h3><p>一般方式，使用纯代码来创建项目。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建项目</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> vue create vue-project</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 手动选择特性 Manually select features</span></span><br><span class="line">Vue CLI v3.5.5</span><br><span class="line">? Please pick a preset: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> default (babel, eslint)</span></span><br><span class="line">  Manually select features</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装内容 按需选择</span></span><br><span class="line">? Check the features needed for your project: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">(*) Babel</span></span><br><span class="line"> (*) TypeScript			# 支持使用 TypeScript 书写源码</span><br><span class="line"> ( ) Progressive Web App (PWA) Support	# PWA 支持</span><br><span class="line"> (*) Router				# 支持 vue-router</span><br><span class="line"> (*) Vuex				# 支持 vuex</span><br><span class="line"> (*) CSS Pre-processors	# 支持 CSS 预处理器</span><br><span class="line"> (*) Linter / Formatter	# 支持代码风格检查和格式化</span><br><span class="line"> (*) Unit Testing		# 支持单元测试</span><br><span class="line"> ( ) E2E Testing		# 支持 E2E 测试</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用 Stylus 预处理 css</span></span><br><span class="line">? Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): Stylus</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用 ESLint + Prettier 格式化代码</span></span><br><span class="line">? Pick a linter / formatter config:</span><br><span class="line">  ESLint with error prevention only</span><br><span class="line">  ESLint + Airbnb config</span><br><span class="line">  ESLint + Standard config</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ESLint + Prettier</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择语法检查方式，选择保存就检测</span></span><br><span class="line">? Pick additional lint features: (Press &lt;space&gt; to select,</span><br><span class="line">&lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">(*) Lint on save</span></span><br><span class="line"> ( ) Lint and fix on commit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 单元测试，Mocha + Chai</span></span><br><span class="line">? Pick a unit testing solution: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Mocha + Chai</span></span><br><span class="line">  Jest</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置文件存放地方，单独或者放到 package.json</span></span><br><span class="line">? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> In dedicated config files</span></span><br><span class="line">  In package.json</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否记录这一次的配置</span></span><br><span class="line">? Save this as a preset for future projects? (y/N)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用类风格语法，选择 y</span></span><br><span class="line">? Use class-style component syntax? (Y/n) </span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用浏览器兼容库，选择 y</span></span><br><span class="line">? Use Babel alongside TypeScript for auto-detected polyfills? (Y/n)</span><br></pre></td></tr></table></figure>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="代码创建"><a href="#代码创建" class="headerlink" title="代码创建"></a>代码创建</h3><h4 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h4><p>先新建一个文件夹，然后进入，执行创建项目命令。项目名不能包含大写字母。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> vue create projectname</span></span><br></pre></td></tr></table></figure>
+<h4 id="选择创建方式"><a href="#选择创建方式" class="headerlink" title="选择创建方式"></a>选择创建方式</h4><p>第一个默认选项，<code>default (babel, eslint)</code>， 快速创建一个新项目的原型，没有带任何辅助功能的  <code>npm</code> 包。</p>
+<p>第二个选项，<code>Manually select features</code> ，自定义配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">? Please pick a preset: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> default (babel, eslint)</span></span><br><span class="line">  Manually select features</span><br></pre></td></tr></table></figure>
+<h4 id="选择需要的配置"><a href="#选择需要的配置" class="headerlink" title="选择需要的配置"></a>选择需要的配置</h4><p>按需选择。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">? Check the features needed for your project: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">(*) Babel				<span class="comment"># 转码器，可以将ES6代码转为ES5代码，从而在现有环境执行</span></span></span><br><span class="line"> ( ) TypeScript			# 使用 TypeScript 书写源码，使用 TypeScript 代替 JavaSCript</span><br><span class="line"> ( ) Progressive Web App (PWA) Support	# PWA 支持</span><br><span class="line"> (*) Router				# vue-router（前端路由）</span><br><span class="line"> (*) Vuex				# vuex（状态管理模式）</span><br><span class="line"> (*) CSS Pre-processors	# CSS 预处理器（如，less、sass、stylus）</span><br><span class="line"> (*) Linter / Formatter	# 代码风格检查和格式化（如，ESlint）</span><br><span class="line"> ( ) Unit Testing		# 单元测试</span><br><span class="line"> ( ) E2E Testing		# E2E 测试</span><br></pre></td></tr></table></figure>
+<h5 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a>路由选择</h5><p>选择了 <code>Router</code> 时需要配置，是否使用 <code>history route</code> 。</p>
+<p>Vue-Router 利用了浏览器自身的hash 模式和 history 模式的特性来实现前端路由（通过调用浏览器提供的接口）</p>
+<p>hash： 浏览器url址栏 中的 # 符号（如这个 URL：<a href="http://www.abc.com/#/hello，hash" target="_blank" rel="noopener">http://www.abc.com/#/hello，hash</a> 的值为“ #/hello”），hash 不被包括在 HTTP 请求中（对后端完全没有影响），因此改变 hash 不会重新加载页面</p>
+<p>history：利用了 HTML5 History Interface 中新增的 pushState( ) 和 replaceState( ) 方法（需要特定浏览器支持）。单页客户端应用，history mode 需要后台配置支持（详细参见：<a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html）" target="_blank" rel="noopener">https://router.vuejs.org/zh/guide/essentials/history-mode.html）</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Use history mode for router? (Requires proper server setup for index fallback in production) (Y/n)</span><br></pre></td></tr></table></figure>
+<h5 id="CSS-预处理器选择"><a href="#CSS-预处理器选择" class="headerlink" title="CSS 预处理器选择"></a>CSS 预处理器选择</h5><p>选择了 <code>CSS Pre-processors</code> 时需要配置 。</p>
+<p>使用 Stylus 预处理 css，较为方便。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">? Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Sass/SCSS (with dart-sass)</span></span><br><span class="line">  Sass/SCSS (with node-sass)</span><br><span class="line">  Less</span><br><span class="line">  Stylus</span><br></pre></td></tr></table></figure>
+<h5 id="代码风格及格式化选择"><a href="#代码风格及格式化选择" class="headerlink" title="代码风格及格式化选择"></a>代码风格及格式化选择</h5><p>常用的格式化是 <code>ESLint + Prettier</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用 ESLint + Prettier 格式化代码</span></span><br><span class="line">? Pick a linter / formatter config: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ESLint with error prevention only</span></span><br><span class="line">  ESLint + Airbnb config</span><br><span class="line">  ESLint + Standard config</span><br><span class="line">  ESLint + Prettier</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 选择语法检查方式，选择保存就检测</span></span><br><span class="line">? Pick additional lint features: (Press &lt;space&gt; to select,</span><br><span class="line">&lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">(*) Lint on save</span></span><br><span class="line"> ( ) Lint and fix on commit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 单元测试，Mocha + Chai</span></span><br><span class="line">? Pick a unit testing solution: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Mocha + Chai</span></span><br><span class="line">  Jest</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置文件存放地方，单独或者放到 package.json</span></span><br><span class="line">? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> In dedicated config files</span></span><br><span class="line">  In package.json</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否记录这一次的配置</span></span><br><span class="line">? Save this as a preset for future projects? (y/N)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用类风格语法，选择 y</span></span><br><span class="line">? Use class-style component syntax? (Y/n) </span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用浏览器兼容库，选择 y</span></span><br><span class="line">? Use Babel alongside TypeScript for auto-detected polyfills? (Y/n)</span><br></pre></td></tr></table></figure>
 <h3 id="图形化界面创建"><a href="#图形化界面创建" class="headerlink" title="图形化界面创建"></a>图形化界面创建</h3><p>还有一种就是用 <code>UI</code> 界面来创建。输入命令，会以浏览器的方式创建项目。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> vue ui</span></span><br></pre></td></tr></table></figure>
 <p>图形化界面会引导我们创建，比较简单。</p>
@@ -341,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/框架-Vue-cli3/" data-id="cjumtrcxt001ihsutpqinltce" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/框架-Vue-cli3/" data-id="cjuwgm1t7003esgutecjadkt6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -628,7 +840,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/04/框架-Vuejs-模块化开发/" data-id="cjumtrdow004zhsutqc5ndgqc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/04/框架-Vuejs-模块化开发/" data-id="cjuwgm25c0050sgutci3788u6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1465,9 +1677,10 @@
 <p><img src="/2019/03/23/框架-Vuejs/query传参.JPG" alt="query传参.JPG"></p>
 <h4 id="params-传参"><a href="#params-传参" class="headerlink" title="params 传参"></a>params 传参</h4><p>使用 <code>params</code> 传参方式，是先在 <code>matched</code> 中正则匹配 <code>path</code><br>中的值，然后存放到 <code>params</code> 中。</p>
 <p>在定义路由的使用就使用 <code>/:xxx</code> 占位符确定参数位置，传参的时候也必须准确，不能缺少。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"login/10/ls"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 第二步：定义路由组件模板对象</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> login = &#123;</span></span><br><span class="line"><span class="xml">        template: '<span class="tag">&lt;<span class="name">p</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">p</span>&gt;</span>',</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 组件的生命周期钩子函数</span></span></span><br><span class="line"><span class="undefined">        created()&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.$route)</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> register = &#123; <span class="attr">template</span>: <span class="string">'&lt;p&gt;注册&lt;/p&gt;'</span> &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 第三步：定义路由 &#123; '路径': 组件模板对象 &#125;</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> routes = [</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 使用 :id 占位符</span></span></span><br><span class="line"><span class="javascript">        &#123; <span class="attr">path</span>: <span class="string">'/login/:id/:name'</span>, <span class="attr">component</span>: login &#125;</span></span><br><span class="line"><span class="undefined">    ]</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"login/10/ls"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第二步：定义路由组件模板对象</span></span><br><span class="line">    <span class="keyword">var</span> login = &#123;</span><br><span class="line">        template: <span class="string">'&lt;p&gt;登录&lt;/p&gt;'</span>,</span><br><span class="line">        <span class="comment">// 组件的生命周期钩子函数</span></span><br><span class="line">        created()&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.$route)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第三步：定义路由 &#123; '路径': 组件模板对象 &#125;</span></span><br><span class="line">    <span class="keyword">var</span> routes = [</span><br><span class="line">        <span class="comment">// 使用 :id 占位符</span></span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">'/login/:id/:name'</span>, <span class="attr">component</span>: login &#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2019/03/23/框架-Vuejs/params传参.JPG" alt="params传参.JPG"></p>
-<h4 id="props-解耦"><a href="#props-解耦" class="headerlink" title="props 解耦"></a>props 解耦</h4><p>在组件中使用 <code>$route</code> 会使之与其对应路由形成高度耦合，从而使组件只能在某些特定的 <code>URL</code> 上使用，限制了其灵活性。</p>
+<h4 id="props-解耦"><a href="#props-解耦" class="headerlink" title="props 解耦"></a>props 解耦</h4><p>在组件中使用 <code>this.$route</code> 会使之与其对应路由形成高度耦合，从而使组件只能在某些特定的 <code>URL</code> 上使用，限制了其灵活性。</p>
 <p>只需要两步：</p>
 <ul>
 <li><p>在定义路由时设置 <code>props</code> 。</p>
@@ -1476,7 +1689,7 @@
 </li>
 </ul>
 <h5 id="布尔模式"><a href="#布尔模式" class="headerlink" title="布尔模式"></a>布尔模式</h5><p>如果 <code>props</code> 被设置为 <code>true</code> ，<code>route.params</code> 将会被设置为组件属性。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 给命名的路由传递对象那个，此时 to 需要绑定属性 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">v-bind:to</span>=<span class="string">"&#123; name: 'login', params: &#123; id: 123, name: 'h' &#125;&#125;"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> login = &#123;</span></span><br><span class="line"><span class="javascript">        props: [<span class="string">'id'</span>, <span class="string">'name'</span>],</span></span><br><span class="line"><span class="xml">        template: '<span class="tag">&lt;<span class="name">p</span>&gt;</span>id: &#123;&#123; id &#125;&#125;，name: &#123;&#123; name &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span>'</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 定义路由</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> routes = [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">            path: <span class="string">'/login/:id/:name'</span>,</span></span><br><span class="line"><span class="javascript">            name: <span class="string">'login'</span>,</span></span><br><span class="line"><span class="undefined">            component: login,</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 设置 props 为 true</span></span></span><br><span class="line"><span class="javascript">            props: <span class="literal">true</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    ]</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    ......</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 给命名的路由传递对象那个，此时 to 需要绑定属性 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">v-bind:to</span>=<span class="string">"&#123; name: 'login', params: &#123; id: 123, name: 'h' &#125;&#125;"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> login = &#123;</span></span><br><span class="line"><span class="javascript">        props: [<span class="string">'id'</span>, <span class="string">'name'</span>],</span></span><br><span class="line"><span class="xml">        template: '<span class="tag">&lt;<span class="name">p</span>&gt;</span>id: &#123;&#123; id &#125;&#125;，name: &#123;&#123; name &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span>'</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 定义路由</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> routes = [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">            path: <span class="string">'/login/:id/:name'</span>,</span></span><br><span class="line"><span class="javascript">            name: <span class="string">'login'</span>,</span></span><br><span class="line"><span class="undefined">            component: login,</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 第一步：设置 props 为 true</span></span></span><br><span class="line"><span class="javascript">            props: <span class="literal">true</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    ]</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    ......</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h5 id="对象模式"><a href="#对象模式" class="headerlink" title="对象模式"></a>对象模式</h5><p>如果 <code>props</code> 是一个对象，它会被按原样设置为组件属性。当 <code>props</code> 是静态的时候有用。</p>
 <h5 id="函数模式"><a href="#函数模式" class="headerlink" title="函数模式"></a>函数模式</h5><p>创建一个函数返回 <code>props</code> ，便可以将参数转换成另一种类型，将静态值与基于路由的值结合等等。</p>
 <h3 id="路由嵌套"><a href="#路由嵌套" class="headerlink" title="路由嵌套"></a>路由嵌套</h3><p>嵌套路由需要注意三点：</p>
@@ -1499,7 +1712,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/23/框架-Vuejs/" data-id="cjumtre1f005yhsutrji1dhym" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/23/框架-Vuejs/" data-id="cjuwgm2eo0061sgutnmbveyvd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1576,7 +1789,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/20/模板引擎——art-template/" data-id="cjumtrcy1001phsut2s1br979" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/20/模板引擎——art-template/" data-id="cjuwgm1at001dsgutg830oa3d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模板引擎/">模板引擎</a></li></ul>
@@ -1746,7 +1959,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/19/后端基础——npm常见包/" data-id="cjumtrdg6003hhsut4jeerxed" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/19/后端基础——npm常见包/" data-id="cjuwgm1tc003jsgut04xja1cn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
@@ -1844,7 +2057,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/" data-id="cjumtrdf7003bhsutpegy9dvl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/" data-id="cjuwgm1sf0039sgutfi0aba26" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -1902,409 +2115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/数据库——MySQL/" data-id="cjumtrcxq001ghsut4hqp553p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数据库——MongoDB" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/15/数据库——MongoDB/" class="article-date">
-  <time datetime="2019-03-15T09:29:23.000Z" itemprop="datePublished">2019-03-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/数据库——MongoDB/">数据库——MongoDB</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- TOC -->
-<ul>
-<li><a href="#mongodb-介绍">MongoDB 介绍</a><ul>
-<li><a href="#关系型数据库和非关系型数据库">关系型数据库和非关系型数据库</a><ul>
-<li><a href="#关系型数据库特点">关系型数据库特点</a></li>
-<li><a href="#非关系型数据库">非关系型数据库</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#mongodb-下载及安装">MongoDB 下载及安装</a><ul>
-<li><a href="#下载">下载</a></li>
-<li><a href="#安装">安装</a></li>
-<li><a href="#配置环境变量">配置环境变量</a></li>
-<li><a href="#新建数据目录">新建数据目录</a><ul>
-<li><a href="#修改默认数据目录">修改默认数据目录</a></li>
-</ul>
-</li>
-<li><a href="#连接数据库">连接数据库</a></li>
-</ul>
-</li>
-<li><a href="#mongodb-可视化工具-mongodb-compass">MongoDB 可视化工具 MongoDB Compass</a></li>
-<li><a href="#mongodb-查">MongoDB 查</a><ul>
-<li><a href="#查看所有数据库">查看所有数据库</a></li>
-<li><a href="#查看当前所在的数据库">查看当前所在的数据库</a></li>
-<li><a href="#查询文档">查询文档</a><ul>
-<li><a href="#查询所有">查询所有</a></li>
-<li><a href="#单文档查询">单文档查询</a></li>
-<li><a href="#格式化显示">格式化显示</a></li>
-<li><a href="#条件查询语句">条件查询语句</a></li>
-<li><a href="#and-条件">AND 条件</a></li>
-<li><a href="#or-条件">OR 条件</a></li>
-<li><a href="#type-操作符"><code>$type</code> 操作符</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#mongodb-增">MongoDB 增</a><ul>
-<li><a href="#创建切换数据库">创建/切换数据库</a></li>
-<li><a href="#创建集合">创建集合</a><ul>
-<li><a href="#主动创建集合">主动创建集合</a></li>
-<li><a href="#创建集合并插入数据">创建集合并插入数据</a></li>
-</ul>
-</li>
-<li><a href="#插入数据文档">插入数据文档</a></li>
-</ul>
-</li>
-<li><a href="#mongodb-删">MongoDB 删</a><ul>
-<li><a href="#删除数据库">删除数据库</a></li>
-<li><a href="#删除集合">删除集合</a></li>
-<li><a href="#删除文档">删除文档</a></li>
-</ul>
-</li>
-<li><a href="#mongodb-改">MongoDB 改</a><ul>
-<li><a href="#update">update()</a></li>
-<li><a href="#save-方法">save() 方法</a></li>
-</ul>
-</li>
-<li><a href="#mongodb-导入导出数据">MongoDB 导入导出数据</a><ul>
-<li><a href="#mongodb-的导出功能">MongoDB 的导出功能</a></li>
-<li><a href="#mongodb的导入功能">MongoDB的导入功能</a></li>
-</ul>
-</li>
-<li><a href="#mongodb的-_id">MongoDB的 “_id”</a></li>
-</ul>
-<!-- /TOC -->
-<h2 id="MongoDB-介绍"><a href="#MongoDB-介绍" class="headerlink" title="MongoDB 介绍"></a>MongoDB 介绍</h2><p>菜鸟联盟：<a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-tutorial.html</a></p>
-<h3 id="关系型数据库和非关系型数据库"><a href="#关系型数据库和非关系型数据库" class="headerlink" title="关系型数据库和非关系型数据库"></a>关系型数据库和非关系型数据库</h3><p>所谓的关系型，表就是关系，就是表与表之间存在关系。</p>
-<h4 id="关系型数据库特点"><a href="#关系型数据库特点" class="headerlink" title="关系型数据库特点"></a>关系型数据库特点</h4><p>关系型数据库最典型的数据结构是表，由二维表及其之间的联系所组成的一个数据组织。</p>
-<p>优点：</p>
-<ul>
-<li>易于维护：都是使用表结构，格式一致；</li>
-<li>使用方便：SQL语言通用，可用于复杂查询；</li>
-<li>复杂操作：支持SQL，可用于一个表以及多个表之间非常复杂的查询。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li><p>读写性能比较差，尤其是海量数据的高效率读写；</p>
-</li>
-<li><p>固定的表结构，灵活度稍欠；</p>
-</li>
-<li><p>高并发读写需求，传统关系型数据库来说，硬盘I/O是一个很大的瓶颈。</p>
-</li>
-</ul>
-<p>常用数据库：</p>
-<p>MariaDB/SQL Server/MySQL/SQLite/ORACLE/PostgreSQL</p>
-<h4 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a>非关系型数据库</h4><p>非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合，可以是文档或者键值对等。</p>
-<p>优点：</p>
-<ul>
-<li>格式灵活：存储数据的格式可以是key,value形式、文档形式、图片形式等等，文档形式、图片形式等等，使用灵活，应用场景广泛，而关系型数据库则只支持基础类型。</li>
-<li>速度快：nosql可以使用硬盘或者随机存储器作为载体，而关系型数据库只能使用硬盘；</li>
-<li>高扩展性；</li>
-<li>成本低：nosql数据库部署简单，基本都是开源软件。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>不提供sql支持，学习和使用成本较高；</li>
-<li>无事务处理；</li>
-<li>数据结构相对复杂，复杂查询方面稍欠。</li>
-</ul>
-<p>非关系型数据库的分类和比较：</p>
-<ul>
-<li>文档型</li>
-<li>key-value型</li>
-<li>列式数据库</li>
-<li>图形数据库</li>
-</ul>
-<p>常用数据库：</p>
-<p>mongoDB/HBASE/redis/Cassandra/CouchDB/Neo4j</p>
-<hr>
-<h2 id="MongoDB-下载及安装"><a href="#MongoDB-下载及安装" class="headerlink" title="MongoDB 下载及安装"></a>MongoDB 下载及安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>官网：<a href="https://www.mongodb.com/" target="_blank" rel="noopener">https://www.mongodb.com/</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载安装即可，直到最后一步需要下载安装 <code>MongoDB Compass</code> 可视化界面，哪里将左下角的√取消掉就好。这个下载太慢！！！可视化界面我们自己装。</p>
-<p><img src="/2019/03/15/数据库——MongoDB/注意点.jpg" alt="注意点.jpg"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>配置环境变量：将安装目录下的 <code>bin</code> 目录添加到用户变量。</p>
-<p>然后使用<font color="red">管理员身份</font>进入命令行输入 <code>mongod -v</code> 查看版本，有用即可。</p>
-<p><img src="/2019/03/15/数据库——MongoDB/cmd.jpg" alt="cmd.jpg"></p>
-<h3 id="新建数据目录"><a href="#新建数据目录" class="headerlink" title="新建数据目录"></a>新建数据目录</h3><p>由于第一次执行需要一个数据库文件目录，默认是 <code>C:/data/db</code> 如果没有这个目录，会执行失败，如下图所示：</p>
-<p><img src="/2019/03/15/数据库——MongoDB/第一次执行.jpg" alt="第一次执行.jpg"></p>
-<p>新建完目录之后，再次执行，如下，数据库服务启动完成，窗口不能关闭，<code>CTRL + C</code> 退出：</p>
-<p><img src="/2019/03/15/数据库——MongoDB/第二次执行.jpg" alt="第二次执行.jpg"></p>
-<h4 id="修改默认数据目录"><a href="#修改默认数据目录" class="headerlink" title="修改默认数据目录"></a>修改默认数据目录</h4><p>如果不想放在 C 盘，可以通过命令修改：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath xxx:\data\db</span><br></pre></td></tr></table></figure>
-<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><p>首先使用<font color="red">管理员身份</font>进入命令行输入 <code>mongod</code> 打开服务。</p>
-<p>通过如下网址：<a href="http://127.0.0.1:27017/" target="_blank" rel="noopener">http://127.0.0.1:27017/</a> 访问。如果网页内容显示 <code>‘It looks like you are trying to access MongoDB over HTTP on the native driver port.’</code>，表示数据库服务已打开。</p>
-<p>然后再使用<font color="red">管理员身份</font>进入命令行输入 <code>mongo</code> 连接数据库，注意原先打开服务的命令窗口不能关闭。</p>
-<p>如下，即可：</p>
-<p><img src="/2019/03/15/数据库——MongoDB/连接数据库.jpg" alt="连接数据库.jpg"></p>
-<hr>
-<h2 id="MongoDB-可视化工具-MongoDB-Compass"><a href="#MongoDB-可视化工具-MongoDB-Compass" class="headerlink" title="MongoDB 可视化工具 MongoDB Compass"></a>MongoDB 可视化工具 MongoDB Compass</h2><p>这个可视化工具就是我们之前点击取消的那个，自主官网下载比较快。在官网选择社区版下载。</p>
-<hr>
-<h2 id="MongoDB-查"><a href="#MongoDB-查" class="headerlink" title="MongoDB 查"></a>MongoDB 查</h2><h3 id="查看所有数据库"><a href="#查看所有数据库" class="headerlink" title="查看所有数据库"></a>查看所有数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> show dbs</span></span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br></pre></td></tr></table></figure>
-<p>这些是系统自带的数据库，最好不要动。</p>
-<p>MongoDB 中默认的数据库为 test，如果你没有创建新的数据库，集合将存放在 test 数据库中，但是由于初始没数据，不显示。</p>
-<h3 id="查看当前所在的数据库"><a href="#查看当前所在的数据库" class="headerlink" title="查看当前所在的数据库"></a>查看当前所在的数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db</span></span><br><span class="line">mydbs</span><br></pre></td></tr></table></figure>
-<h3 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h3><h4 id="查询所有"><a href="#查询所有" class="headerlink" title="查询所有"></a>查询所有</h4><p><code>find()</code> 方法查询所有匹配文档。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 查询文档</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collection.find(query, projection)</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>query ：可选，使用查询操作符指定查询条件。为空表示查询所有。</p>
-</li>
-<li><p>projection ：可选，使用投影操作符指定返回的键。查询时返回文档中所有键值， 只需省略该参数即可（默认省略）。</p>
-</li>
-</ul>
-<h4 id="单文档查询"><a href="#单文档查询" class="headerlink" title="单文档查询"></a>单文档查询</h4><p><code>findOne()</code> 方法查询收个匹配文档。可用参数与 <code>find()</code> 方法相同。</p>
-<h4 id="格式化显示"><a href="#格式化显示" class="headerlink" title="格式化显示"></a>格式化显示</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 查询文档并以格式化数据</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find().pretty()</span></span><br></pre></td></tr></table></figure>
-<h4 id="条件查询语句"><a href="#条件查询语句" class="headerlink" title="条件查询语句"></a>条件查询语句</h4><table>
-<thead>
-<tr>
-<th>操作</th>
-<th>格式</th>
-<th>范例</th>
-<th>关系型数据库语句</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>等于</td>
-<td>{&lt;key>:&lt;value>}</td>
-<td>db.col.find({“by”:”菜鸟教程”}).pretty()</td>
-<td>where by = ‘菜鸟教程’</td>
-</tr>
-<tr>
-<td>小于</td>
-<td>{&lt;key>:{$lt:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$lt:50}}).pretty()</td>
-<td>where likes &lt; 50</td>
-</tr>
-<tr>
-<td>小于或等于</td>
-<td>{&lt;key>:{$lte:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$lte:50}}).pretty()</td>
-<td>where likes &lt;= 50</td>
-</tr>
-<tr>
-<td>大于</td>
-<td>{&lt;key>:{$gt:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$gt:50}}).pretty()</td>
-<td>where likes &gt; 50</td>
-</tr>
-<tr>
-<td>大于或等于</td>
-<td>{&lt;key>:{$gte:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$gte:50}}).pretty()</td>
-<td>where likes &gt;= 50</td>
-</tr>
-<tr>
-<td>不等于</td>
-<td>{&lt;key>:{$ne:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$ne:50}}).pretty()</td>
-<td>where likes != 50</td>
-</tr>
-</tbody>
-</table>
-<h4 id="AND-条件"><a href="#AND-条件" class="headerlink" title="AND 条件"></a>AND 条件</h4><p><code>find()</code> 方法可以传入多个键(key)，每个键(key)以逗号隔开，即常规 <code>SQL</code> 的 <code>AND</code> 条件。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find(&#123;key1:value1, key2:value2&#125;).pretty()</span></span><br></pre></td></tr></table></figure>
-<h4 id="OR-条件"><a href="#OR-条件" class="headerlink" title="OR 条件"></a>OR 条件</h4><p>OR 条件语句使用了关键字 <code>$or</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find(</span></span><br><span class="line">   &#123;</span><br><span class="line">        $or: [</span><br><span class="line">            &#123;key1: value1&#125;, &#123;key2:value2&#125;</span><br><span class="line">        ]</span><br><span class="line">   &#125;</span><br><span class="line">).pretty()</span><br></pre></td></tr></table></figure>
-<h4 id="type-操作符"><a href="#type-操作符" class="headerlink" title="$type 操作符"></a><code>$type</code> 操作符</h4><p>检索集合中匹配的数据类型，并返回结果。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find(&#123;<span class="string">"键名"</span> : &#123;<span class="variable">$type</span> : 类型字符串/对应的数字标签 &#125;&#125;)</span></span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>数字</th>
-<th>类型</th>
-<th>数字</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Double</td>
-<td>1</td>
-<td>Regular Expression</td>
-<td>11</td>
-</tr>
-<tr>
-<td>String</td>
-<td>2</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Object</td>
-<td>3</td>
-<td>JavaScript</td>
-<td>13</td>
-</tr>
-<tr>
-<td>Array</td>
-<td>4</td>
-<td>Symbol</td>
-<td>14</td>
-</tr>
-<tr>
-<td>Binary data</td>
-<td>5</td>
-<td>JavaScript (with scope)</td>
-<td>15</td>
-</tr>
-<tr>
-<td>Undefined(已废弃)</td>
-<td>6</td>
-<td>32-bit integer</td>
-<td>16</td>
-</tr>
-<tr>
-<td>Object id</td>
-<td>7</td>
-<td>Timestamp</td>
-<td>17</td>
-</tr>
-<tr>
-<td>Boolean</td>
-<td>8</td>
-<td>64-bit integer</td>
-<td>18</td>
-</tr>
-<tr>
-<td>Date</td>
-<td>9</td>
-<td>Min key</td>
-<td>255</td>
-</tr>
-<tr>
-<td>Null</td>
-<td>10</td>
-<td>Max key</td>
-<td>127</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find()</span></span><br><span class="line">&#123; "_id" : ObjectId("5c8cb31eca4aff6ebfd76983"), "title" : "MongoDB" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd26fca4aff6ebfd76984"), "title" : "123", "by" : "asdf" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd37cca4aff6ebfd76985"), "title" : 123 &#125;</span><br><span class="line"></span><br><span class="line">// 查询 "title" 数据类型为 'string' 的数据。</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find(&#123;<span class="string">"title"</span>: &#123;<span class="variable">$type</span>: <span class="string">'string'</span>&#125;&#125;)</span></span><br><span class="line">&#123; "_id" : ObjectId("5c8cb31eca4aff6ebfd76983"), "title" : "MongoDB" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd26fca4aff6ebfd76984"), "title" : "123", "by" : "asdf" &#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="MongoDB-增"><a href="#MongoDB-增" class="headerlink" title="MongoDB 增"></a>MongoDB 增</h2><h3 id="创建-切换数据库"><a href="#创建-切换数据库" class="headerlink" title="创建/切换数据库"></a>创建/切换数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> use mydbs</span></span><br><span class="line">switched to db mydbs</span><br></pre></td></tr></table></figure>
-<p>使用 <code>use</code> 创建名为 <code>mydbs</code> 的数据库，如果数据库不存在，则创建数据库，否则切换到指定数据库。</p>
-<p>如图，创建 <code>mydbs</code> 数据库，然后查看所有数据库，会发现并没有显示我们刚创建的数据库！！！由于我们创建的数据库里面没有数据，所以不会显示。然后通过 <code>db</code> 命令查看我们所在的数据库，可以发现，我们当前的确创建并切换到了 <code>mydbs</code> 数据库中。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> use mydbs</span></span><br><span class="line">switched to db mydbs</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> show dbs</span></span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db</span></span><br><span class="line">mydbs</span><br></pre></td></tr></table></figure>
-<h3 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h3><h4 id="主动创建集合"><a href="#主动创建集合" class="headerlink" title="主动创建集合"></a>主动创建集合</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 主动创建集合语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.createCollection(name, options)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 实例</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.createCollection(<span class="string">"test"</span>)</span></span><br><span class="line">&#123; "ok" : 1 &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.createCollection(<span class="string">"mycol"</span>, &#123; capped : <span class="literal">true</span>, autoIndexId : <span class="literal">true</span>, size : </span></span><br><span class="line">   6142800, max : 10000 &#125; )</span><br><span class="line">   </span><br><span class="line">// 查看集合</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> show collections</span></span><br><span class="line">test</span><br><span class="line">mycol</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>name: 要创建的集合名称</p>
-</li>
-<li><p>options: 可选参数, 指定有关内存大小及索引的选项</p>
-<ul>
-<li><p>capped: 布尔值。</p>
-<p>  如果为 <code>true</code>，则创建固定集合。固定集合是指有着固定大小的集合，当达到最大值时，它会自动覆盖最早的文档。当该值为 <code>true</code> 时，必须指定 <code>size</code> 参数。</p>
-</li>
-<li><p>autoIndexId: 布尔值。</p>
-<p>  如为 <code>true</code>，自动在 <code>_id</code> 字段创建索引。默认为 <code>false</code> 。</p>
-</li>
-<li><p>size: 数值。</p>
-<p>  为固定集合指定一个最大值（以字节计）。如果 <code>capped</code> 为 <code>true</code>，也需要指定该字段。</p>
-</li>
-<li><p>max: 数值。指定固定集合中包含文档的最大数量。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="创建集合并插入数据"><a href="#创建集合并插入数据" class="headerlink" title="创建集合并插入数据"></a>创建集合并插入数据</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 创建集合并插入数据</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.myCol.insert(&#123;<span class="string">"name"</span>: <span class="string">"test"</span>&#125;)</span></span><br></pre></td></tr></table></figure>
-<h3 id="插入数据文档"><a href="#插入数据文档" class="headerlink" title="插入数据文档"></a>插入数据文档</h3><p>MongoDB 使用 insert() 或 save() 方法向集合中插入文档。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.COLLECTION_NAME.insert(document)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 插入数据</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.mydbs.insert(&#123;title: <span class="string">'MongoDB'</span>&#125;)</span></span><br><span class="line">WriteResult(&#123; "nInserted" : 1 &#125;)</span><br><span class="line"></span><br><span class="line">// 查询</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find()</span></span><br><span class="line">&#123; "_id" : ObjectId("5c8cb31eca4aff6ebfd76983"), "title" : "MongoDB" &#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="MongoDB-删"><a href="#MongoDB-删" class="headerlink" title="MongoDB 删"></a>MongoDB 删</h2><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p>MongoDB 中删除数据库需要先用 <code>use</code> 切换到需要删除的数据库，然后使用 <code>dropDatabase()</code> 方法删除当前数据库。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 切换进需要删除的数据库</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> use DatabaseName</span></span><br><span class="line">switched to db DatabaseName</span><br><span class="line"></span><br><span class="line">// 删除当前数据库</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.dropDatabase()</span></span><br><span class="line">&#123; "dropped" : "DatabaseName", "ok" : 1 &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="删除集合"><a href="#删除集合" class="headerlink" title="删除集合"></a>删除集合</h3><p>MongoDB 中使用 <code>drop()</code> 方法来删除当前数据库中的集合。如果成功删除选定集合，返回 true，否则返回 false。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collectionName.drop()</span></span><br><span class="line">true        // 成功</span><br><span class="line">false       // 失败</span><br></pre></td></tr></table></figure>
-<h3 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h3><p>MongoDB 中使用 <code>remove()</code> 函数是用来移除集合中的数据。在执行 <code>remove()</code> 函数前先执行 <code>find()</code> 命令来判断执行的条件是否正确，这是一个比较好的习惯。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collection.remove(</span></span><br><span class="line">   &lt;query&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">     justOne: &lt;boolean&gt;,</span><br><span class="line">     writeConcern: &lt;document&gt;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// 删除所有文档</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.remove(&#123;&#125;)</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>query :（可选）删除的文档的条件。</p>
-</li>
-<li><p>justOne : （可选）如果设为 true 或 1，则只删除一个文档，如果不设置该参数，或使用默认值 false，则删除所有匹配条件的文档。</p>
-</li>
-<li><p>writeConcern :（可选）抛出异常的级别。</p>
-</li>
-</ul>
-<hr>
-<h2 id="MongoDB-改"><a href="#MongoDB-改" class="headerlink" title="MongoDB 改"></a>MongoDB 改</h2><p>MongoDB 使用 update() 和 save() 方法来更新集合中的文档。</p>
-<h3 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h3><p>update() 方法用于更新已存在的文档。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collection.update(</span></span><br><span class="line">   &lt;query&gt;,</span><br><span class="line">   &lt;update&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">        upsert: &lt;boolean&gt;,</span><br><span class="line">        multi: &lt;boolean&gt;,</span><br><span class="line">        writeConcern: &lt;document&gt;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>query : update的查询条件，类似sql update查询内where后面的。</p>
-</li>
-<li><p>update : update的对象和一些更新的操作符（如$,$inc…）等，也可以理解为sql update查询内set后面的</p>
-</li>
-<li><p>upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。</p>
-</li>
-<li><p>multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。</p>
-</li>
-<li><p>writeConcern :可选，抛出异常的级别。</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 插入数据</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.insert(&#123;title: 123, by:<span class="string">'ai'</span>&#125;)</span></span><br><span class="line">WriteResult(&#123; "nInserted" : 1 &#125;)</span><br><span class="line"></span><br><span class="line">// 查询数据，在内存中存储时，键名都是字符串类型的</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find()</span></span><br><span class="line">&#123; "_id" : ObjectId("5c8cd26fca4aff6ebfd76984"), "title" : 123, "by" : "ai" &#125;</span><br><span class="line"></span><br><span class="line">// 更新</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.update(&#123; <span class="string">'title'</span>: 123&#125;, &#123;<span class="variable">$set</span>: &#123;<span class="string">'by'</span>: <span class="string">'asdf'</span>&#125;&#125;)</span></span><br><span class="line">WriteResult(&#123; "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 &#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="save-方法"><a href="#save-方法" class="headerlink" title="save() 方法"></a>save() 方法</h3><font color="red">save方法有更新和插入两种功能，到底是插入还是更新文档取决于 <code>_id</code> 参数。如果能根据 <code>_id</code> 找到一个已经存在的文档，那么就更新。如果没有传入_id参数或者找不到存在的文档，那么就插入一个新文档。</font>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collection.save(</span></span><br><span class="line">   &lt;document&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">     writeConcern: &lt;document&gt;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>document : 文档数据。</li>
-<li>writeConcern :可选，抛出异常的级别。</li>
-</ul>
-<hr>
-<h2 id="MongoDB-导入导出数据"><a href="#MongoDB-导入导出数据" class="headerlink" title="MongoDB 导入导出数据"></a>MongoDB 导入导出数据</h2><h3 id="MongoDB-的导出功能"><a href="#MongoDB-的导出功能" class="headerlink" title="MongoDB 的导出功能"></a>MongoDB 的导出功能</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> mongoexport -h dbhost -d dbname -c collectionName -o output</span></span><br></pre></td></tr></table></figure>
-<p>参数说明:</p>
-<ul>
-<li><code>-h</code> 数据库地址</li>
-<li><code>-d</code> 指明使用的库</li>
-<li><code>-c</code> 指明要导出的集合</li>
-<li><code>-o</code> 指明要导出的文件名（文件支持多种格式，如txt,wps,xls等）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 示例</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mongoexport -h localhost:27017 -d kaiye -c c2 -o C://mongoexport/test.txt</span></span><br></pre></td></tr></table></figure>
-<h3 id="MongoDB的导入功能"><a href="#MongoDB的导入功能" class="headerlink" title="MongoDB的导入功能"></a>MongoDB的导入功能</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> mongoimport -h dbhost -d dbname -c collectionname input</span></span><br></pre></td></tr></table></figure>
-<p>参数说明:</p>
-<ul>
-<li><code>-h</code> 数据库地址</li>
-<li><code>-d</code> 指明使用的库</li>
-<li><code>-c</code> 指明要导入的集合（mongodb本身支持隐式创建，故事先无需创建集合）</li>
-<li><code>input</code> 文件的地址</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 示例</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mongoimport -h localhost:27017 -d kaiye -c fuck C://mongoexport/test.txt</span></span><br></pre></td></tr></table></figure>
-<h2 id="MongoDB的-“-id”"><a href="#MongoDB的-“-id”" class="headerlink" title="MongoDB的 “_id”"></a>MongoDB的 “_id”</h2><p>如下是 <code>MongoDB</code> 中的一条数据，当我们插入数据的时候，会自动插入一个 <code>_id</code> 值，默认是 <code>ObjectId</code> 类型的数据。</p>
-<p><code>_id</code> 和 <code>id</code> 是不同的东西。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; "_id" : ObjectId("5cb5ccfc4812c41cecf62554"), "gender" : 1, "name" : "123", "age" : 3, "hobbies" : "1" &#125;</span><br><span class="line"></span><br><span class="line">&#123; "_id" : ObjectId("5cb5ccfc4812c41cecf62555")，</span><br><span class="line">"id" : 1, "name" : "234" &#125;</span><br></pre></td></tr></table></figure>
-<p><code>_id</code> 是计算机生成的唯一标识符。</p>
-<p>如果要使用 <code>findById()</code> 之类的根据 <code>Id</code> 来查询的的方法，这个 <code>Id</code> 指的是 <code>_id</code> 而不是 <code>id</code>。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/数据库——MongoDB/" data-id="cjumtrdg4003ghsutgrua7tk8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/数据库——MySQL/" data-id="cjuwgm1am0018sgutzy7ly49k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -2366,7 +2177,11 @@
       <ul>
         
           <li>
-            <a href="/2019/04/11/框架-Vue-实战项目/">Vue+Node+Mongodb全栈开发</a>
+            <a href="/2019/04/25/框架-Vuex/">框架-Vuex</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/11/JS全栈开发/">Vue+Node+Mongodb全栈开发</a>
           </li>
         
           <li>
@@ -2379,10 +2194,6 @@
         
           <li>
             <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/23/框架-Vuejs/">框架-Vue.js基础</a>
           </li>
         
       </ul>

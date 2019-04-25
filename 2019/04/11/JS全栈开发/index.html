@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Vue+Node+Mongodb全栈开发 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍 前端 后端 数据库   基本装及配置 Node.js 安装 NPM 包管理器 安装 Vue.js 安装 Vue-cli 安装 Git 版本管理工具   基础框架搭建 Vue-cli3.x 构建前端架构 Node + Express + MongDb 构建后端架构 index.js 入口文件       介绍此文介绍我全栈开发项目的一些心得。全栈，前端、后端、数据库实现分离。 前端   名">
+<meta name="keywords" content="移动端,前端,框架,JavaScript,Vue,Node,数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue+Node+Mongodb全栈开发">
+<meta property="og:url" content="http://yoursite.com/2019/04/11/JS全栈开发/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="介绍 前端 后端 数据库   基本装及配置 Node.js 安装 NPM 包管理器 安装 Vue.js 安装 Vue-cli 安装 Git 版本管理工具   基础框架搭建 Vue-cli3.x 构建前端架构 Node + Express + MongDb 构建后端架构 index.js 入口文件       介绍此文介绍我全栈开发项目的一些心得。全栈，前端、后端、数据库实现分离。 前端   名">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-25T09:09:30.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue+Node+Mongodb全栈开发">
+<meta name="twitter:description" content="介绍 前端 后端 数据库   基本装及配置 Node.js 安装 NPM 包管理器 安装 Vue.js 安装 Vue-cli 安装 Git 版本管理工具   基础框架搭建 Vue-cli3.x 构建前端架构 Node + Express + MongDb 构建后端架构 index.js 入口文件       介绍此文介绍我全栈开发项目的一些心得。全栈，前端、后端、数据库实现分离。 前端   名">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS全栈开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/11/JS全栈开发/" class="article-date">
+  <time datetime="2019-04-11T09:50:03.000Z" itemprop="datePublished">2019-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue+Node+Mongodb全栈开发
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#介绍">介绍</a><ul>
+<li><a href="#前端">前端</a></li>
+<li><a href="#后端">后端</a></li>
+<li><a href="#数据库">数据库</a></li>
+</ul>
+</li>
+<li><a href="#基本装及配置">基本装及配置</a><ul>
+<li><a href="#nodejs-安装">Node.js 安装</a></li>
+<li><a href="#npm-包管理器-安装">NPM 包管理器 安装</a></li>
+<li><a href="#vuejs-安装">Vue.js 安装</a></li>
+<li><a href="#vue-cli-安装">Vue-cli 安装</a></li>
+<li><a href="#git-版本管理工具">Git 版本管理工具</a></li>
+</ul>
+</li>
+<li><a href="#基础框架搭建">基础框架搭建</a><ul>
+<li><a href="#vue-cli3x-构建前端架构">Vue-cli3.x 构建前端架构</a></li>
+<li><a href="#node--express--mongdb-构建后端架构">Node + Express + MongDb 构建后端架构</a><ul>
+<li><a href="#indexjs-入口文件">index.js 入口文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>此文介绍我全栈开发项目的一些心得。全栈，前端、后端、数据库实现分离。</p>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.npmjs.com/package/axios" target="_blank" rel="noopener">Axios</a></td>
+<td>一个基于 promise 的 HTTP 库</td>
+<td><code>Vue 2.x</code> 之后推荐使用，取代 <code>vue-resoure</code></td>
+</tr>
+<tr>
+<td><a href="http://www.bootcss.com/" target="_blank" rel="noopener">Bootstrap 3/4</a></td>
+<td>前端开发框架</td>
+<td>代码块</td>
+</tr>
+<tr>
+<td><a href="https://echarts.baidu.com/" target="_blank" rel="noopener">ECharts</a></td>
+<td>使用 <code>JavaScript</code> 实现的开源可视化库</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://element.eleme.cn/#/zh-CN" target="_blank" rel="noopener">Element</a></td>
+<td>基于 <code>Vue 2.0</code> 的桌面端组件库</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">Vue.js</a></td>
+<td>是一套用于构建用户界面的渐进式框架</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">Iconfont</a></td>
+<td>阿里巴巴矢量图标库</td>
+<td>是图片集</td>
+</tr>
+<tr>
+<td><a href="http://mint-ui.github.io/" target="_blank" rel="noopener">Mint-UI</a></td>
+<td>基于 <code>Vue.js</code> 的移动端组件库</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://dev.dcloud.net.cn/mui/" target="_blank" rel="noopener">MUI</a></td>
+<td>前端开发框架</td>
+<td>代码块，不支持 npm 下载，不支持 <code>vue-cli 3.x</code></td>
+</tr>
+<tr>
+<td><a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener">Vue-cli 3.x</a></td>
+<td>是 <code>Vue.js</code> 开发的标准工具</td>
+<td>俗称脚手架工具</td>
+</tr>
+<tr>
+<td><a href="https://router.vuejs.org/zh/" target="_blank" rel="noopener">Vue Router</a></td>
+<td>是 <code>Vue.js</code> 前端路由管理器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.webpackjs.com/" target="_blank" rel="noopener">Webpack</a></td>
+<td>是前端资源模块化管理和打包工具</td>
+</tr>
+</tbody>
+</table>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>使用到的内容：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.expressjs.com.cn/" target="_blank" rel="noopener">Express</a></td>
+<td>基于 <code>Node.js</code>的 <code>Web</code> 开发框架</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://nodejs.cn/" target="_blank" rel="noopener">Node.js</a></td>
+<td>是一个基于 <code>Chrome V8</code> 引擎的 <code>JavaScript</code> 运行环境</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">NPM</a></td>
+<td>是 <code>Node.js</code> 世界的包管理器。</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://mongoosejs.net/" target="_blank" rel="noopener">Mongoose</a></td>
+<td>用于 <code>Node.js</code> 的优雅 <code>MongoDB</code> 对象建模</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>介绍</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.mongodb.org.cn/" target="_blank" rel="noopener">MongoDB</a></td>
+<td>基于分布式文件存储的数据库</td>
+</tr>
+</tbody>
+</table>
+<h2 id="基本装及配置"><a href="#基本装及配置" class="headerlink" title="基本装及配置"></a>基本装及配置</h2><h3 id="Node-js-安装"><a href="#Node-js-安装" class="headerlink" title="Node.js 安装"></a>Node.js 安装</h3><p>官网下载安装包，默认安装即可，在 Windows 上安装时务必选择全部组件，包括勾选 <code>Add to Path</code> ，会自动添加到 <code>path</code> ，无需配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 验证</span><br><span class="line"><span class="meta">&gt;</span> node -v</span><br><span class="line">v10.15.2</span><br></pre></td></tr></table></figure>
+<h3 id="NPM-包管理器-安装"><a href="#NPM-包管理器-安装" class="headerlink" title="NPM 包管理器 安装"></a>NPM 包管理器 安装</h3><p>无需额外安装，<code>Node.js</code>  有内置安装。</p>
+<h3 id="Vue-js-安装"><a href="#Vue-js-安装" class="headerlink" title="Vue.js 安装"></a>Vue.js 安装</h3><p>正式项目中需要全局安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 全局安装</span><br><span class="line"><span class="meta">&gt;</span> npm i -g vue</span><br></pre></td></tr></table></figure>
+<h3 id="Vue-cli-安装"><a href="#Vue-cli-安装" class="headerlink" title="Vue-cli 安装"></a>Vue-cli 安装</h3><p>推荐使用当前最新的 <code>Vue-cli</code> 3.x 版本的脚手架工具。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 全局安装 Vue-cli</span><br><span class="line"><span class="meta">&gt;</span> npm i -g @vue/cli</span><br></pre></td></tr></table></figure>
+<h3 id="Git-版本管理工具"><a href="#Git-版本管理工具" class="headerlink" title="Git 版本管理工具"></a>Git 版本管理工具</h3><h2 id="基础框架搭建"><a href="#基础框架搭建" class="headerlink" title="基础框架搭建"></a>基础框架搭建</h2><h3 id="Vue-cli3-x-构建前端架构"><a href="#Vue-cli3-x-构建前端架构" class="headerlink" title="Vue-cli3.x 构建前端架构"></a>Vue-cli3.x 构建前端架构</h3><h3 id="Node-Express-MongDb-构建后端架构"><a href="#Node-Express-MongDb-构建后端架构" class="headerlink" title="Node + Express + MongDb 构建后端架构"></a>Node + Express + MongDb 构建后端架构</h3><p>后端起到的作用是提供 api 接口数据、数据库操作。</p>
+<p>使用 <code>Node.js</code> + <code>Express</code> 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装 express</span><br><span class="line"><span class="meta">&gt;</span> npm i -S express</span><br></pre></td></tr></table></figure>
+<h4 id="index-js-入口文件"><a href="#index-js-入口文件" class="headerlink" title="index.js 入口文件"></a>index.js 入口文件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">"./router"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">5000</span>;</span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">"127.0.0.1"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由</span></span><br><span class="line">app.use(router);</span><br><span class="line"></span><br><span class="line">app.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器启动成功，通过 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/ 访问`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/11/JS全栈开发/" data-id="cjuwgm197000bsgut9mvgwbge" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/25/框架-Vuex/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          框架-Vuex
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/10/前端-UI/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端-UI</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECharts/">ECharts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 19px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 17px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 13px;">Node</a> <a href="/tags/Python/" style="font-size: 16px;">Python</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/blog/" style="font-size: 11px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 18px;">前端</a> <a href="/tags/后端/" style="font-size: 13px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/25/框架-Vuex/">框架-Vuex</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/11/JS全栈开发/">Vue+Node+Mongodb全栈开发</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/10/前端-UI/">前端-UI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/10/框架-Vue-cli3/">框架-Vue-cli 3.x脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

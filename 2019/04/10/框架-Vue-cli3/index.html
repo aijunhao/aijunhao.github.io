@@ -7,13 +7,13 @@
   
   <title>框架-Vue-cli 3.x脚手架 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue-cli 3.x 简介 安装 创建项目 项目配置 项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org/zh/guide/ vue-cli 称为 脚手架， 是一个基于 Vue.js 进行快速开发的完整系统，提供：  通过 @vue/cli 搭建交互式的项目脚手架。  通过 @vue/cli + @vue/cli-service-global">
-<meta name="keywords" content="移动端,JavaScript,前端,框架,Vue">
+  <meta name="description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org">
+<meta name="keywords" content="移动端,前端,框架,JavaScript,Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="框架-Vue-cli 3.x脚手架">
 <meta property="og:url" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="vue-cli 3.x 简介 安装 创建项目 项目配置 项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org/zh/guide/ vue-cli 称为 脚手架， 是一个基于 Vue.js 进行快速开发的完整系统，提供：  通过 @vue/cli 搭建交互式的项目脚手架。  通过 @vue/cli + @vue/cli-service-global">
+<meta property="og:description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/图形化界面.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/创建项目.JPG">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/安装.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/下载.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/项目目录.JPG">
-<meta property="og:updated_time" content="2019-04-12T08:17:41.151Z">
+<meta property="og:updated_time" content="2019-04-25T09:09:09.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="框架-Vue-cli 3.x脚手架">
-<meta name="twitter:description" content="vue-cli 3.x 简介 安装 创建项目 项目配置 项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org/zh/guide/ vue-cli 称为 脚手架， 是一个基于 Vue.js 进行快速开发的完整系统，提供：  通过 @vue/cli 搭建交互式的项目脚手架。  通过 @vue/cli + @vue/cli-service-global">
+<meta name="twitter:description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/图形化界面.JPG">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -100,8 +100,27 @@
 <ul>
 <li><a href="#vue-cli-3x-简介">vue-cli 3.x 简介</a></li>
 <li><a href="#安装">安装</a></li>
-<li><a href="#创建项目">创建项目</a></li>
-<li><a href="#项目配置">项目配置</a></li>
+<li><a href="#创建项目">创建项目</a><ul>
+<li><a href="#代码创建">代码创建</a><ul>
+<li><a href="#新建项目">新建项目</a></li>
+<li><a href="#选择创建方式">选择创建方式</a></li>
+<li><a href="#选择需要的配置">选择需要的配置</a><ul>
+<li><a href="#路由选择">路由选择</a></li>
+<li><a href="#css-预处理器选择">CSS 预处理器选择</a></li>
+<li><a href="#代码风格及格式化选择">代码风格及格式化选择</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#图形化界面创建">图形化界面创建</a></li>
+</ul>
+</li>
+<li><a href="#项目简介">项目简介</a><ul>
+<li><a href="#public-文件夹">public 文件夹</a></li>
+</ul>
+</li>
+<li><a href="#项目配置">项目配置</a><pre><code>- [关闭 eslint 语法限制](#关闭-eslint-语法限制)
+</code></pre></li>
 <li><a href="#项目运行">项目运行</a></li>
 <li><a href="#构建项目">构建项目</a></li>
 </ul>
@@ -130,8 +149,24 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli @vue/cli-service-global</span><br></pre></td></tr></table></figure>
 <p>检查版本。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -V</span><br></pre></td></tr></table></figure>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="纯代码创建"><a href="#纯代码创建" class="headerlink" title="纯代码创建"></a>纯代码创建</h3><p>一般方式，使用纯代码来创建项目。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建项目</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> vue create vue-project</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 手动选择特性 Manually select features</span></span><br><span class="line">Vue CLI v3.5.5</span><br><span class="line">? Please pick a preset: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> default (babel, eslint)</span></span><br><span class="line">  Manually select features</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装内容 按需选择</span></span><br><span class="line">? Check the features needed for your project: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">(*) Babel</span></span><br><span class="line"> (*) TypeScript			# 支持使用 TypeScript 书写源码</span><br><span class="line"> ( ) Progressive Web App (PWA) Support	# PWA 支持</span><br><span class="line"> (*) Router				# 支持 vue-router</span><br><span class="line"> (*) Vuex				# 支持 vuex</span><br><span class="line"> (*) CSS Pre-processors	# 支持 CSS 预处理器</span><br><span class="line"> (*) Linter / Formatter	# 支持代码风格检查和格式化</span><br><span class="line"> (*) Unit Testing		# 支持单元测试</span><br><span class="line"> ( ) E2E Testing		# 支持 E2E 测试</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用 Stylus 预处理 css</span></span><br><span class="line">? Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): Stylus</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用 ESLint + Prettier 格式化代码</span></span><br><span class="line">? Pick a linter / formatter config:</span><br><span class="line">  ESLint with error prevention only</span><br><span class="line">  ESLint + Airbnb config</span><br><span class="line">  ESLint + Standard config</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ESLint + Prettier</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择语法检查方式，选择保存就检测</span></span><br><span class="line">? Pick additional lint features: (Press &lt;space&gt; to select,</span><br><span class="line">&lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">(*) Lint on save</span></span><br><span class="line"> ( ) Lint and fix on commit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 单元测试，Mocha + Chai</span></span><br><span class="line">? Pick a unit testing solution: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Mocha + Chai</span></span><br><span class="line">  Jest</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置文件存放地方，单独或者放到 package.json</span></span><br><span class="line">? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> In dedicated config files</span></span><br><span class="line">  In package.json</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否记录这一次的配置</span></span><br><span class="line">? Save this as a preset for future projects? (y/N)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用类风格语法，选择 y</span></span><br><span class="line">? Use class-style component syntax? (Y/n) </span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用浏览器兼容库，选择 y</span></span><br><span class="line">? Use Babel alongside TypeScript for auto-detected polyfills? (Y/n)</span><br></pre></td></tr></table></figure>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="代码创建"><a href="#代码创建" class="headerlink" title="代码创建"></a>代码创建</h3><h4 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h4><p>先新建一个文件夹，然后进入，执行创建项目命令。项目名不能包含大写字母。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> vue create projectname</span></span><br></pre></td></tr></table></figure>
+<h4 id="选择创建方式"><a href="#选择创建方式" class="headerlink" title="选择创建方式"></a>选择创建方式</h4><p>第一个默认选项，<code>default (babel, eslint)</code>， 快速创建一个新项目的原型，没有带任何辅助功能的  <code>npm</code> 包。</p>
+<p>第二个选项，<code>Manually select features</code> ，自定义配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">? Please pick a preset: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> default (babel, eslint)</span></span><br><span class="line">  Manually select features</span><br></pre></td></tr></table></figure>
+<h4 id="选择需要的配置"><a href="#选择需要的配置" class="headerlink" title="选择需要的配置"></a>选择需要的配置</h4><p>按需选择。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">? Check the features needed for your project: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">(*) Babel				<span class="comment"># 转码器，可以将ES6代码转为ES5代码，从而在现有环境执行</span></span></span><br><span class="line"> ( ) TypeScript			# 使用 TypeScript 书写源码，使用 TypeScript 代替 JavaSCript</span><br><span class="line"> ( ) Progressive Web App (PWA) Support	# PWA 支持</span><br><span class="line"> (*) Router				# vue-router（前端路由）</span><br><span class="line"> (*) Vuex				# vuex（状态管理模式）</span><br><span class="line"> (*) CSS Pre-processors	# CSS 预处理器（如，less、sass、stylus）</span><br><span class="line"> (*) Linter / Formatter	# 代码风格检查和格式化（如，ESlint）</span><br><span class="line"> ( ) Unit Testing		# 单元测试</span><br><span class="line"> ( ) E2E Testing		# E2E 测试</span><br></pre></td></tr></table></figure>
+<h5 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a>路由选择</h5><p>选择了 <code>Router</code> 时需要配置，是否使用 <code>history route</code> 。</p>
+<p>Vue-Router 利用了浏览器自身的hash 模式和 history 模式的特性来实现前端路由（通过调用浏览器提供的接口）</p>
+<p>hash： 浏览器url址栏 中的 # 符号（如这个 URL：<a href="http://www.abc.com/#/hello，hash" target="_blank" rel="noopener">http://www.abc.com/#/hello，hash</a> 的值为“ #/hello”），hash 不被包括在 HTTP 请求中（对后端完全没有影响），因此改变 hash 不会重新加载页面</p>
+<p>history：利用了 HTML5 History Interface 中新增的 pushState( ) 和 replaceState( ) 方法（需要特定浏览器支持）。单页客户端应用，history mode 需要后台配置支持（详细参见：<a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html）" target="_blank" rel="noopener">https://router.vuejs.org/zh/guide/essentials/history-mode.html）</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Use history mode for router? (Requires proper server setup for index fallback in production) (Y/n)</span><br></pre></td></tr></table></figure>
+<h5 id="CSS-预处理器选择"><a href="#CSS-预处理器选择" class="headerlink" title="CSS 预处理器选择"></a>CSS 预处理器选择</h5><p>选择了 <code>CSS Pre-processors</code> 时需要配置 。</p>
+<p>使用 Stylus 预处理 css，较为方便。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">? Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Sass/SCSS (with dart-sass)</span></span><br><span class="line">  Sass/SCSS (with node-sass)</span><br><span class="line">  Less</span><br><span class="line">  Stylus</span><br></pre></td></tr></table></figure>
+<h5 id="代码风格及格式化选择"><a href="#代码风格及格式化选择" class="headerlink" title="代码风格及格式化选择"></a>代码风格及格式化选择</h5><p>常用的格式化是 <code>ESLint + Prettier</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用 ESLint + Prettier 格式化代码</span></span><br><span class="line">? Pick a linter / formatter config: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ESLint with error prevention only</span></span><br><span class="line">  ESLint + Airbnb config</span><br><span class="line">  ESLint + Standard config</span><br><span class="line">  ESLint + Prettier</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 选择语法检查方式，选择保存就检测</span></span><br><span class="line">? Pick additional lint features: (Press &lt;space&gt; to select,</span><br><span class="line">&lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">(*) Lint on save</span></span><br><span class="line"> ( ) Lint and fix on commit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 单元测试，Mocha + Chai</span></span><br><span class="line">? Pick a unit testing solution: (Use arrow keys)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Mocha + Chai</span></span><br><span class="line">  Jest</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置文件存放地方，单独或者放到 package.json</span></span><br><span class="line">? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> In dedicated config files</span></span><br><span class="line">  In package.json</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否记录这一次的配置</span></span><br><span class="line">? Save this as a preset for future projects? (y/N)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用类风格语法，选择 y</span></span><br><span class="line">? Use class-style component syntax? (Y/n) </span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用浏览器兼容库，选择 y</span></span><br><span class="line">? Use Babel alongside TypeScript for auto-detected polyfills? (Y/n)</span><br></pre></td></tr></table></figure>
 <h3 id="图形化界面创建"><a href="#图形化界面创建" class="headerlink" title="图形化界面创建"></a>图形化界面创建</h3><p>还有一种就是用 <code>UI</code> 界面来创建。输入命令，会以浏览器的方式创建项目。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> vue ui</span></span><br></pre></td></tr></table></figure>
 <p>图形化界面会引导我们创建，比较简单。</p>
@@ -161,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/框架-Vue-cli3/" data-id="cjumtrcxt001ihsutpqinltce" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/框架-Vue-cli3/" data-id="cjuwgm1t7003esgutecjadkt6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -235,7 +270,11 @@
       <ul>
         
           <li>
-            <a href="/2019/04/11/框架-Vue-实战项目/">Vue+Node+Mongodb全栈开发</a>
+            <a href="/2019/04/25/框架-Vuex/">框架-Vuex</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/11/JS全栈开发/">Vue+Node+Mongodb全栈开发</a>
           </li>
         
           <li>
@@ -248,10 +287,6 @@
         
           <li>
             <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/23/框架-Vuejs/">框架-Vue.js基础</a>
           </li>
         
       </ul>

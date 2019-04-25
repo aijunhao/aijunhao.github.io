@@ -62,6 +62,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Android技术——杂记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/30/Android技术——杂记/" class="article-date">
+  <time datetime="2018-10-30T11:05:17.000Z" itemprop="datePublished">2018-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/30/Android技术——杂记/">Android技术——杂记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目录</p>
+<!-- TOC -->
+<ul>
+<li><a href="#技巧1随recyclerview的滚动改变控件状态">技巧1：随RecyclerView的滚动改变控件状态</a></li>
+<li><a href="#技巧2沉浸式状态栏">技巧2：沉浸式状态栏</a></li>
+</ul>
+<!-- /TOC -->
+<h3 id="技巧1：随RecyclerView的滚动改变控件状态"><a href="#技巧1：随RecyclerView的滚动改变控件状态" class="headerlink" title="技巧1：随RecyclerView的滚动改变控件状态"></a>技巧1：随RecyclerView的滚动改变控件状态</h3><p>技术点：RecyclerView的onScrollListener()；</p>
+<p>注意上下层关系。<br>activity_recycler_view.xml:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".jiqiao.RecyclerViewActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/rv_home"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/view"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"50dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">"#553190E8"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>RecyclerViewActivity.java:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.aijunhao.myproject.jiqiao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.animation.ArgbEvaluator;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.widget.LinearLayoutManager;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.widget.RecyclerView;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.aijunhao.myproject.R;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> butterknife.BindView;</span><br><span class="line"><span class="keyword">import</span> butterknife.ButterKnife;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TRANSPARENT_COLOR = <span class="number">0x553190E8</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UN_TRANSPARENT_COLOR = <span class="number">0xff3190E8</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BindView</span>(R.id.rv_home)</span><br><span class="line">    RecyclerView rvHome;</span><br><span class="line">    <span class="meta">@BindView</span>(R.id.view)</span><br><span class="line">    View view;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * recyclerView滚动量及头部透明度设置</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sumY = <span class="number">0</span>;       <span class="comment">// recyclerView移动的增量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> duration = <span class="number">150.0f</span>;     <span class="comment">// 增量的最大值</span></span><br><span class="line">    <span class="keyword">private</span> ArgbEvaluator evaluator = <span class="keyword">new</span> ArgbEvaluator();      <span class="comment">// 透明度计算器</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_recycler_view);</span><br><span class="line">        ButterKnife.bind(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        rvHome.setAdapter(<span class="keyword">new</span> HomeRecyclerViewAdapter());</span><br><span class="line">        rvHome.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>, LinearLayoutManager.VERTICAL, <span class="keyword">false</span>));</span><br><span class="line"></span><br><span class="line">        rvHome.addOnScrollListener(listener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RecyclerView.OnScrollListener listener = <span class="keyword">new</span> RecyclerView.OnScrollListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</span><br><span class="line">            <span class="comment">// 滑动增量</span></span><br><span class="line">            sumY += dy;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 根据增量值得到透明度</span></span><br><span class="line">            <span class="keyword">int</span> bgColor;</span><br><span class="line">            <span class="keyword">if</span> (sumY &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                bgColor = TRANSPARENT_COLOR;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sumY &gt; duration) &#123;</span><br><span class="line">                bgColor = UN_TRANSPARENT_COLOR;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                bgColor = (<span class="keyword">int</span>) evaluator.evaluate(sumY / duration, TRANSPARENT_COLOR, UN_TRANSPARENT_COLOR);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 设置头容器的背景色</span></span><br><span class="line">            view.setBackgroundColor(bgColor);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeRecyclerViewAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerView</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">            View view = View.inflate(parent.getContext(), R.layout.item_home_common, <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> CommonHolder(view);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">            ((CommonHolder) holder).tv.setText(<span class="string">"position:"</span> + position);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">50</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">CommonHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        TextView tv;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CommonHolder</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(view);</span><br><span class="line">            tv = (TextView) view.findViewById(R.id.tv);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>item_home_common.xml:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_centerHorizontal</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">" "</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="技巧2：沉浸式状态栏"><a href="#技巧2：沉浸式状态栏" class="headerlink" title="技巧2：沉浸式状态栏"></a>技巧2：沉浸式状态栏</h3><p>沉浸式状态栏，就是设置android页面的顶部的一个状态栏透明，并且让界面中的内容嵌入到状态栏中。只要设置style的样式即可。</p>
+<p>因为android版本问题，需要针对不用的版本设置不同的style，系统会根据版本去使用相应的style样式。</p>
+<p>普通values包下的styles.xml默认即可：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Base application theme. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">        <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>@color/colorPrimary<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>@color/colorPrimaryDark<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>@color/colorAccent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>values-v19包下的styles.xml：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Base application theme. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">        <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentStatus"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentNavigation"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>values-v21包下的styles.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Base application theme. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">        <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentStatus"</span>&gt;</span>false<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentNavigation"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:statusBarColor"</span>&gt;</span>@android:color/transparent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如此，就可以实现沉浸式状态栏。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/30/Android技术——杂记/" data-id="cjuwgm1950009sgutqmeoigrp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Android技术——软件框架" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/27/Android技术——软件框架/" class="article-date">
@@ -169,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/27/Android技术——软件框架/" data-id="cjumtrcvk000ahsutekkomydf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/27/Android技术——软件框架/" data-id="cjuwgm19h000gsgut1jm6uhx2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -240,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/24/Android技术——底部导航栏/" data-id="cjumtrdjb0047hsutynwzig4r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/24/Android技术——底部导航栏/" data-id="cjuwgm1v00047sgutgxxjepo7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -846,7 +902,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/前端-Html5/" data-id="cjumtrdoi004uhsuttpnn3n2d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/前端-Html5/" data-id="cjuwgm24c004rsguteyp8wwmh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -954,7 +1010,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/19/Android技术——网络框架/" data-id="cjumtrdbh002yhsutvkf1mpew" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/19/Android技术——网络框架/" data-id="cjuwgm1qu002vsgut7za4vas1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1009,7 +1065,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/18/Android技术——Android与H5混合开发/" data-id="cjumtrcv50005hsut5lv55ucr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/18/Android技术——Android与H5混合开发/" data-id="cjuwgm1930008sgut2izmteet" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1064,7 +1120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/17/《第一行代码_Android》第9章_网络技术/" data-id="cjumtrcxh0017hsutynnojx7d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/17/《第一行代码_Android》第9章_网络技术/" data-id="cjuwgm1ae0011sgut7f7k3t21" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1137,7 +1193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/《第一行代码_Android》第8章_多媒体/" data-id="cjumtrdec0037hsuttiajji9s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/《第一行代码_Android》第8章_多媒体/" data-id="cjuwgm1sb0036sguti5gkncg5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1330,7 +1386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/《第一行代码_Android》第7章_内容提供器/" data-id="cjumtrdeb0036hsuty5za3xf9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/《第一行代码_Android》第7章_内容提供器/" data-id="cjuwgm1r40030sgutb7uf420y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1472,93 +1528,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjumtrdnq004ohsut9tlntcwk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/《第一行代码_Android》第6章_数据持久化/" data-id="cjuwgm23x004psgutui55kw41" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Git使用教程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/09/Git使用教程/" class="article-date">
-  <time datetime="2018-10-09T06:35:10.000Z" itemprop="datePublished">2018-10-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/09/Git使用教程/">Git使用教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- TOC -->
-<ul>
-<li><a href="#此教材为个人总结的云代码仓库git的使用教程">此教材为个人总结的云代码仓库Git的使用教程。</a><ul>
-<li><a href="#git介绍">Git介绍</a></li>
-<li><a href="#git的基本使用">Git的基本使用</a></li>
-<li><a href="#更多更详细资料参考">更多更详细资料参考</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<hr>
-<h2 id="此教材为个人总结的云代码仓库Git的使用教程。"><a href="#此教材为个人总结的云代码仓库Git的使用教程。" class="headerlink" title="此教材为个人总结的云代码仓库Git的使用教程。"></a>此教材为个人总结的云代码仓库Git的使用教程。</h2><h3 id="Git介绍"><a href="#Git介绍" class="headerlink" title="Git介绍"></a>Git介绍</h3><ul>
-<li>git是一个版本控制系统,用于对代码的项目版本管理,最初目的是为更好地管理Linux内核开发而设计。</li>
-<li>git与CVS、Subversion一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。</li>
-<li>git的速度很快，这对于诸如Linux内核这样的大项目来说自然很重要。</li>
-<li>git最为出色的是它的合并追踪（merge tracing）能力。</li>
-</ul>
-<h3 id="Git的基本使用"><a href="#Git的基本使用" class="headerlink" title="Git的基本使用"></a>Git的基本使用</h3><ol>
-<li>在GitHub上创建项目Repositories。</li>
-</ol>
-<p><img src="/2018/10/09/Git使用教程/Repository.PNG" alt=""></p>
-<p>创建完成的项目如下图所示：<br><img src="/2018/10/09/Git使用教程/1.PNG" alt=""></p>
-<ol start="2">
-<li>打开Git Bash工具，选择一个文件夹，将项目clone下来。</li>
-</ol>
-<p><img src="/2018/10/09/Git使用教程/2.PNG" alt=""></p>
-<p>clone的地址为<a href="https://github.com/用户名/项目名.git" target="_blank" rel="noopener">https://github.com/用户名/项目名.git</a></p>
-<p>此时可以看到在F盘根目录下会有一个MyGitHubTest的文件夹，文件夹里面有一个.git隐藏文件夹和readme.md文件。这样github云仓库中的项目就被clone下来了。</p>
-<ol start="3">
-<li>写入文件，并且上传云仓库。</li>
-</ol>
-<p>新建一个文本文件，写入一句话，将这个文本作为上传对象。</p>
-<p><img src="/2018/10/09/Git使用教程/3.PNG" alt=""></p>
-<p>在Git Bash命令行中进行如下命令操作：</p>
-<p>添加所有文件：<br><img src="/2018/10/09/Git使用教程/4.PNG" alt=""></p>
-<p>提交到本地仓库HEAD，此时云端仓库还没有：<br><img src="/2018/10/09/Git使用教程/5.PNG" alt=""></p>
-<p>推送改动到远端仓库：<br><img src="/2018/10/09/Git使用教程/6.PNG" alt=""></p>
-<p>此时在刷新github上的页面就可以看到我们提交的文件了。</p>
-<p>如果远端仓库有文件改动，要更新本地仓库：<br><img src="/2018/10/09/Git使用教程/7.PNG" alt=""></p>
-<hr>
-<h3 id="更多更详细资料参考"><a href="#更多更详细资料参考" class="headerlink" title="更多更详细资料参考"></a>更多更详细资料参考</h3><p>git-简明指南:<a href="https://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="noopener">https://rogerdudler.github.io/git-guide/index.zh.html</a></p>
-<p>git项目:<a href="https://github.com/git/git" target="_blank" rel="noopener">https://github.com/git/git</a></p>
-<p>git百科:<a href="https://zh.wikipedia.org/wiki/Git" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Git</a></p>
-<p>git远程操作详解-阮一峰的网络日志:<br><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/06/git_remote.html</a></p>
-<p>git教程-廖雪峰的官方网站:<br><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/Git使用教程/" data-id="cjumtrcvw000ehsut412ucd5w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
 
     </footer>
   </div>
@@ -1617,7 +1590,11 @@
       <ul>
         
           <li>
-            <a href="/2019/04/11/框架-Vue-实战项目/">Vue+Node+Mongodb全栈开发</a>
+            <a href="/2019/04/25/框架-Vuex/">框架-Vuex</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/11/JS全栈开发/">Vue+Node+Mongodb全栈开发</a>
           </li>
         
           <li>
@@ -1630,10 +1607,6 @@
         
           <li>
             <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/23/框架-Vuejs/">框架-Vue.js基础</a>
           </li>
         
       </ul>
