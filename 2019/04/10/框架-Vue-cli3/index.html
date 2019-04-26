@@ -7,13 +7,13 @@
   
   <title>框架-Vue-cli 3.x脚手架 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org">
+  <meta name="description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择 语法检查时机 配置文件存放位置 单元测试方法 记录这一次的配置 使用类风格语法 使用浏览器兼容库     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项">
 <meta name="keywords" content="移动端,前端,框架,JavaScript,Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="框架-Vue-cli 3.x脚手架">
 <meta property="og:url" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org">
+<meta property="og:description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择 语法检查时机 配置文件存放位置 单元测试方法 记录这一次的配置 使用类风格语法 使用浏览器兼容库     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/图形化界面.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/创建项目.JPG">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/安装.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/下载.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/项目目录.JPG">
-<meta property="og:updated_time" content="2019-04-25T09:57:56.684Z">
+<meta property="og:updated_time" content="2019-04-26T13:00:29.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="框架-Vue-cli 3.x脚手架">
-<meta name="twitter:description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项目运行 构建项目   vue-cli 3.x 简介官网：https://cli.vuejs.org">
+<meta name="twitter:description" content="vue-cli 3.x 简介 安装 创建项目 代码创建 新建项目 选择创建方式 选择需要的配置 路由选择 CSS 预处理器选择 代码风格及格式化选择 语法检查时机 配置文件存放位置 单元测试方法 记录这一次的配置 使用类风格语法 使用浏览器兼容库     图形化界面创建   项目简介 public 文件夹   项目配置- [关闭 eslint 语法限制](#关闭-eslint-语法限制)  项">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/10/框架-Vue-cli3/图形化界面.JPG">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -108,6 +108,12 @@
 <li><a href="#路由选择">路由选择</a></li>
 <li><a href="#css-预处理器选择">CSS 预处理器选择</a></li>
 <li><a href="#代码风格及格式化选择">代码风格及格式化选择</a></li>
+<li><a href="#语法检查时机">语法检查时机</a></li>
+<li><a href="#配置文件存放位置">配置文件存放位置</a></li>
+<li><a href="#单元测试方法">单元测试方法</a></li>
+<li><a href="#记录这一次的配置">记录这一次的配置</a></li>
+<li><a href="#使用类风格语法">使用类风格语法</a></li>
+<li><a href="#使用浏览器兼容库">使用浏览器兼容库</a></li>
 </ul>
 </li>
 </ul>
@@ -230,7 +236,7 @@
   
     <a href="/2019/04/04/框架-Vuejs-模块化开发/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">框架-Vuejs-Webpack模块化开发</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -297,7 +303,7 @@
           </li>
         
           <li>
-            <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
+            <a href="/2019/04/04/框架-Vuejs-模块化开发/">(no title)</a>
           </li>
         
       </ul>
