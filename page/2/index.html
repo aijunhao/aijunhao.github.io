@@ -62,408 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-数据库——MongoDB" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/15/数据库——MongoDB/" class="article-date">
-  <time datetime="2019-03-15T09:29:23.000Z" itemprop="datePublished">2019-03-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/数据库——MongoDB/">数据库——MongoDB</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- TOC -->
-<ul>
-<li><a href="#mongodb-介绍">MongoDB 介绍</a><ul>
-<li><a href="#关系型数据库和非关系型数据库">关系型数据库和非关系型数据库</a><ul>
-<li><a href="#关系型数据库特点">关系型数据库特点</a></li>
-<li><a href="#非关系型数据库">非关系型数据库</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#mongodb-下载及安装">MongoDB 下载及安装</a><ul>
-<li><a href="#下载">下载</a></li>
-<li><a href="#安装">安装</a></li>
-<li><a href="#配置环境变量">配置环境变量</a></li>
-<li><a href="#新建数据目录">新建数据目录</a><ul>
-<li><a href="#修改默认数据目录">修改默认数据目录</a></li>
-</ul>
-</li>
-<li><a href="#连接数据库">连接数据库</a></li>
-</ul>
-</li>
-<li><a href="#mongodb-可视化工具-mongodb-compass">MongoDB 可视化工具 MongoDB Compass</a></li>
-<li><a href="#mongodb-查">MongoDB 查</a><ul>
-<li><a href="#查看所有数据库">查看所有数据库</a></li>
-<li><a href="#查看当前所在的数据库">查看当前所在的数据库</a></li>
-<li><a href="#查询文档">查询文档</a><ul>
-<li><a href="#查询所有">查询所有</a></li>
-<li><a href="#单文档查询">单文档查询</a></li>
-<li><a href="#格式化显示">格式化显示</a></li>
-<li><a href="#条件查询语句">条件查询语句</a></li>
-<li><a href="#and-条件">AND 条件</a></li>
-<li><a href="#or-条件">OR 条件</a></li>
-<li><a href="#type-操作符"><code>$type</code> 操作符</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#mongodb-增">MongoDB 增</a><ul>
-<li><a href="#创建切换数据库">创建/切换数据库</a></li>
-<li><a href="#创建集合">创建集合</a><ul>
-<li><a href="#主动创建集合">主动创建集合</a></li>
-<li><a href="#创建集合并插入数据">创建集合并插入数据</a></li>
-</ul>
-</li>
-<li><a href="#插入数据文档">插入数据文档</a></li>
-</ul>
-</li>
-<li><a href="#mongodb-删">MongoDB 删</a><ul>
-<li><a href="#删除数据库">删除数据库</a></li>
-<li><a href="#删除集合">删除集合</a></li>
-<li><a href="#删除文档">删除文档</a></li>
-</ul>
-</li>
-<li><a href="#mongodb-改">MongoDB 改</a><ul>
-<li><a href="#update">update()</a></li>
-<li><a href="#save-方法">save() 方法</a></li>
-</ul>
-</li>
-<li><a href="#mongodb-导入导出数据">MongoDB 导入导出数据</a><ul>
-<li><a href="#mongodb-的导出功能">MongoDB 的导出功能</a></li>
-<li><a href="#mongodb的导入功能">MongoDB的导入功能</a></li>
-</ul>
-</li>
-<li><a href="#mongodb的-_id">MongoDB的 “_id”</a></li>
-</ul>
-<!-- /TOC -->
-<h2 id="MongoDB-介绍"><a href="#MongoDB-介绍" class="headerlink" title="MongoDB 介绍"></a>MongoDB 介绍</h2><p>菜鸟联盟：<a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-tutorial.html</a></p>
-<h3 id="关系型数据库和非关系型数据库"><a href="#关系型数据库和非关系型数据库" class="headerlink" title="关系型数据库和非关系型数据库"></a>关系型数据库和非关系型数据库</h3><p>所谓的关系型，表就是关系，就是表与表之间存在关系。</p>
-<h4 id="关系型数据库特点"><a href="#关系型数据库特点" class="headerlink" title="关系型数据库特点"></a>关系型数据库特点</h4><p>关系型数据库最典型的数据结构是表，由二维表及其之间的联系所组成的一个数据组织。</p>
-<p>优点：</p>
-<ul>
-<li>易于维护：都是使用表结构，格式一致；</li>
-<li>使用方便：SQL语言通用，可用于复杂查询；</li>
-<li>复杂操作：支持SQL，可用于一个表以及多个表之间非常复杂的查询。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li><p>读写性能比较差，尤其是海量数据的高效率读写；</p>
-</li>
-<li><p>固定的表结构，灵活度稍欠；</p>
-</li>
-<li><p>高并发读写需求，传统关系型数据库来说，硬盘I/O是一个很大的瓶颈。</p>
-</li>
-</ul>
-<p>常用数据库：</p>
-<p>MariaDB/SQL Server/MySQL/SQLite/ORACLE/PostgreSQL</p>
-<h4 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a>非关系型数据库</h4><p>非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合，可以是文档或者键值对等。</p>
-<p>优点：</p>
-<ul>
-<li>格式灵活：存储数据的格式可以是key,value形式、文档形式、图片形式等等，文档形式、图片形式等等，使用灵活，应用场景广泛，而关系型数据库则只支持基础类型。</li>
-<li>速度快：nosql可以使用硬盘或者随机存储器作为载体，而关系型数据库只能使用硬盘；</li>
-<li>高扩展性；</li>
-<li>成本低：nosql数据库部署简单，基本都是开源软件。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>不提供sql支持，学习和使用成本较高；</li>
-<li>无事务处理；</li>
-<li>数据结构相对复杂，复杂查询方面稍欠。</li>
-</ul>
-<p>非关系型数据库的分类和比较：</p>
-<ul>
-<li>文档型</li>
-<li>key-value型</li>
-<li>列式数据库</li>
-<li>图形数据库</li>
-</ul>
-<p>常用数据库：</p>
-<p>mongoDB/HBASE/redis/Cassandra/CouchDB/Neo4j</p>
-<hr>
-<h2 id="MongoDB-下载及安装"><a href="#MongoDB-下载及安装" class="headerlink" title="MongoDB 下载及安装"></a>MongoDB 下载及安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>官网：<a href="https://www.mongodb.com/" target="_blank" rel="noopener">https://www.mongodb.com/</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载安装即可，直到最后一步需要下载安装 <code>MongoDB Compass</code> 可视化界面，哪里将左下角的√取消掉就好。这个下载太慢！！！可视化界面我们自己装。</p>
-<p><img src="/2019/03/15/数据库——MongoDB/注意点.jpg" alt="注意点.jpg"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>配置环境变量：将安装目录下的 <code>bin</code> 目录添加到用户变量。</p>
-<p>然后使用<font color="red">管理员身份</font>进入命令行输入 <code>mongod -v</code> 查看版本，有用即可。</p>
-<p><img src="/2019/03/15/数据库——MongoDB/cmd.jpg" alt="cmd.jpg"></p>
-<h3 id="新建数据目录"><a href="#新建数据目录" class="headerlink" title="新建数据目录"></a>新建数据目录</h3><p>由于第一次执行需要一个数据库文件目录，默认是 <code>C:/data/db</code> 如果没有这个目录，会执行失败，如下图所示：</p>
-<p><img src="/2019/03/15/数据库——MongoDB/第一次执行.jpg" alt="第一次执行.jpg"></p>
-<p>新建完目录之后，再次执行，如下，数据库服务启动完成，窗口不能关闭，<code>CTRL + C</code> 退出：</p>
-<p><img src="/2019/03/15/数据库——MongoDB/第二次执行.jpg" alt="第二次执行.jpg"></p>
-<h4 id="修改默认数据目录"><a href="#修改默认数据目录" class="headerlink" title="修改默认数据目录"></a>修改默认数据目录</h4><p>如果不想放在 C 盘，可以通过命令修改：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath xxx:\data\db</span><br></pre></td></tr></table></figure>
-<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><p>首先使用<font color="red">管理员身份</font>进入命令行输入 <code>mongod</code> 打开服务。</p>
-<p>通过如下网址：<a href="http://127.0.0.1:27017/" target="_blank" rel="noopener">http://127.0.0.1:27017/</a> 访问。如果网页内容显示 <code>‘It looks like you are trying to access MongoDB over HTTP on the native driver port.’</code>，表示数据库服务已打开。</p>
-<p>然后再使用<font color="red">管理员身份</font>进入命令行输入 <code>mongo</code> 连接数据库，注意原先打开服务的命令窗口不能关闭。</p>
-<p>如下，即可：</p>
-<p><img src="/2019/03/15/数据库——MongoDB/连接数据库.jpg" alt="连接数据库.jpg"></p>
-<hr>
-<h2 id="MongoDB-可视化工具-MongoDB-Compass"><a href="#MongoDB-可视化工具-MongoDB-Compass" class="headerlink" title="MongoDB 可视化工具 MongoDB Compass"></a>MongoDB 可视化工具 MongoDB Compass</h2><p>这个可视化工具就是我们之前点击取消的那个，自主官网下载比较快。在官网选择社区版下载。</p>
-<hr>
-<h2 id="MongoDB-查"><a href="#MongoDB-查" class="headerlink" title="MongoDB 查"></a>MongoDB 查</h2><h3 id="查看所有数据库"><a href="#查看所有数据库" class="headerlink" title="查看所有数据库"></a>查看所有数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> show dbs</span></span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br></pre></td></tr></table></figure>
-<p>这些是系统自带的数据库，最好不要动。</p>
-<p>MongoDB 中默认的数据库为 test，如果你没有创建新的数据库，集合将存放在 test 数据库中，但是由于初始没数据，不显示。</p>
-<h3 id="查看当前所在的数据库"><a href="#查看当前所在的数据库" class="headerlink" title="查看当前所在的数据库"></a>查看当前所在的数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db</span></span><br><span class="line">mydbs</span><br></pre></td></tr></table></figure>
-<h3 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h3><h4 id="查询所有"><a href="#查询所有" class="headerlink" title="查询所有"></a>查询所有</h4><p><code>find()</code> 方法查询所有匹配文档。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 查询文档</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collection.find(query, projection)</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>query ：可选，使用查询操作符指定查询条件。为空表示查询所有。</p>
-</li>
-<li><p>projection ：可选，使用投影操作符指定返回的键。查询时返回文档中所有键值， 只需省略该参数即可（默认省略）。</p>
-</li>
-</ul>
-<h4 id="单文档查询"><a href="#单文档查询" class="headerlink" title="单文档查询"></a>单文档查询</h4><p><code>findOne()</code> 方法查询收个匹配文档。可用参数与 <code>find()</code> 方法相同。</p>
-<h4 id="格式化显示"><a href="#格式化显示" class="headerlink" title="格式化显示"></a>格式化显示</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 查询文档并以格式化数据</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find().pretty()</span></span><br></pre></td></tr></table></figure>
-<h4 id="条件查询语句"><a href="#条件查询语句" class="headerlink" title="条件查询语句"></a>条件查询语句</h4><table>
-<thead>
-<tr>
-<th>操作</th>
-<th>格式</th>
-<th>范例</th>
-<th>关系型数据库语句</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>等于</td>
-<td>{&lt;key>:&lt;value>}</td>
-<td>db.col.find({“by”:”菜鸟教程”}).pretty()</td>
-<td>where by = ‘菜鸟教程’</td>
-</tr>
-<tr>
-<td>小于</td>
-<td>{&lt;key>:{$lt:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$lt:50}}).pretty()</td>
-<td>where likes &lt; 50</td>
-</tr>
-<tr>
-<td>小于或等于</td>
-<td>{&lt;key>:{$lte:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$lte:50}}).pretty()</td>
-<td>where likes &lt;= 50</td>
-</tr>
-<tr>
-<td>大于</td>
-<td>{&lt;key>:{$gt:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$gt:50}}).pretty()</td>
-<td>where likes &gt; 50</td>
-</tr>
-<tr>
-<td>大于或等于</td>
-<td>{&lt;key>:{$gte:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$gte:50}}).pretty()</td>
-<td>where likes &gt;= 50</td>
-</tr>
-<tr>
-<td>不等于</td>
-<td>{&lt;key>:{$ne:&lt;value>}}</td>
-<td>db.col.find({“likes”:{$ne:50}}).pretty()</td>
-<td>where likes != 50</td>
-</tr>
-</tbody>
-</table>
-<h4 id="AND-条件"><a href="#AND-条件" class="headerlink" title="AND 条件"></a>AND 条件</h4><p><code>find()</code> 方法可以传入多个键(key)，每个键(key)以逗号隔开，即常规 <code>SQL</code> 的 <code>AND</code> 条件。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find(&#123;key1:value1, key2:value2&#125;).pretty()</span></span><br></pre></td></tr></table></figure>
-<h4 id="OR-条件"><a href="#OR-条件" class="headerlink" title="OR 条件"></a>OR 条件</h4><p>OR 条件语句使用了关键字 <code>$or</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find(</span></span><br><span class="line">   &#123;</span><br><span class="line">        $or: [</span><br><span class="line">            &#123;key1: value1&#125;, &#123;key2:value2&#125;</span><br><span class="line">        ]</span><br><span class="line">   &#125;</span><br><span class="line">).pretty()</span><br></pre></td></tr></table></figure>
-<h4 id="type-操作符"><a href="#type-操作符" class="headerlink" title="$type 操作符"></a><code>$type</code> 操作符</h4><p>检索集合中匹配的数据类型，并返回结果。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find(&#123;<span class="string">"键名"</span> : &#123;<span class="variable">$type</span> : 类型字符串/对应的数字标签 &#125;&#125;)</span></span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>数字</th>
-<th>类型</th>
-<th>数字</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Double</td>
-<td>1</td>
-<td>Regular Expression</td>
-<td>11</td>
-</tr>
-<tr>
-<td>String</td>
-<td>2</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Object</td>
-<td>3</td>
-<td>JavaScript</td>
-<td>13</td>
-</tr>
-<tr>
-<td>Array</td>
-<td>4</td>
-<td>Symbol</td>
-<td>14</td>
-</tr>
-<tr>
-<td>Binary data</td>
-<td>5</td>
-<td>JavaScript (with scope)</td>
-<td>15</td>
-</tr>
-<tr>
-<td>Undefined(已废弃)</td>
-<td>6</td>
-<td>32-bit integer</td>
-<td>16</td>
-</tr>
-<tr>
-<td>Object id</td>
-<td>7</td>
-<td>Timestamp</td>
-<td>17</td>
-</tr>
-<tr>
-<td>Boolean</td>
-<td>8</td>
-<td>64-bit integer</td>
-<td>18</td>
-</tr>
-<tr>
-<td>Date</td>
-<td>9</td>
-<td>Min key</td>
-<td>255</td>
-</tr>
-<tr>
-<td>Null</td>
-<td>10</td>
-<td>Max key</td>
-<td>127</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find()</span></span><br><span class="line">&#123; "_id" : ObjectId("5c8cb31eca4aff6ebfd76983"), "title" : "MongoDB" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd26fca4aff6ebfd76984"), "title" : "123", "by" : "asdf" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd37cca4aff6ebfd76985"), "title" : 123 &#125;</span><br><span class="line"></span><br><span class="line">// 查询 "title" 数据类型为 'string' 的数据。</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find(&#123;<span class="string">"title"</span>: &#123;<span class="variable">$type</span>: <span class="string">'string'</span>&#125;&#125;)</span></span><br><span class="line">&#123; "_id" : ObjectId("5c8cb31eca4aff6ebfd76983"), "title" : "MongoDB" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("5c8cd26fca4aff6ebfd76984"), "title" : "123", "by" : "asdf" &#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="MongoDB-增"><a href="#MongoDB-增" class="headerlink" title="MongoDB 增"></a>MongoDB 增</h2><h3 id="创建-切换数据库"><a href="#创建-切换数据库" class="headerlink" title="创建/切换数据库"></a>创建/切换数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> use mydbs</span></span><br><span class="line">switched to db mydbs</span><br></pre></td></tr></table></figure>
-<p>使用 <code>use</code> 创建名为 <code>mydbs</code> 的数据库，如果数据库不存在，则创建数据库，否则切换到指定数据库。</p>
-<p>如图，创建 <code>mydbs</code> 数据库，然后查看所有数据库，会发现并没有显示我们刚创建的数据库！！！由于我们创建的数据库里面没有数据，所以不会显示。然后通过 <code>db</code> 命令查看我们所在的数据库，可以发现，我们当前的确创建并切换到了 <code>mydbs</code> 数据库中。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> use mydbs</span></span><br><span class="line">switched to db mydbs</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> show dbs</span></span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db</span></span><br><span class="line">mydbs</span><br></pre></td></tr></table></figure>
-<h3 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h3><h4 id="主动创建集合"><a href="#主动创建集合" class="headerlink" title="主动创建集合"></a>主动创建集合</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 主动创建集合语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.createCollection(name, options)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 实例</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.createCollection(<span class="string">"test"</span>)</span></span><br><span class="line">&#123; "ok" : 1 &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.createCollection(<span class="string">"mycol"</span>, &#123; capped : <span class="literal">true</span>, autoIndexId : <span class="literal">true</span>, size : </span></span><br><span class="line">   6142800, max : 10000 &#125; )</span><br><span class="line">   </span><br><span class="line">// 查看集合</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> show collections</span></span><br><span class="line">test</span><br><span class="line">mycol</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>name: 要创建的集合名称</p>
-</li>
-<li><p>options: 可选参数, 指定有关内存大小及索引的选项</p>
-<ul>
-<li><p>capped: 布尔值。</p>
-<p>  如果为 <code>true</code>，则创建固定集合。固定集合是指有着固定大小的集合，当达到最大值时，它会自动覆盖最早的文档。当该值为 <code>true</code> 时，必须指定 <code>size</code> 参数。</p>
-</li>
-<li><p>autoIndexId: 布尔值。</p>
-<p>  如为 <code>true</code>，自动在 <code>_id</code> 字段创建索引。默认为 <code>false</code> 。</p>
-</li>
-<li><p>size: 数值。</p>
-<p>  为固定集合指定一个最大值（以字节计）。如果 <code>capped</code> 为 <code>true</code>，也需要指定该字段。</p>
-</li>
-<li><p>max: 数值。指定固定集合中包含文档的最大数量。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="创建集合并插入数据"><a href="#创建集合并插入数据" class="headerlink" title="创建集合并插入数据"></a>创建集合并插入数据</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 创建集合并插入数据</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.myCol.insert(&#123;<span class="string">"name"</span>: <span class="string">"test"</span>&#125;)</span></span><br></pre></td></tr></table></figure>
-<h3 id="插入数据文档"><a href="#插入数据文档" class="headerlink" title="插入数据文档"></a>插入数据文档</h3><p>MongoDB 使用 insert() 或 save() 方法向集合中插入文档。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.COLLECTION_NAME.insert(document)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 插入数据</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.mydbs.insert(&#123;title: <span class="string">'MongoDB'</span>&#125;)</span></span><br><span class="line">WriteResult(&#123; "nInserted" : 1 &#125;)</span><br><span class="line"></span><br><span class="line">// 查询</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find()</span></span><br><span class="line">&#123; "_id" : ObjectId("5c8cb31eca4aff6ebfd76983"), "title" : "MongoDB" &#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="MongoDB-删"><a href="#MongoDB-删" class="headerlink" title="MongoDB 删"></a>MongoDB 删</h2><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p>MongoDB 中删除数据库需要先用 <code>use</code> 切换到需要删除的数据库，然后使用 <code>dropDatabase()</code> 方法删除当前数据库。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 切换进需要删除的数据库</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> use DatabaseName</span></span><br><span class="line">switched to db DatabaseName</span><br><span class="line"></span><br><span class="line">// 删除当前数据库</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.dropDatabase()</span></span><br><span class="line">&#123; "dropped" : "DatabaseName", "ok" : 1 &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="删除集合"><a href="#删除集合" class="headerlink" title="删除集合"></a>删除集合</h3><p>MongoDB 中使用 <code>drop()</code> 方法来删除当前数据库中的集合。如果成功删除选定集合，返回 true，否则返回 false。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collectionName.drop()</span></span><br><span class="line">true        // 成功</span><br><span class="line">false       // 失败</span><br></pre></td></tr></table></figure>
-<h3 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h3><p>MongoDB 中使用 <code>remove()</code> 函数是用来移除集合中的数据。在执行 <code>remove()</code> 函数前先执行 <code>find()</code> 命令来判断执行的条件是否正确，这是一个比较好的习惯。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collection.remove(</span></span><br><span class="line">   &lt;query&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">     justOne: &lt;boolean&gt;,</span><br><span class="line">     writeConcern: &lt;document&gt;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// 删除所有文档</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.remove(&#123;&#125;)</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>query :（可选）删除的文档的条件。</p>
-</li>
-<li><p>justOne : （可选）如果设为 true 或 1，则只删除一个文档，如果不设置该参数，或使用默认值 false，则删除所有匹配条件的文档。</p>
-</li>
-<li><p>writeConcern :（可选）抛出异常的级别。</p>
-</li>
-</ul>
-<hr>
-<h2 id="MongoDB-改"><a href="#MongoDB-改" class="headerlink" title="MongoDB 改"></a>MongoDB 改</h2><p>MongoDB 使用 update() 和 save() 方法来更新集合中的文档。</p>
-<h3 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h3><p>update() 方法用于更新已存在的文档。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collection.update(</span></span><br><span class="line">   &lt;query&gt;,</span><br><span class="line">   &lt;update&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">        upsert: &lt;boolean&gt;,</span><br><span class="line">        multi: &lt;boolean&gt;,</span><br><span class="line">        writeConcern: &lt;document&gt;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>query : update的查询条件，类似sql update查询内where后面的。</p>
-</li>
-<li><p>update : update的对象和一些更新的操作符（如$,$inc…）等，也可以理解为sql update查询内set后面的</p>
-</li>
-<li><p>upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。</p>
-</li>
-<li><p>multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。</p>
-</li>
-<li><p>writeConcern :可选，抛出异常的级别。</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 插入数据</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.insert(&#123;title: 123, by:<span class="string">'ai'</span>&#125;)</span></span><br><span class="line">WriteResult(&#123; "nInserted" : 1 &#125;)</span><br><span class="line"></span><br><span class="line">// 查询数据，在内存中存储时，键名都是字符串类型的</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.find()</span></span><br><span class="line">&#123; "_id" : ObjectId("5c8cd26fca4aff6ebfd76984"), "title" : 123, "by" : "ai" &#125;</span><br><span class="line"></span><br><span class="line">// 更新</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.col.update(&#123; <span class="string">'title'</span>: 123&#125;, &#123;<span class="variable">$set</span>: &#123;<span class="string">'by'</span>: <span class="string">'asdf'</span>&#125;&#125;)</span></span><br><span class="line">WriteResult(&#123; "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 &#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="save-方法"><a href="#save-方法" class="headerlink" title="save() 方法"></a>save() 方法</h3><font color="red">save方法有更新和插入两种功能，到底是插入还是更新文档取决于 <code>_id</code> 参数。如果能根据 <code>_id</code> 找到一个已经存在的文档，那么就更新。如果没有传入_id参数或者找不到存在的文档，那么就插入一个新文档。</font>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.collection.save(</span></span><br><span class="line">   &lt;document&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">     writeConcern: &lt;document&gt;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>document : 文档数据。</li>
-<li>writeConcern :可选，抛出异常的级别。</li>
-</ul>
-<hr>
-<h2 id="MongoDB-导入导出数据"><a href="#MongoDB-导入导出数据" class="headerlink" title="MongoDB 导入导出数据"></a>MongoDB 导入导出数据</h2><h3 id="MongoDB-的导出功能"><a href="#MongoDB-的导出功能" class="headerlink" title="MongoDB 的导出功能"></a>MongoDB 的导出功能</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> mongoexport -h dbhost -d dbname -c collectionName -o output</span></span><br></pre></td></tr></table></figure>
-<p>参数说明:</p>
-<ul>
-<li><code>-h</code> 数据库地址</li>
-<li><code>-d</code> 指明使用的库</li>
-<li><code>-c</code> 指明要导出的集合</li>
-<li><code>-o</code> 指明要导出的文件名（文件支持多种格式，如txt,wps,xls等）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 示例</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mongoexport -h localhost:27017 -d kaiye -c c2 -o C://mongoexport/test.txt</span></span><br></pre></td></tr></table></figure>
-<h3 id="MongoDB的导入功能"><a href="#MongoDB的导入功能" class="headerlink" title="MongoDB的导入功能"></a>MongoDB的导入功能</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> mongoimport -h dbhost -d dbname -c collectionname input</span></span><br></pre></td></tr></table></figure>
-<p>参数说明:</p>
-<ul>
-<li><code>-h</code> 数据库地址</li>
-<li><code>-d</code> 指明使用的库</li>
-<li><code>-c</code> 指明要导入的集合（mongodb本身支持隐式创建，故事先无需创建集合）</li>
-<li><code>input</code> 文件的地址</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 示例</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mongoimport -h localhost:27017 -d kaiye -c fuck C://mongoexport/test.txt</span></span><br></pre></td></tr></table></figure>
-<h2 id="MongoDB的-“-id”"><a href="#MongoDB的-“-id”" class="headerlink" title="MongoDB的 “_id”"></a>MongoDB的 “_id”</h2><p>如下是 <code>MongoDB</code> 中的一条数据，当我们插入数据的时候，会自动插入一个 <code>_id</code> 值，默认是 <code>ObjectId</code> 类型的数据。</p>
-<p><code>_id</code> 和 <code>id</code> 是不同的东西。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; "_id" : ObjectId("5cb5ccfc4812c41cecf62554"), "gender" : 1, "name" : "123", "age" : 3, "hobbies" : "1" &#125;</span><br><span class="line"></span><br><span class="line">&#123; "_id" : ObjectId("5cb5ccfc4812c41cecf62555")，</span><br><span class="line">"id" : 1, "name" : "234" &#125;</span><br></pre></td></tr></table></figure>
-<p><code>_id</code> 是计算机生成的唯一标识符。</p>
-<p>如果要使用 <code>findById()</code> 之类的根据 <code>Id</code> 来查询的的方法，这个 <code>Id</code> 指的是 <code>_id</code> 而不是 <code>id</code>，<code>_id</code> 是唯一的，<code>id</code> 可以不唯一。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/数据库——MongoDB/" data-id="cjuwgm1sy003dsguto8hmucp3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-MongoDB" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/15/MongoDB/" class="article-date">
@@ -490,7 +88,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/MongoDB/" data-id="cjuwgm19o000ksgut0kvkdc9k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/MongoDB/" data-id="cjv1zk4wh000cjkutq9kpo0ww" class="article-share-link">Share</a>
       
       
     </footer>
@@ -568,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/13/后端基础——GET和POST/" data-id="cjuwgm1q6002psgutzht4kxya" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/13/后端基础——GET和POST/" data-id="cjv1zk516001hjkutaznvjve0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
@@ -594,7 +192,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/11/框架——Express/">框架——Express</a>
+      <a class="article-title" href="/2019/03/11/框架——Express/">框架——Express原生开发</a>
     </h1>
   
 
@@ -784,7 +382,74 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/11/框架——Express/" data-id="cjuwgm1uw0044sgutvj0llti2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/11/框架——Express/" data-id="cjv1zk5md003bjkutmshs0phn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-框架——Express生成器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/11/框架——Express生成器/" class="article-date">
+  <time datetime="2019-03-11T13:54:34.000Z" itemprop="datePublished">2019-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/11/框架——Express生成器/">框架——Express生成器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>此节项目使用 <code>express-generator</code> 生成器来构建项目，可以根据个人喜好来决定是否使用。</p>
+<h2 id="Express-应用程序生成器"><a href="#Express-应用程序生成器" class="headerlink" title="Express 应用程序生成器"></a>Express 应用程序生成器</h2><p>通过应用生成器工具 <code>express-generator</code> 可以快速创建一个应用的骨架。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>建议全局安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm i -g express-generator</span></span><br></pre></td></tr></table></figure>
+<p>检查版本。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 不能使用 -v</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> express --version</span></span><br></pre></td></tr></table></figure>
+<p>查看命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> express -h</span></span><br><span class="line"></span><br><span class="line">  Usage: express [options] [dir]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  Options:</span><br><span class="line"></span><br><span class="line">        --version        output the version number</span><br><span class="line">    -e, --ejs            add ejs engine support</span><br><span class="line">        --pug            add pug engine support</span><br><span class="line">        --hbs            add handlebars engine support</span><br><span class="line">    -H, --hogan          add hogan.js engine support</span><br><span class="line">    -v, --view &lt;engine&gt;  add view &lt;engine&gt; support (dust|ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)</span><br><span class="line">        --no-view        use static html instead of view engine</span><br><span class="line">    -c, --css &lt;engine&gt;   add stylesheet &lt;engine&gt; support (less|stylus|compass|sass) (defaults to plain css)</span><br><span class="line">        --git            add .gitignore</span><br><span class="line">    -f, --force          force on non-empty directory</span><br><span class="line">    -h, --help           output usage information</span><br></pre></td></tr></table></figure>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用 express &lt;name&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> express nodeproject</span></span><br><span class="line"></span><br><span class="line">  warning: the default view engine will not be jade in future releases</span><br><span class="line">  warning: use `--view=jade' or `--help' for additional options</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   create : nodeproject\</span><br><span class="line">   create : nodeproject\public\</span><br><span class="line">   create : nodeproject\public\javascripts\</span><br><span class="line">   create : nodeproject\public\images\</span><br><span class="line">   create : nodeproject\public\stylesheets\</span><br><span class="line">   create : nodeproject\public\stylesheets\style.css</span><br><span class="line">   create : nodeproject\routes\</span><br><span class="line">   create : nodeproject\routes\index.js</span><br><span class="line">   create : nodeproject\routes\users.js</span><br><span class="line">   create : nodeproject\views\</span><br><span class="line">   create : nodeproject\views\error.jade</span><br><span class="line">   create : nodeproject\views\index.jade</span><br><span class="line">   create : nodeproject\views\layout.jade</span><br><span class="line">   create : nodeproject\app.js</span><br><span class="line">   create : nodeproject\package.json</span><br><span class="line">   create : nodeproject\bin\</span><br><span class="line">   create : nodeproject\bin\www</span><br><span class="line"></span><br><span class="line">   change directory:</span><br><span class="line">     &gt; cd nodeproject</span><br><span class="line"></span><br><span class="line">   install dependencies:</span><br><span class="line">     &gt; npm install</span><br><span class="line"></span><br><span class="line">   run the app:</span><br><span class="line">     &gt; SET DEBUG=nodeproject:* &amp; npm start</span><br></pre></td></tr></table></figure>
+<p>此时的项目目录如下：</p>
+<p><img src="/2019/03/11/框架——Express生成器/express-generator.JPG" alt="express-generator.JPG"></p>
+<p>这是刚创建完的目录，比较简单，而且只是一个基本的架构，没有下载依赖包，需要我们手动下载。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure>
+<h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用 express 提供的命令，或者直接使用 node ./bin/www</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm start</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> nodeproject@0.0.0 start F:\WorkSpace\vue+mode\nodetest\nodeproject</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> node ./bin/www</span></span><br></pre></td></tr></table></figure>
+<p>然后在浏览器中打开 <code>http://localhost:3000/</code> 就能查看应用了。</p>
+<p><img src="/2019/03/11/框架——Express生成器/express.JPG" alt="express.JPG"></p>
+<h2 id="项目结构介绍"><a href="#项目结构介绍" class="headerlink" title="项目结构介绍"></a>项目结构介绍</h2><h3 id="www"><a href="#www" class="headerlink" title="www"></a>www</h3><p><code>/bin/www</code> 这个是应用的主入口，启动文件，但是真正的入口是 <code>app.js</code> 文件。这个文件主要就是分离创建了一个 <code>node HTTP server</code> 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加模块依赖</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'../app'</span>)</span><br><span class="line"><span class="comment">//引入debug模块，打印调试日志</span></span><br><span class="line"><span class="keyword">var</span> debug = <span class="built_in">require</span>(<span class="string">'debug'</span>)(<span class="string">'nodeproject:server'</span>)</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义启动端口， 3000</span></span><br><span class="line"><span class="comment"> * normalizePort() 自定义端口标准化函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> port = normalizePort(process.env.PORT || <span class="string">'3000'</span>)</span><br><span class="line">app.set(<span class="string">'port'</span>, port)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建服务器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(app)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 端口监听</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">server.listen(port)</span><br><span class="line">server.on(<span class="string">'error'</span>, onError)</span><br><span class="line">server.on(<span class="string">'listening'</span>, onListening)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 端口标准化函数</span></span><br><span class="line"><span class="comment"> * 将端口规范化为数字、字符串或无效值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">normalizePort</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> port = <span class="built_in">parseInt</span>(val, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">isNaN</span>(port)) &#123;</span><br><span class="line">    <span class="comment">// named pipe</span></span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (port &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// port number</span></span><br><span class="line">    <span class="keyword">return</span> port</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * HTTP 服务器异常事件监听器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onError</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error.syscall !== <span class="string">'listen'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> error</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> bind = <span class="keyword">typeof</span> port === <span class="string">'string'</span> ? <span class="string">'Pipe '</span> + port : <span class="string">'Port '</span> + port</span><br><span class="line"></span><br><span class="line">  <span class="comment">// handle specific listen errors with friendly messages</span></span><br><span class="line">  <span class="keyword">switch</span> (error.code) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'EACCES'</span>:</span><br><span class="line">      <span class="built_in">console</span>.error(bind + <span class="string">' requires elevated privileges'</span>)</span><br><span class="line">      process.exit(<span class="number">1</span>)</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">'EADDRINUSE'</span>:</span><br><span class="line">      <span class="built_in">console</span>.error(bind + <span class="string">' is already in use'</span>)</span><br><span class="line">      process.exit(<span class="number">1</span>)</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> error</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * HTTP 服务器监听事件监听器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onListening</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> addr = server.address()</span><br><span class="line">  <span class="keyword">var</span> bind = <span class="keyword">typeof</span> addr === <span class="string">'string'</span> ? <span class="string">'pipe '</span> + addr : <span class="string">'port '</span> + addr.port</span><br><span class="line">  debug(<span class="string">'Listening on '</span> + bind)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><p>真正的入口文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 引入包</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> createError = <span class="built_in">require</span>(<span class="string">'http-errors'</span>)</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</span><br><span class="line"><span class="keyword">var</span> logger = <span class="built_in">require</span>(<span class="string">'morgan'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 引入 routes文件夹中的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> indexRouter = <span class="built_in">require</span>(<span class="string">'./routes/index'</span>)</span><br><span class="line"><span class="keyword">var</span> usersRouter = <span class="built_in">require</span>(<span class="string">'./routes/users'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建 express 对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置模板引擎及模板路径，但是前后端分离的话，删除即可</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// view engine setup</span></span><br><span class="line">app.set(<span class="string">'views'</span>, path.join(__dirname, <span class="string">'views'</span>))</span><br><span class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'jade'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用引入的包</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">app.use(logger(<span class="string">'dev'</span>))</span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(express.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line">app.use(cookieParser())</span><br><span class="line">app.use(express.static(path.join(__dirname, <span class="string">'public'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 关联路由路径与引入的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">app.use(<span class="string">'/'</span>, indexRouter)</span><br><span class="line">app.use(<span class="string">'/users'</span>, usersRouter)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 处理错误的 http 请求</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 捕获404并转发到错误处理程序</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  next(createError(<span class="number">404</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误处理程序，将错误信息渲染error模版并显示到浏览器中(可自定义修改，不使用模板)</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">err, req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// set locals, only providing error in development</span></span><br><span class="line">  res.locals.message = err.message</span><br><span class="line">  res.locals.error = req.app.get(<span class="string">'env'</span>) === <span class="string">'development'</span> ? err : &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// render the error page</span></span><br><span class="line">  res.status(err.status || <span class="number">500</span>)</span><br><span class="line">  res.render(<span class="string">'error'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出给 www 文件使用</span></span><br><span class="line"><span class="built_in">module</span>.exports = app</span><br></pre></td></tr></table></figure>
+<h3 id="routes-文件夹"><a href="#routes-文件夹" class="headerlink" title="routes 文件夹"></a>routes 文件夹</h3><p><code>routes</code> 文件夹下的 <code>users.js</code> 文件内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* GET users listing. */</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">'respond with a resource'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+<p>先加载 <code>express</code> 并获得 <code>router</code> 对象，使用 <code>router</code> 对象指定路由的方法和路径，浏览器请求请求路径时执行对应的回调函数。</p>
+<p>注意，在 <code>app.js</code> 中的这段代码。先引入文件，然后关联路由路径与引入的文件。也就是说，<strong>在 app.js 中已经进行了一次一级路由跳转</strong>。访问根目录 ‘/‘ ，将跳转到 <code>./routes/index</code> 文件中访问 ‘/‘ 默认路径；访问 ‘/users’ ，将跳转到 <code>./routes/users</code> 文件中访问 ‘/‘ 默认路径，即 <code>http://localhost:3000/users/</code> ，返回的是 <code>respond with a resource</code> 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js </span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 引入 routes 文件夹中的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> indexRouter = <span class="built_in">require</span>(<span class="string">'./routes/index'</span>)</span><br><span class="line"><span class="keyword">var</span> usersRouter = <span class="built_in">require</span>(<span class="string">'./routes/users'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 关联路由路径与引入的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">app.use(<span class="string">'/'</span>, indexRouter)</span><br><span class="line">app.use(<span class="string">'/users'</span>, usersRouter)</span><br></pre></td></tr></table></figure>
+<h3 id="view-文件夹"><a href="#view-文件夹" class="headerlink" title="view 文件夹"></a>view 文件夹</h3><p><code>Express</code> 应用默认使用的是 <a href="https://link.jianshu.com?t=https://pugjs.org/api/getting-started.html" target="_blank" rel="noopener">pug</a> 模板，<code>views</code> 文件里面是所有的视图模板。在 <code>router</code> 文件里， 使用 <code>Response.render()</code> 指定要加载的模板和传递给模板的一些参数。下面的 <code>/routes/index.js</code> 文件里的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// indes.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>)</span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"></span><br><span class="line"><span class="comment">/* GET home page. */</span></span><br><span class="line">router.get(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.render(<span class="string">"index"</span>, &#123; <span class="attr">title</span>: <span class="string">"Express"</span> &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
+<p>在前后端分离的项目中，不需要使用模板，删了即可。</p>
+<h2 id="后言"><a href="#后言" class="headerlink" title="后言"></a>后言</h2><p><code>express-generator</code> 生成器的基本内容就这样，可以根据项目需求修改项目。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/11/框架——Express生成器/" data-id="cjv1zk518001ijkut5ba5gbwc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
@@ -889,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/10/软件配置/" data-id="cjuwgm1q9002qsgutni7mvebt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/10/软件配置/" data-id="cjv1zk51c001ljkutv4nl7g78" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件配置/">软件配置</a></li></ul>
@@ -979,7 +644,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/04/移动应用开发——Cordova/" data-id="cjuwgm1av001fsgutlu2l9bsc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/04/移动应用开发——Cordova/" data-id="cjv1zk51a001kjkut43vxno2p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -1417,7 +1082,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/后端基础——Nodejs/" data-id="cjuwgm29s005qsguta8disctd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/后端基础——Nodejs/" data-id="cjv1zk65m005kjkutmuf59hs5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
@@ -1676,7 +1341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/" data-id="cjuwgm257004ysgutq053w8g3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/16/前端-JavaScript基础-jQuery基础/" data-id="cjv1zk5ze004zjkutykd0ux3w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -1817,7 +1482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/13/前端-ECharts/" data-id="cjuwgm28b005ksgutw5r7l7h7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/13/前端-ECharts/" data-id="cjv1zk63i005ejkutzs6gg24x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECharts/">ECharts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -1873,7 +1538,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/12/前端-JavaScript基础-tool工具集合/" data-id="cjuwgm1ag0013sguttxdwpsfc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/前端-JavaScript基础-tool工具集合/" data-id="cjv1zk50c001ajkut0yyd8zmu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -1913,7 +1578,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 19px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 17px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 13px;">Node</a> <a href="/tags/Python/" style="font-size: 16px;">Python</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/blog/" style="font-size: 11px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 18px;">前端</a> <a href="/tags/后端/" style="font-size: 13px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+      <a href="/tags/Android/" style="font-size: 18.89px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.11px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.22px;">Node</a> <a href="/tags/Python/" style="font-size: 15.56px;">Python</a> <a href="/tags/Vue/" style="font-size: 13.33px;">Vue</a> <a href="/tags/blog/" style="font-size: 11.11px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.78px;">前端</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.11px;">数据库</a> <a href="/tags/框架/" style="font-size: 14.44px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -1939,10 +1604,6 @@
           </li>
         
           <li>
-            <a href="/2019/04/11/JS全栈开发/">Vue+Node+Mongodb全栈开发</a>
-          </li>
-        
-          <li>
             <a href="/2019/04/10/前端-UI/">前端-UI</a>
           </li>
         
@@ -1952,6 +1613,10 @@
         
           <li>
             <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/23/框架-Vuejs/">框架-Vue.js基础</a>
           </li>
         
       </ul>
