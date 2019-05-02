@@ -62,6 +62,497 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python学习笔记——Pygame游戏开发(打飞机小游戏)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/" class="article-date">
+  <time datetime="2018-08-12T07:18:59.000Z" itemprop="datePublished">2018-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/">Python学习笔记——Pygame游戏开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#安装pygame">安装Pygame</a></li>
+<li><a href="#pygame-基本框架">Pygame 基本框架</a></li>
+<li><a href="#颜控set_mode">颜控，set_mode()</a></li>
+<li><a href="#图像">图像</a><ul>
+<li><a href="#基本几何图形绘制">基本几何图形绘制</a></li>
+</ul>
+</li>
+<li><a href="#事件处理">事件处理</a></li>
+<li><a href="#绘制文字">绘制文字</a></li>
+<li><a href="#pygame-动画精灵">Pygame 动画精灵</a><ul>
+<li><a href="#创建精灵">创建精灵</a></li>
+<li><a href="#精灵组">精灵组</a></li>
+<li><a href="#一个基本动画精灵小游戏代码">一个基本动画精灵小游戏代码：</a></li>
+<li><a href="#播放音乐和音效">播放音乐和音效</a></li>
+<li><a href="#音效">音效</a></li>
+<li><a href="#音乐">音乐</a></li>
+</ul>
+</li>
+<li><a href="#光标处理">光标处理</a></li>
+</ul>
+<!-- /TOC -->
+<hr>
+<p>Pygame 内部是使用c语言实现的，所以Pygame游戏的效率还是比较高的。</p>
+<hr>
+<h3 id="安装Pygame"><a href="#安装Pygame" class="headerlink" title="安装Pygame"></a>安装Pygame</h3><p>打开cmd命令行。输入”pip install pygame”，系统自行安装即可。<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/InstallPygame.png" alt=""></p>
+<p>在IDLE中测试：<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameTest.png" alt=""></p>
+<p>如此，安装完成。</p>
+<hr>
+<h3 id="Pygame-基本框架"><a href="#Pygame-基本框架" class="headerlink" title="Pygame 基本框架"></a>Pygame 基本框架</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化Pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画布大小，元组类型</span></span><br><span class="line">SIZE = (width, height) = <span class="number">600</span>, <span class="number">400</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建指定大小的窗口，单位为像素，返回Surface对象，作为背景画布</span></span><br><span class="line">screen = pygame.display.set_mode(SIZE)</span><br><span class="line"><span class="comment"># 设置窗口标题</span></span><br><span class="line">pygame.display.set_caption(<span class="string">"初次见面，大家多多关照!"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图片</span></span><br><span class="line"><span class="comment">#turtle = pygame.image.load("turtle.png")</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取事件</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            pygame.quit()</span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br></pre></td></tr></table></figure>
+<p>一个游戏循环（也可以称为主循环）就做下面这三件事：</p>
+<ul>
+<li>处理事件</li>
+<li>更新游戏状态</li>
+<li>绘制游戏状态到屏幕上</li>
+</ul>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameMain.png" alt=""></p>
+<hr>
+<h3 id="颜控，set-mode"><a href="#颜控，set-mode" class="headerlink" title="颜控，set_mode()"></a>颜控，set_mode()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set_mode返回值为Surface对象</span></span><br><span class="line">screen = set_mode(resolution(<span class="number">0</span>, <span class="number">0</span>), flags=<span class="number">0</span>, depth=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>flags拓展选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FULLSCREEN</td>
+<td>全屏模式</td>
+</tr>
+<tr>
+<td>DOUBLEBUF</td>
+<td>双缓冲模式</td>
+</tr>
+<tr>
+<td>HWSURFACE</td>
+<td>硬件加速支持(只有在全屏模式下才能使用)</td>
+</tr>
+<tr>
+<td>OPENGL</td>
+<td>使用OpenGL渲染(3D游戏)</td>
+</tr>
+<tr>
+<td>RESIZABLE</td>
+<td>是的窗口可以调整大小</td>
+</tr>
+<tr>
+<td>NOFRAME</td>
+<td>使得窗口没有边框和控制按钮</td>
+</tr>
+</tbody>
+</table>
+<p>depth一般不建议自动设置，系统会根据需要自己调整。</p>
+<p>案例：全屏设置(有bug)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">SIZE = (WITDH, HEIGHT) = (<span class="number">600</span>, <span class="number">400</span>)</span><br><span class="line">WIGHT = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全屏</span></span><br><span class="line">fullscreen = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">screen</span><br><span class="line">= pygame.display.set_mode(SIZE)</span><br><span class="line">pygame.display.set_caption(<span class="string">"全屏设置"</span>)</span><br><span class="line">screen.fill(WIGHT)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            pygame.quit()</span><br><span class="line">            sys.exit()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.KEYDOWN:</span><br><span class="line">            <span class="comment"># 设置F11为全屏键</span></span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_F11:</span><br><span class="line">                fullscreen = <span class="keyword">not</span> fullscreen</span><br><span class="line">                <span class="keyword">if</span> fullscreen:</span><br><span class="line">                    <span class="comment"># 获取系统支持的最高分辨率</span></span><br><span class="line">                    SIZE_Biggest = pygame.display.list_modes()[<span class="number">0</span>]</span><br><span class="line">                    screen = pygame.display.set_mode(SIZE_Biggest, pygame.FULLSCREEN | pygame.HWSURFACE)</span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    screen = pygame.display.set_mode(SIZE)</span><br><span class="line">    screen.fill(WIGHT)</span><br><span class="line">    <span class="comment"># 更新界面</span></span><br><span class="line">    pygame.display.flip()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p>与图像有关的方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flip</td>
+<td>上下、左右转转图片</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>快速缩放图像</td>
+</tr>
+<tr>
+<td>rotate</td>
+<td>旋转图像</td>
+</tr>
+<tr>
+<td>rotozoom</td>
+<td>缩放并旋转图像</td>
+</tr>
+<tr>
+<td>scale2x</td>
+<td>快速放大一倍图像</td>
+</tr>
+<tr>
+<td>smoothscale</td>
+<td>精准平滑缩放图像</td>
+</tr>
+<tr>
+<td>chop</td>
+<td>裁剪图像</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载png图片，使用convert_alpha加载透明alpha通道</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.png"</span>).convert_alpha()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载jpg图片</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.jpg"</span>).convert()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不支持gif</span></span><br></pre></td></tr></table></figure>
+<p>实例：沿框运动的小乌龟<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化Pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">size = (width, height) = (<span class="number">600</span>, <span class="number">400</span>)</span><br><span class="line">speed = [<span class="number">2</span>, <span class="number">0</span>]</span><br><span class="line">bg = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置帧率</span></span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line">pygame.display.set_caption(<span class="string">"沿框运动的小乌龟"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图片</span></span><br><span class="line">turtle_img = pygame.image.load(<span class="string">"turtle.png"</span>)</span><br><span class="line">turtle_right = pygame.transform.rotate(turtle_img, <span class="number">90</span>)</span><br><span class="line">turtle_top = pygame.transform.rotate(turtle_img, <span class="number">180</span>)</span><br><span class="line">turtle_left = pygame.transform.rotate(turtle_img, <span class="number">270</span>)</span><br><span class="line">turtle_bottom = turtle_img</span><br><span class="line">turtle = turtle_top</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获得图像的位置矩形</span></span><br><span class="line">position = turtle.get_rect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环持续运行</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取事件，在此处退出</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            <span class="comment"># pygame.quit()</span></span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br><span class="line">    <span class="comment"># 移动图像</span></span><br><span class="line">    position = position.move(speed)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> position.right &gt; width:</span><br><span class="line">        turtle = turtle_right</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.left = width - turtle_rect.width</span><br><span class="line">        speed = [<span class="number">0</span>, <span class="number">2</span>]</span><br><span class="line">    <span class="keyword">if</span> position.bottom &gt; height:</span><br><span class="line">        turtle = turtle_bottom</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.left = width - turtle_rect.width</span><br><span class="line">        position.top = height - turtle_rect.height</span><br><span class="line">        speed = [<span class="number">-2</span>, <span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> position.left &lt; <span class="number">0</span>:</span><br><span class="line">        turtle = turtle_left</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        position.top = height - turtle_rect.height</span><br><span class="line">        speed = [<span class="number">0</span>, <span class="number">-2</span>]</span><br><span class="line">    <span class="keyword">if</span> position.top &lt; <span class="number">0</span>:</span><br><span class="line">        turtle = turtle_top</span><br><span class="line">        position = turtle_rect = turtle.get_rect()</span><br><span class="line">        speed = [<span class="number">2</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 填充背景</span></span><br><span class="line">    screen.fill(bg)</span><br><span class="line">    <span class="comment"># 更新图像</span></span><br><span class="line">    screen.blit(turtle, position)</span><br><span class="line">    <span class="comment"># 更新界面</span></span><br><span class="line">    pygame.display.flip()</span><br><span class="line">    <span class="comment"># 延迟10毫秒</span></span><br><span class="line">    <span class="comment"># pygame.time.delay(10)</span></span><br><span class="line">    clock.tick(<span class="number">200</span>)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameRunAroundTurtle.gif" alt=""></p>
+<h4 id="基本几何图形绘制"><a href="#基本几何图形绘制" class="headerlink" title="基本几何图形绘制"></a>基本几何图形绘制</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一条</td>
+<td>pygame.draw.line(Surface, color, start_pos, end_pos, width)</td>
+</tr>
+<tr>
+<td>抗锯齿的线</td>
+<td>pygame.draw.aaline(Surface, color, start_pos, end_pos, blend)</td>
+</tr>
+<tr>
+<td>折线</td>
+<td>pygame.draw.lines(Surface, color, closed, pointlist, width)</td>
+</tr>
+<tr>
+<td>矩形</td>
+<td>pygame.draw.rect(Surface, color, Rect)</td>
+</tr>
+<tr>
+<td>矩形框</td>
+<td>pygame.draw.rect(Surface, color, Rect, width</td>
+</tr>
+<tr>
+<td>椭圆</td>
+<td>pygame.draw.ellipse(Surface, color, Rect)</td>
+</tr>
+<tr>
+<td>椭圆框</td>
+<td>pygame.draw.ellipse(Surface, color, Rect, width)</td>
+</tr>
+<tr>
+<td>多边形</td>
+<td>pygame.draw.polygon(Surface, color, pointlist, width)</td>
+</tr>
+<tr>
+<td>弧线</td>
+<td>pygame.draw.arc(Surface, color, Rect, start_angle, stop_angle, width)</td>
+</tr>
+<tr>
+<td>圆</td>
+<td>pygame.draw.circle(Surface, color, Rect, radius)</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入需要的模块</span></span><br><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> pi</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置窗口的大小，单位为像素</span></span><br><span class="line">screen = pygame.display.set_mode((<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置窗口标题</span></span><br><span class="line">pygame.display.set_caption(<span class="string">'Drawing'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义颜色</span></span><br><span class="line">BLACK = ( <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">RED = (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">GREEN = ( <span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">BLUE = ( <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置背景颜色</span></span><br><span class="line">screen.fill(WHITE)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制一条线</span></span><br><span class="line">pygame.draw.line(screen, GREEN, [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">50</span>,<span class="number">30</span>], <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制一条抗锯齿的线</span></span><br><span class="line">pygame.draw.aaline(screen, GREEN, [<span class="number">0</span>, <span class="number">50</span>],[<span class="number">50</span>, <span class="number">80</span>],<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制一条折线</span></span><br><span class="line">pygame.draw.lines(screen, BLACK, <span class="keyword">False</span>,</span><br><span class="line">         [[<span class="number">0</span>, <span class="number">80</span>], [<span class="number">50</span>, <span class="number">90</span>], [<span class="number">200</span>, <span class="number">80</span>], [<span class="number">220</span>, <span class="number">30</span>]], <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制一个空心矩形</span></span><br><span class="line">pygame.draw.rect(screen, BLACK, [<span class="number">75</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">20</span>], <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制一个矩形</span></span><br><span class="line">pygame.draw.rect(screen, BLACK, [<span class="number">150</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">20</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制一个空心椭圆</span></span><br><span class="line">pygame.draw.ellipse(screen, RED, [<span class="number">225</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">20</span>], <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制一个椭圆</span></span><br><span class="line">pygame.draw.ellipse(screen, RED, [<span class="number">300</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">20</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制多边形</span></span><br><span class="line">pygame.draw.polygon(screen, BLACK, [[<span class="number">100</span>, <span class="number">100</span>], [<span class="number">0</span>, <span class="number">200</span>], [<span class="number">200</span>, <span class="number">200</span>]], <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制多条弧线</span></span><br><span class="line">pygame.draw.arc(screen, BLACK,[<span class="number">210</span>, <span class="number">75</span>, <span class="number">150</span>, <span class="number">125</span>], <span class="number">0</span>, pi/<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">pygame.draw.arc(screen, GREEN,[<span class="number">210</span>, <span class="number">75</span>, <span class="number">150</span>, <span class="number">125</span>], pi/<span class="number">2</span>, pi, <span class="number">2</span>)</span><br><span class="line">pygame.draw.arc(screen, BLUE, [<span class="number">210</span>, <span class="number">75</span>, <span class="number">150</span>, <span class="number">125</span>], pi,<span class="number">3</span>*pi/<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">pygame.draw.arc(screen, RED, [<span class="number">210</span>, <span class="number">75</span>, <span class="number">150</span>, <span class="number">125</span>], <span class="number">3</span>*pi/<span class="number">2</span>, <span class="number">2</span>*pi, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制一个圆</span></span><br><span class="line">pygame.draw.circle(screen, BLUE, [<span class="number">60</span>, <span class="number">250</span>], <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 获取事件</span></span><br><span class="line">  <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">    <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">    <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">      <span class="comment"># 退出pygame</span></span><br><span class="line">      pygame.quit()</span><br><span class="line">      <span class="comment"># 退出系统</span></span><br><span class="line">      sys.exit()</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 绘制屏幕内容</span></span><br><span class="line">  pygame.display.flip()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameImage.png" alt=""></p>
+<hr>
+<h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><p>编写一个程序，将所有执行的事件写入到一个文件中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">size = width, height =  <span class="number">600</span>, <span class="number">400</span></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line">pygame.display.set_caption(<span class="string">"事件处理"</span>)</span><br><span class="line"></span><br><span class="line">f = open(<span class="string">"record.txt"</span>, <span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="comment"># 获取事件</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        f.write(str(event) + <span class="string">'\n'</span>)</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            f.close()</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            pygame.quit()</span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br></pre></td></tr></table></figure></p>
+<p>运行程序，随意移动鼠标、点击鼠标、按键盘等，然后关闭程序，在程序同目录下打开“record.txt”文件，可以看到如下：<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameEventTxt.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>产生途径</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QUIT</td>
+<td>用户按下关闭按钮</td>
+<td>none</td>
+</tr>
+<tr>
+<td>ACTIVEEVENT</td>
+<td>Pygame被激活或者隐藏</td>
+<td>gain, state</td>
+</tr>
+<tr>
+<td>KEYDOWN</td>
+<td>键盘被按下</td>
+<td>unicode, key, mod</td>
+</tr>
+<tr>
+<td>KEYUP</td>
+<td>键盘被放开</td>
+<td>key, mod</td>
+</tr>
+<tr>
+<td>MOUSEMOTION</td>
+<td>鼠标移动</td>
+<td>pos, rel, buttons</td>
+</tr>
+<tr>
+<td>MOUSEBUTTONDOWN</td>
+<td>鼠标按下</td>
+<td>pos, button</td>
+</tr>
+<tr>
+<td>MOUSEBUTTONUP</td>
+<td>鼠标放开</td>
+<td>pos, button</td>
+</tr>
+<tr>
+<td>JOYAXISMOTION</td>
+<td>游戏手柄的摇杆移动</td>
+<td>joy, axis, value</td>
+</tr>
+<tr>
+<td>JOYBALLMOTION</td>
+<td>游戏手柄上的轨迹球混动</td>
+<td>joy, axis, value</td>
+</tr>
+<tr>
+<td>JOYHATMOTION</td>
+<td>游戏手柄上的帽子开关移动</td>
+<td>joy， axis， value</td>
+</tr>
+<tr>
+<td>JOYBUTTONDOWN</td>
+<td>游戏手柄按钮被按下</td>
+<td>joy,button</td>
+</tr>
+<tr>
+<td>JOYBUTTONUP</td>
+<td>游戏手柄按钮被松开</td>
+<td>joy, button</td>
+</tr>
+<tr>
+<td>VIDEORESIZE</td>
+<td>Pygame窗口缩放</td>
+<td>size, w, h</td>
+</tr>
+<tr>
+<td>VIDEOEXPOSE</td>
+<td>部分窗口需要重新绘制</td>
+<td>none</td>
+</tr>
+<tr>
+<td>USEERVENT</td>
+<td>用户定义的事件</td>
+<td>code</td>
+</tr>
+</tbody>
+</table>
+<p>运动的小乌龟事件处理：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化Pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">size = width, height = <span class="number">600</span>, <span class="number">400</span></span><br><span class="line">speed = [<span class="number">-2</span>, <span class="number">1</span>]</span><br><span class="line">bg = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 帧率</span></span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建指定大小的窗口，单位为像素，返回Surface对象，作为背景画布</span></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line"><span class="comment"># 设置窗口标题</span></span><br><span class="line">pygame.display.set_caption(<span class="string">"初次见面，大家多多关照!"</span>)</span><br><span class="line"><span class="comment"># 加载图片</span></span><br><span class="line">turtle = pygame.image.load(<span class="string">"turtle.png"</span>)</span><br><span class="line"><span class="comment"># 获得图像的位置矩形</span></span><br><span class="line">position = turtle.get_rect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置左右键按下时的乌龟头朝向</span></span><br><span class="line">l_head = turtle</span><br><span class="line">r_head = pygame.transform.flip(turtle, <span class="keyword">True</span>, <span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环持续运行</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取事件，在此处退出</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            <span class="comment"># 退出pygame</span></span><br><span class="line">            pygame.quit()</span><br><span class="line">            <span class="comment"># 退出系统</span></span><br><span class="line">            sys.exit()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.KEYDOWN:</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                turtle = l_head</span><br><span class="line">                speed = [<span class="number">-1</span>, <span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                turtle = r_head</span><br><span class="line">                speed = [<span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_UP:</span><br><span class="line">                speed = [<span class="number">0</span>, <span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_DOWN:</span><br><span class="line">                speed = [<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 移动图像</span></span><br><span class="line">    position = position.move(speed)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> position.left &lt; <span class="number">0</span> <span class="keyword">or</span> position.right &gt; width:</span><br><span class="line">        <span class="comment"># 翻转图像</span></span><br><span class="line">        turtle = pygame.transform.flip(turtle, <span class="keyword">True</span>, <span class="keyword">False</span>)</span><br><span class="line">        <span class="comment"># 反方向移动</span></span><br><span class="line">        speed[<span class="number">0</span>] = -speed[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> position.top &lt; <span class="number">0</span> <span class="keyword">or</span> position.bottom &gt; height:</span><br><span class="line">        speed[<span class="number">1</span>] = -speed[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 填充背景</span></span><br><span class="line">    screen.fill(bg)</span><br><span class="line">    <span class="comment"># 更新图像</span></span><br><span class="line">    screen.blit(turtle, position)</span><br><span class="line">    <span class="comment"># 更新界面</span></span><br><span class="line">    pygame.display.flip()</span><br><span class="line">    <span class="comment"># 设置帧率</span></span><br><span class="line">    clock.tick(<span class="number">200</span>)</span><br></pre></td></tr></table></figure></p>
+<p>小乌龟素材：<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/turtle.png" alt=""></p>
+<p>效果如下：<br><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/TurtleMoveEvent.gif" alt=""></p>
+<hr>
+<h3 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h3><p>Pygame没有文本组件，大师可以通过另一种方式实现相同效果。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过字体文件获得字体对象; filename:系统文字名， size：字体大小</span></span><br><span class="line">fontObj = pygame.font.SysFont(filename, size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义字体</span></span><br><span class="line">fontObj = pygame.font.Font(filename, size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置要显示的文字；text：要显示的文字， antialias：是否抗锯齿(Ture/False), color：字体颜色，background：背景色</span></span><br><span class="line">textSurfaceObj = fontObj.render(text, antialias, color, background=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获得要显示的对象的rect</span></span><br><span class="line">textRectObj = textSurfaceObj.get_rect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置显示对象的坐标</span></span><br><span class="line">textRectObj.center = (<span class="number">250</span>, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制字体</span></span><br><span class="line">screen.blit(textSurfaceObj, textRectObj)</span><br></pre></td></tr></table></figure></p>
+<p>如果不知道系统中用什么字体，可以在IDLE环境中通过以下获取：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pygame</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(pygame.font.get_fonts())</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameFont.png" alt=""></p>
+<p>文字绘制案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入需要的模块</span></span><br><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义颜色</span></span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">GREEN = ( <span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">BLUE = ( <span class="number">0</span>, <span class="number">0</span>, <span class="number">128</span>)</span><br><span class="line">SIZE = (width, height) = (<span class="number">500</span>, <span class="number">400</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置窗口的大小，单位为像素</span></span><br><span class="line">screen = pygame.display.set_mode(SIZE)</span><br><span class="line"><span class="comment"># 设置背景</span></span><br><span class="line">screen.fill(WHITE)</span><br><span class="line"><span class="comment"># 设置窗口的标题</span></span><br><span class="line">pygame.display.set_caption(<span class="string">'Font'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过字体文件获得字体对象</span></span><br><span class="line">fontObj = pygame.font.SysFont(<span class="string">"华文彩云"</span>, <span class="number">50</span>)</span><br><span class="line"><span class="comment"># 配置要显示的文字</span></span><br><span class="line">textSurfaceObj = fontObj.render(<span class="string">'Pygame'</span>, <span class="keyword">True</span>, BLUE, GREEN)</span><br><span class="line"><span class="comment"># 获得要显示的对象的rect</span></span><br><span class="line">textRectObj = textSurfaceObj.get_rect()</span><br><span class="line"><span class="comment"># 设置显示对象的坐标</span></span><br><span class="line">textRectObj.center = (<span class="number">250</span>, <span class="number">200</span>)</span><br><span class="line"><span class="comment"># 绘制字体</span></span><br><span class="line">screen.blit(textSurfaceObj, textRectObj)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主循环</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 获取事件</span></span><br><span class="line">  <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">    <span class="comment"># 判断事件是否为退出事件</span></span><br><span class="line">    <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">      <span class="comment"># 退出pygame</span></span><br><span class="line">      pygame.quit()</span><br><span class="line">      <span class="comment"># 退出系统</span></span><br><span class="line">      sys.exit()</span><br><span class="line"></span><br><span class="line">  pygame.display.flip()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameFontTest.png" alt=""></p>
+<p>模拟文本，在页面上打印event事件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">SIZE = (width, height) = (<span class="number">600</span>, <span class="number">400</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">GREEN = (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">screen = pygame.display.set_mode(SIZE)</span><br><span class="line">pygame.display.set_caption(<span class="string">"Font"</span>)</span><br><span class="line"></span><br><span class="line">font = pygame.font.SysFont(<span class="keyword">None</span>, <span class="number">20</span>)</span><br><span class="line">line_height = font.get_linesize()</span><br><span class="line">postion = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">screen.fill(BLACK)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            pygame.quit()</span><br><span class="line">            sys.exit()</span><br><span class="line">        screen.blit(font.render(str(event), <span class="keyword">True</span>, GREEN), (<span class="number">0</span>, postion))</span><br><span class="line">        postion += line_height</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> postion &gt; height:</span><br><span class="line">            postion = <span class="number">0</span></span><br><span class="line">            screen.fill(BLACK)</span><br><span class="line"></span><br><span class="line">    pygame.display.flip()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameFont2.png" alt=""></p>
+<hr>
+<h3 id="Pygame-动画精灵"><a href="#Pygame-动画精灵" class="headerlink" title="Pygame 动画精灵"></a>Pygame 动画精灵</h3><p>pygame.sprite.Sprite就是Pygame里面用来实现精灵的一个类，使用时，并不需要对它实例化，只需要继承他，然后按需写出自己的类就好了，因此非常简单实用。</p>
+<h4 id="创建精灵"><a href="#创建精灵" class="headerlink" title="创建精灵"></a>创建精灵</h4><p>创建Sprite精灵类，用过调用精灵，创建对象：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义一个类，继承Sprite类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ball</span><span class="params">(pygame.sprite.Sprite)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        pygame.sprite.Sprite.__init__(self)     <span class="comment"># 调用基类及init方法</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="精灵组"><a href="#精灵组" class="headerlink" title="精灵组"></a>精灵组</h4><p>当程序中有大量的实体的时候，操作这些实体将会是一件相当麻烦的事，使用精灵组来管理精灵绘制和更新，会轻松很多。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">group = pygame.sprite.Group()</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>常用方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Group.sprites</td>
+<td>精灵组</td>
+</tr>
+<tr>
+<td>Group.add</td>
+<td>添加</td>
+</tr>
+<tr>
+<td>Group.copy</td>
+<td>复制</td>
+</tr>
+<tr>
+<td>Group.remove</td>
+<td>移除</td>
+</tr>
+<tr>
+<td>Group.has</td>
+<td>判断精灵组成员</td>
+</tr>
+<tr>
+<td>Group.update</td>
+<td>更新</td>
+</tr>
+<tr>
+<td>Group.draw</td>
+<td>位块显示</td>
+</tr>
+<tr>
+<td>Group.clear</td>
+<td>绘制背景</td>
+</tr>
+<tr>
+<td>Group.empty</td>
+<td>清空</td>
+</tr>
+</tbody>
+</table>
+<h4 id="一个基本动画精灵小游戏代码："><a href="#一个基本动画精灵小游戏代码：" class="headerlink" title="一个基本动画精灵小游戏代码："></a>一个基本动画精灵小游戏代码：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ball</span><span class="params">(pygame.sprite.Sprite)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, image, position, speed, bg_size)</span>:</span></span><br><span class="line">        pygame.sprite.Sprite.__init__(self)</span><br><span class="line"></span><br><span class="line">        self.image = pygame.image.load(image).convert_alpha()</span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        (self.rect.left, self.rect.top) = position</span><br><span class="line">        self.speed = speed</span><br><span class="line">        (self.width, self.height) = bg_size</span><br><span class="line">        <span class="comment"># 确定半径，在sprite内置碰撞检测中使用</span></span><br><span class="line">        self.radius = self.rect.width / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 运动检测</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.rect = self.rect.move(self.speed)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 完全穿过时穿越</span></span><br><span class="line">        <span class="keyword">if</span> self.rect.right &lt; <span class="number">0</span>:</span><br><span class="line">            self.rect.left = self.width</span><br><span class="line">        <span class="keyword">elif</span> self.rect.left &gt; self.width:</span><br><span class="line">            self.rect.right = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> self.rect.bottom &lt; <span class="number">0</span>:</span><br><span class="line">            self.rect.top = self.height</span><br><span class="line">        <span class="keyword">elif</span> self.rect.top &gt; self.height:</span><br><span class="line">            self.rect.bottom = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义的碰撞检测方法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collide_check</span><span class="params">(item, target)</span>:</span></span><br><span class="line">    col_balls = []</span><br><span class="line">    <span class="keyword">for</span> each <span class="keyword">in</span> target:</span><br><span class="line">        distance = math.sqrt(</span><br><span class="line">            math.pow((item.rect.center[<span class="number">0</span>] - each.rect.center[<span class="number">0</span>]), <span class="number">2</span>) +</span><br><span class="line">            math.pow((item.rect.center[<span class="number">1</span>] - each.rect.center[<span class="number">1</span>]), <span class="number">2</span>))</span><br><span class="line">        <span class="keyword">if</span> distance &lt;= (item.rect.width + each.rect.width) / <span class="number">2</span>:</span><br><span class="line">            col_balls.append(each)</span><br><span class="line">    <span class="keyword">return</span> col_balls</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    pygame.init()</span><br><span class="line"></span><br><span class="line">    ball_image = <span class="string">"gray_ball.png"</span></span><br><span class="line">    bg_image = <span class="string">"background.png"</span></span><br><span class="line"></span><br><span class="line">    running = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    bg_size = (width, height) = (<span class="number">1024</span>, <span class="number">681</span>)</span><br><span class="line">    screen = pygame.display.set_mode(bg_size)</span><br><span class="line">    pygame.display.set_caption(<span class="string">"PlayTheBall"</span>)</span><br><span class="line"></span><br><span class="line">    background = pygame.image.load(bg_image).convert_alpha()</span><br><span class="line"></span><br><span class="line">    balls = []</span><br><span class="line">    group = pygame.sprite.Group()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建5个小球</span></span><br><span class="line">    BALL_NUM = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(BALL_NUM):</span><br><span class="line">        <span class="comment"># 位置随机，速度随机</span></span><br><span class="line">        position = (random.randint(<span class="number">0</span>, width<span class="number">-100</span>), random.randint(<span class="number">0</span>, height<span class="number">-100</span>))</span><br><span class="line">        speed = [random.randint(<span class="number">-10</span>, <span class="number">10</span>), random.randint(<span class="number">-10</span>, <span class="number">10</span>)]</span><br><span class="line">        ball = Ball(ball_image, position, speed, bg_size)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成球时的碰撞检测</span></span><br><span class="line">        <span class="string">""" # 自定义碰撞检测</span></span><br><span class="line"><span class="string">        while collide_check(ball, balls):</span></span><br><span class="line"><span class="string">            (ball.rect.left, ball.rect.top) = random.randint(0, width-100), random.randint(0, height-100)"""</span></span><br><span class="line">        <span class="comment"># sprite方法碰撞检测</span></span><br><span class="line">        <span class="keyword">while</span> pygame.sprite.spritecollide(ball, group, <span class="keyword">False</span>, pygame.sprite.collide_circle):</span><br><span class="line">            (ball.rect.left, ball.rect.top) = (random.randint(<span class="number">0</span>, width - <span class="number">100</span>), random.randint(<span class="number">0</span>, height - <span class="number">100</span>))</span><br><span class="line"></span><br><span class="line">        balls.append(ball)</span><br><span class="line">        group.add(ball)</span><br><span class="line"></span><br><span class="line">    clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> running:</span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">                pygame.quit()</span><br><span class="line">                sys.exit()</span><br><span class="line"></span><br><span class="line">        screen.blit(background, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> each <span class="keyword">in</span> balls:</span><br><span class="line">            each.move()</span><br><span class="line">            screen.blit(each.image, each.rect)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># sprite 的碰撞检测</span></span><br><span class="line">        <span class="keyword">for</span> each <span class="keyword">in</span> group:</span><br><span class="line">            group.remove(each)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> pygame.sprite.spritecollide(each, group, <span class="keyword">False</span>, pygame.sprite.collide_circle):</span><br><span class="line">                each.speed[<span class="number">0</span>] = -each.speed[<span class="number">0</span>]</span><br><span class="line">                each.speed[<span class="number">1</span>] = -each.speed[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">            group.add(each)</span><br><span class="line"></span><br><span class="line">        <span class="string">"""# 自定义的碰撞检测</span></span><br><span class="line"><span class="string">        for i in range(BALL_NUM):</span></span><br><span class="line"><span class="string">            item = balls.pop(i)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            if collide_check(item, balls):</span></span><br><span class="line"><span class="string">                item.speed[0] = -item.speed[0]</span></span><br><span class="line"><span class="string">                item.speed[1] = -item.speed[1]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            balls.insert(i, item)"""</span></span><br><span class="line"></span><br><span class="line">        pygame.display.flip()</span><br><span class="line">        clock.tick(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameSpriteBall.gif" alt=""></p>
+<hr>
+<h4 id="播放音乐和音效"><a href="#播放音乐和音效" class="headerlink" title="播放音乐和音效"></a>播放音乐和音效</h4><p>背景音乐是时刻伴随着游戏存在的，往往是重复播放的一首歌或曲子。<br>音效是某种条件下呗出发产生的，如小球碰撞时发出声音。</p>
+<p>Pygame支持的声音格式十分有限，一般使用ogg格式作为背景音乐，用无压缩的wav格式作为音效。格式可以通过“格式工厂”来转换。</p>
+<p>格式工厂官网链接：<a href="http://www.pcfreetime.com/" target="_blank" rel="noopener">http://www.pcfreetime.com/</a></p>
+<h4 id="音效"><a href="#音效" class="headerlink" title="音效"></a>音效</h4><p>播放音效使用mixer模块，先生成一个Sound对象，然后调用play()方法来播放。</p>
+<p>音效可以有多个。</p>
+<p>Sound支持的方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>play()</td>
+<td>播放音效</td>
+</tr>
+<tr>
+<td>stop()</td>
+<td>停止播放</td>
+</tr>
+<tr>
+<td>fadeout()</td>
+<td>淡出</td>
+</tr>
+<tr>
+<td>set_volume()</td>
+<td>设置音量</td>
+</tr>
+<tr>
+<td>get_volune()</td>
+<td>获取音量</td>
+</tr>
+<tr>
+<td>get_num_channels()</td>
+<td>计算该音效播放了多少次</td>
+</tr>
+<tr>
+<td>get_length()</td>
+<td>获得该音效的长度，多少秒</td>
+</tr>
+<tr>
+<td>get_raw()</td>
+<td>将音效以二进制格式的字符串返回</td>
+</tr>
+</tbody>
+</table>
+<h4 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h4><p>音乐使用music模块。</p>
+<p>背景音乐只能有一个。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>load()</td>
+<td>载入音乐</td>
+</tr>
+<tr>
+<td>play()</td>
+<td>播放音乐</td>
+</tr>
+<tr>
+<td>rewind()</td>
+<td>重新播放</td>
+</tr>
+<tr>
+<td>stop()</td>
+<td>停止播放</td>
+</tr>
+<tr>
+<td>pause()</td>
+<td>暂停播放</td>
+</tr>
+<tr>
+<td>uppause()</td>
+<td>恢复播放</td>
+</tr>
+<tr>
+<td>fadeout()</td>
+<td>淡出</td>
+</tr>
+<tr>
+<td>set_volume()</td>
+<td>设置音量</td>
+</tr>
+<tr>
+<td>get_volume()</td>
+<td>获取音量</td>
+</tr>
+<tr>
+<td>get_busy()</td>
+<td>监测音乐流是否正在播放</td>
+</tr>
+<tr>
+<td>set_pos()</td>
+<td>设置开始播放的位置</td>
+</tr>
+<tr>
+<td>get_pos()</td>
+<td>获取已经播放的时间</td>
+</tr>
+<tr>
+<td>queue()</td>
+<td>将音乐文件放入待播放列表中</td>
+</tr>
+<tr>
+<td>set_endevent()</td>
+<td>在音乐播放完毕时发送事件</td>
+</tr>
+<tr>
+<td>get_endevent()</td>
+<td>获取音乐播放完毕时发送的事件类型</td>
+</tr>
+</tbody>
+</table>
+<p>声音播放案例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line">pygame.mixer.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载背景音乐</span></span><br><span class="line">pygame.mixer.music.load(<span class="string">"bg_music.ogg"</span>)</span><br><span class="line">pygame.mixer.music.set_volume(<span class="number">0.2</span>)</span><br><span class="line">pygame.mixer.music.play()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载音效</span></span><br><span class="line">cat_sound = pygame.mixer.Sound(<span class="string">"cat.wav"</span>)</span><br><span class="line">cat_sound.set_volume(<span class="number">0.2</span>)</span><br><span class="line">dog_sound = pygame.mixer.Sound(<span class="string">"dog.wav"</span>)</span><br><span class="line">dog_sound.set_volume(<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">bg_size = (width, height) = (<span class="number">300</span>, <span class="number">200</span>)</span><br><span class="line">screen = pygame.display.set_mode(bg_size)</span><br><span class="line">pygame.display.set_caption(<span class="string">"Music"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 音乐暂停标志</span></span><br><span class="line">pause = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载暂停和开始图片，并设置居中</span></span><br><span class="line">pause_img = pygame.image.load(<span class="string">"pause.png"</span>).convert_alpha()</span><br><span class="line">unpause_img = pygame.image.load(<span class="string">"unpause.png"</span>).convert_alpha()</span><br><span class="line">pause_rect = pause_img.get_rect()</span><br><span class="line">(pause_rect.left, pause_rect.top) = ((width - pause_rect.width) // <span class="number">2</span>, (height - pause_rect.height) // <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            pygame.quit()</span><br><span class="line">            sys.exit()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 鼠标点击事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.MOUSEBUTTONDOWN:</span><br><span class="line">            <span class="comment"># 1为鼠标左键，2为鼠标中键，3为鼠标右键</span></span><br><span class="line">            <span class="keyword">if</span> event.button == <span class="number">1</span>:</span><br><span class="line">                cat_sound.play()</span><br><span class="line">            <span class="keyword">if</span> event.button == <span class="number">3</span>:</span><br><span class="line">                dog_sound.play()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 设置按键事件</span></span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.KEYDOWN:</span><br><span class="line">            <span class="keyword">if</span> event.key == pygame.K_SPACE:</span><br><span class="line">                pause = <span class="keyword">not</span> pause</span><br><span class="line"></span><br><span class="line">    screen.fill((<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 根据pause状态画图标，的并设置背景的暂停和播放</span></span><br><span class="line">    <span class="keyword">if</span> pause:</span><br><span class="line">        screen.blit(pause_img, pause_rect)</span><br><span class="line">        pygame.mixer.music.pause()</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">        screen.blit(unpause_img, pause_rect)</span><br><span class="line">        pygame.mixer.music.unpause()</span><br><span class="line"></span><br><span class="line">    pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    clock.tick(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/PygameMusic.png" alt=""></p>
+<hr>
+<h3 id="光标处理"><a href="#光标处理" class="headerlink" title="光标处理"></a>光标处理</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/12/Python学习笔记——Pygame游戏开发(打飞机小游戏)/" data-id="cjv1zk5u9004ejkutz2y5ham5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python学习笔记——网络爬虫" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/09/Python学习笔记——网络爬虫/" class="article-date">
@@ -1599,481 +2090,6 @@
 
 
   
-    <article id="post-Python学习笔记——基础部分" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/15/Python学习笔记——基础部分/" class="article-date">
-  <time datetime="2018-07-15T09:40:26.000Z" itemprop="datePublished">2018-07-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/15/Python学习笔记——基础部分/">Python学习笔记——基础部分</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- TOC -->
-<ul>
-<li><a href="#python能干些什么">Python能干些什么</a></li>
-<li><a href="#python适合开发哪些类型的应用">Python适合开发哪些类型的应用</a></li>
-<li><a href="#python的缺点">Python的缺点</a></li>
-<li><a href="#输出">输出</a></li>
-<li><a href="#输入">输入</a></li>
-<li><a href="#缩进规范化代码">缩进：规范化代码</a></li>
-<li><a href="#注释">注释</a></li>
-<li><a href="#命名">命名</a></li>
-<li><a href="#数据类型">数据类型</a><ul>
-<li><a href="#整数">整数</a><ul>
-<li><a href="#整数除法精确性说明">整数除法精确性说明</a></li>
-</ul>
-</li>
-<li><a href="#浮点数">浮点数</a></li>
-<li><a href="#字符串">字符串</a><ul>
-<li><a href="#三对引号字符串的使用">三对引号字符串的使用</a></li>
-<li><a href="#字符串的序号">字符串的序号</a></li>
-<li><a href="#字符串编码问题">字符串编码问题</a></li>
-<li><a href="#字符串操作">字符串操作</a></li>
-<li><a href="#格式化">格式化</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#布尔值">布尔值</a></li>
-<li><a href="#空值">空值</a></li>
-<li><a href="#变量">变量</a><ul>
-<li><a href="#局部变量">局部变量</a></li>
-<li><a href="#全局变量">全局变量</a></li>
-</ul>
-</li>
-<li><a href="#常量">常量</a></li>
-<li><a href="#list列表">list：列表</a><ul>
-<li><a href="#list元素">list元素</a></li>
-<li><a href="#插入元素">插入元素</a></li>
-<li><a href="#删除元素">删除元素</a></li>
-<li><a href="#替换元素">替换元素</a></li>
-<li><a href="#list其他常用操作">list其他常用操作</a></li>
-</ul>
-</li>
-<li><a href="#tuple元组带上枷锁的列表">tuple：元组，带上枷锁的列表</a><ul>
-<li><a href="#tuple陷阱">tuple陷阱</a></li>
-<li><a href="#可变的tuple">“可变的”tuple</a><ul>
-<li><a href="#不变tuple嵌套可变list">不变tuple嵌套可变list</a></li>
-<li><a href="#伪可变tuple">伪可变tuple</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#分支结构">分支结构</a></li>
-<li><a href="#循环">循环</a><ul>
-<li><a href="#for循环">for循环</a></li>
-<li><a href="#while循环">while循环</a></li>
-<li><a href="#break">break</a></li>
-<li><a href="#continue">continue</a></li>
-</ul>
-</li>
-<li><a href="#else-语句">else 语句</a></li>
-<li><a href="#dictionary">dictionary</a><ul>
-<li><a href="#新建插入dict元素">新建、插入dict元素</a></li>
-<li><a href="#遍历">遍历</a></li>
-<li><a href="#删除dict元素">删除dict元素</a></li>
-</ul>
-</li>
-<li><a href="#set">set</a><ul>
-<li><a href="#添加元素">添加元素</a></li>
-<li><a href="#删除元素-1">删除元素</a></li>
-<li><a href="#集合操作符">集合操作符</a></li>
-<li><a href="#特殊的集合处理方法循环">特殊的集合处理方法，循环</a></li>
-<li><a href="#应用场景">应用场景</a></li>
-</ul>
-</li>
-<li><a href="#函数">函数</a><ul>
-<li><a href="#定义函数">定义函数</a></li>
-<li><a href="#默认参数">默认参数</a></li>
-<li><a href="#可变参数">可变参数</a></li>
-<li><a href="#关键字参数">关键字参数</a></li>
-<li><a href="#参数组合">参数组合</a></li>
-</ul>
-</li>
-<li><a href="#开发实例">开发实例</a><ul>
-<li><a href="#实例1-根据半径r计算圆面积">实例1 根据半径r计算圆面积</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p>推荐一个Python学习网站：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000</a></p>
-<p>2018年4月TIOBE排行榜前20中编程语言：<br><img src="/2018/07/15/Python学习笔记——基础部分/TIOBE.jpg" alt=""></p>
-<hr>
-<h3 id="Python能干些什么"><a href="#Python能干些什么" class="headerlink" title="Python能干些什么"></a>Python能干些什么</h3><p>用Python可以做什么？可以做日常任务，比如自动备份你的MP3；可以做网站，很多著名的网站包括YouTube就是Python写的；可以做网络游戏的后台，很多在线游戏的后台都是Python开发的。总之就是能干很多很多事啦。</p>
-<p>Python当然也有不能干的事情，比如写操作系统，这个只能用C语言写；写手机应用，只能用Swift/Objective-C（针对iPhone）和java（针对Android）；写3D游戏，最好用C或C++。</p>
-<hr>
-<h3 id="Python适合开发哪些类型的应用"><a href="#Python适合开发哪些类型的应用" class="headerlink" title="Python适合开发哪些类型的应用"></a>Python适合开发哪些类型的应用</h3><p>首选是网络应用，包括网站、后台服务等等；</p>
-<p>其次是许多日常需要的小工具，包括系统管理员需要的脚本任务等等；</p>
-<p>另外就是把其他语言开发的程序再包装起来，方便使用。</p>
-<hr>
-<h3 id="Python的缺点"><a href="#Python的缺点" class="headerlink" title="Python的缺点"></a>Python的缺点</h3><ol>
-<li>运行速度慢</li>
-</ol>
-<p>和C程序相比非常慢，因为Python是解释型语言，你的代码在执行时会一行一行地翻译成CPU能理解的机器码，这个翻译过程非常耗时，所以很慢。而C程序是运行前直接编译成CPU能执行的机器码，所以非常快。但是大量的应用程序不需要这么快的运行速度，因为用户根本感觉不出来。例如开发一个下载MP3的网络应用程序，C程序的运行时间需要0.001秒，而Python程序的运行时间需要0.1秒，慢了100倍，但由于网络更慢，需要等待1秒，你想，用户能感觉到1.001秒和1.1秒的区别吗？这就好比F1赛车和普通的出租车在北京三环路上行驶的道理一样，虽然F1赛车理论时速高达400公里，但由于三环路堵车的时速只有20公里，因此，作为乘客，你感觉的时速永远是20公里。</p>
-<ol start="2">
-<li>代码不能加密</li>
-</ol>
-<hr>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>用print()在括号中加上字符串，就可以向屏幕上输出指定的文字。比如输出’hello, world’，用代码实现如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'Hello, world'</span>)</span><br><span class="line">Hello, world</span><br></pre></td></tr></table></figure></p>
-<p>print()函数也可以接受多个字符串，用逗号“,”隔开，就可以连成一串输出,遇到逗号“,”会输出一个空格：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'Hello'</span>, <span class="string">'world'</span>)</span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure></p>
-<p>print()也可以打印整数，或者计算结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="number">300</span>)</span><br><span class="line"><span class="number">300</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="number">100</span> + <span class="number">200</span>)</span><br><span class="line"><span class="number">300</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'100 + 200 ='</span>, <span class="number">100</span> + <span class="number">200</span>)</span><br><span class="line"><span class="number">100</span> + <span class="number">200</span> = <span class="number">300</span></span><br></pre></td></tr></table></figure></p>
-<p>print()函数的格式化：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>C = <span class="number">123.456789</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"转化后的小数是&#123;:.2f&#125;"</span>.format(C))</span><br><span class="line">转化后的小数是<span class="number">123.46</span>       <span class="comment"># 四舍五入保留两位</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>用input()，可以让用户输入<strong>字符串</strong>，返回值是str类型，并存放到一个变量里，此外，input()可以显示一个字符串给用户。比如输入用户的名字：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = input()</span><br><span class="line">EKKO                            <span class="comment"># 此处为输入</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = input(<span class="string">'please enter your name: '</span>)</span><br><span class="line">please enter your name:EKKO     <span class="comment"># please enter your name:提示文字，EKKO是输入的名字</span></span><br></pre></td></tr></table></figure></p>
-<p>当你输入name = input()并按下回车后，Python交互式命令行就在等待你的输入了。这时，你可以输入任意字符，然后按回车后完成输入。</p>
-<p>输入完成后，不会有任何提示，Python交互式命令行又回到&gt;&gt;&gt;状态了。刚才输入的内容存放到name变量里了。可以直接输入name<strong>查看变量内容</strong>，不同于输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name            <span class="comment"># 查看name内容</span></span><br><span class="line"><span class="string">'EKKO'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(name)     <span class="comment"># 输出name值</span></span><br><span class="line">EKKO</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="缩进：规范化代码"><a href="#缩进：规范化代码" class="headerlink" title="缩进：规范化代码"></a>缩进：规范化代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">100</span></span><br><span class="line"><span class="keyword">if</span> a &gt;= <span class="number">0</span>:</span><br><span class="line">    print(a)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(-a)</span><br></pre></td></tr></table></figure>
-<p>每一行都是一个语句，当语句以冒号:结尾时，缩进的语句视为代码块。</p>
-<p>缩进有利有弊。好处是强迫你写出格式化的代码，但没有规定缩进是几个空格还是Tab。按照约定俗成的管理，应该始终坚持使用<strong>4个空格</strong>的缩进。</p>
-<p>缩进的另一个好处是强迫你写出缩进较少的代码，你会倾向于把一段很长的代码拆分成若干函数，从而得到缩进较少的代码。</p>
-<p><em>在文本编辑器中，需要设置把Tab自动转换为4个空格，确保不混用Tab和空格。</em></p>
-<hr>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>以’#’开头的语句是注释，注释是给人看的，可以是任意内容，解释器会忽略掉注释。</p>
-<ul>
-<li><p>单行注释：以#开头，其后内容为注释</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里是单行注释</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多行注释：以’’’开头和结尾。’’’本身为字符串，如果没有被调用，理解为注释。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''这是多行注释第一行</span></span><br><span class="line"><span class="string">           ……</span></span><br><span class="line"><span class="string">    这是多行注释最后一行'''</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><ul>
-<li>命名规则：大小写字母、数字、下划线和汉字等符号及组合</li>
-<li>注意事项：大小写敏感、首字符不能是数字、不与保留字相同</li>
-</ul>
-<hr>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h4><p>Python可以处理任意大小的整数，整数运算永远精确。</p>
-<h5 id="整数除法精确性说明"><a href="#整数除法精确性说明" class="headerlink" title="整数除法精确性说明"></a>整数除法精确性说明</h5><p>在Python中，有两种除法：</p>
-<ul>
-<li><p>一种除法是/：/除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.3333333333333335</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.0</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>还有一种除法是//：称为地板除，两个整数的除法仍然是整数，只保留整数部分：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> // <span class="number">3</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>因为//除法只取结果的整数部分，所以Python还提供一个余数运算，可以得到两个整数相除的余数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> % <span class="number">3</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></p>
-<p>无论整数做//除法还是取余数，结果永远是整数，所以，整数运算结果永远是精确的。</p>
-<h4 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h4><p>即小数，计算机中存在浮点误差，浮点数运算不一定精确。正负零、四舍五入情况。</p>
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>以单引号’或双引号”括起来的任意文本，此时’’或””本身只是一种表示方式，不是字符串的一部分。</p>
-<p>如果单引号’本身也是一个字符，那就可以用””括起来，比如”I’m OK”。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"I'm OK"</span>)</span><br><span class="line">I<span class="string">'m OK</span></span><br></pre></td></tr></table></figure></p>
-<p>当字符串内部既包含’又包含”可以用转义字符\来标识，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"I'm \"OK\""</span>)</span><br><span class="line">I<span class="string">'m "OK"</span></span><br></pre></td></tr></table></figure></p>
-<p>如果字符串里面有很多字符都需要转义，就需要加很多\，为了简化，Python还允许用r’’表示’’内部的字符串默认不转义。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'\\\\'</span>)</span><br><span class="line">\\                  <span class="comment"># 有两个\被转译</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">r'\\\\'</span>)</span><br><span class="line">\\\\                <span class="comment"># 未被转译</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="三对引号字符串的使用"><a href="#三对引号字符串的使用" class="headerlink" title="三对引号字符串的使用"></a>三对引号字符串的使用</h5><p>三对引号也是字符串，同时也可以表示注释。当三队引号字符串没有指定变量名时，它就是注释，因为Python没有具体的保护机制。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>str = <span class="string">"""</span></span><br><span class="line"><span class="string">一二三四五，</span></span><br><span class="line"><span class="string">上山打老虎，</span></span><br><span class="line"><span class="string">老虎不在家，</span></span><br><span class="line"><span class="string">打到小松鼠。</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str</span><br><span class="line"><span class="string">'\n一二三四五，\n上山打老虎，\n老虎不在家，\n打到小松鼠。\n'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(str)</span><br><span class="line"></span><br><span class="line">一二三四五，</span><br><span class="line">上山打老虎，</span><br><span class="line">老虎不在家，</span><br><span class="line">打到小松鼠。</span><br></pre></td></tr></table></figure></p>
-<h5 id="字符串的序号"><a href="#字符串的序号" class="headerlink" title="字符串的序号"></a>字符串的序号</h5><p>正向从0开始，反向从-1开始。</p>
-<h5 id="字符串编码问题"><a href="#字符串编码问题" class="headerlink" title="字符串编码问题"></a>字符串编码问题</h5><p>Python3版本中字符串是以Unicode编码的，也就是说，Python的字符串支持多语言。</p>
-<p>对于单个字符的编码，Python提供了ord()函数获取字符的整数编码，chr()函数把编码转换为对应的字符：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ord(<span class="string">'A'</span>)</span><br><span class="line"><span class="number">65</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ord(<span class="string">'中'</span>)</span><br><span class="line"><span class="number">20013</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chr(<span class="number">66</span>)</span><br><span class="line"><span class="string">'B'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chr(<span class="number">25991</span>)</span><br><span class="line"><span class="string">'文'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出星座字符</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">12</span>):</span><br><span class="line">	print(chr(<span class="number">9800</span> + i), end=<span class="string">""</span>)     <span class="comment"># end=""表示不换行</span></span><br><span class="line">♈♉♊♋♌♍♎♏♐♑♒♓</span><br></pre></td></tr></table></figure></p>
-<h5 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h5><table>
-<thead>
-<tr>
-<th>操作符/函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>x + y</td>
-<td>连接两个字符串x和y</td>
-</tr>
-<tr>
-<td>n <em> x 或 x </em> n</td>
-<td>复制n次字符串x</td>
-</tr>
-<tr>
-<td>x in s</td>
-<td>如果x是s的子串，返回True，否则返回False</td>
-</tr>
-<tr>
-<td>len(x)</td>
-<td>返回字符串长度</td>
-</tr>
-<tr>
-<td>str(x)</td>
-<td>任意类型x转化成字符串类型</td>
-</tr>
-<tr>
-<td>hex(x)/oct(x)</td>
-<td>整数x转化成十六进制或八进制小写形式字符串</td>
-</tr>
-<tr>
-<td>str.lower() 或 str.upper()</td>
-<td>返回字符串全小写/全大写副本</td>
-</tr>
-<tr>
-<td>str.count(sub)</td>
-<td>返回子串sub出现的次数</td>
-</tr>
-<tr>
-<td>str.replace(old, new)</td>
-<td>old子串替换成new子串</td>
-</tr>
-<tr>
-<td>str.center(width[,fillchar])</td>
-<td>字符串str根据宽度width居中，fillchar可选</td>
-</tr>
-<tr>
-<td>str.strip(chars)</td>
-<td>从str中去掉在chars中列出来的字符</td>
-</tr>
-<tr>
-<td>str.join(iter)</td>
-<td>在iter变量除最后元素外每个元素后增加一个str，如”,”.join(“12345”)结果’1,2,3,4,5’</td>
-</tr>
-</tbody>
-</table>
-<h5 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h5><p>我们经常会输出类似’亲爱的xxx你好！你xx月的话费是xx，余额是xx’之类的字符串，而xxx的内容都是根据变量变化的，所以，需要一种简便的格式化字符串的方式。</p>
-<p><strong>%类型占位符</strong></p>
-<p>在Python中，采用的格式化方式和C语言是一致的，用%实现，举例如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'Hello, %s'</span> % <span class="string">'world'</span>)</span><br><span class="line">Hello, world        <span class="comment"># 输出值</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Hi, %s, you have $%d.'</span> % (<span class="string">'Michael'</span>, <span class="number">1000000</span>)</span><br><span class="line"><span class="string">'Hi, Michael, you have $1000000.'</span>     <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure></p>
-<p>%运算符就是用来格式化字符串的。在字符串内部，%s表示用字符串替换，%d表示用整数替换，有几个%?占位符，后面就跟几个变量或者值，顺序要对应好。如果只有一个%?，括号可以省略，如果字符中有%，则用%%表示。</p>
-<p>常见的占位符有：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">占位符</th>
-<th style="text-align:left">替换内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">%d</td>
-<td style="text-align:left">整数</td>
-</tr>
-<tr>
-<td style="text-align:left">%f</td>
-<td style="text-align:left">浮点数</td>
-</tr>
-<tr>
-<td style="text-align:left">%s</td>
-<td style="text-align:left">字符串，万能类型</td>
-</tr>
-<tr>
-<td style="text-align:left">%x</td>
-<td style="text-align:left">十六进制整数</td>
-</tr>
-</tbody>
-</table>
-<p><strong>槽类型格式化</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># format位置参数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"计算机&#123;0&#125;的CPU占用率为&#123;1&#125;%"</span>.format(<span class="string">"2018-7-31"</span>, <span class="number">10</span>))     <span class="comment"># 使用数字槽</span></span><br><span class="line">计算机<span class="number">2018</span><span class="number">-7</span><span class="number">-31</span>的CPU占用率为<span class="number">10</span>%</span><br><span class="line"></span><br><span class="line"><span class="comment"># format关键字参数，Json类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> (<span class="string">'计算机&#123;time&#125;的CPU占用率为&#123;num&#125;%'</span>.format(time = <span class="string">'2018-7-31'</span>, num = <span class="number">10</span>))</span><br><span class="line">计算机<span class="number">2018</span><span class="number">-7</span><span class="number">-31</span>的CPU占用率为<span class="number">10</span>%</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> (<span class="string">"计算机%(time)s的CPU占用率为%(num)d%%"</span> % &#123;<span class="string">'time'</span>: <span class="string">'2018-7-31'</span>, <span class="string">'num'</span>: <span class="number">10</span>&#125;)       <span class="comment"># dict类型</span></span><br><span class="line">计算机<span class="number">2018</span><span class="number">-7</span><span class="number">-31</span>的CPU占用率为<span class="number">10</span>%</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h3><p>布尔值只有True、False两种值，要么是True，要么是False，可以用0或1表示，但是不推荐使用。</p>
-<p>布尔值可以用and、or和not运算（与或非）</p>
-<hr>
-<h3 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h3><p>空值是Python里一个特殊的值，用None表示。None不能理解为0，因为0是有意义的，而None是一个特殊的空值。</p>
-<p>此外，Python还提供了列表、字典等多种数据类型，还允许创建自定义数据类型。</p>
-<hr>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>Python语言是<strong>弱语法语言</strong>或者说<strong>动态语言</strong>，定义变量时，不需要定义变量类型，赋值是也不需要类型匹配。</p>
-<p>Python中一切变量都是对象。</p>
-<p>注意点：</p>
-<ol>
-<li><p>大多数编程语言中，变量与值的关系是“给变量赋值”或者说是“把值存储在变量中”。</p>
-</li>
-<li><p>Python与大多数其他计算机语言的做法稍有不用，它并不是把值存储在变量中，而更像是把变量贴在值的上边，或者说是变量是值的名字。</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>str1 = <span class="string">'hello world'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(id(str1))     <span class="comment"># 打印变量str1的内存地址</span></span><br><span class="line"><span class="number">2588233436976</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str2 = str1         <span class="comment"># 此时让变量str2和str1指向同一个地址</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(id(str2))</span><br><span class="line"><span class="number">2588233436976</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str1 = <span class="string">'new hello world'</span>      <span class="comment"># 给变量str1赋新值，或者说让变量str1指向一个新的地址</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(str1)</span><br><span class="line">new hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(id(str1))       <span class="comment"># 再次打印变量str1的地址，发现此时与原先的地址并不相同</span></span><br><span class="line"><span class="number">2588233913328</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(str2)</span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(id(str2))</span><br><span class="line"><span class="number">2588233436976</span></span><br></pre></td></tr></table></figure>
-<p>所以有些Python程序员会说，“Python”没有变量，只有名字。</p>
-<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><p>局部变量是智能在函数内部使用的变量。</p>
-<h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>函数外部整个程序使用的变量是全局变量。</p>
-<p><strong>规则1 基本数据类型，无论是否重名，局部变量和全局变量是不同变量。</strong></p>
-<ol>
-<li>局部变量与全局变量可能重名但不同。</li>
-<li>函数运行结束后，局部变量被释放。</li>
-<li>可使用<strong>global</strong>保留字在函数内部使用全局变量<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>n, s = <span class="number">10</span>, <span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fact</span><span class="params">(n)</span>:</span></span><br><span class="line">	<span class="keyword">global</span> s       <span class="comment"># 函数中使用global保留字声明此处s是全局变量s</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">	   s *= i</span><br><span class="line">	<span class="keyword">return</span> s       <span class="comment"># 此处s指的是全局变量s</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(fact(n), s)     <span class="comment"># 此处全局变量s被函数修改</span></span><br><span class="line"><span class="number">362880000</span> <span class="number">362880000</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>规则2 局部变量为组合数据类型且未创建，等同于全局变量。</strong><br>此规则原理是通过指针实现的。如果在函数内部未真实创建类型，指针指向的是函数外的同名变量。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ls = [<span class="string">"F"</span>, <span class="string">"f"</span>]       <span class="comment"># 通过使用[]真是创建了一个全局变量列表ls</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a)</span>:</span></span><br><span class="line">	ls.append(a)     <span class="comment"># ls是列表类型，未真实创建，等同于全局变量</span></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func(<span class="string">"C"</span>)       <span class="comment"># 全局变量ls被修改</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(ls)</span><br><span class="line">[<span class="string">'F'</span>, <span class="string">'f'</span>, <span class="string">'C'</span>]</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>所谓常量就是不能变的变量，比如常用的数学常数π就是一个常量。在Python中，通常用全部大写的变量名表示常量。Python根本没有任何机制保证PI不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，强行改变常量，也是可以实现的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PI = <span class="number">3.14159265359</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="list：列表"><a href="#list：列表" class="headerlink" title="list：列表"></a>list：列表</h3><p>Python内置的一种数据类型是列表：list。list是一种有序的集合，可以随时添加和删除其中的元素。</p>
-<p>比如，列出班里所有同学的名字，就可以用一个list表示，用索引来访问list中每一个位置的元素，记得正向索引是从0开始的，方向索引是从-1开始的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]    <span class="comment"># 变量classmates就是一个list。</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(classmates)     <span class="comment"># 用len()函数可以获得list元素的个数：</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">0</span>]</span><br><span class="line"><span class="string">'Michael'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">-3</span>]</span><br><span class="line"><span class="string">'Michael'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">1</span>]</span><br><span class="line"><span class="string">'Bob'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">-2</span>]</span><br><span class="line"><span class="string">'Bob'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">2</span>]</span><br><span class="line"><span class="string">'Tracy'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">-1</span>]</span><br><span class="line"><span class="string">'Tracy'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">3</span>]       <span class="comment"># 数组越界</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br></pre></td></tr></table></figure></p>
-<h4 id="list元素"><a href="#list元素" class="headerlink" title="list元素"></a>list元素</h4><p>list里面的元素的数据类型也可以不同，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = [<span class="string">'Apple'</span>, <span class="number">123</span>, <span class="keyword">True</span>]</span><br></pre></td></tr></table></figure></p>
-<p>list元素也可以是另一个list，注意不要忘了元素之间的逗号，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = [<span class="string">'python'</span>, <span class="string">'python'</span>, [<span class="string">'asp'</span>, <span class="string">'php'</span>], <span class="string">'scheme'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(s)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h4><ul>
-<li><p>可以往list中追加元素到末尾。</p>
-<ol>
-<li><p>append()方法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.append(<span class="string">'Adam'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>extend()方法<br>但是细心的人会发现，append()方法一次只能插入一个元素，使用extend([list])方法可以插入多个元素，其原理是用列表扩展列表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.extend([<span class="string">'Adam'</span>, <span class="string">'Amn'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>, <span class="string">'Amn'</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>也可以把元素插入到指定的位置，比如索引号为1的位置：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.insert(<span class="number">1</span>, <span class="string">'Jack'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Jack'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h4><ol>
-<li>pop()方法</li>
-</ol>
-<p>list是利用栈的数据结构实现的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates = [<span class="string">'Michael'</span>, <span class="string">'Jack'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.pop()      <span class="comment"># 抛出list末尾的元素</span></span><br><span class="line"><span class="string">'Adam'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Jack'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.pop(<span class="number">1</span>)     <span class="comment"># 抛出指定位置的元素</span></span><br><span class="line"><span class="string">'Jack'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</span><br></pre></td></tr></table></figure></p>
-<ol start="2">
-<li><p>remove()方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates = [<span class="string">'Michael'</span>, <span class="string">'Jack'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.remove(<span class="string">'Jack'</span>)     <span class="comment"># 删除指定元素</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>del语句，不是方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates = [<span class="string">'Michael'</span>, <span class="string">'Jack'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> classmates[<span class="number">1</span>]     <span class="comment"># 删除列表序列为1的元素</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> classmates        <span class="comment"># 清除整个列表</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#24&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    classmates</span><br><span class="line">NameError: name <span class="string">'classmates'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="替换元素"><a href="#替换元素" class="headerlink" title="替换元素"></a>替换元素</h4><p>要把某个元素替换成别的元素，可以直接赋值给对应的索引位置：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">1</span>] = <span class="string">'Sarah'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</span><br><span class="line">[<span class="string">'Michael'</span>, <span class="string">'Sarah'</span>, <span class="string">'Tracy'</span>]</span><br></pre></td></tr></table></figure></p>
-<h4 id="list其他常用操作"><a href="#list其他常用操作" class="headerlink" title="list其他常用操作"></a>list其他常用操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列表翻转</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list[::<span class="number">-1</span>]      <span class="comment"># 保留原列表的列表翻转</span></span><br><span class="line">[<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list.reverse()    <span class="comment"># reverse()翻转原列表</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list</span><br><span class="line">[<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表拷贝</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list2 = list[:]     <span class="comment"># 切片方式，正确拷贝</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list3 = list        <span class="comment"># 只是多了个名字，非正确拷贝</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="tuple：元组，带上枷锁的列表"><a href="#tuple：元组，带上枷锁的列表" class="headerlink" title="tuple：元组，带上枷锁的列表"></a>tuple：元组，带上枷锁的列表</h3><font color="red">tuple的标志不是()，而是“,”。</font>
-
-<p>tuple和list非常类似，但是tuple一旦初始化，tuple指向该元素的地址就<strong>不能修改</strong>，比如同样是列出同学的名字：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classmates = (<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>现在，classmates这个tuple不能变了，它也没有append()，insert()这样的方法。其他获取元素的方法和list是一样的，你可以正常地使用classmates[0]，classmates[-1]，但不能赋值成另外的元素。</p>
-<p>因为tuple不可变，所以代码更安全。如果可能，能用tuple代替list就尽量用tuple。</p>
-<h4 id="tuple陷阱"><a href="#tuple陷阱" class="headerlink" title="tuple陷阱"></a>tuple陷阱</h4><p>当你定义一个tuple时，在定义的时候，tuple的元素就必须被确定下来，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
-<p>如果要定义一个空的tuple，可以写成()，此处不需要“,”：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = ()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(t)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">tuple</span>'&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果要定义非空tuple类型时可以没有小括号，但是必须加一个逗号，<font color="red">tuple的标志不是()，而是“,”</font> ：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">(<span class="number">1</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(t)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">tuple</span>'&gt;</span></span><br><span class="line">&gt;&gt;&gt; T = 1,</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>T</span><br><span class="line">(<span class="number">1</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(T)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">tuple</span>'&gt;</span></span><br></pre></td></tr></table></figure>
-<font color="red">以下这种情况时，表示的是数学公式中的小括号:</font><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(t)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">int</span>'&gt;</span></span><br></pre></td></tr></table></figure><br><br>元组操作:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">8</span> * (<span class="number">8</span>,)</span><br><span class="line">(<span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">8</span> * <span class="number">8</span>,</span><br><span class="line">(<span class="number">64</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">8</span> * (<span class="number">8</span>)</span><br><span class="line"><span class="number">64</span></span><br></pre></td></tr></table></figure><br><br>#### “可变的”tuple<br>在之前我们说过，tuple一旦初始化之后，指向元素的地址就不能修改，但是仔细分析下面代码，这种所谓的“可变”，依然符合tuple不可变的定理。<br><br>##### 不变tuple嵌套可变list<br>tuple指向’a’,’b’和list的地址，从始至终没有改变过地址指向，但是list中的元素是可变的，list可以指向其他对象，与我么之前所说的tuple不变并不冲突。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="string">'a'</span>, <span class="string">'b'</span>, [<span class="string">'A'</span>, <span class="string">'B'</span>])      <span class="comment"># tuple定义了三个元素，'a','b',和一个list</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t[<span class="number">2</span>][<span class="number">0</span>] = <span class="string">'X'</span>       <span class="comment"># 修改list中的元素，list元素改变，但是tuple依然指向原先的tuple</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t[<span class="number">2</span>][<span class="number">1</span>] = <span class="string">'Y'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>, [<span class="string">'X'</span>, <span class="string">'Y'</span>])</span><br></pre></td></tr></table></figure><br><br>##### 伪可变tuple<br>还有一种“可变”方式是通过原元组+切片的方式新建新的元组实现。元组本身不可变，但是可以通过新建的方式，重新初始化一个元组，然后把原变量名指向新的元组，这样可以实现<strong>伪可变</strong>操作：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = t[:<span class="number">1</span>] + (<span class="string">'c'</span>,) + t[<span class="number">1</span>:]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>)</span><br></pre></td></tr></table></figure><br><br>—————————<br><br>### 分支结构<br>由判断条件决定程序运行方向的语句。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 多分支结构</span></span><br><span class="line"><span class="keyword">if</span> &lt;条件判断<span class="number">1</span>&gt;:         <span class="comment"># 条件判断比较时，数据类型要相同</span></span><br><span class="line">    &lt;表达式<span class="number">1</span>&gt;             <span class="comment"># 不同于C、C++，不需要花括号括起来</span></span><br><span class="line"><span class="keyword">elif</span> &lt;条件判断<span class="number">2</span>&gt;:</span><br><span class="line">    &lt;表达式<span class="number">2</span>&gt;</span><br><span class="line"><span class="keyword">elif</span> &lt;条件判断<span class="number">3</span>&gt;:</span><br><span class="line">    &lt;表达式<span class="number">3</span>&gt;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    &lt;表达式<span class="number">4</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二分支结构——紧凑结构，类似于三目运算符</span></span><br><span class="line">&lt;表达式<span class="number">1</span>&gt; <span class="keyword">if</span> &lt;条件判断&gt; <span class="keyword">else</span> &lt;表达式<span class="number">2</span>&gt;</span><br><span class="line"></span><br><span class="line">guess = eval(input(<span class="string">"输入一个数"</span>))</span><br><span class="line">print(<span class="string">"猜&#123;&#125;了"</span>.format(<span class="string">"对"</span> <span class="keyword">if</span> guess == <span class="number">99</span> <span class="keyword">else</span> <span class="string">"错"</span>))</span><br></pre></td></tr></table></figure><br><br>—————————<br>### 循环<br><br>#### for循环<br>for x in … 循环就是把每个元素代入变量x，然后执行缩进块的语句。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">names = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names:     <span class="comment"># 遍历names</span></span><br><span class="line">    print(name)       <span class="comment"># 打印名为names的list里面所有元素</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(N):      <span class="comment"># 遍历N次</span></span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(M, N, K):    <span class="comment"># 从M到N，每K个元素循环一次</span></span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure><br><br>Python提供一个range()函数，可以生成一个整数序列，再通过list()函数可以转换为list。比如range(5)生成的序列是从0开始小于5的整数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(<span class="number">5</span>))</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure><br><br>由上，我们就能实现整数序列的循环操作：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sum = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = list(range(<span class="number">5</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">	sum = sum + x</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(sum)</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure><br><br>#### while循环<br>只要条件满足，就不断循环，条件不满足时退出循环。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line">n = <span class="number">99</span></span><br><span class="line"><span class="keyword">while</span> n &gt; <span class="number">0</span>:      <span class="comment"># 循环条件，当n&gt;0时循环，否则退出</span></span><br><span class="line">    sum = sum + n</span><br><span class="line">    n = n - <span class="number">2</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure><br><br>#### break<br>在循环中，break语句可以提前退出循环。<br><br>#### continue<br>在循环过程中，也可以通过continue语句，跳过当前的这次循环，直接开始下一次循环。<br><br>——————–<br><br>### else 语句<br>else语句最常见的就是if…else语句，但是在python中，else语句还有更多的用法。当循环没有被break语句退出时或者异常处理时，执行else语句，else语句作为“正常”完成循环的奖励。<br><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ... <span class="keyword">in</span> ... :</span><br><span class="line">  &lt;语句&gt;</span><br><span class="line"><span class="keyword">else</span>：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> c <span class="keyword">in</span> <span class="string">"python"</span>:</span><br><span class="line">	<span class="keyword">if</span> c == <span class="string">"t"</span>:</span><br><span class="line">		<span class="keyword">continue</span></span><br><span class="line">	print(c, end=<span class="string">""</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	print(<span class="string">"正常退出"</span>)</span><br><span class="line"></span><br><span class="line">pyhon正常退出</span><br></pre></td></tr></table></figure><br><br>—————————<br><br>### dictionary<br>Python内置了字典：dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。<br><br><font color="red">dict是用空间来换取时间的一种方法。</font>
-
-<p>dict的key必须是不可变对象，通过key使用哈希算法(Hash)计算value的地址。</p>
-<h4 id="新建、插入dict元素"><a href="#新建、插入dict元素" class="headerlink" title="新建、插入dict元素"></a>新建、插入dict元素</h4><ol>
-<li><p>常规方法如下：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d     <span class="comment"># 查看该dict元素</span></span><br><span class="line">&#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>动态创建</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'Michael'</span>] = <span class="number">95</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'Bob'</span>] = <span class="number">75</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'Tracy'</span>] = <span class="number">85</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>dict关键字形式</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = dict(Michael = <span class="number">95</span>, Bob = <span class="number">75</span>, Tracy = <span class="number">85</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>dict键值序列</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = dict([(<span class="string">'Michael'</span>, <span class="number">95</span>), (<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Tracy'</span>, <span class="number">85</span>)])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>setdefault()方法，如果键不存在于字典中，将会添加键并将值设为默认值</p>
-<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>D = &#123;<span class="string">'x'</span>:<span class="number">1</span>, <span class="string">'y'</span>:<span class="number">2</span>, <span class="string">'z'</span>:<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>方法一<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> D:</span><br><span class="line">    <span class="keyword">print</span> key, <span class="string">'=&gt;'</span>, D[key]</span><br><span class="line">y =&gt; 2</span><br><span class="line">x =&gt; 1</span><br><span class="line">z =&gt; 3</span><br></pre></td></tr></table></figure></p>
-<p>方法二<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key, value <span class="keyword">in</span> D.items():</span><br><span class="line">    <span class="keyword">print</span> key, <span class="string">'=&gt;'</span>, value</span><br><span class="line">y =&gt; 2</span><br><span class="line">x =&gt; 1</span><br><span class="line">z =&gt; 3</span><br></pre></td></tr></table></figure></p>
-<p>方法三<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> D.iterkeys():</span><br><span class="line">    <span class="keyword">print</span> key, <span class="string">'=&gt;'</span>, D[key]</span><br><span class="line">y =&gt; 2</span><br><span class="line">x =&gt; 1</span><br><span class="line">z =&gt; 3</span><br></pre></td></tr></table></figure></p>
-<p>方法四<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> value <span class="keyword">in</span> D.values():</span><br><span class="line">    <span class="keyword">print</span> value</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
-<p>方法五<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key, value <span class="keyword">in</span> D.iteritems():</span><br><span class="line">    <span class="keyword">print</span> key, <span class="string">'=&gt;'</span>, value</span><br><span class="line">y =&gt; 2</span><br><span class="line">x =&gt; 1</span><br><span class="line">z =&gt; 3</span><br></pre></td></tr></table></figure></p>
-<p>方法六<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> eachItem <span class="keyword">in</span> D.items():</span><br><span class="line">	print(eachItem)</span><br><span class="line">(<span class="string">'x'</span>, <span class="number">1</span>)</span><br><span class="line">(<span class="string">'y'</span>, <span class="number">2</span>)</span><br><span class="line">(<span class="string">'z'</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure></p>
-<font color="red">用D.iteritems(), D.iterkeys()的方法要比没有iter的快的多。</font>
-
-<p>dict的实现原理和查字典是一样的，先在字典的索引表里查这个字对应的页码，然后直接翻到该页，找到这个字。无论找哪个字，这种查找速度都非常快，不会随着字典大小的增加而变慢。在案例中，名字就是索引，找到索引就能知道成绩对应的“页码”，也就是成绩的内存地址，就能直接取出来。</p>
-<p>键值对是一对一的，一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值覆盖掉。</p>
-<p>如果key值不存在，dict会报错，避免办法：</p>
-<ol>
-<li><p>通过in判断key是否存在：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过dict提供的get()方法，如果key不存在，返回None(在交互式环境不显示结果)，或者自己指定的value：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>)       <span class="comment"># 返回None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>)</span><br><span class="line"><span class="number">-1</span>      <span class="comment"># Thomas不存在，返回-1</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="删除dict元素"><a href="#删除dict元素" class="headerlink" title="删除dict元素"></a>删除dict元素</h4><p>要删除一个key，用pop(key, <default>)方法抛出对应的key，不存在则返回<default>值。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.pop(<span class="string">'Michael'</span>, <span class="string">'aaa'</span>)</span><br><span class="line"><span class="number">95</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.pop(<span class="string">'Michael'</span>, <span class="string">'aaa'</span>)</span><br><span class="line"><span class="string">'aaa'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br></pre></td></tr></table></figure></default></default></p>
-<p>del关键字<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> d[<span class="string">'Bob'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="clear-方法，删除所有键值对。"><a href="#clear-方法，删除所有键值对。" class="headerlink" title="clear()方法，删除所有键值对。"></a>clear()方法，删除所有键值对。</h2><h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>set是一组key的集合，不同于dict的是，set不存储value。</p>
-<p>set有元素不重复性，重复的元素会被删除，且有无序性。</p>
-<p>新建集合如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用set()建立集合</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>B = set(<span class="string">"pypy123"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>B</span><br><span class="line">&#123;<span class="string">'p'</span>, <span class="string">'2'</span>, <span class="string">'y'</span>, <span class="string">'3'</span>, <span class="string">'1'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])    <span class="comment"># list可以是无序的</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s       <span class="comment"># 并不会排序，数字多了容易发现</span></span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用&#123;&#125;建立集合</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>A = &#123;<span class="string">"python"</span>, <span class="number">123</span>, (<span class="string">"python"</span>, <span class="number">123</span>)&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>A</span><br><span class="line">&#123;(<span class="string">'python'</span>, <span class="number">123</span>), <span class="number">123</span>, <span class="string">'python'</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><p>通过add(key)方法可以添加元素到set中，可以重复添加，但不会有效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="删除元素-1"><a href="#删除元素-1" class="headerlink" title="删除元素"></a>删除元素</h4><ol>
-<li>通过remove(key)方法可以删除元素，如果key不在集合S中，会产生KeyError异常：</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.remove(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.remove(<span class="number">4</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#23&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    s.remove(<span class="number">4</span>)</span><br><span class="line">KeyError: <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><p>通过discard(key)方法可以删除元素，如果key不在集合S中，不报错：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.discard(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.discard(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>clear()移除集合中所有元素：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.clear()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">set()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>pop()随机返回集合的一个元素，并删除集合中的该元素，若集合为空产生KeyError异常：</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.pop()</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="集合操作符"><a href="#集合操作符" class="headerlink" title="集合操作符"></a>集合操作符</h4><table>
-<thead>
-<tr>
-<th>操作符及应用</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>S \</td>
-<td>T</td>
-<td>返回一个新集合，包括集合S和T中的所有元素</td>
-</tr>
-<tr>
-<td>S - T</td>
-<td>返回一个新集合，包括集合S但不在T中的元素</td>
-</tr>
-<tr>
-<td>S &amp; T</td>
-<td>返回一个新集合，包括同时在集合S和T中的元素</td>
-</tr>
-<tr>
-<td>S ^ T</td>
-<td>返回一个新集合，包括集合S和T中的非相同元素</td>
-</tr>
-<tr>
-<td>S &lt;= T 或 S&lt; T</td>
-<td>返回True/False，判断S和T的子集关系</td>
-</tr>
-<tr>
-<td>S &gt;= T 或 S&gt; T</td>
-<td>返回True/False，判断S和T的包含关系</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = set([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 &amp; s2</span><br><span class="line">&#123;<span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 | s2</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="特殊的集合处理方法，循环"><a href="#特殊的集合处理方法，循环" class="headerlink" title="特殊的集合处理方法，循环"></a>特殊的集合处理方法，循环</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">		print(s.pop(), end=<span class="string">""</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="number">2341</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">set()</span><br></pre></td></tr></table></figure>
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p><strong>数据去重:集合类型所有元素无重复</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ls = [<span class="string">"p"</span>, <span class="string">"p"</span>, <span class="string">"y"</span>, <span class="string">"y"</span>, <span class="number">123</span>]    <span class="comment"># list类型，去重</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set(ls)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">123</span>, <span class="string">'p'</span>, <span class="string">'y'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ls = list(s)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ls</span><br><span class="line">[<span class="number">123</span>, <span class="string">'p'</span>, <span class="string">'y'</span>]</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>官方函数文档: <a href="https://docs.python.org/3/library/functions.html" target="_blank" rel="noopener">https://docs.python.org/3/library/functions.html</a></p>
-<h4 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h4><p>在Python中，定义一个函数要使用def语句，依次写出函数名、括号、括号中的参数和冒号:，然后，在缩进块中编写函数体，函数的返回值用return语句返回。</p>
-<p>自定义一个求绝对值的my_abs函数为例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_abs</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> x &gt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> -x</span><br></pre></td></tr></table></figure></p>
-<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(x, n=<span class="number">2</span>)</span>:</span>      <span class="comment"># 必选参数在前，默认参数在后</span></span><br><span class="line">    s = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">        n = n - <span class="number">1</span></span><br><span class="line">        s = s * x</span><br><span class="line">    <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
-<p>这样，当我们调用power(5)时，相当于调用power(5, 2)：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>power(<span class="number">5</span>)</span><br><span class="line"><span class="number">25</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>power(<span class="number">5</span>, <span class="number">2</span>)</span><br><span class="line"><span class="number">25</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>power(<span class="number">5</span>, <span class="number">3</span>)       <span class="comment"># 若n!=2，就必须明确传入n</span></span><br><span class="line"><span class="number">125</span></span><br></pre></td></tr></table></figure>
-<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><p>可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。</p>
-<p>把函数的参数改为可变参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(*numbers)</span>:</span></span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</span><br><span class="line">        sum = sum + n * n</span><br><span class="line">    <span class="keyword">return</span> sum</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>calc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>calc(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>)</span><br><span class="line"><span class="number">84</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>calc()</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p>如果已经有一个list或者tuple，要调用一个可变参数可以这样做：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>calc(nums[<span class="number">0</span>], nums[<span class="number">1</span>], nums[<span class="number">2</span>])   <span class="comment"># 把list或tuple的元素手动传进去</span></span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>calc(*nums)                       <span class="comment"># 使用*号，把list或tuple的元素变成可变参数传进去</span></span><br><span class="line"><span class="number">14</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4><p>关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, **kw)</span>:</span></span><br><span class="line">    print(<span class="string">'name:'</span>, name, <span class="string">'age:'</span>, age, <span class="string">'other:'</span>, kw)</span><br></pre></td></tr></table></figure></p>
-<p>传入任意个数的关键字参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">'Michael'</span>, <span class="number">30</span>)</span><br><span class="line">name: Michael age: <span class="number">30</span> other: &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">'Bob'</span>, <span class="number">35</span>, city=<span class="string">'Beijing'</span>)</span><br><span class="line">name: Bob age: <span class="number">35</span> other: &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">'Adam'</span>, <span class="number">45</span>, gender=<span class="string">'M'</span>, job=<span class="string">'Engineer'</span>)</span><br><span class="line">name: Adam age: <span class="number">45</span> other: &#123;<span class="string">'gender'</span>: <span class="string">'M'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="参数组合"><a href="#参数组合" class="headerlink" title="参数组合"></a>参数组合</h4><p>在Python中定义函数，可以用必选参数、默认参数、可变参数、关键字参数和命名关键字参数，这5种参数都可以组合使用。但是请注意，参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。</p>
-<hr>
-<h3 id="开发实例"><a href="#开发实例" class="headerlink" title="开发实例"></a>开发实例</h3><h4 id="实例1-根据半径r计算圆面积"><a href="#实例1-根据半径r计算圆面积" class="headerlink" title="实例1 根据半径r计算圆面积"></a>实例1 根据半径r计算圆面积</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = <span class="number">25</span></span><br><span class="line">area = <span class="number">3.1415</span> * r * r</span><br><span class="line">print(area)</span><br><span class="line">print(<span class="string">"&#123;:.2f&#125;F"</span>.format(area))</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/15/Python学习笔记——基础部分/CalCircle.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/15/Python学习笔记——基础部分/" data-id="cjv1zk5zq0051jkutxb3mdeqd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -2102,7 +2118,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.89px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11.11px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 12.22px;">Node</a> <a href="/tags/Python/" style="font-size: 15.56px;">Python</a> <a href="/tags/Vue/" style="font-size: 13.33px;">Vue</a> <a href="/tags/blog/" style="font-size: 11.11px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 17.78px;">前端</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.11px;">数据库</a> <a href="/tags/框架/" style="font-size: 14.44px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
+      <a href="/tags/Android/" style="font-size: 19px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 10px;">EcamScript6</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 11px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 17px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 13px;">Node</a> <a href="/tags/Python/" style="font-size: 16px;">Python</a> <a href="/tags/Vue/" style="font-size: 14px;">Vue</a> <a href="/tags/blog/" style="font-size: 11px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 18px;">前端</a> <a href="/tags/后端/" style="font-size: 13px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/模板引擎/" style="font-size: 10px;">模板引擎</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a>
     </div>
   </div>
 
@@ -2128,6 +2144,10 @@
           </li>
         
           <li>
+            <a href="/2019/04/11/框架-全栈开发/">Vue+Node+Mongodb全栈开发</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/10/前端-UI/">前端-UI</a>
           </li>
         
@@ -2137,10 +2157,6 @@
         
           <li>
             <a href="/2019/04/04/框架-Vuejs-模块化开发/">框架-Vuejs-Webpack模块化开发</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/23/框架-Vuejs/">框架-Vue.js基础</a>
           </li>
         
       </ul>
