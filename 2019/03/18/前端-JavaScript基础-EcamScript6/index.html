@@ -5,21 +5,21 @@
   
 
   
-  <title>前端-JavaScript基础-EcamScript6 | Hello, I&#39;m Junhao Ai.</title>
+  <title>前端-JavaScript基础-ES6-Promise | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       EcamScript 6 简介阮一峰教">
+  <meta name="description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       参考阮一峰教材：http://es6.ruanyifeng.com/#docs/promise  异步操作c">
 <meta name="keywords" content="JavaScript,前端,EcamScript6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端-JavaScript基础-EcamScript6">
+<meta property="og:title" content="前端-JavaScript基础-ES6-Promise">
 <meta property="og:url" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       EcamScript 6 简介阮一峰教">
+<meta property="og:description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       参考阮一峰教材：http://es6.ruanyifeng.com/#docs/promise  异步操作c">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/Promise.jpg">
-<meta property="og:updated_time" content="2019-03-21T11:49:05.074Z">
+<meta property="og:updated_time" content="2019-05-10T12:59:45.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端-JavaScript基础-EcamScript6">
-<meta name="twitter:description" content="EcamScript 6 简介 声明与表达式 内置对象 运算符与语句 异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       EcamScript 6 简介阮一峰教">
+<meta name="twitter:title" content="前端-JavaScript基础-ES6-Promise">
+<meta name="twitter:description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       参考阮一峰教材：http://es6.ruanyifeng.com/#docs/promise  异步操作c">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/Promise.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前端-JavaScript基础-EcamScript6
+      前端-JavaScript基础-ES6-Promise
     </h1>
   
 
@@ -91,10 +91,6 @@
       
         <!-- TOC -->
 <ul>
-<li><a href="#ecamscript-6-简介">EcamScript 6 简介</a></li>
-<li><a href="#声明与表达式">声明与表达式</a></li>
-<li><a href="#内置对象">内置对象</a></li>
-<li><a href="#运算符与语句">运算符与语句</a></li>
 <li><a href="#异步操作">异步操作</a><ul>
 <li><a href="#callback-hell-回调地狱">callback hell 回调地狱</a></li>
 <li><a href="#promise-对象">Promise 对象</a><ul>
@@ -109,11 +105,8 @@
 </li>
 </ul>
 <!-- /TOC -->
-<h2 id="EcamScript-6-简介"><a href="#EcamScript-6-简介" class="headerlink" title="EcamScript 6 简介"></a>EcamScript 6 简介</h2><p>阮一峰教材：<a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/promise</a></p>
+<p>参考阮一峰教材：<a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/promise</a></p>
 <hr>
-<h2 id="声明与表达式"><a href="#声明与表达式" class="headerlink" title="声明与表达式"></a>声明与表达式</h2><hr>
-<h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><hr>
-<h2 id="运算符与语句"><a href="#运算符与语句" class="headerlink" title="运算符与语句"></a>运算符与语句</h2><hr>
 <h2 id="异步操作"><a href="#异步操作" class="headerlink" title="异步操作"></a>异步操作</h2><h3 id="callback-hell-回调地狱"><a href="#callback-hell-回调地狱" class="headerlink" title="callback hell 回调地狱"></a>callback hell 回调地狱</h3><p>在 JS 程序中，程序执行不会等待异步操作执行，而异步操作的时间长短与操作的内容有关，并不一定会按顺序。</p>
 <p>如下代码，有三个读取文件的异步操作，其执行结束的顺序与文件大小及其他因素有关，所以控制台输出的结果顺序会不同。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'./a.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'./b.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'./c.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -153,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/" data-id="cjv1zk5k7002zjkutnz2leoi5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/" data-id="cjvjikq01002wg0ut76chr9er" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>

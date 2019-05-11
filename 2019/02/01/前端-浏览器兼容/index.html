@@ -7,18 +7,18 @@
   
   <title>前端-浏览器兼容 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录：  CSS透明 HTML父容器高度塌陷问题 DOM操作Css获取当前有效样式 DOM事件对象event DOM多事件绑定 addEventListener() attachEvent() 浏览器兼容并统一this   浏览器默认拖拽行为 DOM滚轮事件  CSS透明1234567在css中设置透明：/* 设置透明 */opacity: 0.5;/* 兼容IE透明 */filter: alph">
+  <meta name="description" content="目录：   CSS透明 HTML父容器高度塌陷问题 DOM操作Css获取当前有效样式 DOM事件对象event DOM多事件绑定 addEventListener() attachEvent() 浏览器兼容并统一this   浏览器默认拖拽行为 DOM滚轮事件   - addEventListener() - attachEvent() - 浏览器兼容并统一this  浏览器默认拖拽行为 DOM滚">
 <meta name="keywords" content="移动端,前端,浏览器兼容">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端-浏览器兼容">
 <meta property="og:url" content="http://yoursite.com/2019/02/01/前端-浏览器兼容/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="目录：  CSS透明 HTML父容器高度塌陷问题 DOM操作Css获取当前有效样式 DOM事件对象event DOM多事件绑定 addEventListener() attachEvent() 浏览器兼容并统一this   浏览器默认拖拽行为 DOM滚轮事件  CSS透明1234567在css中设置透明：/* 设置透明 */opacity: 0.5;/* 兼容IE透明 */filter: alph">
+<meta property="og:description" content="目录：   CSS透明 HTML父容器高度塌陷问题 DOM操作Css获取当前有效样式 DOM事件对象event DOM多事件绑定 addEventListener() attachEvent() 浏览器兼容并统一this   浏览器默认拖拽行为 DOM滚轮事件   - addEventListener() - attachEvent() - 浏览器兼容并统一this  浏览器默认拖拽行为 DOM滚">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-10T16:19:54.770Z">
+<meta property="og:updated_time" content="2019-05-10T06:05:20.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端-浏览器兼容">
-<meta name="twitter:description" content="目录：  CSS透明 HTML父容器高度塌陷问题 DOM操作Css获取当前有效样式 DOM事件对象event DOM多事件绑定 addEventListener() attachEvent() 浏览器兼容并统一this   浏览器默认拖拽行为 DOM滚轮事件  CSS透明1234567在css中设置透明：/* 设置透明 */opacity: 0.5;/* 兼容IE透明 */filter: alph">
+<meta name="twitter:description" content="目录：   CSS透明 HTML父容器高度塌陷问题 DOM操作Css获取当前有效样式 DOM事件对象event DOM多事件绑定 addEventListener() attachEvent() 浏览器兼容并统一this   浏览器默认拖拽行为 DOM滚轮事件   - addEventListener() - attachEvent() - 浏览器兼容并统一this  浏览器默认拖拽行为 DOM滚">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -88,17 +88,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>目录：</p>
+<!-- TOC -->
 <ul>
-<li>CSS透明</li>
-<li>HTML父容器高度塌陷问题</li>
-<li>DOM操作Css获取当前有效样式</li>
-<li>DOM事件对象event</li>
-<li>DOM多事件绑定<ul>
-<li>addEventListener()</li>
-<li>attachEvent()</li>
-<li>浏览器兼容并统一this</li>
+<li><a href="#css透明">CSS透明</a></li>
+<li><a href="#html父容器高度塌陷问题">HTML父容器高度塌陷问题</a></li>
+<li><a href="#dom操作css获取当前有效样式">DOM操作Css获取当前有效样式</a></li>
+<li><a href="#dom事件对象event">DOM事件对象event</a></li>
+<li><a href="#dom多事件绑定">DOM多事件绑定</a><ul>
+<li><a href="#addeventlistener">addEventListener()</a></li>
+<li><a href="#attachevent">attachEvent()</a></li>
+<li><a href="#浏览器兼容并统一this">浏览器兼容并统一this</a></li>
 </ul>
 </li>
+<li><a href="#浏览器默认拖拽行为">浏览器默认拖拽行为</a></li>
+<li><a href="#dom滚轮事件">DOM滚轮事件</a></li>
+</ul>
+<!-- /TOC -->
+<pre><code>- addEventListener()
+- attachEvent()
+- 浏览器兼容并统一this
+</code></pre><ul>
 <li>浏览器默认拖拽行为</li>
 <li>DOM滚轮事件</li>
 </ul>
@@ -175,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/01/前端-浏览器兼容/" data-id="cjv1zk5k5002xjkut5y2lqrdq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/01/前端-浏览器兼容/" data-id="cjvjikq04002yg0utjf83rioe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
