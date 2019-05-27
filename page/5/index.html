@@ -62,199 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-《第一行代码_Android》第7章_内容提供器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/14/《第一行代码_Android》第7章_内容提供器/" class="article-date">
-  <time datetime="2018-10-14T09:34:33.000Z" itemprop="datePublished">2018-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/《第一行代码_Android》第7章_内容提供器/">《第一行代码_Android》第7章_内容提供器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- TOC -->
-<ul>
-<li><a href="#第7章-跨程序共享数据探究内容提供器">第7章 跨程序共享数据——探究内容提供器</a><ul>
-<li><a href="#内容提供器简介">内容提供器简介</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<li><a href="#访问其他程序中的数据">访问其他程序中的数据</a><ul>
-<li><a href="#读取和操作相应程序中的数据">读取和操作相应程序中的数据</a></li>
-<li><a href="#创建内容提供者">创建内容提供者</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<hr>
-<p>此博客使用教材为《第一行代码 Android》第2版。</p>
-<h2 id="第7章-跨程序共享数据——探究内容提供器"><a href="#第7章-跨程序共享数据——探究内容提供器" class="headerlink" title="第7章 跨程序共享数据——探究内容提供器"></a>第7章 跨程序共享数据——探究内容提供器</h2><h2 id="android四大组件之一——Content-Provider"><a href="#android四大组件之一——Content-Provider" class="headerlink" title="android四大组件之一——Content Provider"></a>android四大组件之一——Content Provider</h2><h3 id="内容提供器简介"><a href="#内容提供器简介" class="headerlink" title="内容提供器简介"></a>内容提供器简介</h3><p>内容提供器(Content Provider) 主要用于在不同的应用程序之间实现数据共享的功能，它提供了一套完整的机制，允许一个程序访问一个程序中的数据，同时还能保证被访问数据的安全性。目前，使用内容提供器是android实现跨程序共享数据的标准方法。</p>
-<p>需要使用到Android运行时权限。</p>
-<h3 id="运行时权限"><a href="#运行时权限" class="headerlink" title="运行时权限"></a>运行时权限</h3><p>Android在6.0系统中加入了运行时权限。用户不需要再安装软件的时候一次性授权所有申请的权限，而是可以在软件的使用过程中再对某一项权限申请进行授权。</p>
-<p>权限又分为普通权限和危险权限。</p>
-<ul>
-<li>普通权限：不会威胁到用户的安全和隐私，系统会自动授权。</li>
-<li>危险权限：可能触及用户隐私或设备安全性造成影响的权限，需要用户手动授权。</li>
-</ul>
-<p>危险权限共有9组24个权限：</p>
-<table>
-<thead>
-<tr>
-<th>权限组名</th>
-<th>权限名称</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CALENDAR（日历）</td>
-<td>READ_CALENDAR</td>
-</tr>
-<tr>
-<td></td>
-<td>WRITE_CALENDAR</td>
-</tr>
-<tr>
-<td>CAMERA（相机）</td>
-<td>CAMERA</td>
-</tr>
-<tr>
-<td>CONTACTS（联系人）</td>
-<td>READ_CONTACTS</td>
-</tr>
-<tr>
-<td></td>
-<td>WRITE_CONTACTS</td>
-</tr>
-<tr>
-<td></td>
-<td>GET_ACCOUNTS</td>
-</tr>
-<tr>
-<td>LOCATION（位置）</td>
-<td>ACCESS_FINE_LOCATION</td>
-</tr>
-<tr>
-<td></td>
-<td>ACCESS_COARSE_LOCATION</td>
-</tr>
-<tr>
-<td>MICROPHONE（麦克风）</td>
-<td>RECORD_AUDIO</td>
-</tr>
-<tr>
-<td>PHONE（手机）</td>
-<td>READ_PHONE_STATE</td>
-</tr>
-<tr>
-<td></td>
-<td>CALL_PHONE</td>
-</tr>
-<tr>
-<td></td>
-<td>ERAD_CALL_LOG</td>
-</tr>
-<tr>
-<td></td>
-<td>WRITE_CALL_LOG</td>
-</tr>
-<tr>
-<td></td>
-<td>ADD_VOICEMAIL</td>
-</tr>
-<tr>
-<td></td>
-<td>USE_SIP</td>
-</tr>
-<tr>
-<td></td>
-<td>PROCESS_OUTGOING_CALLS</td>
-</tr>
-<tr>
-<td>SENSORS（传感器）</td>
-<td>BODY_SENSORS</td>
-</tr>
-<tr>
-<td>SMS（短信）</td>
-<td>SEND_SMS</td>
-</tr>
-<tr>
-<td></td>
-<td>RECEIVE_SMS</td>
-</tr>
-<tr>
-<td></td>
-<td>READ_SMS</td>
-</tr>
-<tr>
-<td></td>
-<td>RECEIVE_WAP_PUSH</td>
-</tr>
-<tr>
-<td></td>
-<td>RECEIVE_MMS</td>
-</tr>
-<tr>
-<td>STORAGE（存储卡）</td>
-<td>READ_EXTERNAL_STORAGE</td>
-</tr>
-<tr>
-<td></td>
-<td>WRITE_EXTERNAL_STORAGE</td>
-</tr>
-</tbody>
-</table>
-<p>单个权限实现运行时申请：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        Button makeCall = (Button) findViewById(R.id.make_call);</span><br><span class="line"></span><br><span class="line">        makeCall.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (ContextCompat.checkSelfPermission(MainActivity.<span class="keyword">this</span>, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">                    <span class="comment">// 没有权限，请求权限</span></span><br><span class="line">                    ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123; Manifest.permission.CALL_PHONE &#125;, <span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 有权限</span></span><br><span class="line">                    makeCall();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 打电话具体操作</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">makeCall</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span>, <span class="string">"已有权限，可以进行打电话"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理授权结果回调</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> requestCode</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> permissions</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> grantResults</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, @NonNull String[] permissions, @NonNull <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (requestCode)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">                    makeCall();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>, <span class="string">"请求权限被拒绝"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>多权限申请，用一个list，将所有需要授权的加入到list中，然后转成数组进行请求：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 所有权限数组</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String[] permissions = <span class="keyword">new</span> String[] &#123;</span><br><span class="line">            Manifest.permission.CALL_PHONE,</span><br><span class="line">            Manifest.permission.CAMERA,</span><br><span class="line">            Manifest.permission.WRITE_EXTERNAL_STORAGE</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 需要申请权限的列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    List&lt;String&gt; mPermissionList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        Button makeCall = (Button) findViewById(R.id.make_call);</span><br><span class="line"></span><br><span class="line">        makeCall.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="comment">/**</span></span><br><span class="line"><span class="comment">                 * 先遍历所有权限，将没有赋予授权的权限加入到list中</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;permissions.length; i++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (ContextCompat.checkSelfPermission(MainActivity.<span class="keyword">this</span>, permissions[i]) != PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">                        mPermissionList.add(permissions[i]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">/**</span></span><br><span class="line"><span class="comment">                 * 如果有需要申请权限的项，就将list转化为string数组，然后通过ActivityCompat.requestPermissions()方法将数组传入进行申请授权</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                <span class="keyword">if</span> (!mPermissionList.isEmpty())&#123;</span><br><span class="line">                    String[] array = mPermissionList.toArray(<span class="keyword">new</span> String[mPermissionList.size()]);</span><br><span class="line">                    ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>, array, <span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    locate();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理授权结果回调</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> requestCode</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> permissions</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> grantResults</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, @NonNull String[] permissions, @NonNull <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (requestCode)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> (grantResults != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> grantResult : grantResults)&#123;</span><br><span class="line">                        <span class="keyword">if</span> (grantResult != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                            Toast.makeText(<span class="keyword">this</span>, <span class="string">"请同意所有权限"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                            <span class="keyword">return</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    locate();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">locate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span>, <span class="string">"已授权所有权限"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Manifest.xml:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CALL_PHONE"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CAMERA"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>多权限申请中，点击按钮，进行权限申请，如果某项权限在之前已经申请过了，就不会再弹出申请列表。</p>
-<hr>
-<h3 id="访问其他程序中的数据"><a href="#访问其他程序中的数据" class="headerlink" title="访问其他程序中的数据"></a>访问其他程序中的数据</h3><p>内容提供器的用法有两种：</p>
-<ul>
-<li>一种是使用现有的内容提供器来读取和操作相应程序中的数据。</li>
-<li>另一种是创建自己的内容提供器给我们的数据提供外部访问接口。</li>
-</ul>
-<h4 id="读取和操作相应程序中的数据"><a href="#读取和操作相应程序中的数据" class="headerlink" title="读取和操作相应程序中的数据"></a>读取和操作相应程序中的数据</h4><p>对于每一个应用程序来说，如果想要访问内容提供器中共享的数据，就一定要借助ContentResolver类，可以通过Context中的getContentResolver()方法获取到该类的实例。ContentResolver中提供了一系列的方法用于对数据进行CRUD操作，与SQLiteDatabase中的CRUD操作有些不同。</p>
-<p>ContentResolver中的增删改查都是不接收表名参数的，而是使用一个Uri参数代替，这个参数被称为内容URI。</p>
-<p>内容URI给内容提供者中的程序建立了唯一标识符，由两部分组成（协议声明可以不算）：authority 和 path 和 协议声明。</p>
-<ul>
-<li>authority：是用对不同的应用程序做区分的，一般为了避免冲突，都会采用程序包名的方式来进行命名。</li>
-<li>path：是用于对同意应用程序中不同的表做区分。</li>
-<li>协议声明：在字符串的头部</li>
-</ul>
-<p>如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 协议声明：content://</span></span><br><span class="line"><span class="comment"> * authority：com.example.app.provider</span></span><br><span class="line"><span class="comment"> * path：/table</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">content:<span class="comment">//com.example.app.provider/table</span></span><br></pre></td></tr></table></figure></p>
-<p>在得到了内容URI字符串之后，我们还需要将它解析成Uri对象才可以作为参数传入，只需要调用Uri.parse()方法，就可以将内容URI字符串解析成Uri对象了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uri uri = Uri.parse(<span class="string">"content://com.example.app.provider/table"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>然后就可以使用这个Uri对象来查询table表中的数据了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Cursor cursor = getContentResovler().query(</span><br><span class="line">    uri,</span><br><span class="line">    projection,</span><br><span class="line">    selection,</span><br><span class="line">    selectionArgs,</span><br><span class="line">    sortOrder</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<p>getContentResovler().query()源码解析如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Query the given URI, returning a &#123;<span class="doctag">@link</span> Cursor&#125; over the result set.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * For best performance, the caller should follow these guidelines:</span></span><br><span class="line"><span class="comment"> * &lt;ul&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;Provide an explicit projection, to prevent</span></span><br><span class="line"><span class="comment"> * reading data from storage that aren't going to be used.&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;Use question mark parameter markers such as 'phone=?' instead of</span></span><br><span class="line"><span class="comment"> * explicit values in the &#123;<span class="doctag">@code</span> selection&#125; parameter, so that queries</span></span><br><span class="line"><span class="comment"> * that differ only by those values will be recognized as the same</span></span><br><span class="line"><span class="comment"> * for caching purposes.&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> uri The URI, using the content:// scheme, for the content to</span></span><br><span class="line"><span class="comment"> *         retrieve.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> projection A list of which columns to return. Passing null will</span></span><br><span class="line"><span class="comment"> *         return all columns, which is inefficient.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> selection A filter declaring which rows to return, formatted as an</span></span><br><span class="line"><span class="comment"> *         SQL WHERE clause (excluding the WHERE itself). Passing null will</span></span><br><span class="line"><span class="comment"> *         return all rows for the given URI.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> selectionArgs You may include ?s in selection, which will be</span></span><br><span class="line"><span class="comment"> *         replaced by the values from selectionArgs, in the order that they</span></span><br><span class="line"><span class="comment"> *         appear in the selection. The values will be bound as Strings.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> sortOrder How to order the rows, formatted as an SQL ORDER BY</span></span><br><span class="line"><span class="comment"> *         clause (excluding the ORDER BY itself). Passing null will use the</span></span><br><span class="line"><span class="comment"> *         default sort order, which may be unordered.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> A Cursor object, which is positioned before the first entry, or null</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Cursor</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="meta">@Nullable</span> <span class="function">Cursor <span class="title">query</span><span class="params">(@RequiresPermission.Read @NonNull Uri uri,</span></span></span><br><span class="line"><span class="function"><span class="params">        @Nullable String[] projection, @Nullable String selection,</span></span></span><br><span class="line"><span class="function"><span class="params">        @Nullable String[] selectionArgs, @Nullable String sortOrder)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> query(uri, projection, selection, selectionArgs, sortOrder, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>查询完成后返回的任然是一个Cursor对象，这时我们就可以将数据从Cursor对象中逐个读取出来了，读取的思路仍然是通过移动游标的位置来遍历Cursor的所有行，然后取出其中的每一行相应的数据。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (cursor != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">while</span>(cursor.moveToNext())&#123;</span><br><span class="line">      String column1 = cursor.getString(cursor.getColumnIndex(<span class="string">"column1"</span>));</span><br><span class="line">      Int column2 = cursor.Int(cursor.getColumnIndex(<span class="string">"column2"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    cursor.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="创建内容提供者"><a href="#创建内容提供者" class="headerlink" title="创建内容提供者"></a>创建内容提供者</h4><hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/《第一行代码_Android》第7章_内容提供器/" data-id="cjw0cnbpf0039tsutk46gefio" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-《第一行代码_Android》第6章_数据持久化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/09/《第一行代码_Android》第6章_数据持久化/" class="article-date">
@@ -2807,6 +2614,123 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
 
 
   
+    <article id="post-Android蓝牙开发学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/23/Android蓝牙开发学习/" class="article-date">
+  <time datetime="2018-08-23T11:19:06.000Z" itemprop="datePublished">2018-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/23/Android蓝牙开发学习/">Android蓝牙开发学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#wifi">WIFI</a></li>
+<li><a href="#nfc">NFC</a></li>
+<li><a href="#蓝牙bluetooth">蓝牙BlueTooth</a></li>
+<li><a href="#对比">对比</a></li>
+<li><a href="#蓝牙的工作流程">蓝牙的工作流程</a></li>
+<li><a href="#添加权限">添加权限</a></li>
+<li><a href="#蓝牙在设备上的可用性">蓝牙在设备上的可用性</a></li>
+<li><a href="#开启关闭蓝牙">开启/关闭蓝牙</a></li>
+<li><a href="#查找设备">查找设备</a></li>
+</ul>
+<!-- /TOC -->
+<hr>
+<p><img src="/2018/08/23/Android蓝牙开发学习/BlueTooth.png" alt=""></p>
+<p>无线传输方案：WIFI、NFC、BlueTooth、红外。</p>
+<hr>
+<h3 id="WIFI"><a href="#WIFI" class="headerlink" title="WIFI"></a>WIFI</h3><p>工作频段：2.4G/5G<br>有效传输距离：10米到数公里<br>传输速度：根据802.11协议族确定。<br>802.11b 11Mpba<br>802.11g 54Mpba<br>802.11n 600Mbps<br>802.11ac 1.3Gbps<br>常用场景：智能家居、无人机控制<br>缺陷：功耗较高</p>
+<hr>
+<h3 id="NFC"><a href="#NFC" class="headerlink" title="NFC"></a>NFC</h3><p>近场通信技术，能在短距离内与兼容设备进行识别和数据交换。<br>有效传输距离：13.56MHz频率云运行于20厘米距离内。<br>传输速度：400kb/s以下。<br>常用场景：手机支付、门禁、信用卡、AndroidBeam(分享照片和视频)<br>优点：不需要电池、功耗低。</p>
+<hr>
+<h3 id="蓝牙BlueTooth"><a href="#蓝牙BlueTooth" class="headerlink" title="蓝牙BlueTooth"></a>蓝牙BlueTooth</h3><p>是一种无线技术标准、可实现固定设置设备和楼宇个人域网络之间的短距离数据交换。<br>传输距离：一般在10米内<br>传输速度：2.4G频率，理论传输速度24Mbps(4.0版本)<br>常用场景：蓝牙耳机、蓝牙音箱、无线键鼠、可穿戴个人健康设备、无线数据传输、车载设备通信。</p>
+<hr>
+<h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><table>
+<thead>
+<tr>
+<th>网络类型</th>
+<th>WIFI</th>
+<th>NFC</th>
+<th>BlueTooth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>连接方式</td>
+<td>单点对多点</td>
+<td>点对点</td>
+<td>单点对多点</td>
+</tr>
+<tr>
+<td>使用距离</td>
+<td>&lt; 10m-1000m</td>
+<td>&lt;=0.02m</td>
+<td>&lt;=10m</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>&lt; 1.3Gbps</td>
+<td>&lt; 400Kbps</td>
+<td>&lt; 2424MkBPS</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>中低</td>
+<td>很低</td>
+<td>低</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="蓝牙的工作流程"><a href="#蓝牙的工作流程" class="headerlink" title="蓝牙的工作流程"></a>蓝牙的工作流程</h3><hr>
+<h3 id="添加权限"><a href="#添加权限" class="headerlink" title="添加权限"></a>添加权限</h3><p>在androi studio中创建项目后，在“AndroidManifest.xml”文件中添加如下权限：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 添加蓝牙权限 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 蓝牙普通权限 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 高级权限，可与其他设备连接 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH_ADMIN"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>google在android6.0之后，为了更好的保护用户的数据安全，所有需要访问硬件唯一标识符的地方都需要申请位置权限，也就是需要申请:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_COARSE_LOCATION"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_FINE_LOCATION"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="蓝牙在设备上的可用性"><a href="#蓝牙在设备上的可用性" class="headerlink" title="蓝牙在设备上的可用性"></a>蓝牙在设备上的可用性</h3><p>在项目中添加蓝牙权限之后，还需要判断该设备是否拥有蓝牙设备，蓝牙在设备中是否可用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BluetoothAdapter: 本机的蓝牙适配器</span><br><span class="line">BluetoothDevice: 远程的蓝牙适配器</span><br><span class="line"></span><br><span class="line">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line"><span class="keyword">if</span>( mBluetoothAdapter == <span class="keyword">null</span>)&#123;</span><br><span class="line">  <span class="comment">// Device does notsupport BlueTooth</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果设备支持蓝牙，BluetoothAdapter.getDefaultAdapter()将返回一个对象，否则将返回null值。</p>
+<hr>
+<h3 id="开启-关闭蓝牙"><a href="#开启-关闭蓝牙" class="headerlink" title="开启/关闭蓝牙"></a>开启/关闭蓝牙</h3><p>新建一个名为“BlueToothController.java”类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.mybluetooth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.bluetooth.BluetoothAdapter;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  蓝牙适配器</span></span><br><span class="line"><span class="comment"> *  Created by AiJunhao on 2018/8/23</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlueToothController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> BluetoothAdapter mAdapter;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BlueToothController</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否支持蓝牙</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSupperBlueTooth</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( mAdapter != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断当前蓝牙状态</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getBlueToothStatus</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">assert</span> (mAdapter != <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">return</span>  mAdapter.isEnabled();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 打开蓝牙</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> requestCode</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnOnBlueTooth</span><span class="params">(Activity activity, <span class="keyword">int</span> requestCode)</span></span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</span><br><span class="line">        activity.startActivityForResult(intent, requestCode);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 关闭蓝牙</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnOffBlueTooth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mAdapter.disable();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在“activity_main.xml”文件中添加四个测试按钮：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/is_support_blue_tooth"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onClick</span>=<span class="string">"isSupperBlueTooth"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@string/is_support_blue_tooth"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/is_blue_tooth_enable"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onClick</span>=<span class="string">"isBlueToothEnable"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@string/is_blue_tooth_enable"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/turn_on_blue_tooth"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onClick</span>=<span class="string">"requestTurnOnBlueTooth"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@string/turn_on_blue_tooth"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/turn_off_blue_tooth"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onClick</span>=<span class="string">"turnDownBlueTooth"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@string/turn_off_blue_tooth"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在“MainActivity.java”文件中添加具体的功能：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.me.mybluetooth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.bluetooth.BluetoothAdapter;</span><br><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.content.IntentFilter;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> REQUEST_CODE = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> BlueToothController mController = <span class="keyword">new</span> BlueToothController();</span><br><span class="line">    <span class="keyword">private</span> Toast mToast;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 监听广播</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> BroadcastReceiver receivec = <span class="keyword">new</span> BroadcastReceiver() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">switch</span> (state)&#123;</span><br><span class="line">                <span class="keyword">case</span> BluetoothAdapter.STATE_OFF:</span><br><span class="line">                    showToast(<span class="string">"STATE_OFF"</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> BluetoothAdapter.STATE_ON:</span><br><span class="line">                    showToast(<span class="string">"STATE_ON"</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> BluetoothAdapter.STATE_TURNING_ON:</span><br><span class="line">                    showToast(<span class="string">"STATE_TURNING_ON"</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> BluetoothAdapter.STATE_TURNING_OFF:</span><br><span class="line">                    showToast(<span class="string">"STATE_TURNING_OFF"</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    showToast(<span class="string">"Unkown STATE"</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        IntentFilter filter = <span class="keyword">new</span> IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);</span><br><span class="line">        registerReceiver(receivec, filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isSupperBlueTooth</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> ret = mController.isSupperBlueTooth();</span><br><span class="line">        showToast(<span class="string">"support Bluetooth? "</span> + ret);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isBlueToothEnable</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> ret = mController.getBlueToothStatus();</span><br><span class="line">        showToast(<span class="string">"BlueTooth enable? "</span> + ret);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestTurnOnBlueTooth</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        mController.turnOnBlueTooth(<span class="keyword">this</span>, REQUEST_CODE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnDownBlueTooth</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        mController.turnOffBlueTooth();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showToast</span><span class="params">(String text)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(mToast == <span class="keyword">null</span>)&#123;</span><br><span class="line">            mToast = Toast.makeText(<span class="keyword">this</span>, text, Toast.LENGTH_SHORT);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            mToast.setText(text);</span><br><span class="line">        &#125;</span><br><span class="line">        mToast.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="查找设备"><a href="#查找设备" class="headerlink" title="查找设备"></a>查找设备</h3><p>使用BluetoothAdapter中的startDiscovery()方法，需要与广播向结合。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/23/Android蓝牙开发学习/" data-id="cjw0cnboz0037tsut74k0r4rp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -2861,10 +2785,6 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
           </li>
         
           <li>
-            <a href="/2019/05/19/Linux/">Linux</a>
-          </li>
-        
-          <li>
             <a href="/2019/04/25/框架-Vuex/">(no title)</a>
           </li>
         
@@ -2874,6 +2794,10 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
         
           <li>
             <a href="/2019/04/10/前端-UI/">前端-UI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/10/框架-Vue-cli3/">框架-Vue-cli 3.x脚手架</a>
           </li>
         
       </ul>
