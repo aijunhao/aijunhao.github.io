@@ -62,89 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Git使用教程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/09/Git使用教程/" class="article-date">
-  <time datetime="2018-10-09T06:35:10.000Z" itemprop="datePublished">2018-10-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/09/Git使用教程/">Git使用教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- TOC -->
-<ul>
-<li><a href="#此教材为个人总结的云代码仓库git的使用教程">此教材为个人总结的云代码仓库Git的使用教程。</a><ul>
-<li><a href="#git介绍">Git介绍</a></li>
-<li><a href="#git的基本使用">Git的基本使用</a></li>
-<li><a href="#更多更详细资料参考">更多更详细资料参考</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<hr>
-<h2 id="此教材为个人总结的云代码仓库Git的使用教程。"><a href="#此教材为个人总结的云代码仓库Git的使用教程。" class="headerlink" title="此教材为个人总结的云代码仓库Git的使用教程。"></a>此教材为个人总结的云代码仓库Git的使用教程。</h2><h3 id="Git介绍"><a href="#Git介绍" class="headerlink" title="Git介绍"></a>Git介绍</h3><ul>
-<li>git是一个版本控制系统,用于对代码的项目版本管理,最初目的是为更好地管理Linux内核开发而设计。</li>
-<li>git与CVS、Subversion一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。</li>
-<li>git的速度很快，这对于诸如Linux内核这样的大项目来说自然很重要。</li>
-<li>git最为出色的是它的合并追踪（merge tracing）能力。</li>
-</ul>
-<h3 id="Git的基本使用"><a href="#Git的基本使用" class="headerlink" title="Git的基本使用"></a>Git的基本使用</h3><ol>
-<li>在GitHub上创建项目Repositories。</li>
-</ol>
-<p><img src="/2018/10/09/Git使用教程/Repository.PNG" alt=""></p>
-<p>创建完成的项目如下图所示：<br><img src="/2018/10/09/Git使用教程/1.PNG" alt=""></p>
-<ol start="2">
-<li>打开Git Bash工具，选择一个文件夹，将项目clone下来。</li>
-</ol>
-<p><img src="/2018/10/09/Git使用教程/2.PNG" alt=""></p>
-<p>clone的地址为<a href="https://github.com/用户名/项目名.git" target="_blank" rel="noopener">https://github.com/用户名/项目名.git</a></p>
-<p>此时可以看到在F盘根目录下会有一个MyGitHubTest的文件夹，文件夹里面有一个.git隐藏文件夹和readme.md文件。这样github云仓库中的项目就被clone下来了。</p>
-<ol start="3">
-<li>写入文件，并且上传云仓库。</li>
-</ol>
-<p>新建一个文本文件，写入一句话，将这个文本作为上传对象。</p>
-<p><img src="/2018/10/09/Git使用教程/3.PNG" alt=""></p>
-<p>在Git Bash命令行中进行如下命令操作：</p>
-<p>添加所有文件：<br><img src="/2018/10/09/Git使用教程/4.PNG" alt=""></p>
-<p>提交到本地仓库HEAD，此时云端仓库还没有：<br><img src="/2018/10/09/Git使用教程/5.PNG" alt=""></p>
-<p>推送改动到远端仓库：<br><img src="/2018/10/09/Git使用教程/6.PNG" alt=""></p>
-<p>此时在刷新github上的页面就可以看到我们提交的文件了。</p>
-<p>如果远端仓库有文件改动，要更新本地仓库：<br><img src="/2018/10/09/Git使用教程/7.PNG" alt=""></p>
-<hr>
-<h3 id="更多更详细资料参考"><a href="#更多更详细资料参考" class="headerlink" title="更多更详细资料参考"></a>更多更详细资料参考</h3><p>git-简明指南:<a href="https://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="noopener">https://rogerdudler.github.io/git-guide/index.zh.html</a></p>
-<p>git项目:<a href="https://github.com/git/git" target="_blank" rel="noopener">https://github.com/git/git</a></p>
-<p>git百科:<a href="https://zh.wikipedia.org/wiki/Git" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Git</a></p>
-<p>git远程操作详解-阮一峰的网络日志:<br><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/06/git_remote.html</a></p>
-<p>git教程-廖雪峰的官方网站:<br><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/Git使用教程/" data-id="cjy01amfd000josutu0v2p3a4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-《第一行代码_Android》第5章_广播" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/07/《第一行代码_Android》第5章_广播/" class="article-date">
@@ -3080,6 +2997,69 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
 
 
   
+    <article id="post-Python学习笔记——网络爬虫" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/09/Python学习笔记——网络爬虫/" class="article-date">
+  <time datetime="2018-08-09T07:05:46.000Z" itemprop="datePublished">2018-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/09/Python学习笔记——网络爬虫/">Python学习笔记——网络爬虫</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<!-- TOC -->
+<ul>
+<li><a href="#网络爬虫">网络爬虫</a></li>
+<li><a href="#url">URL</a></li>
+<li><a href="#python访问url测试">python访问URL测试</a></li>
+<li><a href="#爬虫实战">爬虫实战</a><ul>
+<li><a href="#实例1-抓取一张网络图片">实例1 抓取一张网络图片</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h3 id="网络爬虫"><a href="#网络爬虫" class="headerlink" title="网络爬虫"></a>网络爬虫</h3><p>网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。网络爬虫就是根据网页的地址来寻找网页的，也就是URL。举一个简单的例子，我们在浏览器的地址栏中输入的字符串就是URL，例如：<a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a></p>
+<hr>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>URL的一般格式为(当方括号[]的为可选项)：protocol://hostname[:port]/path/[;parameters][?query]#fragment</p>
+<ul>
+<li>“protocol://“ : 协议，如http, https, ftp, file(本地磁盘文件), ed2k …</li>
+<li>“hostname[:port]” : 存放资源的服务器的域名系统或IP地址(有时候包含端口号，各种传输协议都有默认的端口嗷，如http的80端口)</li>
+<li>“path/[;parameters][?query]#fragment” : 资源的具体地址，如目录或文件名等。</li>
+</ul>
+<hr>
+<h3 id="python访问URL测试"><a href="#python访问URL测试" class="headerlink" title="python访问URL测试"></a>python访问URL测试</h3><p>使用urllib.request实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> urllib.request       <span class="comment"># 导入urllib.request包</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>response = urllib.request.urlopen(<span class="string">"http://www.aijunhao.com.cn"</span>)     <span class="comment"># 获取我的个人网站首页</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>html = response.read().decode(<span class="string">"utf-8"</span>)      <span class="comment"># 读取我的个人网站首页，并用utf-8编码模式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(html)             <span class="comment"># 打印</span></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span>/&gt;</span><br><span class="line">        &lt;link rel=<span class="string">"shortcut icon"</span> href=<span class="string">"images/1.ico"</span>&gt;</span><br><span class="line">        &lt;link href=<span class="string">"css/menu.css"</span> rel=<span class="string">"stylesheet"</span>&gt;</span><br><span class="line">        &lt;title&gt;AI , Sparks of fire&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;!-- 背景画布开始 --&gt;</span><br><span class="line">        &lt;canvas id="canvas" &gt;&lt;/canvas&gt;</span><br><span class="line">        &lt;script src="js/background.js" type="text/javascript"&gt;&lt;/script&gt;</span><br><span class="line">        &lt;!-- 背景画布结束 --&gt;</span><br><span class="line">        &lt;!-- 使用外联播放器，并隐藏播放器 --&gt;</span><br><span class="line">        &lt;iframe frameborder="no" border="0" width=0 height=0  src="//music.163.com/outchain/player?type=2&amp;id=491757187&amp;auto=1&amp;height=66"&gt;&lt;/iframe&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div class="cs" &gt;</span><br><span class="line">            &lt;div class="introduction" align="center"&gt;</span><br><span class="line"></span><br><span class="line">                &lt;header style="color: white;font-size: 4rem;"&gt;Hello，&lt;/header&gt;</span><br><span class="line">                &lt;header style=<span class="string">"color: white;font-size: 2rem;"</span>&gt;I<span class="string">'m Junhao Ai.&lt;/header&gt;</span></span><br><span class="line"><span class="string">                &lt;p style="color: white;font-size: 1rem;"&gt;A student of the Zhijiang College of ZheJiang University of Technology.&lt;/p&gt;</span></span><br><span class="line"><span class="string">                &lt;br&gt; &lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;p&gt;Whatever is worth doing is worth doing well.&lt;/p&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;br&gt; &lt;br&gt; &lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;a href="http://user.qzone.qq.com/1172949809/infocenter" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;QQ Zone&lt;/span&gt; &lt;span class="title-hover"&gt;Visit me.&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="files/test.php" class="btn-slide2" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle2"&gt;&lt;i class="fa fa-download"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title2"&gt;About Me&lt;/span&gt; &lt;span class="title-hover2"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="https://aijunhao.github.io" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;My Blog&lt;/span&gt; &lt;span class="title-hover"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="files/test.php" class="btn-slide2" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle2"&gt;&lt;i class="fa fa-download"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title2"&gt;My Gains&lt;/span&gt; &lt;span class="title-hover2"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=1172949809&amp;website=www.oicqzone.com" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;Contact Me&lt;/span&gt; &lt;span class="title-hover"&gt;QQ Test&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/09/Python学习笔记——网络爬虫/myweb.png" alt=""></p>
+<hr>
+<h3 id="爬虫实战"><a href="#爬虫实战" class="headerlink" title="爬虫实战"></a>爬虫实战</h3><h4 id="实例1-抓取一张网络图片"><a href="#实例1-抓取一张网络图片" class="headerlink" title="实例1 抓取一张网络图片"></a>实例1 抓取一张网络图片</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">response = urllib.request.urlopen(<span class="string">"http://www.aijunhao.com.cn/images/building.png"</span>)</span><br><span class="line">img = response.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'webTest.jpg'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(img)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/" data-id="cjy01amfv0016osutp3qo7257" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -3130,10 +3110,6 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
       <ul>
         
           <li>
-            <a href="/2019/07/13/README/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2019/07/12/前端-CSS预处理器/">前端-CSS预处理器</a>
           </li>
         
@@ -3147,6 +3123,10 @@ window字段 —— 定义小程序所有页面的顶部背景颜色，文字颜
         
           <li>
             <a href="/2019/04/11/框架-全栈开发/">Vue+Node+Mongodb全栈开发</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/10/框架-Vue-cli3/">框架-Vue-cli 3.x脚手架</a>
           </li>
         
       </ul>
