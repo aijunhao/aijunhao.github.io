@@ -5,22 +5,24 @@
   
 
   
-  <title>前端-JavaScript基础-ES6-Promise | Hello, I&#39;m Junhao Ai.</title>
+  <title>前端-JavaScript基础-ES6 | Hello, I&#39;m Junhao Ai.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       参考阮一峰教材：http://es6.ruanyifeng.com/#docs/promise  异步操作c">
+  <meta name="description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       前言学习资料阮一峰 ES6 教材：http://es6.ruanyifeng.com/ 尚硅谷 ES 视频教">
 <meta name="keywords" content="JavaScript,前端,EcamScript6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端-JavaScript基础-ES6-Promise">
+<meta property="og:title" content="前端-JavaScript基础-ES6">
 <meta property="og:url" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/index.html">
 <meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
-<meta property="og:description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       参考阮一峰教材：http://es6.ruanyifeng.com/#docs/promise  异步操作c">
+<meta property="og:description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       前言学习资料阮一峰 ES6 教材：http://es6.ruanyifeng.com/ 尚硅谷 ES 视频教">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/前端-JavaScript基础-EcamScript6/Object.JPG">
+<meta property="og:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/Users/AiJunhao/AppData/Roaming/Typora/typora-user-images/1565606989743.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/Promise.jpg">
-<meta property="og:updated_time" content="2019-05-10T12:59:45.764Z">
+<meta property="og:updated_time" content="2019-08-12T10:49:59.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端-JavaScript基础-ES6-Promise">
-<meta name="twitter:description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       参考阮一峰教材：http://es6.ruanyifeng.com/#docs/promise  异步操作c">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/Promise.jpg">
+<meta name="twitter:title" content="前端-JavaScript基础-ES6">
+<meta name="twitter:description" content="异步操作 callback hell 回调地狱 Promise 对象 Promise 状态 then() 方法 案例：Node.js 中 Promise 读取文件数据 案例：前端请求数据时的 Promise 案例：Node.js 调用 Mongoose 时的 promise       前言学习资料阮一峰 ES6 教材：http://es6.ruanyifeng.com/ 尚硅谷 ES 视频教">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/18/前端-JavaScript基础-EcamScript6/前端-JavaScript基础-EcamScript6/Object.JPG">
   
     <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
   
@@ -81,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前端-JavaScript基础-ES6-Promise
+      前端-JavaScript基础-ES6
     </h1>
   
 
@@ -105,9 +107,59 @@
 </li>
 </ul>
 <!-- /TOC -->
-<p>参考阮一峰教材：<a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/promise</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>阮一峰 <code>ES6</code> 教材：<a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">http://es6.ruanyifeng.com/</a></p>
+<p>尚硅谷 <code>ES</code> 视频教程：<a href="http://www.atguigu.com/" target="_blank" rel="noopener">http://www.atguigu.com/</a></p>
+<p>个人建议是两者都要看，并且将 <code>ES5</code> 也过一遍，阅读阮一峰的教材需要一定的基础，并且书本理解起来有些困难，尚硅谷的视频讲得比较详细，侧重基础，两者一起看会比较容易理解。 </p>
+<h3 id="ES-版本"><a href="#ES-版本" class="headerlink" title="ES 版本"></a>ES 版本</h3><p><code>ES5</code> ：09年发布</p>
+<p><code>ES6</code> ：15年发布，又称 <code>ES2015</code> ，主流 <code>ES</code>。</p>
+<p><code>ES7</code> ：16年发布，新增内容主要是草案，尚未纳入正式 <code>ES</code> 标准，以及 <code>ES8</code> 也是，所以，重点是 <code>ES6</code> 。</p>
 <hr>
-<h2 id="异步操作"><a href="#异步操作" class="headerlink" title="异步操作"></a>异步操作</h2><h3 id="callback-hell-回调地狱"><a href="#callback-hell-回调地狱" class="headerlink" title="callback hell 回调地狱"></a>callback hell 回调地狱</h3><p>在 JS 程序中，程序执行不会等待异步操作执行，而异步操作的时间长短与操作的内容有关，并不一定会按顺序。</p>
+<h2 id="ES5-基础"><a href="#ES5-基础" class="headerlink" title="ES5 基础"></a>ES5 基础</h2><h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><ol>
+<li><p>理解:</p>
+<p> 除了正常运行模式(混杂模式)，ES5 添加了第二种运行模式：”严格模式”（strict mode）。</p>
+<p> 顾名思义，这种模式使得 Javascript 在更严格的语法条件下运行</p>
+</li>
+<li><p>目的/作用</p>
+<p> 消除 Javascript 语法的一些不合理、不严谨之处，减少一些怪异行为</p>
+<p> 消除代码运行的一些不安全之处，为代码的安全运行保驾护航</p>
+<p> 为未来新版本的 Javascript 做好铺垫</p>
+</li>
+<li><p>使用</p>
+<p> 在全局或函数的第一条语句定义为: ‘use strict’;</p>
+<p> 如果浏览器不支持, 只解析为一条简单的语句, 没有任何副作用</p>
+</li>
+<li><p>语法和行为改变</p>
+<p> 必须用 var 声明变量</p>
+<p> 禁止自定义的函数中的 this 指向 window</p>
+<p> 创建 eval 作用域</p>
+<p> 对象不能有重名的属性</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  // 开启严格模式</span></span><br><span class="line"><span class="undefined">  'use strict'</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="undefined">  // 不使用 var 声明变量，严格模式报错，在未开启严格模式时，会自动上升为全局变量</span></span><br><span class="line"><span class="undefined">  username = 'kobe'</span></span><br><span class="line"><span class="undefined">  // 正确的声明变量</span></span><br><span class="line"><span class="undefined">  var username = 'kobe'</span></span><br><span class="line"><span class="undefined">  console.log(username)</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="undefined">  // 定义一个构造函数</span></span><br><span class="line"><span class="undefined">  function Person(name, age) &#123;</span></span><br><span class="line"><span class="undefined">    this.name = name</span></span><br><span class="line"><span class="undefined">    this.age = age</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="undefined">  // 自调用时，this 指向 window, 严格模式报错</span></span><br><span class="line"><span class="undefined">  Person('kobe', 39)</span></span><br><span class="line"><span class="undefined">  // 正确写法</span></span><br><span class="line"><span class="undefined">  new Person('kobe', 39)</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="undefined">  // eval() 字符串解析函数，未开启严格模式时，eval 没有私有作用域，str 始终指向外部的 str</span></span><br><span class="line"><span class="undefined">  var str = 'NBA'</span></span><br><span class="line"><span class="undefined">  eval('var str = "CBA"; alert(str)')</span></span><br><span class="line"><span class="undefined">  alert(str)	// 严格模式：NBA，未开启严格模式：CBA</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON-对象"><a href="#JSON-对象" class="headerlink" title="JSON 对象"></a>JSON 对象</h3><ol>
+<li><p>JSON.stringify(obj/arr)：js 对象(数组)转换为 json 对象(数组)</p>
+</li>
+<li><p>JSON.parse(json)：json 对象(数组)转换为 js 对象(数组)</p>
+</li>
+</ol>
+<h3 id="Object-拓展"><a href="#Object-拓展" class="headerlink" title="Object 拓展"></a>Object 拓展</h3><p><em>ES5给Object扩展了一些静态方法, 常用的 2 个:</em></p>
+<h4 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h4><p>Object.create(prototype, [descriptors])</p>
+<p>  *<em> 作用: 以指定对象为原型创建新的对象</em></p>
+<p>  *<em> 为新的对象指定新的属性, 并对属性进行描述</em></p>
+<p>​    <em>- value : 指定值</em></p>
+<p>​    <em>- writable : 标识当前属性值是否是可修改的, 默认为 false</em></p>
+<p>​    <em>- configurable: 标识当前属性是否可以被删除 默认为 false</em></p>
+<p>​    <em>- enumerable：标识当前属性是否能用 for in 枚举 默认为 false</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 创建对象 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  var obj = &#123; usernam: 'demo', age: 30 &#125;</span></span><br><span class="line"><span class="undefined">  var obj1 = &#123;&#125;</span></span><br><span class="line"><span class="undefined">  // 以 obj 为原型-创建对象</span></span><br><span class="line"><span class="undefined">  obj1 = Object.create(obj)</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="undefined">  // obj1 = Object.create(obj, , &#123;</span></span><br><span class="line"><span class="undefined">  //   gender: &#123;</span></span><br><span class="line"><span class="undefined">  //     value: '男'</span></span><br><span class="line"><span class="undefined">  //   &#125;</span></span><br><span class="line"><span class="undefined">  // &#125;)</span></span><br><span class="line"><span class="undefined">  console.log(obj1)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	新建的对象为空，展开后可以见到 '__proto__' 属性，这是用来读取或设置当前对象的 prototype 对象，ES6 规定，这个属性只在浏览器上必须部署，其他环境不需要且最好不要。</span></span><br><span class="line"><span class="comment">	ES6 建议使用 Object.setPrototypeOf()（写操作）、Object.getPrototypeOf()（读操作）或Object.create()（生成操作）代替 '__proto__' 属性。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/18/前端-JavaScript基础-EcamScript6/前端-JavaScript基础-EcamScript6\Object.JPG" alt=""></p>
+<h4 id="Object-defineProperties"><a href="#Object-defineProperties" class="headerlink" title="Object.defineProperties()"></a>Object.defineProperties()</h4><p>Object.defineProperties(object, descriptors)</p>
+<p>​    *<em> 作用 : 为指定对象定义扩展多个属性</em></p>
+<p>​    *<em> get ：用来获取当前属性值得回调函数</em></p>
+<p>​    *<em> set ：修改当前属性值得触发的回调函数，并且实参即为修改后的值</em></p>
+<p>​    *<em> 存取器属性：setter, getter一个用来存值，一个用来取值</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  var obj = &#123; firstName: 'kobe', lastName: 'bryant' &#125;</span></span><br><span class="line"><span class="undefined">  Object.defineProperties(obj, &#123;</span></span><br><span class="line"><span class="undefined">    fullName: &#123;</span></span><br><span class="line"><span class="undefined">      // 获取拓展属性的值，获取拓展属性值的时候 get 方法自动调用</span></span><br><span class="line"><span class="undefined">      get() &#123;</span></span><br><span class="line"><span class="undefined">        console.log('get调用')</span></span><br><span class="line"><span class="undefined">        return this.firstName + ' ' + this.lastName</span></span><br><span class="line"><span class="undefined">      &#125;,</span></span><br><span class="line"><span class="undefined">      // 监听拓展属性，当拓展属性发生变化时自动调用，会将变化的值作为实参传入到 set 函数</span></span><br><span class="line"><span class="undefined">      set(data) &#123;</span></span><br><span class="line"><span class="undefined">        console.log('set调用')</span></span><br><span class="line"><span class="undefined">        var name = data.split(' ')</span></span><br><span class="line"><span class="undefined">        this.firstName = name[0]</span></span><br><span class="line"><span class="undefined">        this.lastName = name[1]</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined">  // 调用拓展属性 fullName, 此时 get() 方法调用</span></span><br><span class="line"><span class="undefined">  console.log(obj.fullName)</span></span><br><span class="line"><span class="undefined">  // 给拓展属性赋值，调用 set() 方法</span></span><br><span class="line"><span class="undefined">  obj.fullName = 'tim duncan'</span></span><br><span class="line"><span class="undefined">  console.log(obj)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	使用 Object.defineProperties() 来拓展 obj 的 fullName 属性，</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/18/前端-JavaScript基础-EcamScript6/Users\AiJunhao\AppData\Roaming\Typora\typora-user-images\1565606989743.png" alt="1565606989743"></p>
+<h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><h3 id="Promise-异步操作"><a href="#Promise-异步操作" class="headerlink" title="Promise 异步操作"></a>Promise 异步操作</h3><h4 id="callback-hell-回调地狱"><a href="#callback-hell-回调地狱" class="headerlink" title="callback hell 回调地狱"></a>callback hell 回调地狱</h4><p>在 JS 程序中，程序执行不会等待异步操作执行，而异步操作的时间长短与操作的内容有关，并不一定会按顺序。</p>
 <p>如下代码，有三个读取文件的异步操作，其执行结束的顺序与文件大小及其他因素有关，所以控制台输出的结果顺序会不同。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'./a.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'./b.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'./c.txt'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>如果需要将这个程序按先后顺序执行，可以如下修改：</p>
@@ -228,7 +280,7 @@
           </li>
         
           <li>
-            <a href="/2019/04/25/框架-Vuex/">(no title)</a>
+            <a href="/2019/04/25/框架-Vuex/">框架-Vuex</a>
           </li>
         
           <li>
