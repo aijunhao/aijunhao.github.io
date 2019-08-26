@@ -16,7 +16,7 @@
 <meta property="og:description" content="Vue.js 简介 前端三大主流框架 框架和库的区别 后端 MVC 前端 MVVM   起步 安装 npm方法 JS 文件   配置 案例   Vue-devtools 调试器 Chrome 浏览器 FireFox 浏览器 注意点   Vue 实例 创建 Vue 实例 生命周期   数据与方法 this 响应式数据   模板语法 插值 纯文本 插值表达式 v-text=”msg”   HTML">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/MVC.JPG">
-<meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/mvvm.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/MVVM.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/声明周期.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/字母数字按键码.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/控制与多媒体按键码.png">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/列表的排序过渡.gif">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/query传参.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/框架-Vuejs/params传参.JPG">
-<meta property="og:updated_time" content="2019-07-30T14:36:43.765Z">
+<meta property="og:updated_time" content="2019-08-25T07:58:50.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="框架-Vue.js基础">
 <meta name="twitter:description" content="Vue.js 简介 前端三大主流框架 框架和库的区别 后端 MVC 前端 MVVM   起步 安装 npm方法 JS 文件   配置 案例   Vue-devtools 调试器 Chrome 浏览器 FireFox 浏览器 注意点   Vue 实例 创建 Vue 实例 生命周期   数据与方法 this 响应式数据   模板语法 插值 纯文本 插值表达式 v-text=”msg”   HTML">
@@ -380,9 +380,11 @@
 <li><code>Controller</code> : 控制层，处理业务逻辑。</li>
 </ul>
 <p><img src="/2019/03/23/框架-Vuejs/MVC.JPG" alt="MVC.JPG"></p>
-<h3 id="前端-MVVM"><a href="#前端-MVVM" class="headerlink" title="前端 MVVM"></a>前端 <code>MVVM</code></h3><p><strong><code>MVVM</code></strong> 是 <code>Model-View-ViewModel</code> 的简写，即模型-视图-视图模型。</p>
+<h3 id="前端-MVVM"><a href="#前端-MVVM" class="headerlink" title="前端 MVVM"></a>前端 <code>MVVM</code></h3><p>更多更详细内容查看独立模块 《框架-深入了解Vuejs》。</p>
+<p><strong><code>MVVM</code></strong> 是 <code>Model-View-ViewModel</code> 的简写，即模型-视图-视图模型。</p>
+<p><code>MVVM</code> 是前端框架。<code>Model</code> 数据来自 <code>JS</code> 对象，<code>JS</code> 对象的数据来自后端。</p>
 <p>MVVM 的出现促进了 GUI 前端开发与后端业务逻辑的分离，极大地提高了前端开发效率。MVVM 的核心是 ViewModel 层，它就像是一个中转站（value converter），负责转换 Model 中的数据对象来让数据变得更容易管理和使用，该层向上与视图层进行双向数据绑定，向下与 Model 层通过接口请求进行数据交互，起呈上启下作用。View 层展现的不是 Model 层的数据，而是 ViewModel 的数据，由 ViewModel 负责与 Model 层交互，这就完全解耦了 View 层和 Model 层，这个解耦是至关重要的，它是前后端分离方案实施的最重要一环。</p>
-<p><img src="/2019/03/23/框架-Vuejs/mvvm.png" alt="mvvm.png"></p>
+<p><img src="/2019/03/23/框架-Vuejs/MVVM.JPG" alt="MVVM.JPG"></p>
 <h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="npm方法"><a href="#npm方法" class="headerlink" title="npm方法"></a>npm方法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 用淘宝镜像会好点</span></span><br><span class="line">cnpm i vue -S</span><br></pre></td></tr></table></figure>
 <h4 id="JS-文件"><a href="#JS-文件" class="headerlink" title="JS 文件"></a><code>JS</code> 文件</h4><p>通过官网或者其他第三方网站下载 <code>JS</code> 文件。大型项目不建议这种方法。</p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"vue.js 文件路径"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -938,7 +940,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/23/框架-Vuejs/" data-id="cjzmlryo8006md8uts574snc9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/23/框架-Vuejs/" data-id="cjzrw3y3e006u0cutrc0wzej1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
