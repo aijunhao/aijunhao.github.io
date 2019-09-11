@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/14/前端-Html_Css常见问题解决/clearright.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/14/前端-Html_Css常见问题解决/clearright.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/14/前端-Html_Css常见问题解决/外边距重叠.jpg">
-<meta property="og:updated_time" content="2019-05-10T06:09:43.059Z">
+<meta property="og:updated_time" content="2019-08-27T16:06:49.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Html_Css常见问题解决">
 <meta name="twitter:description" content="目录：  高度塌陷问题 父容器的高度塌陷问题- [案例描述：](#案例描述) - [问题描述：](#问题描述) - [原理及解决方法：](#原理及解决方法)  元素浮动造成的高度塌陷问题- [案例描述：](#案例描述-1) - [问题描述](#问题描述) - [解决方法](#解决方法)    父子元素外边距重叠- [案例描述：](#案例描述-2) - [问题描述](#问题描述-1) - [原理及解">
@@ -178,15 +178,17 @@
 <ul>
 <li>none：不清除</li>
 <li><p>left：清除左侧元素浮动对当前元素的影响。</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: left;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  <img src="/2018/12/14/前端-Html_Css常见问题解决/clearleft.jpg" alt="clearleft.jpg"></p>
 </li>
+</ul>
+<ul>
 <li><p>right：清除右侧元素浮动对当前元素的影响。</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: right;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  <img src="/2018/12/14/前端-Html_Css常见问题解决/clearright.jpg" alt="clearright.jpg"></p>
 </li>
 <li><p>both：清除左侧和右侧元素浮动对当前元素的影响。就是清除最大影响。</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: both;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box3&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line"></span><br><span class="line">    clear: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  <img src="/2018/12/14/前端-Html_Css常见问题解决/clearright.jpg" alt="clearright.jpg"></p>
 </li>
 </ul>
@@ -215,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/14/前端-Html_Css常见问题解决/" data-id="cjzrwg7ek002qcgutzau0wqkv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/14/前端-Html_Css常见问题解决/" data-id="ck0f1wrn4002gd4ut8gyw9x2l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>

@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/25/框架-深入了解vuejs/MVVM.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/08/25/框架-深入了解vuejs/mvvm原理图.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/25/框架-深入了解vuejs/vm.png">
-<meta property="og:updated_time" content="2019-08-26T04:36:39.038Z">
+<meta property="og:updated_time" content="2019-08-31T07:54:21.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="框架-深入了解vue.js">
 <meta name="twitter:description" content="Vue MVVM 双向数据绑定 MVVM vue 在 MVVM 中的角色 MVVM 双向绑定原理 vue 实现双向绑定 Obeject.defineProperty() 数据劫持 Observer 数据监听器（观察者、发布者） Watcher 订阅者 Compile 模板渲染     data 对象及函数   Vue MVVM 双向数据绑定Vue 官网深入响应式原理：https://cn.vu">
@@ -121,7 +121,7 @@
 <p><code>ViewModel</code> ：通过双向数据绑定，将 <code>View</code> 层和 <code>Model</code> 层连接起来。是 <code>MVVM</code> 最核心的部分。</p>
 <h3 id="vue-在-MVVM-中的角色"><a href="#vue-在-MVVM-中的角色" class="headerlink" title="vue 在 MVVM 中的角色"></a>vue 在 MVVM 中的角色</h3><p><code>MVVM</code> 中最关键的就是 <code>ViewModel</code> ，其他两个都很好理解。</p>
 <p>那么 <code>vue</code> 在就是扮演了 <code>MVVM</code> 的 <code>ViewModel</code> 角色，实现视图层和模型层的双向数据绑定。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>vue<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 引入 vue --&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- view 视图层 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    // vm ，其实说的很明确了 vue 的实例就是 vm 视图模型</span></span><br><span class="line"><span class="undefined">    var vm = new Vue(&#123;</span></span><br><span class="line"><span class="undefined">      el: '#app',</span></span><br><span class="line"><span class="undefined">      // model 模型，数据来自 js 对象。在组件化中需要使用函数形式。</span></span><br><span class="line"><span class="undefined">      data: &#123;</span></span><br><span class="line"><span class="undefined">        msg: 'hello vue'</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>vue<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 引入 vue --&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- view 视图层 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// vm ，其实说的很明确了 vue 的实例就是 vm 视图模型</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el: <span class="string">'#app'</span>,</span></span><br><span class="line"><span class="javascript">      <span class="comment">// model 模型，数据来自 js 对象。在组件化中需要使用函数形式。</span></span></span><br><span class="line"><span class="undefined">      data: &#123;</span></span><br><span class="line"><span class="javascript">        msg: <span class="string">'hello vue'</span></span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="MVVM-双向绑定原理"><a href="#MVVM-双向绑定原理" class="headerlink" title="MVVM 双向绑定原理"></a>MVVM 双向绑定原理</h3><ol>
 <li>实现一个数据监听器 Observer，能够对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者。</li>
 <li><p>实现一个指令解析器 Compile，对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的更新函数。</p>
@@ -173,11 +173,77 @@
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    count: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="单页面应用与多页面应用的区别"><a href="#单页面应用与多页面应用的区别" class="headerlink" title="单页面应用与多页面应用的区别"></a>单页面应用与多页面应用的区别</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>单页面应用</th>
+<th>多页面应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组成</td>
+<td>一个外壳和多个页面片段</td>
+<td>多个完整页面</td>
+</tr>
+<tr>
+<td>资源共用(css.js)</td>
+<td>共用，只需要在外壳部分加载</td>
+<td>不共用，每个页面都需要加载</td>
+</tr>
+<tr>
+<td>刷新方式</td>
+<td>页面局部刷新或更改</td>
+<td>整页刷新</td>
+</tr>
+<tr>
+<td>url 模式</td>
+<td>默认 hash 模式</td>
+<td>默认 history 模式</td>
+</tr>
+<tr>
+<td>用户体验</td>
+<td>页面片段间的模块化，用户体验良好</td>
+<td>页面切换缓慢，流畅度不够，用户体验较差</td>
+</tr>
+<tr>
+<td>跳转动画</td>
+<td>容易实现</td>
+<td>无法实现</td>
+</tr>
+<tr>
+<td>数据传递</td>
+<td>容易</td>
+<td>依赖 url 传参，或者 cookie、localStorage、sessionStorage</td>
+</tr>
+<tr>
+<td>搜索引擎优化 SEO</td>
+<td>需要单独方案，实现困难，不利于SEO检索，可利用服务端渲染SSR优化</td>
+<td>实现方法简易</td>
+</tr>
+<tr>
+<td>试用范围</td>
+<td>高需求的体验度，追求页面流畅的应用</td>
+<td>适用于追求高度支持搜索引擎的应用</td>
+</tr>
+<tr>
+<td>开发成本</td>
+<td>较高，常需要借助专业的框架</td>
+<td>较低，但页面重复代码多</td>
+</tr>
+<tr>
+<td>维护成本</td>
+<td>相对容易</td>
+<td>相对复杂</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/25/框架-深入了解vuejs/" data-id="cjzrwjf5q0000bkutlyerlc6l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/25/框架-深入了解vuejs/" data-id="ck0f1wroa0030d4utisb0jx8e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
