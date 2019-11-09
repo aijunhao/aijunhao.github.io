@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端-ElementUI-源码分析-架构 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Button 介绍 常用的操作按钮。  标签为 &amp;lt;el-button&amp;gt;&amp;lt;/el-button&amp;gt; ，可以定义按钮的尺寸（size），类型（type），朴素样式（plain），圆角（round），圆形（circle），加载（loading），禁用（disabled），图标（icon），是否聚焦（autofocus）等。 Button 属性   参数 说明 类型 可选值 默认值">
+<meta name="keywords" content="前端,JavaScript,Vue,ElementUI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端-ElementUI-源码分析-架构">
+<meta property="og:url" content="http://yoursite.com/2019/11/08/前端-ElementUI-源码分析-Button/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="Button 介绍 常用的操作按钮。  标签为 &amp;lt;el-button&amp;gt;&amp;lt;/el-button&amp;gt; ，可以定义按钮的尺寸（size），类型（type），朴素样式（plain），圆角（round），圆形（circle），加载（loading），禁用（disabled），图标（icon），是否聚焦（autofocus）等。 Button 属性   参数 说明 类型 可选值 默认值">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-09T13:46:09.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端-ElementUI-源码分析-架构">
+<meta name="twitter:description" content="Button 介绍 常用的操作按钮。  标签为 &amp;lt;el-button&amp;gt;&amp;lt;/el-button&amp;gt; ，可以定义按钮的尺寸（size），类型（type），朴素样式（plain），圆角（round），圆形（circle），加载（loading），禁用（disabled），图标（icon），是否聚焦（autofocus）等。 Button 属性   参数 说明 类型 可选值 默认值">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端-ElementUI-源码分析-Button" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/08/前端-ElementUI-源码分析-Button/" class="article-date">
+  <time datetime="2019-11-08T02:30:00.000Z" itemprop="datePublished">2019-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端-ElementUI-源码分析-架构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Button-介绍"><a href="#Button-介绍" class="headerlink" title="Button 介绍"></a>Button 介绍</h2><p> 常用的操作按钮。 </p>
+<p>标签为 <code>&lt;el-button&gt;&lt;/el-button&gt;</code> ，可以定义按钮的尺寸（size），类型（type），朴素样式（plain），圆角（round），圆形（circle），加载（loading），禁用（disabled），图标（icon），是否聚焦（autofocus）等。</p>
+<h2 id="Button-属性"><a href="#Button-属性" class="headerlink" title="Button 属性"></a>Button 属性</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size</td>
+<td>尺寸</td>
+<td>string</td>
+<td>medium / small / mini</td>
+<td>—</td>
+</tr>
+<tr>
+<td>type</td>
+<td>类型</td>
+<td>string</td>
+<td>primary / success / warning / danger / info / text</td>
+<td>—</td>
+</tr>
+<tr>
+<td>plain</td>
+<td>是否朴素按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>round</td>
+<td>是否圆角按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>circle</td>
+<td>是否圆形按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否加载中状态</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用状态</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>图标类名</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>是否默认聚焦</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>native-type</td>
+<td>原生 type 属性</td>
+<td>string</td>
+<td>button / submit / reset</td>
+<td>button</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Button-基础用法"><a href="#Button-基础用法" class="headerlink" title="Button 基础用法"></a>Button 基础用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;el-button&gt;默认按钮&lt;/el-button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 尺寸（size）：medium（中等），small（小型），mini（超小） --&gt;</span><br><span class="line">    &lt;el-button size=&quot;medium&quot;&gt;中等按钮&lt;/el-button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 类型（type）：default（默认），primary（主要），success（成功），info（信息），warning（警告），danger（危险），text（文本） --&gt;</span><br><span class="line">    &lt;el-button type=&quot;primary&quot;&gt;主要按钮&lt;/el-button&gt;</span><br><span class="line">    &lt;el-button type=&quot;text&quot;&gt;文字按钮&lt;/el-button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 朴素（plain）：true，false --&gt;</span><br><span class="line">    &lt;el-button type=&quot;primary&quot; plain&gt;主要按钮&lt;/el-button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 圆角（round）：true，false --&gt;</span><br><span class="line">    &lt;el-button round&gt;主要按钮&lt;/el-button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 圆形（circle）：true，false。一般与图标 icon 连用 --&gt;</span><br><span class="line">    &lt;el-button icon=&quot;el-icon-search&quot; circle&gt;&lt;/el-button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 禁用（disabled）：true，false。按钮颜色变浅，鼠标悬浮出现禁止符号。 --&gt;</span><br><span class="line">    &lt;el-button disabled&gt;禁用按钮&lt;/el-button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 图标（icon）：设置icon属性即可，可以参考 icon 组件。设置在文字右边的 icon ，需要使用i标签，此时最好添加上 el-icon--right 类。 --&gt;</span><br><span class="line">    &lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-edit&quot;&gt;图标按钮&lt;/el-button&gt;</span><br><span class="line">    &lt;el-button type=&quot;primary&quot;&gt;图标按钮&lt;i class=&quot;el-icon-edit el-icon--right&quot;&gt;&lt;/i&gt;&lt;/el-button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 加载（loading）：true，false。为 true 时点击事件失效。 --&gt;</span><br><span class="line">    &lt;el-button type=&quot;primary&quot; :loading=&quot;true&quot;&gt;加载中&lt;/el-button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Button-源码分析"><a href="#Button-源码分析" class="headerlink" title="Button 源码分析"></a>Button 源码分析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">// button.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button</span><br><span class="line">    class=&quot;el-button&quot;</span><br><span class="line">    @click=&quot;handleClick&quot;</span><br><span class="line">    :disabled=&quot;buttonDisabled || loading&quot;</span><br><span class="line">    :autofocus=&quot;autofocus&quot;</span><br><span class="line">    :type=&quot;nativeType&quot;</span><br><span class="line">    :class=&quot;[</span><br><span class="line">      type ? &apos;el-button--&apos; + type : &apos;&apos;,</span><br><span class="line">      buttonSize ? &apos;el-button--&apos; + buttonSize : &apos;&apos;,</span><br><span class="line">      &#123;</span><br><span class="line">        &apos;is-disabled&apos;: buttonDisabled,</span><br><span class="line">        &apos;is-loading&apos;: loading,</span><br><span class="line">        &apos;is-plain&apos;: plain,</span><br><span class="line">        &apos;is-round&apos;: round,</span><br><span class="line">        &apos;is-circle&apos;: circle</span><br><span class="line">      &#125;</span><br><span class="line">    ]&quot;</span><br><span class="line">  &gt;</span><br><span class="line">    &lt;i class=&quot;el-icon-loading&quot; v-if=&quot;loading&quot;&gt;&lt;/i&gt;</span><br><span class="line">    &lt;i :class=&quot;icon&quot; v-if=&quot;icon &amp;&amp; !loading&quot;&gt;&lt;/i&gt;</span><br><span class="line">    &lt;span v-if=&quot;$slots.default&quot;&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &apos;ElButton&apos;,</span><br><span class="line"></span><br><span class="line">    inject: &#123;</span><br><span class="line">      elForm: &#123;</span><br><span class="line">        default: &apos;&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      elFormItem: &#123;</span><br><span class="line">        default: &apos;&apos;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    props: &#123;</span><br><span class="line">      type: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        default: &apos;default&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      size: String,</span><br><span class="line">      icon: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        default: &apos;&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      nativeType: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        default: &apos;button&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      loading: Boolean,</span><br><span class="line">      disabled: Boolean,</span><br><span class="line">      plain: Boolean,</span><br><span class="line">      autofocus: Boolean,</span><br><span class="line">      round: Boolean,</span><br><span class="line">      circle: Boolean</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    computed: &#123;</span><br><span class="line">      _elFormItemSize() &#123;</span><br><span class="line">        return (this.elFormItem || &#123;&#125;).elFormItemSize;</span><br><span class="line">      &#125;,</span><br><span class="line">      buttonSize() &#123;</span><br><span class="line">        return this.size || this._elFormItemSize || (this.$ELEMENT || &#123;&#125;).size;</span><br><span class="line">      &#125;,</span><br><span class="line">      buttonDisabled() &#123;</span><br><span class="line">        return this.disabled || (this.elForm || &#123;&#125;).disabled;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    methods: &#123;</span><br><span class="line">      handleClick(evt) &#123;</span><br><span class="line">        this.$emit(&apos;click&apos;, evt);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/08/前端-ElementUI-源码分析-Button/" data-id="ck2rmmtcx0000swutj3j0pqp5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElementUI/">ElementUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/09/前端-ElementUI-源码分析-Scss简介/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端-ElementUI-源码分析-Sass简介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/07/前端-ElementUI-源码分析-架构/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端-ElementUI-源码分析-架构介绍</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECharts/">ECharts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/">ElementUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面经/">面经</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 17.27px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 11.82px;">EcamScript6</a> <a href="/tags/ElementUI/" style="font-size: 11.82px;">ElementUI</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 10.91px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 18.18px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 13.64px;">Node</a> <a href="/tags/Python/" style="font-size: 16.36px;">Python</a> <a href="/tags/Vue/" style="font-size: 15.45px;">Vue</a> <a href="/tags/blog/" style="font-size: 10.91px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 19.09px;">前端</a> <a href="/tags/后端/" style="font-size: 12.73px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.82px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/框架/" style="font-size: 14.55px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a> <a href="/tags/面经/" style="font-size: 10px;">面经</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/09/前端-ElementUI-源码分析-Scss简介/">前端-ElementUI-源码分析-Sass简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/08/前端-ElementUI-源码分析-Button/">前端-ElementUI-源码分析-架构</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/07/前端-ElementUI-源码分析-架构/">前端-ElementUI-源码分析-架构介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/13/前端-JavaScript基础-异步操作原理及方法/">前端-JavaScript基础-异步操作原理及方法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/25/框架-深入了解vuejs/">框架-深入了解vue.js</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
