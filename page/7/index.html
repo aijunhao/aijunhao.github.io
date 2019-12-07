@@ -62,6 +62,694 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python学习笔记——网络爬虫" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/09/Python学习笔记——网络爬虫/" class="article-date">
+  <time datetime="2018-08-09T07:05:46.000Z" itemprop="datePublished">2018-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/09/Python学习笔记——网络爬虫/">Python学习笔记——网络爬虫</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<!-- TOC -->
+<ul>
+<li><a href="#网络爬虫">网络爬虫</a></li>
+<li><a href="#url">URL</a></li>
+<li><a href="#python访问url测试">python访问URL测试</a></li>
+<li><a href="#爬虫实战">爬虫实战</a><ul>
+<li><a href="#实例1-抓取一张网络图片">实例1 抓取一张网络图片</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h3 id="网络爬虫"><a href="#网络爬虫" class="headerlink" title="网络爬虫"></a>网络爬虫</h3><p>网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。网络爬虫就是根据网页的地址来寻找网页的，也就是URL。举一个简单的例子，我们在浏览器的地址栏中输入的字符串就是URL，例如：<a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a></p>
+<hr>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>URL的一般格式为(当方括号[]的为可选项)：protocol://hostname[:port]/path/[;parameters][?query]#fragment</p>
+<ul>
+<li>“protocol://“ : 协议，如http, https, ftp, file(本地磁盘文件), ed2k …</li>
+<li>“hostname[:port]” : 存放资源的服务器的域名系统或IP地址(有时候包含端口号，各种传输协议都有默认的端口嗷，如http的80端口)</li>
+<li>“path/[;parameters][?query]#fragment” : 资源的具体地址，如目录或文件名等。</li>
+</ul>
+<hr>
+<h3 id="python访问URL测试"><a href="#python访问URL测试" class="headerlink" title="python访问URL测试"></a>python访问URL测试</h3><p>使用urllib.request实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> urllib.request       <span class="comment"># 导入urllib.request包</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>response = urllib.request.urlopen(<span class="string">"http://www.aijunhao.com.cn"</span>)     <span class="comment"># 获取我的个人网站首页</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>html = response.read().decode(<span class="string">"utf-8"</span>)      <span class="comment"># 读取我的个人网站首页，并用utf-8编码模式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(html)             <span class="comment"># 打印</span></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span>/&gt;</span><br><span class="line">        &lt;link rel=<span class="string">"shortcut icon"</span> href=<span class="string">"images/1.ico"</span>&gt;</span><br><span class="line">        &lt;link href=<span class="string">"css/menu.css"</span> rel=<span class="string">"stylesheet"</span>&gt;</span><br><span class="line">        &lt;title&gt;AI , Sparks of fire&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;!-- 背景画布开始 --&gt;</span><br><span class="line">        &lt;canvas id="canvas" &gt;&lt;/canvas&gt;</span><br><span class="line">        &lt;script src="js/background.js" type="text/javascript"&gt;&lt;/script&gt;</span><br><span class="line">        &lt;!-- 背景画布结束 --&gt;</span><br><span class="line">        &lt;!-- 使用外联播放器，并隐藏播放器 --&gt;</span><br><span class="line">        &lt;iframe frameborder="no" border="0" width=0 height=0  src="//music.163.com/outchain/player?type=2&amp;id=491757187&amp;auto=1&amp;height=66"&gt;&lt;/iframe&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div class="cs" &gt;</span><br><span class="line">            &lt;div class="introduction" align="center"&gt;</span><br><span class="line"></span><br><span class="line">                &lt;header style="color: white;font-size: 4rem;"&gt;Hello，&lt;/header&gt;</span><br><span class="line">                &lt;header style=<span class="string">"color: white;font-size: 2rem;"</span>&gt;I<span class="string">'m Junhao Ai.&lt;/header&gt;</span></span><br><span class="line"><span class="string">                &lt;p style="color: white;font-size: 1rem;"&gt;A student of the Zhijiang College of ZheJiang University of Technology.&lt;/p&gt;</span></span><br><span class="line"><span class="string">                &lt;br&gt; &lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;p&gt;Whatever is worth doing is worth doing well.&lt;/p&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;br&gt; &lt;br&gt; &lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &lt;a href="http://user.qzone.qq.com/1172949809/infocenter" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;QQ Zone&lt;/span&gt; &lt;span class="title-hover"&gt;Visit me.&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="files/test.php" class="btn-slide2" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle2"&gt;&lt;i class="fa fa-download"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title2"&gt;About Me&lt;/span&gt; &lt;span class="title-hover2"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="https://aijunhao.github.io" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;My Blog&lt;/span&gt; &lt;span class="title-hover"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="files/test.php" class="btn-slide2" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle2"&gt;&lt;i class="fa fa-download"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title2"&gt;My Gains&lt;/span&gt; &lt;span class="title-hover2"&gt;Building...&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=1172949809&amp;website=www.oicqzone.com" class="btn-slide" target="_blank"&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="circle"&gt;&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class="title"&gt;Contact Me&lt;/span&gt; &lt;span class="title-hover"&gt;QQ Test&lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/a&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/09/Python学习笔记——网络爬虫/myweb.png" alt=""></p>
+<hr>
+<h3 id="爬虫实战"><a href="#爬虫实战" class="headerlink" title="爬虫实战"></a>爬虫实战</h3><h4 id="实例1-抓取一张网络图片"><a href="#实例1-抓取一张网络图片" class="headerlink" title="实例1 抓取一张网络图片"></a>实例1 抓取一张网络图片</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">response = urllib.request.urlopen(<span class="string">"http://www.aijunhao.com.cn/images/building.png"</span>)</span><br><span class="line">img = response.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'webTest.jpg'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(img)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/09/Python学习笔记——网络爬虫/" data-id="ck2ovxzjx0016c8utctqmvxaq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python学习笔记——GUI编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/08/Python学习笔记——GUI编程/" class="article-date">
+  <time datetime="2018-08-08T11:48:50.000Z" itemprop="datePublished">2018-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/08/Python学习笔记——GUI编程/">Python学习笔记——GUI编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#第一个实例">第一个实例</a></li>
+<li><a href="#tkinter-常用方法">tkinter 常用方法</a></li>
+<li><a href="#label-文本">Label 文本</a></li>
+<li><a href="#button-按钮">Button 按钮</a></li>
+<li><a href="#checkbutton-复选框">Checkbutton 复选框</a></li>
+<li><a href="#radiobutton">Radiobutton</a></li>
+</ul>
+<!-- /TOC -->
+<hr>
+<p>GUI的终极选择：Tkinter</p>
+<h2 id="https-blog-csdn-net-u014380159-article-details-51941842"><a href="#https-blog-csdn-net-u014380159-article-details-51941842" class="headerlink" title="https://blog.csdn.net/u014380159/article/details/51941842"></a><a href="https://blog.csdn.net/u014380159/article/details/51941842" target="_blank" rel="noopener">https://blog.csdn.net/u014380159/article/details/51941842</a></h2><h3 id="第一个实例"><a href="#第一个实例" class="headerlink" title="第一个实例"></a>第一个实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk      <span class="comment"># 导入tkinter模块</span></span><br><span class="line"></span><br><span class="line">root = tk.Tk()        <span class="comment"># 生成窗口实例，即父容器</span></span><br><span class="line"></span><br><span class="line">photo = tk.PhotoImage(file=<span class="string">'bg.gif'</span>)      <span class="comment"># 添加图片</span></span><br><span class="line">theLabel = tk.Label(root,</span><br><span class="line">                  text=<span class="string">'我们一起学猫叫\n一起喵喵喵喵~'</span>,</span><br><span class="line">                  justify=tk.LEFT,</span><br><span class="line">                  image=photo,</span><br><span class="line">                  compound=tk.CENTER,</span><br><span class="line">                  font=(<span class="string">"华康少女文字W5"</span>, <span class="number">20</span>),</span><br><span class="line">                  fg=<span class="string">"white"</span>)</span><br><span class="line"></span><br><span class="line">theLabel.pack()</span><br><span class="line"></span><br><span class="line">tk.mainloop()   <span class="comment"># 进入消息循环</span></span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/08/08/Python学习笔记——GUI编程/FirstTkinter.PNG" alt=""></h2><h3 id="tkinter-常用方法"><a href="#tkinter-常用方法" class="headerlink" title="tkinter 常用方法"></a>tkinter 常用方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法名</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Tk()</td>
+<td style="text-align:left">生成窗口实例</td>
+<td style="text-align:left">root = tkinter.Tk()</td>
+</tr>
+<tr>
+<td style="text-align:left">title()</td>
+<td style="text-align:left">设置窗口标题</td>
+<td style="text-align:left">root.title(‘title’)</td>
+</tr>
+<tr>
+<td style="text-align:left">geometry()</td>
+<td style="text-align:left">设置窗口大小</td>
+<td style="text-align:left">root.geometry(‘300x200’)</td>
+</tr>
+<tr>
+<td style="text-align:left">mainloop()</td>
+<td style="text-align:left">主事件循环</td>
+<td style="text-align:left">root.mainloop() 或 tkinter.mainloop()</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Label-文本"><a href="#Label-文本" class="headerlink" title="Label 文本"></a>Label 文本</h3><p>标签控件，可以显示文本和位图。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">label = tkinter.Label(master, option=value, ... )</span><br><span class="line"></span><br><span class="line">l.pack()</span><br></pre></td></tr></table></figure></p>
+<p>案例:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</span><br><span class="line"></span><br><span class="line">counter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">counter_label</span><span class="params">(label)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">global</span> counter</span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">        label.config(text=str(counter))</span><br><span class="line">        label.after(<span class="number">1000</span>, count)</span><br><span class="line"></span><br><span class="line">    count()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root = tk.Tk()</span><br><span class="line">root.title(<span class="string">"Counting Seconds"</span>)</span><br><span class="line">label = tk.Label(root, fg=<span class="string">"green"</span>)</span><br><span class="line">label.pack()</span><br><span class="line">counter_label(label)</span><br><span class="line">button = tk.Button(root, text=<span class="string">'Stop'</span>, width=<span class="number">25</span>, command=root.destroy)</span><br><span class="line">button.pack()</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>可选项(option)</th>
+<th>描述</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activebackground</td>
+<td>设置当Label处于活动状态(state选项设置状态)，选择框的背景色。</td>
+<td>activebackground=”#000000”</td>
+</tr>
+<tr>
+<td>activeforeground</td>
+<td>设置当Label处于活动状态(当鼠标点击时)，选择框的文本颜色。</td>
+<td>activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td>anchor=’w’</td>
+</tr>
+<tr>
+<td>bg/background</td>
+<td>标签的背景色。</td>
+<td>bg=”yellow”</td>
+</tr>
+<tr>
+<td>compound</td>
+<td>文本和图像的混合模式</td>
+<td>image=img, <br> compound=tkinter.LEFT</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>按钮文本的颜色。</td>
+<td>fg=”yellow”</td>
+</tr>
+<tr>
+<td>font</td>
+<td>文本字体。</td>
+<td>font=”楷体”</td>
+</tr>
+<tr>
+<td>height/width</td>
+<td>按钮的高度/宽度。</td>
+<td>height=5,width=15</td>
+</tr>
+<tr>
+<td>image</td>
+<td>按钮图片。</td>
+<td>img_png = tkinter.PhotoImage(file = ‘18.gif’)  <br>  button = tkinter.Label(root,image=img_png)</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>显示多行文本的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td>justify=”center” <br> 或 justify=tkinter.CENTER</td>
+</tr>
+<tr>
+<td>text</td>
+<td>按钮的文本内容</td>
+<td>text=”…”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Button-按钮"><a href="#Button-按钮" class="headerlink" title="Button 按钮"></a>Button 按钮</h3><p>按钮控件，在程序中显示按钮。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">button = tkinter.Button(master, option=value, ... )       <span class="comment"># master:按钮父容器,option:可选项</span></span><br><span class="line"></span><br><span class="line">button.pack()       <span class="comment"># 将小部件放置到窗口中</span></span><br></pre></td></tr></table></figure>
+<p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()</span><br><span class="line">button = tkinter.Button(root, text=<span class="string">"Button"</span>)</span><br><span class="line"></span><br><span class="line">button.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/Button.PNG" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>可选项(option)</th>
+<th>描述</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activebackground</td>
+<td>当鼠标点击时，按钮的背景色。</td>
+<td>activebackground=”#000000”</td>
+</tr>
+<tr>
+<td>activeforeground</td>
+<td>当鼠标点击时，按钮的文本颜色。</td>
+<td>activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td>anchor=’w’</td>
+</tr>
+<tr>
+<td>bd</td>
+<td>按钮边框的大小，默认为 2 个像素。</td>
+<td>bd=5</td>
+</tr>
+<tr>
+<td>bg/background</td>
+<td>按钮的背景色。</td>
+<td>bg=”blue”</td>
+</tr>
+<tr>
+<td>command</td>
+<td>按钮关联的函数，当按钮被点击时，执行该函数。</td>
+<td>command=函数名</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>按钮文本的颜色。</td>
+<td>fg=”yellow”</td>
+</tr>
+<tr>
+<td>font</td>
+<td>文本字体。</td>
+<td>font=”楷体”</td>
+</tr>
+<tr>
+<td>height/width</td>
+<td>按钮的高度/宽度。</td>
+<td>height=5,width=15</td>
+</tr>
+<tr>
+<td>image</td>
+<td>按钮图片。</td>
+<td>img_png = tkinter.PhotoImage(file = ‘18.gif’)  <br>  button = tkinter.Button(root,image=img_png)</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>显示多行文本的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td>justify=”center” <br> 或 justify=tkinter.CENTER</td>
+</tr>
+<tr>
+<td>padx/pady</td>
+<td>按钮在x/y轴防线上的内边距。</td>
+<td>padx=30, pady=30</td>
+</tr>
+<tr>
+<td>relief</td>
+<td>边框样式，设置控件3D效果，可选的有：flat(默认)、sunken、raised、groove、ridge。</td>
+<td>relief=”flat”</td>
+</tr>
+<tr>
+<td>state</td>
+<td>设置按钮组件状态,可选的有normal(默认)、active、 disabled。</td>
+<td>state=”disabled”</td>
+</tr>
+<tr>
+<td>underline</td>
+<td>下划线。</td>
+<td>有些小问题。underline=0</td>
+</tr>
+<tr>
+<td>text</td>
+<td>按钮的文本内容</td>
+<td>text=”…”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Checkbutton-复选框"><a href="#Checkbutton-复选框" class="headerlink" title="Checkbutton 复选框"></a>Checkbutton 复选框</h3><p>多选框控件，用于在程序中提供多项选择框。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">c = Checkbutton ( master, option=value, ... )</span><br><span class="line">c.pack()</span><br></pre></td></tr></table></figure>
+<p>案例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()</span><br><span class="line"></span><br><span class="line">c = tkinter.Checkbutton(root, text=<span class="string">"选择框"</span>)</span><br><span class="line"></span><br><span class="line">c.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/CheckButton1.PNG" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">可选项(option)</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">activebackground</td>
+<td style="text-align:left">设置当Button处于活动状态(当鼠标点击时)，选择框的背景色。</td>
+<td style="text-align:left">activebackground=”#000000”</td>
+</tr>
+<tr>
+<td style="text-align:left">activeforeground</td>
+<td style="text-align:left">设置当Button处于活动状态(当鼠标点击时)，选择框的文本颜色。</td>
+<td style="text-align:left">activeforeground=”yellow”</td>
+</tr>
+<tr>
+<td style="text-align:left">anchor</td>
+<td style="text-align:left">锚选项，可选项为n, ne, e, se, s, sw, w, nw, center(默认)。</td>
+<td style="text-align:left">anchor=’w’</td>
+</tr>
+<tr>
+<td style="text-align:left">bg/background</td>
+<td style="text-align:left">按钮的背景色。</td>
+<td style="text-align:left">bg=”blue”</td>
+</tr>
+<tr>
+<td style="text-align:left">bitmap</td>
+<td style="text-align:left">使用位图，可选项有error，gray75，gray50，gray25，gray12，<br>hourglass，info，questhead，question，warning</td>
+<td style="text-align:left">bitmap=”error”</td>
+</tr>
+<tr>
+<td style="text-align:left">bd</td>
+<td style="text-align:left">边框的大小，默认为 2 个像素</td>
+<td style="text-align:left">bd=10</td>
+</tr>
+<tr>
+<td style="text-align:left">command</td>
+<td style="text-align:left">按钮关联的函数，当按钮被点击时，执行该函数。</td>
+<td style="text-align:left">command=函数名</td>
+</tr>
+<tr>
+<td style="text-align:left">cursor</td>
+<td style="text-align:left">光标的形状设定，可选项有arrow(默认), circle, cross, plus</td>
+<td style="text-align:left">cursor=”circle”</td>
+</tr>
+<tr>
+<td style="text-align:left">disabledforeground</td>
+<td style="text-align:left">禁用选项的前景色</td>
+<td style="text-align:left">disabledforeground=”#123456”</td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">文本字体</td>
+<td style="text-align:left">font=”…”</td>
+</tr>
+<tr>
+<td style="text-align:left">fg</td>
+<td style="text-align:left">选项的前景色</td>
+<td style="text-align:left">fg=”red”</td>
+</tr>
+<tr>
+<td style="text-align:left">image</td>
+<td style="text-align:left">是否使用图标。</td>
+<td style="text-align:left">img = tkinter.PhotoImage(file=”bg.gif”) <br>c = tkinter.Checkbutton(root,image=img)</td>
+</tr>
+<tr>
+<td style="text-align:left">justify</td>
+<td style="text-align:left">多行文本设置不同行之间的对齐方式，可选项包括left, right, cneter(默认)。</td>
+<td style="text-align:left">justify=“center” <br> 或 justify=tkinter.CENTER</td>
+</tr>
+<tr>
+<td style="text-align:left">onvalue/offvalue</td>
+<td style="text-align:left">设置 Checkbutton 的状态值。</td>
+<td style="text-align:left">onvalue = 1, offvalue = 0</td>
+</tr>
+<tr>
+<td style="text-align:left">padx/pady</td>
+<td style="text-align:left">设置选择框在x轴/y轴方向上的内边距，默认为1像素</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">relief</td>
+<td style="text-align:left">边框样式，设置控件3D效果，可选的有：flat(默认)、sunken、raised、groove、ridge。</td>
+<td style="text-align:left">relief=”flat”</td>
+</tr>
+<tr>
+<td style="text-align:left">relief=”raised”</td>
+<td style="text-align:left">选中后的颜色。</td>
+<td style="text-align:left">selectcolor=”red”</td>
+</tr>
+<tr>
+<td style="text-align:left">state</td>
+<td style="text-align:left">设置选择框组件状态,可选的有normal(默认)、active、 disabled。</td>
+<td style="text-align:left">state=”disabled”</td>
+</tr>
+<tr>
+<td style="text-align:left">underline</td>
+<td style="text-align:left">下划线。</td>
+<td style="text-align:left">有些小问题。underline=0</td>
+</tr>
+<tr>
+<td style="text-align:left">text</td>
+<td style="text-align:left">选择框的文本内容</td>
+<td style="text-align:left">text=”…”</td>
+</tr>
+<tr>
+<td style="text-align:left">variable</td>
+<td style="text-align:left">变量，variable 的值为 1 或 0，代表着选中或不选中</td>
+<td style="text-align:left">v = tkinter.IntVar() <br> c = tkinter.Checkbutton(root, variable = v)</td>
+</tr>
+</tbody>
+</table>
+<p>常用方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">deselect()</td>
+<td style="text-align:left">清除复选框选中选项。</td>
+</tr>
+<tr>
+<td style="text-align:left">flash()</td>
+<td style="text-align:left">在激活状态颜色和正常颜色之间闪烁几次单选按钮，但保持它开始时的状态。</td>
+</tr>
+<tr>
+<td style="text-align:left">invoke()</td>
+<td style="text-align:left">可以调用此方法来获得与用户单击单选按钮以更改其状态时发生的操作相同的操作。</td>
+</tr>
+<tr>
+<td style="text-align:left">select()</td>
+<td style="text-align:left">设置按钮为选中。</td>
+</tr>
+<tr>
+<td style="text-align:left">toggle()</td>
+<td style="text-align:left">选中与没有选中的选项互相切换。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"></span><br><span class="line">root = tkinter.Tk()         <span class="comment"># 生成窗口</span></span><br><span class="line"></span><br><span class="line">GIRLS = [<span class="string">'西施'</span>, <span class="string">'貂蝉'</span>, <span class="string">'王昭君'</span>, <span class="string">'杨玉环'</span>]</span><br><span class="line">v = []        <span class="comment"># 表示按钮是否被选中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> girl <span class="keyword">in</span> GIRLS:</span><br><span class="line">    v.append(tkinter.IntVar())</span><br><span class="line">    b = tkinter.Checkbutton(root, text=girl, variable=v[<span class="number">-1</span>])</span><br><span class="line">    b.pack(anchor=<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">tkinter.mainloop()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/08/Python学习笔记——GUI编程/TkinterCheckButton.PNG" alt=""></p>
+<hr>
+<h3 id="Radiobutton"><a href="#Radiobutton" class="headerlink" title="Radiobutton"></a>Radiobutton</h3><p>单选按钮控件，显示一个单选的按钮状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/08/Python学习笔记——GUI编程/" data-id="ck2ovxzuj002qc8utjev06nv1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python学习笔记——异常处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/Python学习笔记——异常处理/" class="article-date">
+  <time datetime="2018-08-07T14:22:19.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/07/Python学习笔记——异常处理/">Python学习笔记——异常处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+<ul>
+<li><a href="#python标准异常总结">Python标准异常总结</a></li>
+<li><a href="#异常处理">异常处理</a></li>
+<li><a href="#触发异常">触发异常</a></li>
+<li><a href="#用户自定义异常类型">用户自定义异常类型</a></li>
+</ul>
+<!-- /TOC -->
+<h3 id="Python标准异常总结"><a href="#Python标准异常总结" class="headerlink" title="Python标准异常总结"></a>Python标准异常总结</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">异常</th>
+<th style="text-align:left">异常说明</th>
+<th style="text-align:center">出现程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AssertionError</td>
+<td style="text-align:left">断言语句（assert）失败</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">AttributeError</td>
+<td style="text-align:left">尝试访问未知的对象属性</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">EOFError</td>
+<td style="text-align:left">用户输入文件末尾标志EOF（Ctrl+d）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">FloatingPointError</td>
+<td style="text-align:left">浮点计算错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">GeneratorExit</td>
+<td style="text-align:left">generator.close()方法被调用的时候</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ImportError</td>
+<td style="text-align:left">导入模块失败的时候</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">IndexError</td>
+<td style="text-align:left">索引超出序列的范围</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyError</td>
+<td style="text-align:left">字典中查找一个不存在的关键字</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyboardInterrupt</td>
+<td style="text-align:left">用户输入中断键（Ctrl+c）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">MemoryError</td>
+<td style="text-align:left">内存溢出（可通过删除对象释放内存）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">NameError</td>
+<td style="text-align:left">尝试访问一个不存在的变量</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">NotImplementedError</td>
+<td style="text-align:left">尚未实现的方法</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">OSError</td>
+<td style="text-align:left">操作系统产生的异常（例如打开一个不存在的文件）</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">OverflowError</td>
+<td style="text-align:left">数值运算超出最大限制</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ReferenceError</td>
+<td style="text-align:left">弱引用（weak reference）试图访问一个已经被垃圾回收机制回收了的对象</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">RuntimeError</td>
+<td style="text-align:left">一般的运行时错误</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">StopIteration</td>
+<td style="text-align:left">迭代器没有更多的值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SyntaxError</td>
+<td style="text-align:left">Python的语法错误</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">IndentationError</td>
+<td style="text-align:left">缩进错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">TabError</td>
+<td style="text-align:left">Tab和空格混合使用</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SystemError</td>
+<td style="text-align:left">Python编译器系统错误</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">SystemExit</td>
+<td style="text-align:left">Python编译器进程被关闭</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">TypeError</td>
+<td style="text-align:left">不同类型间的无效操作</td>
+<td style="text-align:center">常见</td>
+</tr>
+<tr>
+<td style="text-align:left">UnboundLocalError</td>
+<td style="text-align:left">访问一个未初始化的本地变量（NameError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeError</td>
+<td style="text-align:left">Unicode相关的错误（ValueError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeEncodeError</td>
+<td style="text-align:left">Unicode编码时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeDecodeError</td>
+<td style="text-align:left">Unicode解码时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeTranslateError</td>
+<td style="text-align:left">Unicode转换时的错误（UnicodeError的子类）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ValueError</td>
+<td style="text-align:left">传入无效的参数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">ZeroDivisionError</td>
+<td style="text-align:left">除数为零</td>
+<td style="text-align:center">常见</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>捕捉异常可以使用try/except语句。</p>
+<p>try/except语句用来检测try语句块中的错误，从而让except语句捕获异常信息并处理。</p>
+<p>如果你不想在异常发生时结束你的程序，只需在try里捕获它。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  &lt;语句块&gt;       <span class="comment"># 运行代码</span></span><br><span class="line"><span class="keyword">except</span> &lt;异常名&gt; [<span class="keyword">as</span> reason]:</span><br><span class="line">  &lt;语句块&gt;       <span class="comment"># 出现错误时执行的语句</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  &lt;语句块&gt;        <span class="comment"># 无论都会被执行的代码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = open(<span class="string">"一个错误的文件.txt"</span>)</span><br><span class="line">    print(f.read())</span><br><span class="line">    f.close()</span><br><span class="line"><span class="keyword">except</span> OSError <span class="keyword">as</span> reason:</span><br><span class="line">    print(<span class="string">'文件出错！错误原因是：'</span> + str(reason))    <span class="comment"># 打印异常名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">文件出错！错误原因是：[Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">'一个错误的文件.txt'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="触发异常"><a href="#触发异常" class="headerlink" title="触发异常"></a>触发异常</h3><p>我们可以使用raise语句自己触发异常。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="keyword">raise</span> [Exception [, args [, traceback]]]</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="用户自定义异常类型"><a href="#用户自定义异常类型" class="headerlink" title="用户自定义异常类型"></a>用户自定义异常类型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义异常类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Networkerror</span><span class="params">(RuntimeError)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, arg)</span>:</span></span><br><span class="line">        self.args = arg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 触发该异常，如下所示：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> Networkerror(<span class="string">"Bad hostname"</span>)</span><br><span class="line"><span class="keyword">except</span> Networkerror,e:</span><br><span class="line">    <span class="keyword">print</span> e.args</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/Python学习笔记——异常处理/" data-id="ck2ovxzjt0011c8uttp8pzs1p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python学习笔记——常用模块" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/07/Python学习笔记——常用模块/" class="article-date">
@@ -1386,276 +2074,11 @@
 
 
   
-    <article id="post-Python安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/14/Python安装/" class="article-date">
-  <time datetime="2018-07-14T11:05:41.000Z" itemprop="datePublished">2018-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/Python安装/">Python——安装教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>目录：</p>
-<!-- TOC -->
-<ul>
-<li><a href="#python-程序界神兽蟒蛇">Python 程序界神兽——蟒蛇</a></li>
-<li><a href="#程序的基本编写方法ipo模式">程序的基本编写方法：IPO模式</a></li>
-<li><a href="#python语言windows系统开发环境配置">Python语言windows系统开发环境配置</a><ul>
-<li><a href="#1python自带的idle">1、Python自带的IDLE</a></li>
-<li><a href="#2集成开发环境ideintegrated-development-environment-pycharm">2、集成开发环境（IDE：Integrated Development Environment）: PyCharm</a><ul>
-<li><a href="#完美破解方式永久激活">完美破解方式，永久激活</a></li>
-</ul>
-</li>
-<li><a href="#3sublime-text或者notepad不配置python运行环境">3、Sublime Text或者Notepad++，不配置Python运行环境</a></li>
-<li><a href="#4使用sublime-text-3配置python环境">4、使用Sublime Text 3配置python环境</a><ul>
-<li><a href="#安装package-control">安装Package Control</a></li>
-<li><a href="#配置包">配置包</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h2 id="Python-程序界神兽——蟒蛇"><a href="#Python-程序界神兽——蟒蛇" class="headerlink" title="Python 程序界神兽——蟒蛇"></a>Python 程序界神兽——蟒蛇</h2><p>Python是一种解释型、面向对象、动态数据类型的高级程序设计语言。</p>
-<p><img src="/2018/07/14/Python安装/python.jpg" alt=""></p>
-<hr>
-<h2 id="程序的基本编写方法：IPO模式"><a href="#程序的基本编写方法：IPO模式" class="headerlink" title="程序的基本编写方法：IPO模式"></a>程序的基本编写方法：IPO模式</h2><ul>
-<li>I：Input 输入，程序的输入</li>
-<li>P：Process 处理，程序的主要逻辑</li>
-<li>O： Output 输出，程序的输出</li>
-</ul>
-<ol>
-<li>输入：<ul>
-<li>程序的输入包括：问键输入、网络输入、用户手工输入、随机数据输入、程序内部参数输入等</li>
-<li>输入是一个程序的开始</li>
-</ul>
-</li>
-<li>处理：<ul>
-<li>程序对输入进行处理输出产生结果</li>
-<li>处理的方法也叫算法，是程序最重要的部分</li>
-</ul>
-</li>
-<li>输出：<ul>
-<li>程序的输出包括：屏幕显示输出、文件输出、网络输出、操作系统内部变量输出等</li>
-<li>输出是一个程序展示运算成果的方式</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="Python语言windows系统开发环境配置"><a href="#Python语言windows系统开发环境配置" class="headerlink" title="Python语言windows系统开发环境配置"></a>Python语言windows系统开发环境配置</h2><p>python官网：<a href="https://www.python.org" target="_blank" rel="noopener">https://www.python.org</a> 不建议使用最新版本，容易有bug。<br>官网上版本众多，区别如下：</p>
-<ol>
-<li>X86和X86-64的区别：系統是 32 bit 的版本还是 64 bit 的</li>
-<li>web-based, executable, embeddable zip file区别：<ul>
-<li>web-based: 透过网络安装，就是执行安装后才透过网络下载python</li>
-<li>executable: 可执行文件，既把要安装的python全部下载好在本机安装，自动配置好环境变量，推荐使用该类型安装。</li>
-<li>embeddable zip file: zip 压缩档，就是python打包成zip压缩包</li>
-</ul>
-</li>
-</ol>
-<p>以上三种仅是下载形式不同，软件内容是一样的。</p>
-<p><img src="/2018/07/14/Python安装/python版本.png" alt="python版本"></p>
-<p>运行安装界面如下，选择自定义安装(“Customize installation”)，同时勾选“Add Python 3.6 to PATH”，自动配置路径。</p>
-<p><img src="/2018/07/14/Python安装/安装1.png" alt="python版本"></p>
-<p>搜索软件并运行或在cmd中输入“python”即可运行程序，输入print(“Hello World!”)，出现如下图所示即表示安装完成，否则需要配置环境变量。</p>
-<p><img src="/2018/07/14/Python安装/python运行.png" alt="python运行"></p>
-<p>至此，python的交互式编译环境安装完成。Python交互模式主要是为了调试Python代码用的，也便于初学者学习，它不是正式运行Python代码的环境！</p>
-<hr>
-<p>以下介绍的是使用几种代码编辑器运行的文件式编译环境。</p>
-<h3 id="1、Python自带的IDLE"><a href="#1、Python自带的IDLE" class="headerlink" title="1、Python自带的IDLE"></a>1、Python自带的IDLE</h3><p>默认安装，直接搜索IDLE软件即可。</p>
-<hr>
-<h3 id="2、集成开发环境（IDE：Integrated-Development-Environment）-PyCharm"><a href="#2、集成开发环境（IDE：Integrated-Development-Environment）-PyCharm" class="headerlink" title="2、集成开发环境（IDE：Integrated Development Environment）: PyCharm"></a>2、集成开发环境（IDE：Integrated Development Environment）: PyCharm</h3><p>PyCharm专业版官网下载：<a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/</a></p>
-<h4 id="完美破解方式，永久激活"><a href="#完美破解方式，永久激活" class="headerlink" title="完美破解方式，永久激活"></a>完美破解方式，永久激活</h4><p>Intellij IDEA 注册码网址：<a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a></p>
-<p>下载如下文件，复制到安装路径的bin文件夹下。<br><img src="/2018/07/14/Python安装/注册码.jpg" alt=""></p>
-<p>用文本编辑器打开“pycharm.exe.vmoptions”和“pycharm64.exe.vmoptions”，在最后加上一行代码(注意修改文件路径):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-javaagent:D:\PyCharm 2018.1.4\bin\JetbrainsCrack-2.9-release-enc.jar</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/07/14/Python安装/文件.png" alt=""></p>
-<hr>
-<h3 id="3、Sublime-Text或者Notepad-，不配置Python运行环境"><a href="#3、Sublime-Text或者Notepad-，不配置Python运行环境" class="headerlink" title="3、Sublime Text或者Notepad++，不配置Python运行环境"></a>3、Sublime Text或者Notepad++，不配置Python运行环境</h3><p>subline text 3官网下载：<a href="http://www.sublimetext.com/" target="_blank" rel="noopener">http://www.sublimetext.com/</a> 这里我使用默认的安装地址，自定义安装地址有时候会出错。</p>
-<p>编辑好程序后保存为.py文件，然后打开命令行，将当前目录切换到文件所在目录，就行运行程序了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\work&gt;python hello.py</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="4、使用Sublime-Text-3配置python环境"><a href="#4、使用Sublime-Text-3配置python环境" class="headerlink" title="4、使用Sublime Text 3配置python环境"></a>4、使用Sublime Text 3配置python环境</h3><h4 id="安装Package-Control"><a href="#安装Package-Control" class="headerlink" title="安装Package Control"></a>安装Package Control</h4><p>两种方法：</p>
-<ol>
-<li>简单的安装方法</li>
-</ol>
-<p>使用Ctrl+`快捷键或者通过View-&gt;Show Console菜单打开命令行，粘贴如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os;</span><br><span class="line">pf = <span class="string">'Package Control.sublime-package'</span>;</span><br><span class="line">ipp = sublime.installed_packages_path();</span><br><span class="line">urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), <span class="string">'wb'</span>).write(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())</span><br></pre></td></tr></table></figure>
-<p>如果顺利的话，此时就可以在Preferences菜单下看到Package Settings和Package Control两个菜单了。</p>
-<ol start="2">
-<li><p>手动安装</p>
-<p>可能由于各种原因，无法使用代码安装，那可以通过以下步骤手动安装Package Control：</p>
-<ol>
-<li>点击Preferences &gt; Browse Packages菜单</li>
-<li>进入打开的目录的上层目录，然后再进入Installed Packages/目录</li>
-<li>下载Package Control.sublime-package并复制到Installed Packages/目录</li>
-<li>重启Sublime Text。</li>
-</ol>
-</li>
-</ol>
-<h4 id="配置包"><a href="#配置包" class="headerlink" title="配置包"></a>配置包</h4><p>点击刚刚生成的Package Control -&gt;输入install 或者Ctrl+shift+p 键入 install packages进入安装界面安装如下插件：</p>
-<ol>
-<li>SideBarEnhancements =&gt; 侧边栏管理</li>
-<li>Anaconda （Python IDE插件）</li>
-<li>SublimeREPL</li>
-<li>键位绑定：每次通过Tools-&gt;SublimeREPL-&gt;Python这样的方式比较繁琐，自定义绑定快捷键就会方便很多。<br>打开Preferences-&gt;Key Bindings-User，复制一下代码：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[&#123;<span class="string">"keys"</span>:[<span class="string">"f5"</span>],</span><br><span class="line"><span class="string">"caption"</span>: <span class="string">"SublimeREPL: Python - RUN current file"</span>,</span><br><span class="line"><span class="string">"command"</span>: <span class="string">"run_existing_window_command"</span>, <span class="string">"args"</span>:</span><br><span class="line">&#123;<span class="string">"id"</span>: <span class="string">"repl_python_run"</span>,<span class="string">"file"</span>: <span class="string">"config/Python/Main.sublime-menu"</span>&#125;</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Ctrl+s下就好了</p>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/Python安装/" data-id="ck2ovxzjr000zc8utgsdxy3hk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hello-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/13/Hello-Hexo/" class="article-date">
-  <time datetime="2018-07-13T09:18:35.000Z" itemprop="datePublished">2018-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/Hello-Hexo/">Hello, Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- TOC -->
-<ul>
-<li><a href="#hexo-使用介绍">Hexo 使用介绍</a><ul>
-<li><a href="#创建博客">创建博客</a></li>
-<li><a href="#页面编辑">页面编辑</a><ul>
-<li><a href="#文字效果">文字效果</a></li>
-<li><a href="#分级效果">分级效果</a></li>
-<li><a href="#超链接">超链接</a></li>
-<li><a href="#无序列表">无序列表</a></li>
-<li><a href="#有序列表">有序列表</a></li>
-</ul>
-</li>
-<li><a href="#插入图片">插入图片</a><ul>
-<li><a href="#解决方式">解决方式:</a><ul>
-<li><a href="#1-修改post_asset_folder">1. 修改post_asset_folder</a></li>
-<li><a href="#2-安装hexo-asset-image">2. 安装hexo-asset-image</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#表格">表格</a></li>
-<li><a href="#生成及部署博客">生成及部署博客</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h2 id="Hexo-使用介绍"><a href="#Hexo-使用介绍" class="headerlink" title="Hexo 使用介绍"></a>Hexo 使用介绍</h2><h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><p>在命令行中找到hexo安装路径，使用命令：hexo new post “博客名”，创建博客，博客路径为”安装路径/source/_posts/博客名.md”</p>
-<p><img src="/2018/07/13/Hello-Hexo/new.jpg" alt=""></p>
-<h3 id="页面编辑"><a href="#页面编辑" class="headerlink" title="页面编辑"></a>页面编辑</h3><h4 id="文字效果"><a href="#文字效果" class="headerlink" title="文字效果"></a>文字效果</h4><p><em>斜体</em>: *斜体* 或者 _斜体_<br><strong>粗体</strong>：**粗体**<br><strong><em>加粗斜体</em></strong>：***加粗斜体***<br><del>删除线</del>：~~删除线~~</p>
-<h4 id="分级效果"><a href="#分级效果" class="headerlink" title="分级效果"></a>分级效果</h4><p>一级标题: # 一级标题<br>二级标题: ## 二级标题<br>三级标题: ### 三级标题<br>四级标题: #### 四级标题<br>五级标题: ##### 五级标题<br>六级标题: ###### 六级标题</p>
-<h4 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h4><p>行内形式(<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">我的博客</a>): [我的博客](<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a>)<br>自动链接(<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a>): \<a href="https://aijunhao.github.io/\" target="_blank" rel="noopener">https://aijunhao.github.io/\</a></p>
-<h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p>使用“*、+、-”符号交替</p>
-<ul>
-<li>无序列表项1</li>
-</ul>
-<ul>
-<li>无序列表项2</li>
-</ul>
-<ul>
-<li>无序列表项3</li>
-</ul>
-<h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>使用数字或者字母等有序字符</p>
-<ol>
-<li>有序列表项1</li>
-<li>有序列表项2</li>
-<li>有序列表项3</li>
-</ol>
-<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>![](目录名/图片.jpg)</p>
-<p>markdown文章使用的图片路径和hexo博客发布时的图片路径不一致，会导致本地可以显示，github端无法显示的问题。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式:"></a>解决方式:</h4><p>使用<strong>CodeFalling/hexo-asset-image插件</strong></p>
-<h5 id="1-修改post-asset-folder"><a href="#1-修改post-asset-folder" class="headerlink" title="1. 修改post_asset_folder"></a>1. 修改post_asset_folder</h5><p>Hexo安装目录下_config.yml 中有 <strong>post_asset_folder:true</strong>。</p>
-<h5 id="2-安装hexo-asset-image"><a href="#2-安装hexo-asset-image" class="headerlink" title="2. 安装hexo-asset-image"></a>2. 安装hexo-asset-image</h5><p>在hexo目录下执行命令：npm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> –save  进行插件安装。<br>安装完之后，再新建博客时，会发现_post下同时新建了一个与博客同名的文件夹，用来存放图片。</p>
-<p>此时就能同步markdown和hexo图片了。</p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table>
-<thead>
-<tr>
-<th>表头1</th>
-<th style="text-align:left">表头2</th>
-<th style="text-align:center">表头3</th>
-<th style="text-align:right">表头4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-</tbody>
-</table>
-<h3 id="生成及部署博客"><a href="#生成及部署博客" class="headerlink" title="生成及部署博客"></a>生成及部署博客</h3><p>编辑好文章，使用命令：hexo d -g，即可生成及部署，此时可以访问个人网站进行访问了：<a href="https://aijunhao.github.io/" target="_blank" rel="noopener">https://aijunhao.github.io/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Hello-Hexo/" data-id="ck2ovxzj7000rc8ut8qt4z9ch" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1679,7 +2102,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 11.67px;">EcamScript6</a> <a href="/tags/ElementUI/" style="font-size: 12.5px;">ElementUI</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 10.83px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 18.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 14.17px;">Node</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/Vue/" style="font-size: 15.83px;">Vue</a> <a href="/tags/blog/" style="font-size: 10.83px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 19.17px;">前端</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a> <a href="/tags/面经/" style="font-size: 10px;">面经</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/CSS/" style="font-size: 11.67px;">CSS</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 11.67px;">EcamScript6</a> <a href="/tags/ElementUI/" style="font-size: 12.5px;">ElementUI</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 10.83px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 18.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 14.17px;">Node</a> <a href="/tags/Python/" style="font-size: 15.83px;">Python</a> <a href="/tags/Vue/" style="font-size: 16.67px;">Vue</a> <a href="/tags/blog/" style="font-size: 10.83px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 19.17px;">前端</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a> <a href="/tags/面经/" style="font-size: 10px;">面经</a>
     </div>
   </div>
 
@@ -1701,23 +2124,23 @@
       <ul>
         
           <li>
+            <a href="/2019/11/25/框架-Vue-组件通信/">框架-Vue-组件通信</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/框架-Vue-《Vue.js实战》/">框架-Vue-《Vue.js实战》</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/前端-CSS-《CSS揭秘》/">前端-CSS-《CSS揭秘》</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/09/前端-ElementUI-源码分析-Scss简介/">前端-ElementUI-源码分析-Sass简介</a>
           </li>
         
           <li>
-            <a href="/2019/11/08/前端-ElementUI-源码分析-Carousel/">前端-ElementUI-源码分析-Carousel</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/08/前端-ElementUI-源码分析-Button/">前端-ElementUI-源码分析-Button</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/07/前端-ElementUI-源码分析-架构/">前端-ElementUI-源码分析-架构介绍</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/13/前端-JavaScript基础-异步操作原理及方法/">前端-JavaScript基础-异步操作原理及方法</a>
+            <a href="/2019/11/08/前端-ElementUI-源码分析-Carousel/">前端-ElementUI-源码分析-Button</a>
           </li>
         
       </ul>

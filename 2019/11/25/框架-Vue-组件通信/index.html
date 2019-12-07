@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>框架-Vue-组件通信 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言此篇文章主要介绍 Vue 组件通信。 组件通信主要分为父子组件通信和非父子组件通信。 父子组件通信：  props : 父传子。 $emit : 自定义事件，子传父。  非父子组件通信：  bus 中央事件总线：适合小型项目。 vuex 状态管理模式：适合大型项目。 this.$parent this.$children 父链和子组件索引：适用于组件封装。 webStorage 浏览器存储：l">
+<meta name="keywords" content="移动端,前端,JavaScript,Vue,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="框架-Vue-组件通信">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/框架-Vue-组件通信/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="前言此篇文章主要介绍 Vue 组件通信。 组件通信主要分为父子组件通信和非父子组件通信。 父子组件通信：  props : 父传子。 $emit : 自定义事件，子传父。  非父子组件通信：  bus 中央事件总线：适合小型项目。 vuex 状态管理模式：适合大型项目。 this.$parent this.$children 父链和子组件索引：适用于组件封装。 webStorage 浏览器存储：l">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/11/25/框架-Vue-组件通信/prop.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/25/框架-Vue-组件通信/vm.$children.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/11/25/框架-Vue-组件通信/$children.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/11/25/框架-Vue-组件通信/ref.PNG">
+<meta property="og:updated_time" content="2019-12-07T14:06:05.658Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="框架-Vue-组件通信">
+<meta name="twitter:description" content="前言此篇文章主要介绍 Vue 组件通信。 组件通信主要分为父子组件通信和非父子组件通信。 父子组件通信：  props : 父传子。 $emit : 自定义事件，子传父。  非父子组件通信：  bus 中央事件总线：适合小型项目。 vuex 状态管理模式：适合大型项目。 this.$parent this.$children 父链和子组件索引：适用于组件封装。 webStorage 浏览器存储：l">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/25/框架-Vue-组件通信/prop.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-框架-Vue-组件通信" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/25/框架-Vue-组件通信/" class="article-date">
+  <time datetime="2019-11-25T01:19:00.000Z" itemprop="datePublished">2019-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      框架-Vue-组件通信
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>此篇文章主要介绍 <code>Vue</code> 组件通信。</p>
+<p>组件通信主要分为父子组件通信和非父子组件通信。</p>
+<p>父子组件通信：</p>
+<ol>
+<li><code>props</code> : 父传子。</li>
+<li><code>$emit</code> : 自定义事件，子传父。</li>
+</ol>
+<p>非父子组件通信：</p>
+<ol>
+<li><code>bus</code> 中央事件总线：适合小型项目。</li>
+<li><code>vuex</code> 状态管理模式：适合大型项目。</li>
+<li><code>this.$parent</code> <code>this.$children</code> 父链和子组件索引：适用于组件封装。</li>
+<li><code>webStorage</code> 浏览器存储：<code>localStorage</code> 和 <code>sessionStorage</code> </li>
+<li><code>query</code> 路由传参。</li>
+</ol>
+<p>各种方式都有利有弊，下面会逐个介绍。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 父组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;child&quot;&gt;</span><br><span class="line">    父组件</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;father&apos;,</span><br><span class="line"></span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 子组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;child&quot;&gt;</span><br><span class="line">    子组件</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;child&apos;,</span><br><span class="line"></span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="props"><a href="#props" class="headerlink" title="props"></a>props</h2><p><code>props</code> 是父组件向子组件单向传导数据的方式。</p>
+<p>文档参考官网：<a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a></p>
+<h3 id="props-规范"><a href="#props-规范" class="headerlink" title="props 规范"></a>props 规范</h3><p> HTML 中的特性名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。  这意味着当你使用 <font color="red">DOM 中的模板时</font>，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名 。</p>
+<p>如果是字符串模板，就不存在这个限制。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vue.component('blog-post', &#123;</span><br><span class="line">  // 在 JavaScript 中是 camelCase 的</span><br><span class="line">  props: ['postTitle'],</span><br><span class="line">  template: '<span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123; postTitle &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span>'</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 在 HTML 中是 kebab-case 的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">post-title</span>=<span class="string">"hello!"</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="props-验证"><a href="#props-验证" class="headerlink" title="props 验证"></a>props 验证</h3><p><code>props</code> 在接收组件中有两种写法，一种是数组，一种是对象。</p>
+<p>通常来说，在实际项目中，<code>props</code> 需要明确类型，需要使用对象的写法进行验证。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串数组形式，只指定名称</span></span><br><span class="line">props: [<span class="string">'title'</span>, <span class="string">'likes'</span>, <span class="string">'isPublished'</span>, <span class="string">'commentIds'</span>, <span class="string">'author'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">// 推荐形式</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  props: &#123;</span><br><span class="line">    // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)</span><br><span class="line">    propA: Number,</span><br><span class="line">    // 多个可能的类型</span><br><span class="line">    propB: [String, Number],</span><br><span class="line">    // 必填的字符串</span><br><span class="line">    propC: &#123;</span><br><span class="line">      type: String,</span><br><span class="line">      required: true</span><br><span class="line">    &#125;,</span><br><span class="line">    // 带有默认值的数字</span><br><span class="line">    propD: &#123;</span><br><span class="line">      type: Number,</span><br><span class="line">      default: 100</span><br><span class="line">    &#125;,</span><br><span class="line">    // 带有默认值的对象</span><br><span class="line">    propE: &#123;</span><br><span class="line">      type: Object,</span><br><span class="line">      // 对象或数组默认值必须从一个工厂函数获取</span><br><span class="line">      default: function() &#123;</span><br><span class="line">        return &#123; message: &quot;hello&quot; &#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 自定义验证函数</span><br><span class="line">    propF: &#123;</span><br><span class="line">      validator: function(value) &#123;</span><br><span class="line">        // 这个值必须匹配下列字符串中的一个</span><br><span class="line">        return [&quot;success&quot;, &quot;warning&quot;, &quot;danger&quot;].indexOf(value) !== -1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="父组件传递数据"><a href="#父组件传递数据" class="headerlink" title="父组件传递数据"></a>父组件传递数据</h3><p>如下是父组件向子组件传递数据的案例，在子组件中使用 <code>props</code> 定义传入数据的名称和数据格式。然后再父组件中通过该字段给子组件传参，必要时可以使用 <code>V-bind</code> 绑定动态数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 父组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;father&quot;&gt;</span><br><span class="line">    父组件</span><br><span class="line">    &lt;child :msg=&quot;fmsg&quot;&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from &apos;./components/child&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;father&apos;,</span><br><span class="line"></span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      fmsg: &apos;父组件msg&apos;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 子组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;child&quot;&gt;</span><br><span class="line">    子组件</span><br><span class="line">    &#123;&#123; msg &#125;&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;child&apos;,</span><br><span class="line"></span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: &#123;</span><br><span class="line">      type: String</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/25/框架-Vue-组件通信/prop.png" alt=""></p>
+<h3 id="子组件数据处理"><a href="#子组件数据处理" class="headerlink" title="子组件数据处理"></a>子组件数据处理</h3><p>如上就是基本的子组件数据接收了，但是 <code>props</code> 只适用于数据传递，<font color="red">不允许在子组件内部修改 props 值。</font></p>
+<p>如果需要对父组件传入的值做处理，可以使用已下两种方式。</p>
+<p><strong>1. 在子组件中将 props 转为本地数据。</strong></p>
+<p> 在这种情况下，最好定义一个本地的 data 属性并将这个 prop 用作其初始值： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">  msg: &#123;</span><br><span class="line">    type: String</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    childMsg: this.msg</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2. props 传入值需要进行转换。</strong></p>
+<p>这种情况下最好定义一个计算属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">  msg: &#123;</span><br><span class="line">    type: String</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">computed: &#123;</span><br><span class="line">  childMsg() &#123;</span><br><span class="line">    return this.msg.toLowerCase();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义事件和监听"><a href="#自定义事件和监听" class="headerlink" title="自定义事件和监听"></a>自定义事件和监听</h2><p><code>$emit</code> 是自定义事件，在父组件中添加事件监听器，在子组件中触发自定义事件，子组件触发事件后，携带子组件参数传给监听器，即父组件。这样就实现了子组件向父组件传递数据。</p>
+<p><code>$on</code> 监听当前实例上的自定义事件，就相当于父组件中的事件监听器。</p>
+<p>自定义事件：<a href="https://cn.vuejs.org/v2/guide/components-custom-events.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-custom-events.html</a></p>
+<p><code>$emit</code> API：<a href="https://cn.vuejs.org/v2/api/#vm-emit" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#vm-emit</a></p>
+<font color="red">自定义事件名推荐使用短横线的形式。</font>
+
+<p>因为 HTML 是大小写不敏感的，所以父组件中的事件监听器在 DOM 模板中会被自动转换为全小写，<code>v-on:myEvent</code> 会变成 <code>v-on:myevent</code> ，导致事件 <code>myEvent</code> 不会被监听到。</p>
+<h3 id="子组件自定义事件"><a href="#子组件自定义事件" class="headerlink" title="子组件自定义事件"></a>子组件自定义事件</h3><p>如下在子组件中定义了一个 <code>get-child-msg</code> 事件，并携带 <code>childMsg</code> 字段数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 子组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;child&quot;&gt;</span><br><span class="line">    子组件</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;按钮&quot; @click=&quot;$emit(&apos;get-child-msg&apos;, childMsg)&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;child&quot;,</span><br><span class="line"></span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      childMsg: &quot;子组件数据&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="父组件监听事件"><a href="#父组件监听事件" class="headerlink" title="父组件监听事件"></a>父组件监听事件</h3><p>在父组件中，监听 <code>get-child-msg</code> 事件，触发 <code>getChildMsg</code> 方法，并将参数传入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 父组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;father&quot;&gt;</span><br><span class="line">    父组件</span><br><span class="line">    &lt;child @get-child-msg=&quot;getChildMsg&quot;&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from &quot;./components/child&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;father&quot;,</span><br><span class="line"></span><br><span class="line">  components: &#123;</span><br><span class="line">    child</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    getChildMsg(data) &#123;</span><br><span class="line">      console.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="on"><a href="#on" class="headerlink" title="$on"></a>$on</h3><p><code>$on</code> API 只能监听当前实例上的自定义事件，也就是说如果是在组件化项目中，只能在子组件中监听当前组件的自定义事件。或者将子组件导入到父组件中，然后调用子组件的 <code>$on</code> 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 子组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;child&quot;&gt;</span><br><span class="line">    子组件</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;按钮&quot; @click=&quot;$emit(&apos;get-child-msg&apos;, childMsg)&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;child&quot;,</span><br><span class="line"></span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      childMsg: &quot;子组件数据&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.$on(&apos;get-child-msg&apos;, (data) =&gt; &#123;</span><br><span class="line">      console.log(&apos;子组件&apos;, data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="中央事件总线"><a href="#中央事件总线" class="headerlink" title="中央事件总线"></a>中央事件总线</h2><p><code>bus</code> 中央事件总线，是非父子组件之间的传值方式，相对于 <code>vuex</code> 来说较为简单，更适用于小型项目。</p>
+<p><code>bus</code> 的使用方法类似于 <code>$emit</code> 自定义事件和 <code>$on</code> 事件监听。</p>
+<h3 id="vue-bus-简介"><a href="#vue-bus-简介" class="headerlink" title="vue-bus 简介"></a>vue-bus 简介</h3><p><code>vue-bus</code> 是 <code>npm</code> 封装好的 <code>bus</code> 模块，只是对 <code>Vue</code> 的 <code>$emit</code> <code>$on</code> 等 API 做了简略的封装而已。当然手写原生的 <code>Vue</code> 实例来实现 <code>bus</code> 模块也非常简单。</p>
+<p><strong>安装</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-bus --save</span><br></pre></td></tr></table></figure>
+<p><strong>全局注册</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import VueBus from &apos;vue-bus&apos;</span><br><span class="line"></span><br><span class="line">// 全局注册</span><br><span class="line">Vue.use(VueBus)</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<p><code>bus</code> 只有四个 API ：</p>
+<ul>
+<li><code>Vue.bus.on</code> 或 <code>$bus.on</code> ：监听事件。</li>
+<li><code>Vue.bus.once</code> 或 <code>$bus.once</code> ：监听一个自定义事件，但是只触发一次。</li>
+<li><code>Vue.bus.off</code> 或 <code>$bus.off</code> ：取消监听事件。</li>
+<li><code>Vue.bus.emit</code> 或 <code>$bus.emit</code> ：自定义事件。</li>
+</ul>
+<h3 id="vue-bus-触发事件"><a href="#vue-bus-触发事件" class="headerlink" title="vue-bus 触发事件"></a>vue-bus 触发事件</h3><p>如下，点击按钮，触发事件，调用 <code>$bus.emit()</code> 触发自定义 <code>get-child-msg</code> 事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// child 组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;child&quot;&gt;</span><br><span class="line">    子组件</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;按钮&quot; @click=&quot;trigger&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;child&quot;,</span><br><span class="line"></span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      childMsg: &quot;子组件数据&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    trigger() &#123;</span><br><span class="line">      this.$bus.emit(&apos;get-child-msg&apos;, this.childMsg)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="vue-bus-监听和清除事件"><a href="#vue-bus-监听和清除事件" class="headerlink" title="vue-bus 监听和清除事件"></a>vue-bus 监听和清除事件</h3><p>在兄弟组件中使用 <code>$bus.on()</code> 来监听事件，使用 <code>$bus.off()</code> 来取消监听事件，<font color="red">一般在created() 中监听，在 beforeDestroy() 中取消监听。</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// brother 组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;brother&quot;&gt;</span><br><span class="line">    兄弟组件</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;brother&quot;,</span><br><span class="line"></span><br><span class="line">  created() &#123;</span><br><span class="line">    this.$bus.on(&apos;get-child-msg&apos;, this.getData)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    getData(value) &#123;</span><br><span class="line">      console.log(&apos;获取child组件中的数据：&apos;, value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  beforeDestroy() &#123;</span><br><span class="line">    this.$bus.off(&apos;get-child-msg&apos;, this.getData);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="手写原生-bus"><a href="#手写原生-bus" class="headerlink" title="手写原生 bus"></a>手写原生 bus</h3><p><code>bus</code> 核心就是 <code>Vue</code> API 中的 <code>$emit</code> 和 <code>$on</code> ，而这两个 API 都只能在当前实例下使用，所以可想而知，手写原生 <code>bus</code> 必定是新建一个 Vue 实例 <code>bus.js</code> 作为中介连接任意两个组件 ，然后将这个实例导入到需要的页面中即可。</p>
+<p>如下就是一个最最最简单的手写 <code>bus</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bus.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">let</span> bus = <span class="keyword">new</span> Vue();</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> bus;</span><br></pre></td></tr></table></figure>
+<p>然后只需要在使用的地方导入即可使用。</p>
+<h3 id="原生-bus-触发事件"><a href="#原生-bus-触发事件" class="headerlink" title="原生 bus 触发事件"></a>原生 bus 触发事件</h3><p>原生 <code>bus</code> 触发事件是直接调用 <code>bus</code> 实例的 <code>$emit</code> 等 API。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// child 组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;child&quot;&gt;</span><br><span class="line">    子组件</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;按钮&quot; @click=&quot;trigger&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 导入 bus</span><br><span class="line">import bus from &apos;../bus&apos;</span><br><span class="line">    </span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;child&quot;,</span><br><span class="line"></span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      childMsg: &quot;子组件数据&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    trigger() &#123;</span><br><span class="line">      bus.$emit(&apos;get-child-msg&apos;, this.childMsg)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="原生-bus-监听事件"><a href="#原生-bus-监听事件" class="headerlink" title="原生 bus 监听事件"></a>原生 bus 监听事件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// brother 组件测试代码</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;brother&quot;&gt;</span><br><span class="line">    兄弟组件</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 导入 bus</span><br><span class="line">import bus from &apos;../bus&apos;</span><br><span class="line">    </span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;brother&quot;,</span><br><span class="line"></span><br><span class="line">  created() &#123;</span><br><span class="line">    bus.$on(&apos;get-child-msg&apos;, this.getData)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    getData(value) &#123;</span><br><span class="line">      console.log(&apos;获取child组件中的数据：&apos;, value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  beforeDestroy() &#123;</span><br><span class="line">    bus.$off(&apos;get-child-msg&apos;, this.getData);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="状态管理模式"><a href="#状态管理模式" class="headerlink" title="状态管理模式"></a>状态管理模式</h2><p>全局状态管理工具，详情见 《框架-Vuex》单独模块。</p>
+<h2 id="父链和子组件索引"><a href="#父链和子组件索引" class="headerlink" title="父链和子组件索引"></a>父链和子组件索引</h2><p>在子组件中使用<code>this.$parent</code> 可以访问该组件的父实例或组件，父组件可以通过 <code>this.$children</code> 访问子组件。<font color="red">父链和子组件有一个特点，就是可以向上或者向下无限递归访问，直到跟实例或最内层的组件。</font></p>
+<font color="red">使用父链和子组件索引会导致组件间高度耦合，一般情况下不建议在开发中使用，当然如果是用在组件封装中，这种方式有些优势（至少不用额外导包）。</font>
+
+<h3 id="children-子组件索引"><a href="#children-子组件索引" class="headerlink" title="$children 子组件索引"></a>$children 子组件索引</h3><p>如下是官网 API 中对 <code>$children</code> 子组件索引的解释。</p>
+<p><img src="/2019/11/25/框架-Vue-组件通信/vm.$children.PNG" alt="vm.$children"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// App.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;修改子组件数据&quot; @click=&quot;change&quot;&gt;</span><br><span class="line">    &lt;child&gt;&lt;/child&gt;</span><br><span class="line">    &lt;child&gt;&lt;/child&gt;</span><br><span class="line">    &lt;child&gt;&lt;/child&gt;</span><br><span class="line">    &lt;child&gt;&lt;/child&gt;</span><br><span class="line">    &lt;child&gt;&lt;/child&gt;</span><br><span class="line">    &lt;child&gt;&lt;/child&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from &apos;./components/child&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;app&quot;,</span><br><span class="line"></span><br><span class="line">  components: &#123;</span><br><span class="line">    child, brother</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  mounted() &#123;</span><br><span class="line">    console.log(this.$children)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    change() &#123;</span><br><span class="line">      this.$children[2].childMsg = &apos;来自父组件的数据&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// child.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;child&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; :value=&quot;childMsg&quot;/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;child&quot;,</span><br><span class="line"></span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      childMsg: &quot;子组件数据&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/25/框架-Vue-组件通信/$children.PNG" alt="$child.png"></p>
+<p>如上，在父组件的 <code>mounted</code> 函数中输出所有的子组件，点击父组件的按钮，会修改子组件的数据。</p>
+<h3 id="ref-属性和-refs-API"><a href="#ref-属性和-refs-API" class="headerlink" title="ref 属性和 $refs API"></a>ref 属性和 $refs API</h3><p><code>ref</code> 属性是用来给组件指定索引名称，功能类似于 ID 或者 class 之类的选择器。</p>
+<p><code>$refs</code> 是 <code>Vue</code> 的 API ，用户获取指定索引名称的子组件实例或者元素，直接操作实例修改数据或者调用方法。</p>
+<p><img src="/2019/11/25/框架-Vue-组件通信/ref.PNG" alt="ref.png"></p>
+<font color="red">$ref 只在组件渲染完成后才填充，并且是非响应式的。</font>
+
+<h2 id="浏览器存储"><a href="#浏览器存储" class="headerlink" title="浏览器存储"></a>浏览器存储</h2><p><strong>Web Storage 浏览器存储</strong> 提供一种方式，可以让 web 页面实现在客户端浏览器中以键值对的形式在本地保存数据。<code>html5</code> 的 <code>web Storage</code> 提供两种客户端存储方式，即 <strong>sessionStorage 和 localStorage</strong> ，其目的是为了克服 <code>Cookie</code> 带来的一些限制。</p>
+<h3 id="Cookie-（html4）"><a href="#Cookie-（html4）" class="headerlink" title="Cookie （html4）"></a>Cookie （html4）</h3><p>优点：</p>
+<ol>
+<li>简单易用。</li>
+<li>浏览器负责发送数据。</li>
+<li>浏览器自动管理不同站点的 <code>Cookie</code> 。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>使用简单的文本存储数据，安全性能差，存储在本地，容易被黑客窃取。</li>
+<li>存储大小有限，上限为4kb。</li>
+<li>存储 <code>Cookie</code> 的数量有限，多数上限为30到50个，部分可以高达300个。</li>
+<li>如果浏览器的安全配置为最高级别，使用 <code>Cookie</code> 会失败。</li>
+<li><code>Cookie</code> 会在浏览器和服务器之间来回传递，数据量过大会导致效率低下，并且传输存在安全隐患。</li>
+<li>生命周期为当前浏览器关闭之前所有窗口有效。</li>
+</ol>
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><p>优点：</p>
+<ol>
+<li>存储空间大，一般是5MB，不同浏览器会有不同。</li>
+<li>有更为丰富的接口，操作更简介。</li>
+<li>生命周期为当前浏览器关闭之前所有窗口有效。</li>
+<li>保存在客户端，不与服务器进行交互，节省流量，安全性相对较高。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存数据</span></span><br><span class="line"><span class="built_in">window</span>.sessionStorage.setItem(<span class="string">'key'</span>, <span class="string">'value'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取数据</span></span><br><span class="line"><span class="built_in">window</span>.sessionStorage.getItem(<span class="string">'key'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删数据</span></span><br><span class="line"><span class="built_in">window</span>.sessionStorage.removeItem(<span class="string">'key'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清空所有数据</span></span><br><span class="line"><span class="built_in">window</span>.sessionStorage.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取某个索引的key</span></span><br><span class="line"><span class="built_in">window</span>.sessionStorage.key(index)</span><br></pre></td></tr></table></figure>
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p>优点：</p>
+<ol>
+<li>存储空间大，一般是5MB，不同浏览器会有不同。</li>
+<li>有更为丰富的接口，操作更简介。</li>
+<li>存储在本地单独文件，永久有效，除非主动删除，同源窗口有效。</li>
+<li>保存在客户端，不与服务器进行交互，节省流量，安全性相对较高。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存数据</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.setItem(<span class="string">'key'</span>, <span class="string">'value'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取数据</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.getItem(<span class="string">'key'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删数据</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.removeItem(<span class="string">'key'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清空所有数据</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取某个索引的key</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.key(index)</span><br></pre></td></tr></table></figure>
+<h3 id="JSON-数据转换"><a href="#JSON-数据转换" class="headerlink" title="JSON 数据转换"></a>JSON 数据转换</h3><p>在使用 <code>sessionStorage</code> 和 <code>localStorage</code> 存取数据的时候建议存取简单数据类型，此时如果是对象或者数组就需要将数据转换为 JSON 字符串，然后存储。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将字符串解析为对象或者数组</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(value)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将对象或数组转换为 JSON 字符串</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify(obj)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/25/框架-Vue-组件通信/" data-id="ck3vnnetu00040wut1eqn98a9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/23/框架-Vue-《Vue.js实战》/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">框架-Vue-《Vue.js实战》</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECharts/">ECharts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/">ElementUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面经/">面经</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/CSS/" style="font-size: 11.67px;">CSS</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 11.67px;">EcamScript6</a> <a href="/tags/ElementUI/" style="font-size: 12.5px;">ElementUI</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 10.83px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 18.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 14.17px;">Node</a> <a href="/tags/Python/" style="font-size: 15.83px;">Python</a> <a href="/tags/Vue/" style="font-size: 16.67px;">Vue</a> <a href="/tags/blog/" style="font-size: 10.83px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 19.17px;">前端</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a> <a href="/tags/面经/" style="font-size: 10px;">面经</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/25/框架-Vue-组件通信/">框架-Vue-组件通信</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/框架-Vue-《Vue.js实战》/">框架-Vue-《Vue.js实战》</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/前端-CSS-《CSS揭秘》/">前端-CSS-《CSS揭秘》</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/09/前端-ElementUI-源码分析-Scss简介/">前端-ElementUI-源码分析-Sass简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/08/前端-ElementUI-源码分析-Carousel/">前端-ElementUI-源码分析-Button</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
