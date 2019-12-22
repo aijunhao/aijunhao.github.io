@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>组件-Vue-TinyMce富文本组件 | Hello, I&#39;m Junhao Ai.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言本文讲述的是 TinyMce 富文本组件的应用，相对来说，这个富文本组件比较好看，并且配置相对简单，最关键的是功能强大。  其他常见的富文本编辑器有： UEditor、Kindeditor、Simditor、CKEditor、wangEditor、Suneditor、froala等。 TinyMce 对 Vue 进行了集成，可以直接使用  @tinymce/tinymce-vue  这个插件，">
+<meta name="keywords" content="移动端,前端,JavaScript,Vue,框架,Vue组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组件-Vue-TinyMce富文本组件">
+<meta property="og:url" content="http://yoursite.com/2019/12/20/组件-Vue-TinyMce/index.html">
+<meta property="og:site_name" content="Hello, I&#39;m Junhao Ai.">
+<meta property="og:description" content="前言本文讲述的是 TinyMce 富文本组件的应用，相对来说，这个富文本组件比较好看，并且配置相对简单，最关键的是功能强大。  其他常见的富文本编辑器有： UEditor、Kindeditor、Simditor、CKEditor、wangEditor、Suneditor、froala等。 TinyMce 对 Vue 进行了集成，可以直接使用  @tinymce/tinymce-vue  这个插件，">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/12/20/组件-Vue-TinyMce/全部插件.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/12/20/组件-Vue-TinyMce/基础.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/12/20/组件-Vue-TinyMce/inline.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/12/20/组件-Vue-TinyMce/沉浸式.PNG">
+<meta property="og:updated_time" content="2019-12-22T07:44:22.157Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组件-Vue-TinyMce富文本组件">
+<meta name="twitter:description" content="前言本文讲述的是 TinyMce 富文本组件的应用，相对来说，这个富文本组件比较好看，并且配置相对简单，最关键的是功能强大。  其他常见的富文本编辑器有： UEditor、Kindeditor、Simditor、CKEditor、wangEditor、Suneditor、froala等。 TinyMce 对 Vue 进行了集成，可以直接使用  @tinymce/tinymce-vue  这个插件，">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/20/组件-Vue-TinyMce/全部插件.PNG">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello, I&#39;m Junhao Ai." type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello, I&#39;m Junhao Ai.</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-组件-Vue-TinyMce" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/20/组件-Vue-TinyMce/" class="article-date">
+  <time datetime="2019-12-20T08:16:00.000Z" itemprop="datePublished">2019-12-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      组件-Vue-TinyMce富文本组件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文讲述的是 <a href="http://tinymce.ax-z.cn/" target="_blank" rel="noopener">TinyMce</a> 富文本组件的应用，相对来说，这个富文本组件比较好看，并且配置相对简单，最关键的是功能强大。</p>
+<p><img src="/2019/12/20/组件-Vue-TinyMce/全部插件.PNG" alt="全部插件"></p>
+<p>其他常见的富文本编辑器有：</p>
+<p>UEditor、Kindeditor、Simditor、CKEditor、wangEditor、Suneditor、froala等。</p>
+<p><code>TinyMce</code> 对 Vue 进行了集成，可以直接使用  <code>@tinymce/tinymce-vue</code>  这个插件，详细见：<a href="https://www.tiny.cloud/docs/integrations/vue/" target="_blank" rel="noopener">https://www.tiny.cloud/docs/integrations/vue/</a> ，但是这样需要使用官方的 API-KEY，有必要的话可以去申请，然后按照教程进行配置，会非常简单。</p>
+<p>当不去申请 API-KEY ，就需要自己对 <code>TinyMce</code> 进行适配了，本文将详细介绍。</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>当前使用环境为 <code>vue-cli 3</code> ，<code>tinymce 5.0.12</code> ，<code>@tinymce/tinymce-vue 2.1.0</code> 。</p>
+<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -S tinymce</span><br><span class="line">npm i -S @tinymce/tinymce-vue</span><br></pre></td></tr></table></figure>
+<h3 id="语言包下载"><a href="#语言包下载" class="headerlink" title="语言包下载"></a>语言包下载</h3><p><a href="https://www.tiny.cloud/get-tiny/language-packages/" target="_blank" rel="noopener">语言包下载</a> </p>
+<p>看个人需求进行下载。</p>
+<h3 id="资源整合"><a href="#资源整合" class="headerlink" title="资源整合"></a>资源整合</h3><ol>
+<li>在 public 目录下新建 <code>tinymce</code> 文件夹，将下载好的语言包解压到该目录。</li>
+<li>在 <code>node_modules</code> 中找到 <code>tinymce</code> ，将 <code>skins</code> 目录复制到 <code>public/tinymce</code> 文件夹中。</li>
+<li>创建组件，进行基础测试。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">// TinyMce.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&apos;tinymce&apos;&gt;</span><br><span class="line">        &lt;!-- 富文本编辑组件 --&gt;</span><br><span class="line">        &lt;editor</span><br><span class="line">            v-model=&apos;tinymceHtml&apos;</span><br><span class="line">            :init=&apos;init&apos;</span><br><span class="line">            :disabled=&quot;disabled&quot;</span><br><span class="line">            initial-value=&quot;快来说点什么吧……&quot;</span><br><span class="line">        &gt;&lt;/editor&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import tinymce from &quot;tinymce/tinymce&quot;;</span><br><span class="line">import Editor from &quot;@tinymce/tinymce-vue&quot;;</span><br><span class="line">import &quot;tinymce/themes/silver/theme.min&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &quot;TinyMce&quot;,</span><br><span class="line"></span><br><span class="line">    props: &#123;</span><br><span class="line">        defaultTxt: &#123;</span><br><span class="line">            type: String</span><br><span class="line">        &#125;,</span><br><span class="line">        value: &#123;</span><br><span class="line">            type: String</span><br><span class="line">        &#125;,</span><br><span class="line">        imageSize: &#123;</span><br><span class="line">            type: String</span><br><span class="line">        &#125;,</span><br><span class="line">        disabled: &#123;</span><br><span class="line">            type: Boolean,</span><br><span class="line">            default: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            tinymceHtml: this.value,</span><br><span class="line">            init: &#123;</span><br><span class="line">                // 语言包地址</span><br><span class="line">                language_url: &quot;/tinymce/langs/zh_CN.js&quot;,</span><br><span class="line">                language: &quot;zh_CN&quot;,</span><br><span class="line">                // 皮肤包地址</span><br><span class="line">                skin_url: &quot;/tinymce/skins/ui/oxide&quot;,</span><br><span class="line">                // 插件，字符串 &apos;a | b | c&apos; 或者数组 []</span><br><span class="line">                // plugins: &quot;&quot;,</span><br><span class="line">                // 工具栏，字符串 &apos;a | b | c&apos; 或者数组 []</span><br><span class="line">                // toolbar: &quot;&quot;,</span><br><span class="line">                // 样式</span><br><span class="line">                content_css: &quot;/tinymce/skins/content/default/content.css&quot;,</span><br><span class="line">                height: 300,</span><br><span class="line">                // 重置大小</span><br><span class="line">                resize: false,</span><br><span class="line">                // 右下角的logo图标</span><br><span class="line">                branding: false,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123; Editor &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/20/组件-Vue-TinyMce/基础.PNG" alt="基础"></p>
+<h2 id="简介与入门"><a href="#简介与入门" class="headerlink" title="简介与入门"></a>简介与入门</h2><h3 id="选择器配置"><a href="#选择器配置" class="headerlink" title="选择器配置"></a>选择器配置</h3><p><code>selector</code> 是 <code>TinyMCE</code> 的重要配置选项，使用 <code>CSS</code> 选择器语法来确定页面上哪个元素被 <code>TinyMCE</code> 替换成编辑器。</p>
+<p>在<strong>经典模式</strong>中，<code>TinyMCE</code> 将会在 <code>selector</code> 指定的 <code>textarea</code> 处插入一个 <code>iframe</code> 。</p>
+<p>以下为 <code>selector</code> 用法的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tinymce.init(&#123;</span><br><span class="line">    selector: <span class="string">'#textarea'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>而在<strong>内联模式</strong>下，此选项可用于任何块元素，内联模式直接将编辑器插入到指定的容器中，而不使用 <code>iframe</code> ，再次提示，此处css样式将继承自外部。</p>
+<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><h4 id="经典模式"><a href="#经典模式" class="headerlink" title="经典模式"></a>经典模式</h4><p>默认的就是经典模式，和普通的富文本编辑器基本一致。</p>
+<h4 id="内联模式"><a href="#内联模式" class="headerlink" title="内联模式"></a>内联模式</h4><p>内联模式对提升用户体验相当有用，页面的编辑视图与阅读视图合二为一，提供了无缝的体验，实现真正的所见即所得！</p>
+<p>在内联编辑模式下，编辑器不会将selector指定的元素替换为iframe，而是直接将编辑器组件融入其中。</p>
+<font color="red">注意：selector的目标设为textarea是无法启用内联模式的，必须是普通的块元素，div最佳。</font>
+
+<p>指定参数 <code>inline:true</code> 将开启内联模式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tinymce.init(&#123;</span><br><span class="line">    selector: <span class="string">'#mydiv'</span>,</span><br><span class="line">    inline: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 其他的配置文件</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/20/组件-Vue-TinyMce/inline.PNG" alt="内联模式"></p>
+<h4 id="沉浸模式"><a href="#沉浸模式" class="headerlink" title="沉浸模式"></a>沉浸模式</h4><p>沉浸模式类似于内联模式，只要将 <code>toolbar</code> 设为 false ，内联模式就能变成沉浸模式。在该模式下，编辑器以轻巧的方式呈现，此模式提供了将常用的链接、图像、表格等以快速插入的方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tinymce.init(&#123;</span><br><span class="line">    selector: &apos;div.tinymce&apos;,</span><br><span class="line">    plugins: [ &apos;quickbars&apos; ],</span><br><span class="line">    toolbar: false,</span><br><span class="line">    menubar: false,</span><br><span class="line">    inline: true</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/20/组件-Vue-TinyMce/沉浸式.PNG" alt="沉浸式"></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>使用插件有几个通用步奏：</p>
+<ol>
+<li>导包：在 vue 中自己配置的 <code>TinyMce</code> 都要自己导包。</li>
+<li>在 <code>plugins</code> 插件参数中启用插件。</li>
+<li>在 <code>toolbar</code> 工具栏参数中显示工具按钮。</li>
+</ol>
+<p>其他特殊插件需要进行配置。</p>
+<h3 id="常用插件介绍"><a href="#常用插件介绍" class="headerlink" title="常用插件介绍"></a>常用插件介绍</h3><p>官网上对插件这一块总结的比较好，就不详细写了。</p>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>插件名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/advlist.php" target="_blank" rel="noopener">advlist</a></td>
+<td>高级列表</td>
+<td>创建和定义UL和OL列表</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/anchor.php" target="_blank" rel="noopener">anchor</a></td>
+<td>锚点插件</td>
+<td>在工具栏添加一个锚点/书签按钮，该按钮还出现在菜单的插入列表中。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/autolink.php" target="_blank" rel="noopener">autolink</a></td>
+<td>自动链接插件</td>
+<td>当用户输入有效的完整URL时，autolink插件会自动创建超链接。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/autoresize.php" target="_blank" rel="noopener">autoresize</a></td>
+<td>编辑器大小自适应</td>
+<td>自动调整Tinymce大小以适应内容</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/autosave.php" target="_blank" rel="noopener">autosave</a></td>
+<td>自动存稿</td>
+<td>定时自动将编辑内容保存到浏览器本地存储中（Local Storage）</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/charmap.php" target="_blank" rel="noopener">charmap</a></td>
+<td>特殊字符插件</td>
+<td>在tinymce中插入特殊字符</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/code.php" target="_blank" rel="noopener">code</a></td>
+<td>编辑源码</td>
+<td>编辑内容生成的HTML源码</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/codesample.php" target="_blank" rel="noopener">codesample</a></td>
+<td>代码示例插件</td>
+<td>提供代码高亮功能用于在内容区展示程序源代码</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/directionality.php" target="_blank" rel="noopener">directionality</a></td>
+<td>文字方向</td>
+<td>适应不同语言的书写方式，ltr文字方向从左到右，rtl从右到左。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/emoticons.php" target="_blank" rel="noopener">emoticons</a></td>
+<td>表情插件</td>
+<td>在内容区插入unicode字符表情</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/fullpage.php" target="_blank" rel="noopener">fullpage</a></td>
+<td>文档属性</td>
+<td>编辑元数据和文档属性，如标题、关键字、描述、编码。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/fullscreen.php" target="_blank" rel="noopener">fullscreen</a></td>
+<td>全屏</td>
+<td>将编辑器铺满当前窗口大小。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/help.php" target="_blank" rel="noopener">help</a></td>
+<td>帮助</td>
+<td>打开使用帮助窗口</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/hr.php" target="_blank" rel="noopener">hr</a></td>
+<td>水平分割线</td>
+<td>插入一个水平分割线</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/image.php" target="_blank" rel="noopener">image</a></td>
+<td>插入编辑图片</td>
+<td>插入编辑图片</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/insertdatetime.php" target="_blank" rel="noopener">insertdatetime</a></td>
+<td>插入当前日期时间</td>
+<td>插入当前日期时间</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/link.php" target="_blank" rel="noopener">link</a></td>
+<td>超链接</td>
+<td>插入或编辑超链接</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/lists.php" target="_blank" rel="noopener">lists</a></td>
+<td>列表插件</td>
+<td>设置有序列表和无序列表，比较基础，更强大的要用 advlist</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/media.php" target="_blank" rel="noopener">media</a></td>
+<td>插入编辑媒体</td>
+<td>插入H5的audio和video标签</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/nonbreaking.php" target="_blank" rel="noopener">nonbreaking</a></td>
+<td>插入不间断空格</td>
+<td>插入不间断空格</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/noneditable.php" target="_blank" rel="noopener">noneditable</a></td>
+<td>不可编辑元素</td>
+<td>将带有 <strong>mceNonEditable</strong>类的内容设为不可编辑（但可以删掉）。该插件提供的特性比较适合作为模板使用。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/pagebreak.php" target="_blank" rel="noopener">pagebreak</a></td>
+<td>插入分页符</td>
+<td>插入特定的分页符，用于使用CMS系统时将内容拆分为数个页面。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/paste.php" target="_blank" rel="noopener">paste</a></td>
+<td>粘贴插件</td>
+<td>用于从Word复制和粘贴内容的标准版功能。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/preview.php" target="_blank" rel="noopener">preview</a></td>
+<td>预览</td>
+<td>在弹出的拟态窗口中预览当前编辑区的内容</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/print.php" target="_blank" rel="noopener">print</a></td>
+<td>印</td>
+<td>打印当前编辑区的内容</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/quickbars.php" target="_blank" rel="noopener">quickbars</a></td>
+<td>快速工具栏</td>
+<td>在光标当前位置出现的快速工具栏</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/save.php" target="_blank" rel="noopener">save</a></td>
+<td>保存</td>
+<td>在工具栏添加了一个保存提交按钮，点击它将提交编辑器所在的表单。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/searchreplace.php" target="_blank" rel="noopener">searchreplace</a></td>
+<td>查找替换</td>
+<td>查找替换编辑区的内容</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/tabfocus.php" target="_blank" rel="noopener">tabfocus</a></td>
+<td>tab切入切出</td>
+<td>按tab切入切出TinyMCE</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/table.php" target="_blank" rel="noopener">table</a></td>
+<td>表格插件</td>
+<td>提供插入及编辑表格的能力</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/template.php" target="_blank" rel="noopener">template</a></td>
+<td>内容模板</td>
+<td>该插件实现了自定义内容模板。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/textpattern.php" target="_blank" rel="noopener">textpattern</a></td>
+<td>快速排版</td>
+<td>匹配文本中的特殊文本标记，并对其执行格式化或执行编辑器命令。简单说就是可以自己实现类似markdown类的文本语法结构。灵活运用感觉会很强大啊！</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/toc.php" target="_blank" rel="noopener">toc</a></td>
+<td>目录生成器</td>
+<td>根据当前内容生成目录</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/visualblocks.php" target="_blank" rel="noopener">visualblocks</a></td>
+<td>显示块元素范围</td>
+<td>显示区块边框</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/visualchars.php" target="_blank" rel="noopener">visualchars</a></td>
+<td>显示不可见字符</td>
+<td>显示不可见字符</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/plugins/wordcount.php" target="_blank" rel="noopener">wordcount</a></td>
+<td>字数统计</td>
+<td>该插件提供工具栏按钮和菜单栏选项，同时还在状态栏右下实时展示当前字词个数。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="拓展插件"><a href="#拓展插件" class="headerlink" title="拓展插件"></a>拓展插件</h3><font color="red">使用拓展插件需要自己从官网下载相应的插件包。</font>
+
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>插件名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/more-plugins/bdmap.php" target="_blank" rel="noopener">bdmap</a></td>
+<td>插入百度地图</td>
+<td>在内容区插入一个动态的百度地图。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/more-plugins/indent2em.php" target="_blank" rel="noopener">indent2em</a></td>
+<td>首行缩进</td>
+<td>提供中文段落排版的首行缩进2个字符的功能，实际是加入css的text-indent:2em。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/more-plugins/lineheight.php" target="_blank" rel="noopener">lineheight</a></td>
+<td>行高设置</td>
+<td>加入css的line-height来设置行高。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/more-plugins/axupimgs.php" target="_blank" rel="noopener">axupimgs</a></td>
+<td>多图片批量上传</td>
+<td>这是一个tinymce多图片批量上传插件。</td>
+</tr>
+<tr>
+<td><a href="http://tinymce.ax-z.cn/more-plugins/ax_wordlimit.php" target="_blank" rel="noopener">ax_wordlimit</a></td>
+<td>字数限制插件</td>
+<td>这是一个实时判断编辑器文字超过设定后触发回调的插件。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tinymce-vue-介绍"><a href="#tinymce-vue-介绍" class="headerlink" title="tinymce-vue 介绍"></a>tinymce-vue 介绍</h2><p>因为我们不使用 API-KEY 时使用 TinyMce需要额外配置，而最终来说还是基于 <code>@tinymce/tinymce-vue</code> 这个插件的，只是不再需要官方的 TinyMce 配置了。</p>
+<p>这个插件组件接受如下属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;editor</span><br><span class="line">  api-key=&quot;your-api-key&quot;</span><br><span class="line">  cloud-channel=&quot;5&quot;</span><br><span class="line">  :disabled=false</span><br><span class="line">  id=&quot;uuid&quot;</span><br><span class="line">  :init= &quot;&#123;  &#125;&quot;</span><br><span class="line">  initial-value=&quot;&quot;</span><br><span class="line">  :inline=true</span><br><span class="line">  model-events= &quot;&quot;</span><br><span class="line">  plugins=&quot;&quot;</span><br><span class="line">  tag-name=&quot;div&quot;</span><br><span class="line">  toolbar=&quot;&quot;</span><br><span class="line">  value=&quot;&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="api-key"><a href="#api-key" class="headerlink" title="api-key"></a>api-key</h3><p>如果没有 API-KEY，自己配置，就不需要填写这个属性了。</p>
+<h3 id="disabled"><a href="#disabled" class="headerlink" title="disabled"></a>disabled</h3><p>设置编辑器为只读模式或者可编辑模式。</p>
+<h3 id="id"><a href="#id" class="headerlink" title="id"></a>id</h3><p>编辑器的id。用于使用 <code>tinymce.get（&#39;ID&#39;）</code> 方法检索编辑器实例。默认为自动生成的UUID。</p>
+<h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><p>初始化配置，一个对象类型，会发送到编辑器的 <code>tinymce.init()</code> 方法中进行配置。</p>
+<h3 id="initial-value"><a href="#initial-value" class="headerlink" title="initial-value"></a>initial-value</h3><p>编辑器的初始内容。 </p>
+<h3 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h3><p>用来设置编辑器的内联模式。</p>
+<h3 id="model-events"><a href="#model-events" class="headerlink" title="model-events"></a>model-events</h3><p>设置 <code>v-model</code> 的触发事件，默认为：<code>change keyup undo redo</code> 。</p>
+<h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><p>是 <code>init</code> 中插件部分属性的设置，插件属性可以在 <code>plugins</code> 中设置，也可以在 <code>init</code> 中设置。</p>
+<h3 id="tag-name"><a href="#tag-name" class="headerlink" title="tag-name"></a>tag-name</h3><p>只有在编辑器为内联模式时有效，用来设置默认的内联模式编辑器的 html 标签。</p>
+<h3 id="toolbar"><a href="#toolbar" class="headerlink" title="toolbar"></a>toolbar</h3><p>是 <code>init</code> 中工具栏部分属性的设置，工具栏属性可以在 toolbar中设置，也可以在 <code>init</code> 中设置。</p>
+<h3 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h3><p>双向数据绑定，绑定编辑器内容（ html 格式）。</p>
+<h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><p>如下的事件是有效的。</p>
+<ul>
+<li><code>onActivate</code></li>
+<li><code>onAddUndo</code></li>
+<li><code>onBeforeAddUndo</code></li>
+<li><code>onBeforeExecCommand</code></li>
+<li><code>onBeforeGetContent</code></li>
+<li><code>onBeforeRenderUI</code></li>
+<li><code>onBeforeSetContent</code></li>
+<li><code>onBeforePaste</code></li>
+<li><code>onBlur</code></li>
+<li><code>onChange</code></li>
+<li><code>onClearUndos</code></li>
+<li><code>onClick</code></li>
+<li><code>onContextMenu</code></li>
+<li><code>onCopy</code></li>
+<li><code>onCut</code></li>
+<li><code>onDblclick</code></li>
+<li><code>onDeactivate</code></li>
+<li><code>onDirty</code></li>
+<li><code>onDrag</code></li>
+<li><code>onDragDrop</code></li>
+<li><code>onDragEnd</code></li>
+<li><code>onDragGesture</code></li>
+<li><code>onDragOver</code></li>
+<li><code>onDrop</code></li>
+<li><code>onExecCommand</code></li>
+<li><code>onFocus</code></li>
+<li><code>onFocusIn</code></li>
+<li><code>onFocusOut</code></li>
+<li><code>onGetContent</code></li>
+<li><code>onHide</code></li>
+<li><code>onInit</code></li>
+<li><code>onKeyDown</code></li>
+<li><code>onKeyPress</code></li>
+<li><code>onKeyUp</code></li>
+<li><code>onLoadContent</code></li>
+<li><code>onMouseDown</code></li>
+<li><code>onMouseEnter</code></li>
+<li><code>onMouseLeave</code></li>
+<li><code>onMouseMove</code></li>
+<li><code>onMouseOut</code></li>
+<li><code>onMouseOver</code></li>
+<li><code>onMouseUp</code></li>
+<li><code>onNodeChange</code></li>
+<li><code>onObjectResizeStart</code></li>
+<li><code>onObjectResized</code></li>
+<li><code>onObjectSelected</code></li>
+<li><code>onPaste</code></li>
+<li><code>onPostProcess</code></li>
+<li><code>onPostRender</code></li>
+<li><code>onPreProcess</code></li>
+<li><code>onProgressState</code></li>
+<li><code>onRedo</code></li>
+<li><code>onRemove</code></li>
+<li><code>onReset</code></li>
+<li><code>onSaveContent</code></li>
+<li><code>onSelectionChange</code></li>
+<li><code>onSetAttrib</code></li>
+<li><code>onSetContent</code></li>
+<li><code>onShow</code></li>
+<li><code>onSubmit</code></li>
+<li><code>onUndo</code></li>
+<li><code>onVisualAid</code></li>
+</ul>
+<h2 id="封装案例"><a href="#封装案例" class="headerlink" title="封装案例"></a>封装案例</h2><p>最后来提供一个封装好的案例进行详细介绍。</p>
+<p>其中，表情包文件 <code>emojis.js</code> 需要从 <code>tinymce</code> 中提取出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br></pre></td><td class="code"><pre><span class="line">// TinyMce.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&apos;tinymce&apos;&gt;</span><br><span class="line">        &lt;!-- 富文本编辑组件 --&gt;</span><br><span class="line">        &lt;editor</span><br><span class="line">            v-model=&apos;tinymceHtml&apos;</span><br><span class="line">            :init=&apos;init&apos;</span><br><span class="line">            :disabled=&quot;disabled&quot;</span><br><span class="line">        &gt;&lt;/editor&gt;</span><br><span class="line">        &lt;div v-html=&quot;tinymceHtml&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;&#123;&#123; tinymceHtml &#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 基本配置</span><br><span class="line">import tinymce from &quot;tinymce/tinymce&quot;;</span><br><span class="line">import Editor from &quot;@tinymce/tinymce-vue&quot;;</span><br><span class="line">import &quot;tinymce/themes/silver/theme.min&quot;;</span><br><span class="line"></span><br><span class="line">// 插件导入</span><br><span class="line">import &quot;tinymce/plugins/anchor&quot;;</span><br><span class="line">import &quot;tinymce/plugins/advlist&quot;;</span><br><span class="line">import &quot;tinymce/plugins/autolink&quot;;</span><br><span class="line">import &quot;tinymce/plugins/autosave&quot;;</span><br><span class="line">import &quot;tinymce/plugins/charmap&quot;;</span><br><span class="line">import &quot;tinymce/plugins/code&quot;;</span><br><span class="line">import &quot;tinymce/plugins/codesample&quot;;</span><br><span class="line">import &quot;tinymce/plugins/emoticons&quot;;</span><br><span class="line">import &quot;tinymce/plugins/fullscreen&quot;;</span><br><span class="line">import &quot;tinymce/plugins/help&quot;;</span><br><span class="line">import &quot;tinymce/plugins/hr&quot;;</span><br><span class="line">import &quot;tinymce/plugins/image&quot;;</span><br><span class="line">import &quot;tinymce/plugins/insertdatetime&quot;;</span><br><span class="line">import &quot;tinymce/plugins/link&quot;;</span><br><span class="line">import &quot;tinymce/plugins/lists&quot;;</span><br><span class="line">import &quot;tinymce/plugins/media&quot;;</span><br><span class="line">import &quot;tinymce/plugins/preview&quot;;</span><br><span class="line">import &quot;tinymce/plugins/pagebreak&quot;;</span><br><span class="line">import &quot;tinymce/plugins/print&quot;;</span><br><span class="line">import &quot;tinymce/plugins/quickbars&quot;;</span><br><span class="line">import &quot;tinymce/plugins/save&quot;;</span><br><span class="line">import &quot;tinymce/plugins/searchreplace&quot;;</span><br><span class="line">import &quot;tinymce/plugins/template&quot;;</span><br><span class="line">import &quot;tinymce/plugins/textpattern&quot;;</span><br><span class="line">import &quot;tinymce/plugins/toc&quot;;</span><br><span class="line"></span><br><span class="line">import &quot;tinymce/plugins/table&quot;;</span><br><span class="line">import &quot;tinymce/plugins/wordcount&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &quot;TinyMce&quot;,</span><br><span class="line"></span><br><span class="line">    props: &#123;</span><br><span class="line">        // 双向绑定值</span><br><span class="line">        value: &#123;</span><br><span class="line">            type: String</span><br><span class="line">        &#125;,</span><br><span class="line">        // 是否可编辑</span><br><span class="line">        disabled: &#123;</span><br><span class="line">            type: Boolean,</span><br><span class="line">            default: false</span><br><span class="line">        &#125;,</span><br><span class="line">        // 皮肤</span><br><span class="line">        skin: &#123;</span><br><span class="line">            type: String,</span><br><span class="line">            validator: value =&gt; &#123;</span><br><span class="line">                return [&quot;light&quot;, &quot;dark&quot;].indexOf(value) !== -1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        // 名称，可以用来区分 localStrage 存储名称前缀</span><br><span class="line">        name: &#123;</span><br><span class="line">            type: String,</span><br><span class="line">            default: &quot;tinymce&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    data() &#123;</span><br><span class="line">        let that = this;</span><br><span class="line">        return &#123;</span><br><span class="line">            tinymceHtml: this.value,</span><br><span class="line">            init: &#123;</span><br><span class="line">                // 语言配置</span><br><span class="line">                language_url: &quot;/tinymce/langs/zh_CN.js&quot;,</span><br><span class="line">                language: &quot;zh_CN&quot;,</span><br><span class="line">                // 皮肤配置</span><br><span class="line">                skin_url:</span><br><span class="line">                    this.skin === &quot;dark&quot;</span><br><span class="line">                        ? &quot;/tinymce/skins/ui/oxide-dark&quot;</span><br><span class="line">                        : &quot;/tinymce/skins/ui/oxide&quot;,</span><br><span class="line">                content_css: &quot;/tinymce/skins/content/default/content.css&quot;,</span><br><span class="line">                // 插件</span><br><span class="line">                plugins: [</span><br><span class="line">                    // 锚点</span><br><span class="line">                    &quot;anchor&quot;,</span><br><span class="line">                    // 自动链接</span><br><span class="line">                    &quot;autolink&quot;,</span><br><span class="line">                    // 自动保存</span><br><span class="line">                    &quot;autosave&quot;,</span><br><span class="line">                    // 特殊字符</span><br><span class="line">                    &quot;charmap&quot;,</span><br><span class="line">                    // 代码示例插件</span><br><span class="line">                    &quot;codesample&quot;,</span><br><span class="line">                    // 表情</span><br><span class="line">                    &quot;emoticons&quot;,</span><br><span class="line">                    // 全屏</span><br><span class="line">                    &quot;fullscreen&quot;,</span><br><span class="line">                    // 帮助</span><br><span class="line">                    &quot;help&quot;,</span><br><span class="line">                    // 分割线</span><br><span class="line">                    &quot;hr&quot;,</span><br><span class="line">                    // 图片</span><br><span class="line">                    &quot;image&quot;,</span><br><span class="line">                    // 插入时间</span><br><span class="line">                    &quot;insertdatetime&quot;,</span><br><span class="line">                    // 超链接</span><br><span class="line">                    &quot;link&quot;,</span><br><span class="line">                    // 高级列表</span><br><span class="line">                    &quot;lists&quot;,</span><br><span class="line">                    &quot;advlist&quot;,</span><br><span class="line">                    // 媒体</span><br><span class="line">                    &quot;media&quot;,</span><br><span class="line">                    // 预览</span><br><span class="line">                    &quot;preview&quot;,</span><br><span class="line">                    // 分页</span><br><span class="line">                    &quot;pagebreak&quot;,</span><br><span class="line">                    // 打印</span><br><span class="line">                    &quot;print&quot;,</span><br><span class="line">                    // 快速工具栏</span><br><span class="line">                    &quot;quickbars&quot;,</span><br><span class="line">                    // 保存</span><br><span class="line">                    &quot;save&quot;,</span><br><span class="line">                    // 搜索框</span><br><span class="line">                    &quot;searchreplace&quot;,</span><br><span class="line">                    // 模板</span><br><span class="line">                    &quot;template&quot;,</span><br><span class="line">                    // 快速排版</span><br><span class="line">                    &quot;textpattern&quot;,</span><br><span class="line">                    // 目录</span><br><span class="line">                    &quot;toc&quot;,</span><br><span class="line">                    &quot;code&quot;,</span><br><span class="line">                    &quot;table&quot;,</span><br><span class="line">                    &quot;wordcount&quot;</span><br><span class="line">                ],</span><br><span class="line">                toolbar:</span><br><span class="line">                    &quot;toc | template searchreplace save print | insertdatetime help fullscreen emoticons | restoredraft code undo redo | fontsizeselect | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | link unlink image media anchor preview | removeformat&quot;,</span><br><span class="line">                // 富文本组件高度</span><br><span class="line">                height: 500,</span><br><span class="line">                // 不可重置大小</span><br><span class="line">                resize: false,</span><br><span class="line">                // 无logo</span><br><span class="line">                branding: false,</span><br><span class="line"></span><br><span class="line">                // 自动存稿设置</span><br><span class="line">                // 关闭或跳转URL弹出框提醒</span><br><span class="line">                autosave_ask_before_unload: true,</span><br><span class="line">                // 自动保存间隔</span><br><span class="line">                autosave_interval: &quot;5s&quot;,</span><br><span class="line">                // localStorage中key字段</span><br><span class="line">                autosave_prefix: this.name + &quot;-autosave-&quot;,</span><br><span class="line">                // 编辑器初始化时内容区为空时自动恢复本地存储中草稿，不再需要initial-value</span><br><span class="line">                autosave_restore_when_empty: true,</span><br><span class="line"></span><br><span class="line">                // 表情地址</span><br><span class="line">                emoticons_database_url: &quot;tinymce/emoticons/emojis.js&quot;,</span><br><span class="line"></span><br><span class="line">                // 图片上传</span><br><span class="line">                images_upload_handler: (blobInfo, success, failure) =&gt; &#123;</span><br><span class="line">                    const img = &quot;data:image/jpeg;base64,&quot; + blobInfo.base64();</span><br><span class="line">                    if (blobInfo.blob().size / 1024 &gt; that.imageSize) &#123;</span><br><span class="line">                        failure(&quot;图片太大，须小于&quot; + that.imageSize + &quot;kb&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                    success(img);</span><br><span class="line">                &#125;,</span><br><span class="line"></span><br><span class="line">                // 时间格式</span><br><span class="line">                insertdatetime_formats: [</span><br><span class="line">                    &quot;%r&quot;,</span><br><span class="line">                    &quot;%H:%M:%S&quot;,</span><br><span class="line">                    &quot;%H点%M分%S秒&quot;,</span><br><span class="line">                    &quot;%D&quot;,</span><br><span class="line">                    &quot;%Y-%m-%d&quot;,</span><br><span class="line">                    &quot;%Y年%m月%d日&quot;,</span><br><span class="line">                    &quot;%A&quot;,</span><br><span class="line">                    &quot;%a&quot;</span><br><span class="line">                ],</span><br><span class="line"></span><br><span class="line">                // 分页</span><br><span class="line">                pagebreak_split_block: true,</span><br><span class="line"></span><br><span class="line">                // 保存</span><br><span class="line">                // save_enablewhendirty:false,</span><br><span class="line">                // save_onsavecallback: function () &#123; console.log(&apos;已保存&apos;); &#125;,</span><br><span class="line"></span><br><span class="line">                // 快速排版</span><br><span class="line">                textpattern_patterns: [</span><br><span class="line">                    &#123; start: &quot;*&quot;, end: &quot;*&quot;, format: &quot;italic&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;**&quot;, end: &quot;**&quot;, format: &quot;bold&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;#&quot;, format: &quot;h1&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;##&quot;, format: &quot;h2&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;###&quot;, format: &quot;h3&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;####&quot;, format: &quot;h4&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;#####&quot;, format: &quot;h5&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;######&quot;, format: &quot;h6&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;1. &quot;, cmd: &quot;InsertOrderedList&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;* &quot;, cmd: &quot;InsertUnorderedList&quot; &#125;,</span><br><span class="line">                    &#123; start: &quot;- &quot;, cmd: &quot;InsertUnorderedList&quot; &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123; Editor &#125;,</span><br><span class="line"></span><br><span class="line">    mounted() &#123;</span><br><span class="line">        console.log(this.value, this.tinymceHtml);</span><br><span class="line">    &#125;,</span><br><span class="line">    watch: &#123;</span><br><span class="line">        value(val) &#123;</span><br><span class="line">            this.tinymceHtml = val;</span><br><span class="line">        &#125;,</span><br><span class="line">        tinymceHtml(val) &#123;</span><br><span class="line">            this.$emit(&quot;getContent&quot;, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">// App.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;home&quot;&gt;</span><br><span class="line">    &lt;tinymce</span><br><span class="line">        ref=&quot;editor&quot;</span><br><span class="line">        :disabled=&quot;disabled&quot;</span><br><span class="line">        @getContent=&quot;getContent&quot;</span><br><span class="line">        v-model=&quot;msg&quot;</span><br><span class="line">        name=&quot;ceshi&quot;</span><br><span class="line">    &gt;&lt;/tinymce&gt;</span><br><span class="line">    &lt;div&gt;&#123;&#123; msg &#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;button @click=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import tinymce from &apos;@/components/TinyMce.vue&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &apos;home&apos;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        tinymce</span><br><span class="line">    &#125;,</span><br><span class="line">    data()&#123;</span><br><span class="line">        return&#123;</span><br><span class="line">            msg: &apos;ceshi&apos;,</span><br><span class="line">            disabled: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        // 清空内容</span><br><span class="line">        clear () &#123;</span><br><span class="line">            this.$refs.editor.clear()</span><br><span class="line">        &#125;,</span><br><span class="line">        // </span><br><span class="line">        getContent(val) &#123;</span><br><span class="line">            this.msg = val</span><br><span class="line">            console.log(&apos;修改&apos;)</span><br><span class="line">        &#125;,</span><br><span class="line">        submit()&#123;</span><br><span class="line">            console.log(this.msg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">    height: 100%;</span><br><span class="line">    width: 100%;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/20/组件-Vue-TinyMce/" data-id="ck4gqsgpf000fp0utbviwg3ef" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue组件/">Vue组件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/20/组件-Vue-VueScroll/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">组件-Vue-Vuescroll富文本组件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECharts/">ECharts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EcamScript6/">EcamScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/">ElementUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html-Css/">Html/Css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue组件/">Vue组件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件配置/">软件配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面经/">面经</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/CSS/" style="font-size: 11.67px;">CSS</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/ECharts/" style="font-size: 10px;">ECharts</a> <a href="/tags/EcamScript6/" style="font-size: 11.67px;">EcamScript6</a> <a href="/tags/ElementUI/" style="font-size: 12.5px;">ElementUI</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Html-Css/" style="font-size: 10.83px;">Html/Css</a> <a href="/tags/JavaScript/" style="font-size: 18.33px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 14.17px;">Node</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Vue/" style="font-size: 16.67px;">Vue</a> <a href="/tags/Vue组件/" style="font-size: 11.67px;">Vue组件</a> <a href="/tags/blog/" style="font-size: 10.83px;">blog</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 19.17px;">前端</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/框架/" style="font-size: 15.83px;">框架</a> <a href="/tags/浏览器兼容/" style="font-size: 10px;">浏览器兼容</a> <a href="/tags/移动端/" style="font-size: 20px;">移动端</a> <a href="/tags/软件配置/" style="font-size: 10px;">软件配置</a> <a href="/tags/面经/" style="font-size: 10px;">面经</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/20/组件-Vue-TinyMce/">组件-Vue-TinyMce富文本组件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/20/组件-Vue-VueScroll/">组件-Vue-Vuescroll富文本组件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/20/组件-Vue-VueCountTo/">组件-Vue-Vuescroll富文本组件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/框架-Vue-组件通信/">框架-Vue-组件通信</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/框架-Vue-《Vue.js实战》/">框架-Vue-《Vue.js实战》</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ai Junhao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
